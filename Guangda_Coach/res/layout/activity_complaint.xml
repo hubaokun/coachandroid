@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f3f3f3" 
+    android:id="@+id/rl_location">
+    
+    <LinearLayout 
+            android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent">
+     	<RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_tousu"
+        android:id="@+id/rl_nodata"
+        android:visibility="gone"/>
+     	<com.daoshun.lib.listview.PullToRefreshListView
+            android:id="@+id/pull_list_complaint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/divider_grey"
+            android:dividerHeight="0.5dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none" />
+
+     	</RelativeLayout>
+     	</LinearLayout>
+</RelativeLayout>

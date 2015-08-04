@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/white">
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享到"
+            android:textColor="@color/text_black"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"/>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <LinearLayout android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/ll_share_to_weixin">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_weixin"
+            android:layout_gravity="center_horizontal"/>
+        	<TextView android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:text="微信好友"
+        	    android:layout_gravity="center_horizontal"/>
+         </LinearLayout>
+                 <LinearLayout android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/ll_share_penyouquan">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_circle"
+            android:layout_gravity="center_horizontal"/>
+        	<TextView android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:text="朋友圈"
+        	    android:layout_gravity="center_horizontal"/>
+         </LinearLayout>
+                 <LinearLayout android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/ll_share_xinlang">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_xinlang"
+            android:layout_gravity="center_horizontal"/>
+        	<TextView android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:text="新浪微博"
+        	    android:layout_gravity="center_horizontal"/>
+         </LinearLayout>
+    </LinearLayout>
+     <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       	android:layout_marginTop="5dp"
+       	android:id="@+id/ll_share_qq">
+        <LinearLayout android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_qq"
+            android:layout_gravity="center_horizontal"/>
+        	<TextView android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:text="QQ好友"
+        	    android:layout_gravity="center_horizontal"/>
+         </LinearLayout>
+                 <LinearLayout android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/ll_share_zone">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_zone"
+            android:layout_gravity="center_horizontal"/>
+        	<TextView android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:text="QQ空间"
+        	    android:layout_gravity="center_horizontal"/>
+         </LinearLayout>
+                 <LinearLayout android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="invisible">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_xinlang"
+            android:layout_gravity="center_horizontal"/>
+        	<TextView android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:text="新浪微博"
+        	    android:layout_gravity="center_horizontal"/>
+         </LinearLayout>
+    </LinearLayout>
+    <ImageView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ico_cancle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/img_cancle"/>
+    </LinearLayout>
+
+</LinearLayout>

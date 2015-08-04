@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loading" >
+
+    <TextView
+        android:id="@+id/loading_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/loading_appname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/loading_version"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="小巴学车"
+        android:textColor="@color/text_orange"
+        android:textSize="21dp" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/loading_appname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:src="@drawable/loading_icon" />
+    
+    <TextView
+        android:text="全国首创O2O学车服务"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="48dp" />
+    
+    <ImageView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/img_advertisement"
+        android:visibility="gone"
+        android:background="@color/white"/>
+
+</RelativeLayout>

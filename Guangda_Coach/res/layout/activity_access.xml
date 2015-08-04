@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="#f3f3f3"
+    android:id="@+id/rl_location">
+    
+    <LinearLayout 
+            android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@android:color/white" >
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            >
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/access_for_other"
+                android:background="@drawable/left_half_circly_black"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/tv_my_access"/>
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/access_to_me"
+                android:background="@drawable/center_white_bar"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:id="@+id/tv_access_to_me"/>
+            
+           <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="投诉我的"
+            android:id="@+id/tv_complain"
+            android:textColor="@color/text_black"
+           	android:paddingLeft="10dp"
+           	android:paddingRight="10dp"
+           	android:paddingTop="5dp"
+           	android:paddingBottom="5dp"
+           	android:background="@drawable/right_half_circly_white"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_title_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:src="@drawable/back_arrow"/>
+        
+
+    </RelativeLayout>
+        <FrameLayout
+        android:id="@+id/access_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    
+</LinearLayout>
+</RelativeLayout>

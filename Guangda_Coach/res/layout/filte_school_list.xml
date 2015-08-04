@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/back_gray">
+    
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+    
+   <include layout="@layout/layout_titlebar" 
+        android:background="@color/white"/>
+   </RelativeLayout>
+   
+   <LinearLayout android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:layout_margin="15dp">
+   <EditText android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@drawable/shape_white_round"
+       android:hint="请输入驾校关键字"
+       android:padding="10dp"
+       android:id="@+id/et_school"/>
+   
+   <ListView android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:scrollbars="none"
+       android:layout_marginTop="15dp"
+       android:background="@color/white"
+       android:id="@+id/lv_school"/>
+   </LinearLayout>
+</LinearLayout>

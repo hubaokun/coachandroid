@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+        android:id="@+id/home_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/divider" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_above="@+id/home_bottom"
+        style="@style/dividerLine" />
+
+    <LinearLayout
+        android:id="@+id/home_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/tab_job_order"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/selector_home_tab"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/tab_job_order_img"
+                android:layout_width="15dp"
+                android:layout_height="19dp"
+                android:src="@drawable/joborder_white" />
+
+            <TextView
+                android:id="@+id/tab_job_order_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/home_job_order"
+                android:textColor="@color/text_grey"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#2b2b2b" />
+
+        <LinearLayout
+            android:id="@+id/tab_date_set"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/selector_home_tab"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/tab_date_set_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/date_set" />
+
+            <TextView
+                android:id="@+id/tab_date_set_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/home_date_set"
+                android:textColor="@color/text_grey"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#2b2b2b" />
+
+        <LinearLayout
+            android:id="@+id/tab_mine"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/selector_home_tab"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/tab_mine_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/mine" />
+
+            <TextView
+                android:id="@+id/tab_mine_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/home_mine"
+                android:textColor="@color/text_grey"
+                android:textSize="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

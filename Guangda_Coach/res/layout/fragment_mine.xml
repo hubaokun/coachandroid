@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#21b478" >
+
+    <View
+        android:id="@+id/mine_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mine_bg" />
+
+    <ImageView
+        android:id="@+id/bg_polygon"
+        android:layout_width="240dp"
+        android:layout_height="260dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/bg_polygon" />
+
+    <xiaoba.coach.views.OverScrollView
+        android:id="@+id/mine_over_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="240dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp" >
+
+                    <LinearLayout
+                        android:id="@+id/mine_yue_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/left_money" />
+
+                            <TextView
+                                android:id="@+id/mine_yue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:text="余额：785.0元"
+                                android:textColor="@color/text_black"
+                                android:textSize="19dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/mine_gmoney"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text=" (1025.0元保证金 / 2000.0元冻结金)"
+                            android:textColor="@color/text_black"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/mine_apply_btn"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_btn_apply"
+                        android:gravity="center"
+                        android:lineSpacingExtra="3dp"
+                        android:text="申请\n提现"
+                        android:textColor="@color/white"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <View style="@style/dividerLine" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp" >
+
+                    <Button
+                        android:id="@+id/btn_pay_cash"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/selector_green_round"
+                        android:padding="5dp"
+                        android:text="查看"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@id/btn_pay_cash"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/xiaoba_ticket"
+                            android:textColor="@color/text_black"
+                            android:textSize="19dp" />
+
+                        <TextView
+                            android:id="@+id/tv_coupon_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/text_green"
+                            android:textSize="19dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hour"
+                            android:textColor="@color/text_black"
+                            android:textSize="19dp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View style="@style/dividerLine" />
+                
+               <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp" >
+
+                    <Button
+                        android:id="@+id/btn_pay_coin"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/selector_green_round"
+                        android:padding="5dp"
+                        android:text="@string/cash"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@id/btn_pay_coin"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="小巴币个数："
+                            android:textColor="@color/text_black"
+                            android:textSize="19dp" />
+
+                        <TextView
+                            android:id="@+id/tv_coin_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/text_green"
+                            android:textSize="19dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="个"
+                            android:textColor="@color/text_black"
+                            android:textSize="19dp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View style="@style/dividerLine" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="14dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:id="@+id/tousu_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:layout_width="37dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/my_student_icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="学员"
+                                android:textColor="@color/text_black"
+                                android:textSize="17dp" />
+
+                            <TextView
+                                android:id="@+id/tv_student_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="0条"
+                                android:textColor="#a3abbc"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+
+                        <View style="@style/dividerLine" />
+
+                        <RelativeLayout
+                            android:id="@+id/share_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:orientation="vertical" >
+
+                                <ImageView
+                                    android:layout_width="33dp"
+                                    android:layout_height="33dp"
+                                    android:src="@drawable/ico_share" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp"
+                                    android:text="邀请"
+                                    android:textColor="@color/text_black"
+                                    android:textSize="17dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="邀请教练加入"
+                                    android:textColor="#a3abbc"
+                                    android:textSize="12dp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/notice_unread_msg_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="15dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginTop="10dp"
+                                android:background="#e0483e"
+                                android:gravity="center"
+                                android:minWidth="15dp"
+                                android:textColor="@color/white"
+                                android:textSize="12dp"
+                                android:visibility="invisible" >
+                            </TextView>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/divider_grey" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:id="@+id/evaluate_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:layout_width="37dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/tousu" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="评价"
+                                android:textColor="@color/text_black"
+                                android:textSize="17dp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/evaluation_msg_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:textColor="#a3abbc"
+                                    android:textSize="12dp" />
+
+                                <TextView
+                                    android:id="@+id/tousu_msg_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="8dp"
+                                    android:textColor="#a3abbc"
+                                    android:textSize="12dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View style="@style/dividerLine" />
+
+                        <LinearLayout
+                            android:id="@+id/recharge_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:layout_width="52dp"
+                                android:layout_height="29dp"
+                                android:src="@drawable/recharge" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="钱包"
+                                android:textColor="@color/text_black"
+                                android:textSize="17dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="我的钱包"
+                                android:textColor="#a3abbc"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </xiaoba.coach.views.OverScrollView>
+
+    <RelativeLayout
+        android:id="@+id/portrait_layout"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:paddingBottom="9dp" >
+        
+        <RelativeLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rl_info"
+            android:layout_centerHorizontal="true">
+
+            <net.grobas.view.PolygonImageView
+            android:id="@+id/potrait"
+            android:layout_width="78dp"
+            android:layout_height="84dp"
+            android:layout_centerHorizontal="true" 
+            android:layout_marginTop="40dp"
+            android:src="@drawable/mine_portrait"
+            app:poly_border="true"
+            app:poly_border_color="@android:color/white"
+            app:poly_border_width="1dp"
+            app:poly_corner_radius="10"
+            app:poly_rotation_angle="30"
+            app:poly_shadow="true"
+            app:poly_shadow_color="@color/divider_grey"
+            app:poly_vertices="6" />
+        
+
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/potrait"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textSize="24dp" />
+        
+       <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pencile"
+            android:layout_toRightOf="@id/name"
+            android:layout_marginBottom="5dp"
+            android:layout_alignBottom="@id/name"/>
+
+        <RatingBar
+            android:layout_below="@+id/name"
+            android:id="@+id/mine_ratingBar"
+            style="@style/myRatingBarGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="5"
+            android:stepSize="0.5" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_info"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_mine_round_lin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="invisible" >
+
+            <TextView
+                android:id="@+id/mine_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="7dp"
+                android:layout_marginLeft="3dp"
+                android:src="@drawable/mine_price_arrow" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mine_set"
+        android:layout_width="48dp"
+        android:layout_height="36dp"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="5dp"
+        android:paddingLeft="11dp"
+        android:paddingRight="11dp"
+        android:paddingTop="10dp"
+        
+        android:src="@drawable/mine_set_icon" />
+    
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:id="@+id/notice_layout">
+        <ImageView
+        android:id="@+id/mine_info"
+        android:layout_width="43dp"
+        android:layout_height="31dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="11dp"
+        android:paddingRight="11dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/notice" />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/notice_msg_count"
+            android:background="@color/red_light"
+            android:text="0"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:layout_marginLeft="-4dp"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:visibility="gone"
+            android:layout_alignRight="@id/mine_info"/>
+        </RelativeLayout>
+
+</RelativeLayout>

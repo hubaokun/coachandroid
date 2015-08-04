@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+    
+    <include layout="@layout/layout_titlebar" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="62dp"
+        android:layout_marginRight="62dp"
+        android:orientation="vertical" >
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/text_black"
+            android:textSize="13dp" />
+        
+        <EditText
+            android:id="@+id/ca_input_name"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:singleLine="true"
+            android:background="@null"
+            android:textColorHint="@color/text_onion"
+            android:hint="@string/name_hint"
+            android:textColor="@color/text_black"
+            android:textSize="13dp" />
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_grey" />
+        
+        <TextView
+            android:layout_marginTop="37dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/idcard"
+            android:textColor="@color/text_black"
+            android:textSize="13dp" />
+        
+        <EditText
+            android:id="@+id/ca_input_idcard"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:singleLine="true"
+            android:background="@null"
+            android:textColorHint="@color/text_onion"
+            android:inputType="phone"
+            android:digits="1234567890"
+            android:hint="@string/idcard_hint"
+            android:textColor="@color/text_black"
+            android:textSize="13dp" />
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_grey" />
+        
+        <TextView
+            android:layout_marginTop="37dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/setpwd"
+            android:textColor="@color/text_black"
+            android:textSize="13dp" />
+        
+        <EditText
+            android:id="@+id/ca_input_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:singleLine="true"
+            android:background="@null"
+            android:textColorHint="@color/text_onion"
+            android:hint="@string/setpwd_hint"
+            android:inputType="textPassword"
+            android:textColor="@color/text_black"
+            android:textSize="13dp" />
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_grey" />
+        
+    </LinearLayout>
+    
+</LinearLayout>

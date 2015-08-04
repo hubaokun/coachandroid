@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f3f3f3"
+    android:orientation="vertical" >
+
+    <include
+        layout="@layout/layout_titlebar"
+        android:background="@color/white" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/ll_part"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/total_hours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="32dp"
+                        android:textColor="@color/text_black"
+                        android:textSize="13dp" />
+
+                    <!--
+                         <TextView
+                        android:id="@+id/phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="11dp"
+                        android:textColor="@color/text_black"
+                        android:textSize="15dp" /> -->
+                    <TextView
+                        android:id="@+id/total_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="11dp"
+                        android:textColor="@color/text_black"
+                        android:textSize="19dp" />
+
+                    <RatingBar
+                        android:id="@+id/self_ratingBar"
+                        style="@style/myRatingBarGrey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:rating="5"
+                        android:stepSize="0.5" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="手机号码"
+                            android:textColor="@color/text_black"
+                            android:textSize="13dp" />
+
+                        <TextView
+                            android:id="@+id/enter_phone_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:textColor="@color/text_black"
+                            android:textSize="18dp" />
+
+                        <!--
+                             <TextView
+                            android:id="@+id/tv_change_new_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text="修改"
+                            android:textColor="@color/text_green"
+                            android:textSize="13sp" />
+                        -->
+
+
+                        <!--
+                     <ImageView
+                    android:id="@+id/pencil_phone_number"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />-->
+                    </LinearLayout>
+                </LinearLayout>
+
+                <net.grobas.view.PolygonImageView
+                    android:id="@+id/potrait"
+                    android:layout_width="66dp"
+                    android:layout_height="70dp"
+                    android:layout_alignTop="@+id/ll_part"
+                    android:layout_marginTop="32dp"
+                    android:layout_toLeftOf="@+id/ll_part"
+                    android:src="@drawable/portrait_test"
+                    app:poly_border="true"
+                    app:poly_border_color="@android:color/white"
+                    app:poly_border_width="1dp"
+                    app:poly_corner_radius="10"
+                    app:poly_rotation_angle="30"
+                    app:poly_shadow="true"
+                    app:poly_shadow_color="@color/divider_grey"
+                    app:poly_vertices="6" />
+            </RelativeLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="28dp" />
+
+            <LinearLayout
+                android:id="@+id/account_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="18dp"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:text="帐号信息"
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:layout_width="19dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="7dp"
+                        android:padding="5dp"
+                        android:src="@drawable/arrow_grey" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="9dp"
+                    android:text="姓名、手机号码"
+                    android:textColor="@color/text_grey"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:text="姓名"
+                    android:textColor="@color/text_black"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="（接单必须设置）"
+                    android:textColor="#f7941d"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请输入姓名"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_grey"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_name"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <!--
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+            
+            <RelativeLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_school">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="所属驾校"
+                android:textColor="@color/text_black"
+                android:textSize="13dp"/>
+
+          
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+				android:layout_marginLeft="11dp"
+                android:orientation="horizontal" >
+
+                <TextView
+
+                    android:id="@+id/enter_school_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:text="请输入所属驾校名称"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/text_grey"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_scholl_name"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+               </LinearLayout>
+            </RelativeLayout> -->
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:text="性别"
+                    android:textColor="@color/text_black"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="（接单必须设置）"
+                    android:textColor="#f7941d"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/gender_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:text="请选择性别"
+                    android:textColor="@color/text_grey"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_sex"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:id="@+id/pro_quality"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="18dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="教练资格资料"
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:layout_weight="1.0"
+                        android:text="（接单必须设置）"
+                        android:textColor="#f7941d"
+                        android:textSize="9dp" />
+
+                    <ImageView
+                        android:layout_width="19dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="7dp"
+                        android:padding="5dp"
+                        android:src="@drawable/arrow_grey" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="9dp"
+                    android:text="教练证、驾驶证、行驶证"
+                    android:textColor="@color/text_grey"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <View style="@style/dividerLine" />
+
+            <LinearLayout
+                android:id="@+id/address_set"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="18dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="学车地址"
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:layout_weight="1.0"
+                        android:text="（接单必须设置）"
+                        android:textColor="#f7941d"
+                        android:textSize="9dp" />
+
+                    <ImageView
+                        android:layout_width="19dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="7dp"
+                        android:padding="5dp"
+                        android:src="@drawable/arrow_grey" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/user_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="9dp"
+                    android:text="设置常用地址"
+                    android:textColor="@color/text_grey"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <View style="@style/dividerLine" />
+
+            <LinearLayout
+                android:id="@+id/personal_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="18dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:text="更多资料"
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:layout_width="19dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="7dp"
+                        android:padding="5dp"
+                        android:src="@drawable/arrow_grey" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="9dp"
+                    android:text="性别、出生年月、所在城市、联系地址..."
+                    android:textColor="@color/text_grey"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <View style="@style/dividerLine" />
+
+            <LinearLayout
+                android:id="@+id/modify_pass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="18dp"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:text="修改密码"
+                        android:textColor="@color/text_black"
+                        android:textSize="16dp" />
+
+                    <ImageView
+                        android:layout_width="19dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="7dp"
+                        android:padding="5dp"
+                        android:src="@drawable/arrow_grey" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="9dp"
+                    android:text="定期修改密码可以增加帐号安全~"
+                    android:textColor="@color/text_grey"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

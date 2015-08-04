@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+        
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerVertical="true">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:id="@+id/tv_coins_title"
+                    android:textColor="@color/text_black"/>
+                
+                 <Button android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查看凭证"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:background="@drawable/selector_yellow_round"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:id="@+id/btn_coin_show"/>
+            </LinearLayout>
+              <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/text_black"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_coin_money"/>
+            </RelativeLayout>
+            
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_centerVertical="true">
+                
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付方:"
+                    android:textColor="@color/text_grey"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="小巴平台"
+                    android:textColor="@color/text_grey"
+                    android:textSize="13sp"
+                    android:id="@+id/tv_coin_from" />
+                
+            </LinearLayout>
+            
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="06.19"
+                    android:textColor="@color/text_grey"
+                    android:textSize="12sp"/>
+                <TextView 
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11:20"
+                    android:textColor="@color/text_grey"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">小巴学车教练端</string>
+    <string name="action_settings">Settings</string>
+    <string name="net_error">网络连接失败，请稍后再试</string>
+    <string name="err_fatal">程序出现异常，只能退出</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="warn_exit_msg">再按一次退出程序</string>
+    <string name="next_step">下一步</string>
+    <string name="ok">完成</string>
+    <string name="save">保存</string>
+
+    <!-- login -->
+    <string name="account">帐号</string>
+    <string name="account_hint">手机号码</string>
+    <string name="password">密码</string>
+    <string name="password_hint">收到的验证码</string>
+    <string name="forget_pwd">忘记密码？</string>
+    <string name="login_submit">登录小巴</string>
+    <string name="login">登录</string>
+
+    <!-- registe -->
+    <string name="msg_check">手机验证</string>
+    <string name="get_msg_check">获取\n验证码</string>
+    <string name="phone_number">手机号</string>
+    <string name="phone_hint">输入手机号码</string>
+    <string name="code_hint">输入您收到的验证码</string>
+    <string name="code">验证码</string>
+    <string name="get_pwd_title">忘记密码</string>
+
+    <!-- create account -->
+    <string name="create_account">创建帐号</string>
+    <string name="registe">注册</string>
+    <string name="name">姓名</string>
+    <string name="idcard">身份证</string>
+    <string name="setpwd">设置密码</string>
+    <string name="name_hint">请输入姓名</string>
+    <string name="idcard_hint">请输入身份证号码</string>
+    <string name="setpwd_hint">请设置密码</string>
+
+    <!-- related material -->
+    <string name="related_material">相关资料</string>
+    <string name="idcard_number">身份证号码</string>
+    <string name="coach_card_serial">教练证号</string>
+    <string name="car_type">准教车型</string>
+    <string name="coach_card_make_time">制证时间</string>
+    <string name="idcard_photo">相关证件照片</string>
+    <string name="idcard_number_hint">请输入身份证号码</string>
+    <string name="coach_card_serial_hint">请输入教练证号</string>
+    <string name="car_type_hint">请输入准教车型</string>
+    <string name="coach_card_make_time_hint">请输入制证时间</string>
+    <string name="idcard_photo_face">身份证正面</string>
+    <string name="idcard_photo_back">身份证反面</string>
+    <string name="skip">跳过</string>
+    <string name="rm_submit">提交</string>
+
+    <!-- modify pwd -->
+    <string name="set_new_pwd">设置新密码</string>
+    <string name="enter_new_pwd">输入新密码</string>
+    <string name="modify_pwd">密码找回</string>
+    
+    <!-- home -->
+    <string name="home_job_order">任务单</string>
+    <string name="home_date_set">日程安排</string>
+    <string name="home_mine">我的</string>
+    <string name="job_order_history">历史</string>
+    <string name="no_order_now">暂无任务</string>
+    <string name="tousu">投诉</string>
+    <string name="home_message">短信</string>
+    <string name="contact">联系</string>
+    <string name="confirm_on">确认上车</string>
+    <string name="confirm_off">确认下车</string>
+    <string name="confirm_on_tip1">您已经确认上车过了</string>
+    <string name="confirm_on_tip2">该任务已经过期，无法确认上车</string>
+    <string name="confirm_on_tip3">该任务还未到开始时间，无法确认上车</string>
+    <string name="confirm_off_tip1">您已经确认下车过了</string>
+    <string name="confirm_off_tip2">该任务还未到结束时间,无法确认下车</string>
+    <string name="lacktel">学员未填写电话号码</string>
+    <string name="perfect_material">请先去完善学员信息</string>
+    <string name="untested_title">学员还未认证资料，是否去认证？</string>
+    <string name="go_to_check">先去认证</string>
+    <string name="get_on_car">直接上车</string>
+    <string name="order_success">恭喜此任务已完成</string>
+    <string name="order_undone">还有未完成的任务，请先完成前面的任务。</string>
+    
+    
+    <!-- history order -->
+    <string name="history_order">历史任务</string>
+    <string name="student_comment">学生评价</string>
+    <string name="student_uncomment">该学生尚未评价</string>
+    <string name="coach_comment">我的评价详情</string>
+    <string name="to_comment_stu">给学员评价</string>
+    
+    <!-- comment -->
+    <string name="content_hint">说点什么吧…</string>
+    <string name="comment_look">遵章守时</string>
+    <string name="comment_quality">技能掌握</string>
+    <string name="comment_atti">学习态度</string>
+    <string name="rate_unit">分</string>
+    <string name="my_comment_detail">我的评价详情</string>
+    <string name="averate_rate">综合评分</string>
+    
+    <!-- dateset -->
+    <string name="one">一</string>
+    <string name="two">二</string>
+    <string name="three">三</string>
+    <string name="four">四</string>
+    <string name="five">五</string>
+    <string name="six">六</string>
+    <string name="sun">日</string>
+    <string name="am">上午</string>
+    <string name="afternoon">下午</string>
+    <string name="night">晚上</string>
+    
+    <!-- 星期 -->
+	<string name="Mon">一</string>
+	<string name="Tue">二</string>
+	<string name="Wed">三</string>
+	<string name="Thu">四</string>
+	<string name="Fri">五</string>
+	<string name="Sat">六</string>
+	<string name="Sun">日</string>
+	
+	<!-- class time set -->
+	<string name="class_time_set">课时设置</string>
+	<string name="set_time_point">设置时间点</string>
+	<string name="set_time_status">是否开课</string>
+	<string name="classset_close_tip">休息状态，以上时间点屏蔽任何学生选课！</string>
+	<string name="classset_open_tip">开课状态，若关闭，以上时间点屏蔽任何\n学生选课！</string>
+	<string name="classset_price">时间单价 (元/小时)</string>
+	<string name="classset_loc">选择上车地点</string>
+	<string name="classset_teach_content">教学内容</string>
+	
+	<!-- 投诉 -->
+	<string name="complaint_to_me">投诉我的</string>
+	<string name="has_solution">已解决</string>
+	<string name="student_contact">联系电话</string>
+	<string name="student_number">学员证号</string>
+	<string name="model">电话联系</string>
+	
+	<!-- 评论 -->
+	<string name="access_to_me">评价我的</string>
+	<string name="access_for_other">我的评价</string>
+	<string name="access_content">评价内容</string>
+	<string name="access_student">评价学员</string>
+	<string name="access_time">任务时间</string>
+	
+	<!-- 通知 -->
+	<string name="notice_bar">通知</string>
+	
+<!-- 认证上传 -->
+	<string name="check_title">学员证件照</string>
+	<string name="pick_info">提交资料</string>
+	<string name="id_zhengmian">身份证正面</string>
+	<string name="id_fanmian">身份证反面</string>
+	<string name="dirver_xueyuan">驾照or学员证</string>
+	<string name="chose_camear">拍照</string>
+	<string name="chose_album">相册</string>
+	<string name="no_id_face">请拍摄身份证正面</string>
+	<string name="no_id_back">请拍摄身份证反面</string>
+	<string name="no_car_pic">请拍摄驾照或学员证</string>
+	
+	<!-- 小巴券 -->
+	<string name="xiaoba_ticket">小巴券时间：</string>
+	<string name="hour">小时</string>
+	<string name="cash">兑换</string>
+	<string name="my_coupon">我的小巴券</string>
+	<string name="has_chosed">已选</string>
+	<string name="zhang">张</string>
+	<string name="count_hour">共</string>
+	<string name="count">合计：</string>
+	<string name="pay_cash">立即兑换</string>
+	<string name="xiaoba">小巴券</string>
+	<string name="from_xiaoba">小巴平台</string>
+	<string name="from_school">驾校官方</string>
+	<string name="from_coach">教练</string>
+	<string name="no_chosed">请选择一张小巴券，才能兑换</string>
+	<string name="duihuan_success">兑换成功</string>
+	
+	<!-- 我的学员 -->
+	<string name="my_student">我的学员</string>
+	<string name="study_count">总学时：</string>
+	<string name="time_count">历史学时：</string>
+	<string name="money_count">历史费用：</string>
+	<!-- 更换手机号码 -->
+	<string name="change_phone">更换手机号码</string>
+	<string name="save_change">提交修改</string>
+	<string name="new_phone">新手机号：</string>
+	<string name="has_pay_ticket">已兑换的小巴券，请联系发布者结算</string>
+	<string name="open_class">设置开课后，学员就能预约到您的课程了</string>
+	<string name="down_xiaoba">下载小巴APP后，登录后直接输入邀请码</string>
+	<string name="share_tip1_one">邀请其他教练加盟小巴，在被邀请教练通过审核并开课后，可获赠</string>
+	<string name="share_tip1_two">元，3个工作日内到账户余额。</string>
+	<string name="share_tip2_one">开课成功后，被邀请教练首次订单完成，3个工作日内您可再获赠</string>
+	<string name="share_tip2_two">元到账户余额。</string>
+	<string name="scan_text">将二维码放入框内, 即可获取邀请码</string>
+	
+</resources>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f3f3f3"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/set_title"
+        layout="@layout/layout_titlebar" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="11dp" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="接到新任务通知"
+            android:textColor="@color/text_black"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/receive_notice"
+            android:layout_width="53dp"
+            android:layout_height="32dp"
+            android:src="@drawable/button_on" />
+    </LinearLayout>
+
+    <View style="@style/dividerLine" />
+
+    <LinearLayout
+        android:id="@+id/advice_return"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="11dp" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="意见反馈"
+            android:textColor="@color/text_black"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/arrow_grey" />
+    </LinearLayout>
+
+    <View style="@style/dividerLine" />
+
+    <LinearLayout
+        android:id="@+id/about_us"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="11dp" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="关于我们"
+            android:textColor="@color/text_black"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/arrow_grey" />
+    </LinearLayout>
+
+    <View style="@style/dividerLine" />
+    
+        <LinearLayout
+        android:id="@+id/rules_coach"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="11dp" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="会员注册协议"
+            android:textColor="@color/text_black"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:layout_width="9dp"
+            android:layout_height="15dp"
+            android:src="@drawable/arrow_grey" />
+    </LinearLayout>
+
+    <View style="@style/dividerLine" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="23dp"
+            android:background="@drawable/shape_green_round"
+            android:text="退出登录"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+</LinearLayout>

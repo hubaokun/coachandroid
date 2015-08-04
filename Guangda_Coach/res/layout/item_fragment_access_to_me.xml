@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" 
+    android:padding="15dp"
+    android:background="@color/white">
+    
+    <net.grobas.view.PolygonImageView
+            android:id="@+id/img_student_avater"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:poly_border="false"
+            app:poly_rotation_angle="30"
+            app:poly_corner_radius="10"
+            android:layout_marginTop="10dp"
+            app:poly_shadow="true"
+            app:poly_shadow_color="@color/divider_grey"
+            app:poly_vertices="6" />
+            
+      <LinearLayout android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_marginLeft="15dp">
+          <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/access_content"
+              android:textSize="12sp"
+              android:textColor="@color/text_black"/>
+          			<RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/myRatingBarSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="5"
+                android:layout_marginTop="10dp"
+                android:stepSize="0.5"/>
+      <TextView android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/tv_access_to_me_content"
+          android:textSize="15sp"
+          android:textColor="@color/text_black"
+          android:text="11"
+          android:layout_marginTop="5dp"/>
+       <View android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_grey"
+            android:layout_marginTop="10dp"
+            />
+       <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/access_time"
+              android:textSize="12sp"
+              android:textColor="@color/text_black"
+              android:layout_marginTop="10dp"/>
+       
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tv_access_to_me_time"
+           android:textColor="@color/text_black"
+           android:textSize="15sp"/>
+      </LinearLayout>
+
+</LinearLayout>

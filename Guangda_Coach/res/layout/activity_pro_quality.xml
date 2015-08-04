@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/layout_titlebar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="15dp" >
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_red"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:background="@color/light_yellow"
+                android:id="@+id/tv_coach_state"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                
+                />
+
+            <!-- idcard -->
+
+            <!-- <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="15dp"
+                android:text="身份证号码"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:hint="请输入身份证号码"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_id"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="身份证到期时间"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/enter_id_invalid_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:text="请选择身份证到期时间"
+                    android:textColor="#a4abbd"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="教练证号"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_coach_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:hint="请输入教练证号"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_coach"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="教练证到期时间"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/enter_coach_invalid_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:text="请选择教练证到期时间"
+                    android:textColor="#a4abbd"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="驾驶证号"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_drive_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:hint="请输入驾驶证号"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_drivecard"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="驾驶证到期时间"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/enter_drive_invalid_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:text="请选择驾驶证到期时间"
+                    android:textColor="#a4abbd"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="车辆行驶证"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_car_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:hint="请输入车辆识别代码"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_carcard"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="车辆行驶证到期时间"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/enter_car_invalid_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:text="年检日期"
+                    android:textColor="#a4abbd"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" /> -->
+            
+
+
+
+                    
+                  <!--  <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="姓名"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical" >
+                
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/enter_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请输入姓名"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_grey"
+                    android:textSize="18dp" />
+                
+                  <RadioGroup 
+                      android:id="@+id/radioGroup" 
+                      android:contentDescription="性别" 
+                      android:layout_width="wrap_content" 
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_marginLeft="10dp">
+     				<RadioButton 
+     				    android:layout_width="wrap_content"
+     				    android:layout_height="wrap_content" 
+     				    android:id="@+id/radioMale" 
+     				    android:text="先生" 
+     				    android:checked="true"/>
+     				<RadioButton 
+     				    android:layout_width="wrap_content" 
+     				    android:layout_height="wrap_content" 
+     				    android:id="@+id/radioFemale" 
+     				    android:text="女士"/>    
+     				 </RadioGroup>
+                
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/pencil_name"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+                        <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" /> -->
+              <RelativeLayout
+                android:id="@+id/rl_school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                
+                                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginTop="21dp"
+                        android:text="所属驾校"
+                        android:textColor="@color/text_black"
+                        android:textSize="13dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="11dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0" >
+                        <TextView
+                            android:id="@+id/enter_school_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="12dp"
+                            android:paddingTop="12dp"
+                            android:text="请输入所属驾校名称"
+                            android:textColor="#a4abbd"
+                            android:textSize="18dp" />
+                        
+                        <EditText
+                            android:background="@null"
+                            android:id="@+id/enter_school_name_et"
+                            android:visibility="invisible"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="12dp"
+                            android:paddingTop="12dp"
+                            android:textColor="@color/text_black"
+                            android:textSize="18dp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/pencil_scholl_name"
+                            android:layout_width="39dp"
+                            android:layout_height="41dp"
+                            android:paddingBottom="12dp"
+                            android:paddingLeft="11dp"
+                            android:paddingRight="11dp"
+                            android:paddingTop="12dp"
+                            android:src="@drawable/pencile" />
+                    </LinearLayout>
+                </LinearLayout> 
+             </RelativeLayout> 
+
+           <!-- <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="准教车型"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/enter_cartype_one"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请选择准教车型  （单选）"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:singleLine="true"
+                    android:textColor="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/add_cartype"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="12dp"
+                    android:src="@drawable/add" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_cartype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:orientation="vertical" />
+
+            
+                 <include
+                android:id="@+id/cartype2_layout"
+                layout="@layout/item_material_layout"
+                android:visibility="gone" />
+           
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="教学用车型号"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/enter_car_model"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请选择教学用车型号 （单选）"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/add_carmodel"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="12dp"
+                    android:src="@drawable/add" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="教学用车牌照"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_card_license"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请输入教学用车牌照"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_time"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout> -->
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="相关证件照片"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp" >
+
+                <!-- <RelativeLayout
+                    android:id="@+id/rl_lt"
+                    android:layout_width="113dp"
+                    android:layout_height="113dp" >
+
+                    <LinearLayout
+                        android:id="@+id/photo_id_front"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/idcard_photo_bg"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
+                            android:src="@drawable/camera" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="身份证正面"
+                            android:textColor="#a4abbd"
+                            android:textSize="13dp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/photo_id_front_pic"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true" />
+
+                    <ImageView
+                        android:id="@+id/del_id_front"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/photo_del"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_rt"
+                    android:layout_width="113dp"
+                    android:layout_height="113dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/rl_lt" >
+
+                    <LinearLayout
+                        android:id="@+id/photo_id_back"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/idcard_photo_bg"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
+                            android:src="@drawable/camera" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="身份证反面"
+                            android:textColor="#a4abbd"
+                            android:textSize="13dp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/photo_id_back_pic"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true" />
+
+                    <ImageView
+                        android:id="@+id/del_id_back"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/photo_del"
+                        android:visibility="invisible" />
+                </RelativeLayout> -->
+
+                <RelativeLayout
+                    android:id="@+id/rl_lb"
+                    android:layout_width="113dp"
+                    android:layout_height="113dp"
+                    android:layout_marginTop="15dp" >
+ 					 <!-- android:layout_below="@+id/rl_lt"-->
+                    <LinearLayout
+                        android:id="@+id/photo_coach"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/idcard_photo_bg"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
+                            android:src="@drawable/camera" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="教练证"
+                            android:textColor="#a4abbd"
+                            android:textSize="13dp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/photo_coach_pic"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true" />
+
+                    <ImageView
+                        android:id="@+id/del_coach"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/photo_del"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_rb"
+                    android:layout_width="113dp"
+                    android:layout_height="113dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/rl_lb" >
+
+                    <LinearLayout
+                        android:id="@+id/photo_coach_car"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/idcard_photo_bg"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
+                            android:src="@drawable/camera" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="驾驶证"
+                            android:textColor="#a4abbd"
+                            android:textSize="13dp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/photo_coach_car_pic"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true" />
+
+                    <ImageView
+                        android:id="@+id/del_coach_car"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/photo_del"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <!-- 车辆行驶证正面 -->
+
+                <RelativeLayout
+                    android:id="@+id/rl_car_front"
+                    android:layout_width="113dp"
+                    android:layout_height="113dp"
+                    android:layout_below="@+id/rl_lb"
+                    android:layout_marginTop="15dp" >
+
+                    <LinearLayout
+                        android:id="@+id/photo_car_front"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/idcard_photo_bg"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
+                            android:src="@drawable/camera" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="车辆行驶证正本"
+                            android:textColor="#a4abbd"
+                            android:textSize="13dp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/photo_coach_car_front_pic"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true" />
+
+                    <ImageView
+                        android:id="@+id/del_coach_car_front"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/photo_del"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <!-- 车辆行驶证反面 -->
+
+                <RelativeLayout
+                    android:id="@+id/rl_car_back"
+                    android:layout_width="113dp"
+                    android:layout_height="113dp"
+                    android:layout_below="@+id/rl_rb"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/rl_car_front" >
+
+                    <LinearLayout
+                        android:id="@+id/photo_coach_car_back"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/idcard_photo_bg"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
+                            android:src="@drawable/camera" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="车辆行驶证副本"
+                            android:textColor="#a4abbd"
+                            android:textSize="13dp" />
+                        
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="(带有效期)"
+                            android:textColor="#a4abbd"
+                            android:textSize="13dp"
+                            android:layout_gravity="center_horizontal" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/photo_coach_car_back_pic"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true" />
+
+                    <ImageView
+                        android:id="@+id/del_coach_car_back"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/photo_del"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <!-- 教练正面 -->
+
+<!--                 <RelativeLayout
+                    android:id="@+id/rl_coach"
+                    android:layout_width="113dp"
+                    android:layout_height="113dp"
+                    android:layout_below="@+id/rl_car_front"
+                    android:layout_marginTop="15dp" >
+
+                    <LinearLayout
+                        android:id="@+id/photo_coach_face"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/idcard_photo_bg"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
+                            android:src="@drawable/camera" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="教练真实照片"
+                            android:textColor="#a4abbd"
+                            android:textSize="13dp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/photo_coach_face_pic"
+                        android:layout_width="109dp"
+                        android:layout_height="109dp"
+                        android:layout_alignParentBottom="true" />
+
+                    <ImageView
+                        android:id="@+id/del_coach_face"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/photo_del"
+                        android:visibility="invisible" />
+                </RelativeLayout> -->
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/layout_titlebar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="15dp" >
+
+            <!--
+                <RelativeLayout android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+               <LinearLayout android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+                   
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginTop="21dp"
+                        android:text="所属驾校"
+                        android:textColor="@color/text_black"
+                        android:textSize="13dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="11dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/enter_school_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:background="@null"
+                            android:hint="输入所属驾校名称"
+                            android:paddingBottom="12dp"
+                            android:paddingTop="12dp"
+                            android:textColor="@color/text_black"
+                            android:textColorHint="#a4abbd"
+                            android:textSize="18dp" />
+
+                        <ImageView
+                            android:id="@+id/pencil_scholl_name"
+                            android:layout_width="39dp"
+                            android:layout_height="41dp"
+                            android:paddingBottom="12dp"
+                            android:paddingLeft="11dp"
+                            android:paddingRight="11dp"
+                            android:paddingTop="12dp"
+                            android:src="@drawable/pencile" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="性别"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/gender_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:text="请选择性别"
+                    android:textColor="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_sex"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+            -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="出生年月"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_birthday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:text="请选择出生年月"
+                    android:textColor="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_birthday"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="所在城市"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/city_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:text="请选择所在城市"
+                    android:textColor="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_city"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="联系地址"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_contact_loc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请输入联系地址"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_contact_loc"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="紧急联系人"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_contact_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请输入紧急联系人姓名"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_contact_name"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="紧急联系电话"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_contact_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请输入紧急联系电话"
+                    android:inputType="phone"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_contact_phone"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="教龄"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_teach_age"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请输入教龄"
+                    android:inputType="phone"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_teach_age"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="自我评价"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/enter_self_eval"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:hint="请输入自我评价"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="#a4abbd"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/pencil_self_eval"
+                    android:layout_width="39dp"
+                    android:layout_height="41dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

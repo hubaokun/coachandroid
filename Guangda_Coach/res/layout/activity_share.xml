@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+ <include
+        android:id="@+id/set_title"
+        layout="@layout/layout_titlebar" />
+ 
+ <ScrollView android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:scrollbars="none"
+     >
+     <LinearLayout android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:layout_marginTop="20dp">
+         
+         <RelativeLayout android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+              <View style="@style/dividerLine"
+                  android:layout_centerVertical="true"
+                  android:layout_marginTop="10dp" />
+              <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="扫码注册"
+                  android:textSize="15sp"
+                  android:textColor="#666666"
+                  android:layout_centerHorizontal="true"
+                  android:background="@color/white"
+                  android:paddingLeft="5dp"
+                  android:paddingRight="5dp"/>
+              
+         </RelativeLayout>
+         
+         <TextView android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="被邀请教练通过微信扫码，即可注册"
+             android:textSize="12sp"
+             android:textColor="@color/text_grey"
+             android:layout_gravity="center_horizontal"
+             android:layout_marginTop="10dp"/>
+         
+         <ImageView android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/erwei_img"
+             android:id="@+id/img_erweima"
+             android:layout_gravity="center_horizontal"
+             android:layout_marginTop="10dp"/>
+         
+         
+                  <RelativeLayout android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp">
+              <View style="@style/dividerLine"
+                  android:layout_centerVertical="true" />
+              <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="专属邀请码"
+                  android:textSize="15sp"
+                  android:textColor="#666666"
+                  android:layout_centerHorizontal="true"
+                  android:background="@color/white"
+                  android:paddingLeft="5dp"
+                  android:paddingRight="5dp"/>
+              
+         </RelativeLayout>
+         
+          <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="35etwqe"
+              android:textColor="@color/text_orange"
+              android:textSize="22sp"
+              android:id="@+id/tv_invitecode"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="5dp"/>
+          
+          <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/down_xiaoba"
+              android:textSize="12sp"
+              android:textColor="@color/text_grey"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="5dp"/>
+          
+          <Button 
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="邀请朋友"
+              android:textColor="@color/text_black"
+              android:background="@drawable/selector_yellow_round"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
+              android:layout_marginTop="10dp"
+              android:padding="10dp"
+              android:id="@+id/btn_share"/>
+          
+          <LinearLayout android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
+              android:layout_marginTop="10dp">
+              <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:id="@+id/ll_top_one">
+                  <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="⊙"
+                      android:textSize="12sp"
+                      android:textColor="@color/text_grey"
+                      android:id="@+id/tv_number_one"/>
+                  <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="12sp"
+                      android:textColor="@color/text_grey"
+                      android:id="@+id/tv_tips_one"
+                      android:layout_marginLeft="5dp"/>
+              </LinearLayout>
+                            
+                            <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:paddingBottom="20dp"
+                  android:id="@+id/ll_top_two">
+                  <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="⊙"
+                      android:textSize="12sp"
+                      android:textColor="@color/text_grey"
+                      android:id="@+id/tv_number_two"/>
+                  <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="12sp"
+                      android:textColor="@color/text_grey"
+                      android:id="@+id/tv_tops_two"
+                      android:layout_marginLeft="5dp"/>
+              </LinearLayout>
+          </LinearLayout>
+     </LinearLayout>
+ </ScrollView>
+
+</LinearLayout>

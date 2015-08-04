@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:background="@drawable/recharge_bg" >
+    
+
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+            <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/comment_cancel"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"/>
+        
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:text="11"/>
+                 </RelativeLayout>
+                 <LinearLayout android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:background="@color/white"
+                     android:layout_marginBottom="10dp">
+
+			<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="11dp"
+                android:paddingTop="6dp" 
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="开课"
+                    android:textColor="@color/text_black"
+                    android:textSize="16dp"
+                    android:layout_gravity="center_vertical" />
+
+                <ImageView
+                    android:id="@+id/btn_isrest"
+                    android:layout_width="52dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/button_on" />
+            </LinearLayout>
+            
+			<RelativeLayout android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginTop="15dp">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/ll_close_class"
+                    >
+                    <View         
+                        style="@style/common_line"
+                        android:background="#cbcbcb" />
+
+            <TextView
+                android:id="@+id/open_close_tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="6dp"
+                android:layout_gravity="center"
+                android:text="@string/open_class"
+                android:textColor="@color/text_grey"
+                android:textSize="12dp"
+                android:gravity="center" />
+            </LinearLayout>
+            
+                <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rl_open_class"
+                    android:background="@drawable/shape_feed_blac"
+                    android:padding="8dp">
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="设置开课详情"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_black"
+                        android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/userinfo_next_img"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
+                    
+                </RelativeLayout>
+            </RelativeLayout>
+    			</LinearLayout>
+    			</LinearLayout>
+
+</LinearLayout>

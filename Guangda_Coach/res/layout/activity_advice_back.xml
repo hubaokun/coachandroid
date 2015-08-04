@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/advice_title"
+        layout="@layout/layout_titlebar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="205dp"
+        android:background="@color/white"
+        android:padding="12dp" >
+
+        <EditText
+            android:id="@+id/advice_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="说点意见吧"
+            android:textColor="@color/text_black"
+            android:textColorHint="#a4abbd"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+    <View style="@style/dividerLine" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f3f3f3" />
+
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+    <include layout="@layout/layout_titlebar" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/account"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_grey_border"
+        android:hint="请输入您的支付宝账号"
+        android:paddingLeft="10dp"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_grey"
+        android:textSize="14dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="申请提现必须设置，提现申请通过走之后，会打到您的支付宝账户"
+        android:textColor="#ec4c41"
+        android:textSize="12dp" />
+    
+    
+     <View 
+         android:layout_marginTop="10dp"
+         style="@style/dividerLine" />
+    
+   <!--  <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="11dp" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="设置为驾校提现"
+            android:textColor="@color/text_black"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/receive_notice"
+            android:layout_width="53dp"
+            android:layout_height="32dp"
+            android:src="@drawable/button_off" />
+    </LinearLayout>
+
+    <View style="@style/dividerLine" />
+    
+    
+    <TextView
+        android:id="@+id/account_tip"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="您现在提现的金额将会直接转到您的支付宝账户"
+        android:textColor="#ec4c41"
+        android:textSize="12dp" />
+    
+    
+    <Button
+        android:id="@+id/clear_account"
+        android:text="清除账号"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:background="#ec4c41" /> -->
+
+</LinearLayout>

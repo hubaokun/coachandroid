@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg_test"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    
+     
+
+    <TextView
+        android:id="@+id/chose_camear"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/chose_camear"
+        android:textColor="@color/light_blue"
+        android:textSize="15dp" 
+        android:layout_margin="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/tab_devider_gray" />
+
+    <TextView
+        android:id="@+id/chose_album"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/chose_album"
+        android:textColor="@color/light_blue"
+        android:textSize="15dp" 
+        android:layout_margin="5dp"/>
+    
+    
+
+</LinearLayout>
