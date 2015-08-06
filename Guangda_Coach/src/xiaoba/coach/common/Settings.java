@@ -43,7 +43,9 @@ public class Settings {
 	
 	public static final int COUPON = 2;  //小巴券
 	
-	public static final int COIN = 3;  //小巴币 
+	public static final int COIN = 3;  //小巴币
+	
+	public static final int WITHPAYTYPE = 0; //没有支付方式 
 
 	public static final int CAMERA = 1001;
 	public static final int ALBUM = 1002;
@@ -55,8 +57,8 @@ public class Settings {
 	//public static final String BASE_URL = "http://120.25.236.228:8080/dadmin";
 	//public static final String BASE_URL = "http://192.168.1.144:8080/xiaoba";
 	//public static final String BASE_URL = "http://192.168.1.23:8089/guangda";
-	//public static final String BASE_URL = "http://192.168.1.132:8080/xb";
-	public static final String BASE_URL = "http://www.xiaobakaiche.com/dadmin";
+	public static final String BASE_URL = "http://192.168.1.136:8080/xiaoba";
+	//public static final String BASE_URL = "http://www.xiaobakaiche.com/dadmin";
 	//public static final String PGY_APP_ID = "0b9cee5728dbd943795b67d096be3e85"; //正式环境的Appid
 	//public static final String PGY_APP_ID = "8cb0ea072ee0cd493495a691bf07cf2f";  //测试环境的Appid
 	public static final String PGY_APP_ID = "0936f8d01631ca9e8ea4e3955ebb2a03";  //地推环境的Appid

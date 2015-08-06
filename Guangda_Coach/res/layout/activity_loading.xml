@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/loading" >
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/loading_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="48dp" />
+        android:layout_marginBottom="48dp" />-->
     
     <ImageView android:layout_width="match_parent"
         android:layout_height="match_parent"

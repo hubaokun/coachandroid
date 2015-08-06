@@ -551,14 +551,19 @@ public class JobOrderFragment extends Fragment {
 				
 				switch (info.getPaytype()) {
 				case Settings.MONEY:
+					imgPayType.setVisibility(View.VISIBLE);
 					imgPayType.setImageResource(R.drawable.money);
 					break;
 				case Settings.COIN:
+					imgPayType.setVisibility(View.VISIBLE);
 					imgPayType.setImageResource(R.drawable.coin);
 					break;
 				case Settings.COUPON:
+					imgPayType.setVisibility(View.VISIBLE);
 					imgPayType.setImageResource(R.drawable.ticket);
 					break;
+				case Settings.WITHPAYTYPE:
+					imgPayType.setVisibility(View.GONE);
 				default:
 					break;
 				}

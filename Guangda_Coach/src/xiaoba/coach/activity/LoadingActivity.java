@@ -36,13 +36,11 @@ import xiaoba.coach.utils.ImageLoadSaveTask;
 
 @EActivity(R.layout.activity_loading)
 public class LoadingActivity extends BaseActivity {
-	@ViewById(R.id.loading_version)
-	TextView version;
+/*	@ViewById(R.id.loading_version)
+	TextView version;*/
 	@ViewById(R.id.img_advertisement)
 	ImageView imgAdver;
-
 	Thread loginThread;
-	
 	private Context mContext;
 
 	@AfterViews
@@ -51,16 +49,16 @@ public class LoadingActivity extends BaseActivity {
 		// 初始化个推sdk
 		PushManager.getInstance().initialize(this.getApplicationContext()); // 初始化个推sdk
 
-		PackageManager packageManager = getPackageManager();
+//		PackageManager packageManager = getPackageManager();
 		// getPackageName()是你当前类的包名，0代表是获取版本信息
-		PackageInfo packInfo = null;
-		try {
-			packInfo = packageManager.getPackageInfo(getPackageName(), 0);
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-		 if (packInfo != null)
-		 version.setText("版本" + packInfo.versionName);
+//		PackageInfo packInfo = null;
+//		try {
+//			packInfo = packageManager.getPackageInfo(getPackageName(), 0);
+//		} catch (NameNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//		 if (packInfo != null)
+//		 version.setText("版本" + packInfo.versionName);
 		//version.setText("版本");
 		 boolean hasSDCard = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
 	        if(hasSDCard){
