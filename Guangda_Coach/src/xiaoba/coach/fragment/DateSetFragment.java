@@ -1028,6 +1028,47 @@ public class DateSetFragment extends Fragment {
 					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
 					return;
 				}
+
+//				int isrest = 0; //0:没有课，1：有开一节课以上
+//				for (Schedule schedule : scheduleResult.getDatelist()) {
+//					Date date2;
+//					try {
+//						date2 = TimeUtil.StringToDate(schedule.getDate());
+//					} catch (Exception e) {
+//						return;
+//					}
+//
+//					if (equalsDate(calSelected.getTime(), date2)) {
+//
+//						if (schedule.getHour() == 0) {
+//							/*
+//							 * 全局设置
+//							 */
+////							if (schedule.getState() == 0) {
+////								// rest
+////								mAllDaySetClose.setText("发布课程");
+////								mAllDaySetClose.setBackgroundResource(R.drawable.shape_green_round);
+////								isAllDayOpen = false;
+////							} else if (schedule.getState() == 1) {
+////								mAllDaySetClose.setText("当天停课");
+////								mAllDaySetClose.setBackgroundResource(R.drawable.shape_red_round);
+////								isAllDayOpen = true;
+////							}
+//
+//						} else {
+//							if (schedule.getIsrest() == 0)
+//							{
+//								isrest = 1;
+//							}
+//						}
+//					}
+//				}
+//				
+//				if (isrest == 0)
+//				{
+//					Toast.makeText(getActivity(), "至少有一节课是开课状态才能发布", 0).show();
+//					return;
+//				}
 				
 				if (isAllDayOpen) {
 					new ChangeAllDayScheduleTask("2").execute();
@@ -2842,6 +2883,7 @@ public class DateSetFragment extends Fragment {
 			return;
 		if (scheduleResult.getDatelist() == null)
 			return;
+		
 		for (Schedule schedule : scheduleResult.getDatelist()) {
 			Date date2;
 			try {
@@ -3268,7 +3310,7 @@ public class DateSetFragment extends Fragment {
 			View bBall = (View) iv.findViewById(R.id.blue_ball);
 
 			// 背景铺色
-			iv.setBackgroundColor(Color.parseColor("#222222"));
+			iv.setBackgroundColor(Color.parseColor("#444444"));
 			// 今天的处理
 			TextView txtToDay = (TextView) iv.findViewById(R.id.calendar_status);
 			// 日期开始
@@ -3343,7 +3385,7 @@ public class DateSetFragment extends Fragment {
 			} else {
 				txtDay.setVisibility(View.INVISIBLE);
 				txtToDay.setVisibility(View.INVISIBLE);
-				iv.setBackgroundColor(Color.parseColor("#222222"));
+				iv.setBackgroundColor(Color.parseColor("#444444"));
 			}
 
 			// 设置背景颜色
@@ -3354,7 +3396,7 @@ public class DateSetFragment extends Fragment {
 				txtToDay.setTextColor(resources.getColor(R.color.text_black));
 				// gAdapter.selectedView = iv;
 			} else {
-				iv.setBackgroundColor(Color.parseColor("#222222"));
+				iv.setBackgroundColor(Color.parseColor("#444444"));
 			}
 
 			mHangingContent.addView(iv);

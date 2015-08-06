@@ -495,7 +495,7 @@ public class ProQualityActivity extends BaseActivity {
 
 			if ("1".equals(info.getState().toString())) {
 				mTitleRightTv.setVisibility(View.GONE);
-				tvCoachState.setText("您的教练资格资料提交成功，正在审核中...");
+				tvCoachState.setText("教练资格资料提交成功，正在审核中");
 			}
 
 			if ("3".equals(info.getState().toString())) {
@@ -766,23 +766,23 @@ public class ProQualityActivity extends BaseActivity {
 			}
 		}
 
-		if (mPicCoach.getVisibility() != View.VISIBLE) {
+		if (file3==null) {
 			Toast.makeText(mApplication, "请完善教练证照片", Toast.LENGTH_SHORT).show();
 			return;
 		}
 
-		if (mPicDriveCar.getVisibility() != View.VISIBLE) {
+		if (file4 == null) {
 			Toast.makeText(mApplication, "请完善驾驶证照片", Toast.LENGTH_SHORT).show();
 			return;
 		}
 
-		if (mPicCarFront.getVisibility() != View.VISIBLE) {
-			Toast.makeText(mApplication, "请完善车辆行驶证正面照片", Toast.LENGTH_SHORT).show();
+		if (file5 == null) {
+			Toast.makeText(mApplication, "请完善车辆行驶证正本", Toast.LENGTH_SHORT).show();
 			return;
 		}
 
-		if (mPicCarBack.getVisibility() != View.VISIBLE) {
-			Toast.makeText(mApplication, "请完善车辆行驶证反面照片", Toast.LENGTH_SHORT).show();
+		if (file6 == null) {
+			Toast.makeText(mApplication, "请完善车辆行驶证副本", Toast.LENGTH_SHORT).show();
 			return;
 		}
 
@@ -1424,11 +1424,16 @@ public class ProQualityActivity extends BaseActivity {
 			// param.setCarlicense(mCardLicnese.getText().toString());
 			// if (mCarModel.isFocusable())
 			// param.setCarmodelid(m.getText().toString());
-			if (isOtherSchool) {
-				param.setDriveschool(mDriveSchoolEt.getText().toString());
-			} else {
-				if (driveSchoolId != null)
-					param.setDriveschoolid(driveSchoolId);
+//			if (isOtherSchool) {
+//				param.setDriveschool(mDriveSchoolEt.getText().toString());
+//			} else {
+//				if (driveSchoolId != null)
+//					param.setDriveschoolid(driveSchoolId);
+//			}
+			param.setDriveschool(mSchoolName.getText().toString().trim());
+			if (!isOtherSchool)
+			{
+				param.setDriveschoolid(driveSchoolId);
 			}
 			// if (mCarNum.isFocusable())
 			// param.setCarcardnum(mCarNum.getText().toString());

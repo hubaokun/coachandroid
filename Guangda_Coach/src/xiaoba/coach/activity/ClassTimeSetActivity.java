@@ -95,7 +95,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 	String day; // 修改的日期
 	String[] content; // 上车地点数组
 	String[] locContent; // 教学课程数据
-	GetScheduleByDateResult result;
+	GetScheduleResult result;
 	/*
 	 * 课程id
 	 */
@@ -369,8 +369,8 @@ public class ClassTimeSetActivity extends BaseActivity {
 		single = intent.getIntExtra("single", 0);
 		day = intent.getStringExtra("day");
 		isRest = !intent.getBooleanExtra("rest", false); // 需求修改使得状态反向 false:rest
-		if ((Object) intent.getSerializableExtra("result") instanceof GetScheduleByDateResult) {
-			result = (GetScheduleByDateResult) intent.getSerializableExtra("result");
+		if ((Object) intent.getSerializableExtra("result") instanceof GetScheduleResult) {
+			result = (GetScheduleResult) intent.getSerializableExtra("result");
 			list = result.getDatelist();
 			if (list != null)
 				templist.addAll(list);

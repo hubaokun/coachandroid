@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.w3c.dom.Comment;
+
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.view.OnSingleClickListener;
 
@@ -27,6 +29,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ActivityMyCoin extends BaseActivity {
 	private Context context;
@@ -69,10 +72,10 @@ public class ActivityMyCoin extends BaseActivity {
 		 if (resetCoinNum>0)
 		 {
 			 btnPayCoin.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_yellow_round));
-			 btnPayCoin.setClickable(true);
+			 btnPayCoin.setEnabled(true);
 		 }else{
 			 btnPayCoin.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_grey_round));
-			 btnPayCoin.setClickable(false);
+			 btnPayCoin.setEnabled(false);
 		 }
 	}
 	private void initData() {
@@ -181,7 +184,9 @@ public class ActivityMyCoin extends BaseActivity {
 //				resetCoinNum = resetCoinNum-Integer.parseInt(etCoin.getText().toString());
 				tvCoinCount.setText("0");
 //				etCoin.setText("");
+				Toast.makeText(mApplication, "兑换成功", Toast.LENGTH_SHORT).show();
 				btnPayCoin.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_grey_round));
+				btnPayCoin.setEnabled(false);
 			}
 		}
 		

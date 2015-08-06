@@ -34,7 +34,7 @@
         android:src="@drawable/loading_icon" />
     
     <TextView
-        android:text="全国首创O2O学车服务"
+        android:text="加入小巴，月入过万"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"

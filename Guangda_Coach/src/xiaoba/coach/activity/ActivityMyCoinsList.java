@@ -226,14 +226,20 @@ public class ActivityMyCoinsList extends BaseActivity {
 				public void onClick(View v) {
 					int index = Integer.valueOf(v.getTag().toString());
 					String order = getMycoinList.get(index).getReceiverid()+"";
+					String coinOrder = "";
+					int lengh = order.length();
+					for (int i=11;i>lengh;i--){
+						coinOrder = coinOrder+"0";
+					}
+					coinOrder = coinOrder+order;
 					String coinnum = getMycoinList.get(index).getCoinnum()+"";
 					String addTime = getMycoinList.get(index).getAddtime();
 					// TODO Auto-generated methd stub
 					if (!TextUtils.isEmpty(mApplication.mUserInfo.getRealname()))
 					{
-						duiHuanDialog.setMessage(order,mApplication.mUserInfo.getRealname(),"",coinnum,coinnum,addTime);
+						duiHuanDialog.setMessage(coinOrder,mApplication.mUserInfo.getRealname(),"",coinnum,coinnum,addTime);
 					}else{
-						duiHuanDialog.setMessage(order,mApplication.mUserInfo.getPhone(),"",coinnum,coinnum,addTime);
+						duiHuanDialog.setMessage(coinOrder,mApplication.mUserInfo.getPhone(),"",coinnum,coinnum,addTime);
 					}
 				}
 			});

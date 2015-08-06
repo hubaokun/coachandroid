@@ -91,7 +91,7 @@ public class MineFragment extends Fragment {
 	private RelativeLayout rlShare;
 	private RelativeLayout rlInfo;
 	private Button btnPayCoins;
-	private String coinnum;
+	private String coinnum = "0";
 	private TextView tv_coin_value;
 
 	@Override
@@ -481,10 +481,9 @@ public class MineFragment extends Fragment {
 					userInfo.saveUserInfo(userInfo, mActivity);
 					setMoney();
 				}
-				if(result.getCoinnum()>=0){
+				if(result.getCoinnum()>0){
 					tv_coin_value.setText(String.valueOf(result.getCoinnum()));
 					coinnum=String.valueOf(result.getCoinnum());
-					
 				}
 			} else {
 				if (result != null && result.getCode() == 95) {

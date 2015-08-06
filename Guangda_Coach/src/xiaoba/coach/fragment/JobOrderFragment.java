@@ -102,6 +102,7 @@ public class JobOrderFragment extends Fragment {
 	private LocationClient locationClient;
 	private MyLocationListenner myListener;
 	private String latitude, longitude, detail;
+	LoadingDialog mLoadingDialog;
 	
 	
 	public void getPosition() {
@@ -189,6 +190,7 @@ public class JobOrderFragment extends Fragment {
 		mInflater = inflater;
 
 		mImageLoader = new CacheImageLoader(mActivity);
+		mLoadingDialog = new LoadingDialog(mActivity);
 		initView(view);
 		addListeners();
 		initData();
@@ -991,7 +993,7 @@ public class JobOrderFragment extends Fragment {
 
 			JSONAccessor accessor = new JSONAccessor(mActivity.getApplicationContext(), JSONAccessor.METHOD_POST);
 			TaskInfo info;
-			LoadingDialog mLoadingDialog;
+
 			Button btn;
 			int position;
 			TextView startTime;
@@ -1008,7 +1010,7 @@ public class JobOrderFragment extends Fragment {
 			@Override
 			protected void onPreExecute() {
 				super.onPreExecute();
-				mLoadingDialog = new LoadingDialog(mActivity);
+
 				if (mLoadingDialog != null)
 					mLoadingDialog.show();
 			}
@@ -1397,6 +1399,14 @@ public class JobOrderFragment extends Fragment {
 			Orderid = orderid;
 		}
 		JSONAccessor accessor = new JSONAccessor(mActivity.getApplicationContext(), JSONAccessor.METHOD_POST);
+		
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+
+			if (mLoadingDialog != null)
+				mLoadingDialog.show();
+		}
 
 		@Override
 		protected BaseResult doInBackground(Void... arg0) {
@@ -1412,6 +1422,8 @@ public class JobOrderFragment extends Fragment {
 		@Override
 		protected void onPostExecute(BaseResult result) {
 			super.onPostExecute(result);
+			if (mLoadingDialog != null && mLoadingDialog.isShowing())
+				mLoadingDialog.dismiss();
 			if (result.getCode() == 1)
 			{
 				CommonUtils.showToast(mActivity.getApplicationContext(),result.getMessage());
