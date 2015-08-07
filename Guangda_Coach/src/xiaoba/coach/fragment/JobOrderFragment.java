@@ -125,7 +125,6 @@ public class JobOrderFragment extends Fragment {
 		option.setCoorType("bd09ll"); // 设置坐标类型
 		option.setScanSpan(2000); // 设置定位模式，小于1秒则一次定位;大于等于1秒则定时定位
 		option.setIsNeedAddress(true);
-
 		locationClient.setLocOption(option);
 	}
 
@@ -144,10 +143,8 @@ public class JobOrderFragment extends Fragment {
 			latitude = location.getLatitude() + "";
 			longitude = location.getLongitude() + "";
 			detail = location.getAddrStr();
-			
 			hasLoc = true;
 			stopLocClient();
-			
 		}
 
 		public void onReceivePoi(BDLocation poiLocation) {
@@ -188,7 +185,6 @@ public class JobOrderFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_job_order, container, false);
 		mInflater = inflater;
-
 		mImageLoader = new CacheImageLoader(mActivity);
 		mLoadingDialog = new LoadingDialog(mActivity);
 		initView(view);

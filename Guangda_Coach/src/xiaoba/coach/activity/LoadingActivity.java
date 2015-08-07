@@ -70,6 +70,16 @@ public class LoadingActivity extends BaseActivity {
 	
 	private void copyDataBaseToPhone() {
         DataBaseUtil util = new DataBaseUtil(LoadingActivity.this);
+        
+        if (mApplication.mUserInfo.getIsFirst(mContext))   //判断是否是首次进入应用，如果是则更新原来的数据库
+        {
+        	try {
+				util.deleteDataBase(mContext);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }else{
         // 判断数据库是否存在
         boolean dbExist = util.checkDataBase();
 
@@ -78,9 +88,11 @@ public class LoadingActivity extends BaseActivity {
         } else {// 不存在就把raw里的数据库写入手机
             try {
                 util.copyDataBase();
+                mApplication.mUserInfo.saveIsFirst(mContext);
             } catch (IOException e) {
                 throw new Error("Error copying database");
             }
+        }
         }
     }
 

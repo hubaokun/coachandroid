@@ -66,5 +66,10 @@ public class DataBaseUtil {
         is.close();
         os.close();
     }
+    
+    public boolean deleteDataBase(Context context) throws IOException
+    {
+    	return context.deleteDatabase(dbName);
+    }
 }
 
