@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import xiaoba.coach.CoachApplication;
 import xiaoba.coach.R;
 import xiaoba.coach.common.Settings;
 import xiaoba.coach.interfaces.NotifyDateSelect;
@@ -452,7 +453,7 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 		long time2 = cal.getTimeInMillis();
 		long between_days = (time2 - time1) / (1000 * 3600 * 24);
 
-		return Integer.parseInt(String.valueOf(between_days)) <= 29;
+		return Integer.parseInt(String.valueOf(between_days)) <= CoachApplication.mApplication.getMaxTays();
 	}
 
 	View yBall, rBall, bBall;

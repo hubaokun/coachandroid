@@ -15,6 +15,7 @@ public class GetScheduleResult extends BaseResult implements Serializable {
 	int hour;
 	int cancelpermission;
 	List<Schedule> datelist;
+	private int maxdays;
 
 	public String getToday() {
 		return today;
@@ -46,6 +47,14 @@ public class GetScheduleResult extends BaseResult implements Serializable {
 
 	public void setDatelist(List<Schedule> datelist) {
 		this.datelist = datelist;
+	}
+
+	public int getMaxdays() {
+		return maxdays;
+	}
+
+	public void setMaxdays(int maxdays) {
+		this.maxdays = maxdays;
 	}
 
 	

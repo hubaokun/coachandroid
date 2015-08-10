@@ -60,22 +60,14 @@ import android.widget.TextView;
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends FragmentActivity implements OnTouchListener {
 	private FragmentManager mFragmentManager;
-
 	private FragmentTransaction mTransaction;
-
 	private Fragment mCurrentFragment, mFrontFragment;
-
 	private Fragment mFragment;
-
 	private String mFrontTag;
-
 	private String mCurrentfragmentTag = "";
-
 	private int mSelectedModule;
-
 	public CoachApplication mApplication;
 //	private ShowAdvertisementDialog showAdver;
-
 	@ViewById(R.id.tab_date_set)
 	LinearLayout mTabDateSet;
 	@ViewById(R.id.tab_job_order)
@@ -94,7 +86,6 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 	TextView mTabJobOrderTv;
 	@ViewById(R.id.tab_mine_tv)
 	TextView mTabMineTv;
-
 	LoadingDialog mLoadingDialog;
 	NewMsgReceiver receiver;
 	IntentFilter filter;

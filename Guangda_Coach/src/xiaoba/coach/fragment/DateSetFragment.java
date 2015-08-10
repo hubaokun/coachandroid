@@ -35,6 +35,7 @@ import com.daoshun.lib.listview.PullToRefreshBase.Mode;
 import com.daoshun.lib.listview.PullToRefreshScrollView;
 import com.daoshun.lib.listview.PullToRefreshScrollView.OnSscrollListener;
 import com.daoshun.lib.view.OnSingleClickListener;
+import com.google.gson.Gson;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -2299,12 +2300,12 @@ public class DateSetFragment extends Fragment {
 		stateArray[13] = true;
 		mTwelveTime.setTextColor(Color.parseColor("#d2d2d2"));
 		mTwelvePrice.setTextColor(Color.parseColor("#d2d2d2"));
-		mTwelvePrice.setText("休息");
-		mTwelvePrice.setBackgroundColor(Color.parseColor("#f3f3f3"));
+		mTwelvePrice.setText("未开课");
+		mTwelvePrice.setBackgroundColor(Color.parseColor("#e5e5e5"));
 		mEighteenTime.setTextColor(Color.parseColor("#d2d2d2"));
 		mEighteenPrice.setTextColor(Color.parseColor("#d2d2d2"));
-		mEighteenPrice.setBackgroundColor(Color.parseColor("#f3f3f3"));
-		mEighteenPrice.setText("休息");
+		mEighteenPrice.setBackgroundColor(Color.parseColor("#e5e5e5"));
+		mEighteenPrice.setText("未开课");
 	}
 
 	void goToLastMonth() {
@@ -2675,6 +2676,8 @@ public class DateSetFragment extends Fragment {
 					/*
 					 * set today's calenday
 					 */
+					
+					CoachApplication.mApplication.setMaxTays(result.getMaxdays());
 					Calendar temp = null;
 					if (result.getToday() != null) {
 						try {
@@ -3141,8 +3144,8 @@ public class DateSetFragment extends Fragment {
 		if (isrest == 1) {
 			time.setTextColor(Color.parseColor("#d2d2d2"));
 			price.setTextColor(Color.parseColor("#d2d2d2"));
-			price.setText("休息");
-			price.setBackgroundColor(Color.parseColor("#f3f3f3"));
+			price.setText("未开课");
+			price.setBackgroundColor(Color.parseColor("#e5e5e5"));
 			stateArray[pos] = false;
 		} else {
 			time.setTextColor(Color.parseColor("#20b478"));
@@ -3226,10 +3229,29 @@ public class DateSetFragment extends Fragment {
 		protected BaseResult doInBackground(Void... arg0) {
 			accessor.enableJsonLog(true);
 			HashMap<String, Object> param = new BaseParam();
+			List<Schedule> chosedScheduleArray = new ArrayList<Schedule>();
+			for (Schedule schedule:scheduleResult.getDatelist())
+			{
+				Date date2 = null;
+				try {
+					date2 = TimeUtil.StringToDate(schedule.getDate());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (equalsDate(calSelected.getTime(), date2)) {
+					if (schedule.getHour() !=0)
+					{
+						chosedScheduleArray.add(schedule);
+					}
+				}
+			}
+			
+			String chosedSchedule = new Gson().toJson(chosedScheduleArray);
 			param.put("action", "ChangeAllDaySchedule");
 			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
 			param.put("day", day);
 			param.put("type", type); // 1:open 2: close
+			param.put("setjson", chosedSchedule);
 			return accessor.execute(Settings.SCHEDULE_URL, param, BaseResult.class);
 		}
 

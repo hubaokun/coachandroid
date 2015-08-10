@@ -67,6 +67,8 @@ public class CoachApplication extends Application {
 
     private int isSetAdd = 0;  //判断是否设置了地址，1为初次设置，0为未设置或是已设置
     
+    private int maxTays;
+    
 
     @Override
     public void onCreate() {
@@ -364,6 +366,14 @@ public class CoachApplication extends Application {
 
 	public void setIsSetAdd(int isSetAdd) {
 		this.isSetAdd = isSetAdd;
+	}
+
+	public int getMaxTays() {
+		return maxTays;
+	}
+
+	public void setMaxTays(int maxTays) {
+		this.maxTays = maxTays;
 	}
 
 	/*

@@ -573,12 +573,12 @@ public class MineFragment extends Fragment {
 					mNoticeCount.setVisibility(View.GONE);
 				}
 				tvStudentCount.setText(result.getStudentcount() + "位");
-				if (result.getNoticecount() == 0)
-					mUnreadCount.setVisibility(View.INVISIBLE);
-				else {
-					mUnreadCount.setVisibility(View.VISIBLE);
-					mUnreadCount.setText("" + result.getNoticecount());
-				}
+//				if (result.getNoticecount() == 0)
+//					mUnreadCount.setVisibility(View.INVISIBLE);
+//				else {
+//					mUnreadCount.setVisibility(View.VISIBLE);
+//					mUnreadCount.setText("" + result.getNoticecount());
+//				}
 			} else {
 				if (result != null && result.getCode() == 95) {
 					CommonUtils.gotoLogin(mActivity);
