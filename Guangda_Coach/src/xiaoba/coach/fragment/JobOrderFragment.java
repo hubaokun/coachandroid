@@ -1404,7 +1404,6 @@ public class JobOrderFragment extends Fragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-
 			if (mLoadingDialog != null)
 				mLoadingDialog.show();
 		}

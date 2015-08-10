@@ -190,7 +190,7 @@
 	<string name="new_phone">新手机号：</string>
 	<string name="has_pay_ticket">已兑换的小巴券，请联系发布者结算</string>
 	<string name="open_class">设置开课后，学员就能预约到您的课程了</string>
-	<string name="down_xiaoba">下载小巴APP后，登录后直接输入邀请码</string>
+	<string name="down_xiaoba">下载小巴APP后，登录直接输入以上邀请码</string>
 	<string name="share_tip1_one">邀请其他教练加盟小巴，在被邀请教练通过审核并开课后，可获赠</string>
 	<string name="share_tip1_two">元，3个工作日内到账户余额。</string>
 	<string name="share_tip2_one">开课成功后，被邀请教练首次订单完成，3个工作日内您可再获赠</string>

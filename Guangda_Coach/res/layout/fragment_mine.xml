@@ -283,12 +283,12 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
-                                    android:text="邀请教练加入"
+                                    android:text="邀请教练/学员加入"
                                     android:textColor="#a3abbc"
                                     android:textSize="12dp" />
                             </LinearLayout>
 
-                            <TextView
+                           <!--  <TextView
                                 android:id="@+id/notice_unread_msg_count"
                                 android:layout_width="wrap_content"
                                 android:layout_height="15dp"
@@ -301,7 +301,7 @@
                                 android:textColor="@color/white"
                                 android:textSize="12dp"
                                 android:visibility="invisible" >
-                            </TextView>
+                            </TextView> -->
                         </RelativeLayout>
                     </LinearLayout>
 

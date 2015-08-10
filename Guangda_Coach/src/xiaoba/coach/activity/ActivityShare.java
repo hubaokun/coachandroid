@@ -111,7 +111,7 @@ public class ActivityShare extends BaseActivity {
 			@Override
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(context,ActivityShareRecord.class);
+				Intent intent = new Intent(context,ActivityRecordFragment.class);
 				startActivity(intent);
 			}
 		});
@@ -119,7 +119,7 @@ public class ActivityShare extends BaseActivity {
 
 	@SuppressLint("DefaultLocale") private void initData() {
 		// TODO Auto-generated method stub
-		tvCenter.setText("邀请教练加入");
+		tvCenter.setText("邀请朋友加入");
 		tvCenter.setTextColor(getResources().getColor(R.color.text_black));
 		imgBack.setImageResource(R.drawable.back_arrow);
 		tvRight.setBackgroundDrawable(getResources().getDrawable(R.drawable.share_next));

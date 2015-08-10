@@ -33,7 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ActivityShareRecord<T> extends BaseActivity {
+public class ActivityShareRecord extends BaseActivity {
 	private Context context;
 	private TextView tvTitle;
 	private ImageView imgBack;

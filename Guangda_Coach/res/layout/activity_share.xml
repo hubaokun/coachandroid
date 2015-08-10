@@ -36,7 +36,7 @@
          
          <TextView android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="被邀请教练通过微信扫码，即可注册"
+             android:text="教练/学员通过微信扫码，即可注册"
              android:textSize="12sp"
              android:textColor="@color/text_grey"
              android:layout_gravity="center_horizontal"

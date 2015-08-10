@@ -364,7 +364,7 @@
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:windowSoftInputMode="adjustPan" />
-           <activity android:name=".activity.ActivityShareRecord"
+           <activity android:name=".activity.ActivityRecordFragment"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:theme="@android:style/Theme.Light.NoTitleBar"

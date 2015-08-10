@@ -133,7 +133,7 @@ public class MineFragment extends Fragment {
 		mTousuCount = (TextView) view.findViewById(R.id.tousu_msg_count);
 		mEvaluateCount = (TextView) view.findViewById(R.id.evaluation_msg_count);
 		mNoticeCount = (TextView) view.findViewById(R.id.notice_msg_count);
-		mUnreadCount = (TextView) view.findViewById(R.id.notice_unread_msg_count);
+//		mUnreadCount = (TextView) view.findViewById(R.id.notice_unread_msg_count);
 		mYueLayout = (LinearLayout) view.findViewById(R.id.mine_yue_layout);
 		mApply = (Button) view.findViewById(R.id.mine_apply_btn);
 		btnPayCash = (Button) view.findViewById(R.id.btn_pay_cash);
