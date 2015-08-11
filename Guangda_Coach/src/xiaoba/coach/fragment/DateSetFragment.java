@@ -2918,61 +2918,61 @@ public class DateSetFragment extends Fragment {
 					 */
 					switch (schedule.getHour()) {
 					case 5:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFiveTime, mFivePrice, mFiveSelect, 0);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFiveTime, mFivePrice, mFiveSelect, 0,schedule.getExpire());
 						break;
 					case 6:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixTime, mSixPrice, mSixSelect, 1);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixTime, mSixPrice, mSixSelect, 1,schedule.getExpire());
 						break;
 					case 7:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSevenTime, mSevenPrice, mSevenSelect, 2);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSevenTime, mSevenPrice, mSevenSelect, 2,schedule.getExpire());
 						break;
 					case 8:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEightTime, mEightPrice, mEightSelect, 3);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEightTime, mEightPrice, mEightSelect, 3,schedule.getExpire());
 						break;
 					case 9:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineTime, mNinePrice, mNineSelect, 4);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineTime, mNinePrice, mNineSelect, 4,schedule.getExpire());
 						break;
 					case 10:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTenTime, mTenPrice, mTenSelect, 5);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTenTime, mTenPrice, mTenSelect, 5,schedule.getExpire());
 						break;
 					case 11:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mElevenTime, mElevenPrice, mElevenSelect, 6);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mElevenTime, mElevenPrice, mElevenSelect, 6,schedule.getExpire());
 						break;
 					case 12:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwelveTime, mTwelvePrice, mTwelveSelect, 7);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwelveTime, mTwelvePrice, mTwelveSelect, 7,schedule.getExpire());
 						break;
 					case 13:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mThirteenTime, mThirteenPrice, mThirteenSelect, 8);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mThirteenTime, mThirteenPrice, mThirteenSelect, 8,schedule.getExpire());
 						break;
 					case 14:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFourteenTime, mFourteenPrice, mFourteenSelect, 9);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFourteenTime, mFourteenPrice, mFourteenSelect, 9,schedule.getExpire());
 						break;
 					case 15:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFifteenTime, mFifteenPrice, mFifteenSelect, 10);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFifteenTime, mFifteenPrice, mFifteenSelect, 10,schedule.getExpire());
 						break;
 					case 16:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixteenTime, mSixteenPrice, mSixteenSelect, 11);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixteenTime, mSixteenPrice, mSixteenSelect, 11,schedule.getExpire());
 						break;
 					case 17:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSeventeenTime, mSeventeenPrice, mSeventeenSelect, 12);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSeventeenTime, mSeventeenPrice, mSeventeenSelect, 12,schedule.getExpire());
 						break;
 					case 18:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEighteenTime, mEighteenPrice, mEighteenSelect, 13);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEighteenTime, mEighteenPrice, mEighteenSelect, 13,schedule.getExpire());
 						break;
 					case 19:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineteenTime, mNineteenPrice, mNineteenSelect, 14);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineteenTime, mNineteenPrice, mNineteenSelect, 14,schedule.getExpire());
 						break;
 					case 20:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTime, mTwentyPrice, mTwentySelect, 15);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTime, mTwentyPrice, mTwentySelect, 15,schedule.getExpire());
 						break;
 					case 21:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyOneTime, mTwentyOnePrice, mTwentyOneSelect, 16);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyOneTime, mTwentyOnePrice, mTwentyOneSelect, 16,schedule.getExpire());
 						break;
 					case 22:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTwoTime, mTwentyTwoPrice, mTwentyTwoSelect, 17);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTwoTime, mTwentyTwoPrice, mTwentyTwoSelect, 17,schedule.getExpire());
 						break;
 					case 23:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyThreeTime, mTwentyThreePrice, mTwentyThreeSelect, 18);
+						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyThreeTime, mTwentyThreePrice, mTwentyThreeSelect, 18,schedule.getExpire());
 						break;
 					}
 				}
@@ -3140,7 +3140,30 @@ public class DateSetFragment extends Fragment {
 	 */
 	Schedule schd;
 
-	private void modifyOneHourState(int isrest, String pricenum, TextView time, TextView price, TextView select, int pos) {
+	private void modifyOneHourState(int isrest, String pricenum, TextView time, TextView price, TextView select, int pos,int expire) {
+//		if (expire == 1)
+//		{
+//			time.setTextColor(Color.parseColor("#d2d2d2"));
+//			price.setTextColor(Color.parseColor("#d2d2d2"));
+//			if (pricenum != null)
+//				price.setText("单价  " + (pricenum.contains(".") ? pricenum.substring(0, pricenum.indexOf(".")) : pricenum) + "元");
+//			else {
+//				price.setText("");
+//			}
+//			price.setBackgroundColor(Color.parseColor("#e5e5e5"));
+//		}else{
+//			time.setTextColor(Color.parseColor("#20b478"));
+//			price.setTextColor(Color.parseColor("#ffffff"));
+//			price.setBackgroundColor(Color.parseColor("#20b478"));
+//			if (pricenum != null)
+//				price.setText("单价  " + (pricenum.contains(".") ? pricenum.substring(0, pricenum.indexOf(".")) : pricenum) + "元");
+//			else {
+//				price.setText("");
+//			}
+//		}
+//		
+		if (expire == 1)    //已过期
+		{
 		if (isrest == 1) {
 			time.setTextColor(Color.parseColor("#d2d2d2"));
 			price.setTextColor(Color.parseColor("#d2d2d2"));
@@ -3148,15 +3171,34 @@ public class DateSetFragment extends Fragment {
 			price.setBackgroundColor(Color.parseColor("#e5e5e5"));
 			stateArray[pos] = false;
 		} else {
-			time.setTextColor(Color.parseColor("#20b478"));
-			price.setTextColor(Color.parseColor("#ffffff"));
-			price.setBackgroundColor(Color.parseColor("#20b478"));
+			time.setTextColor(Color.parseColor("#d2d2d2"));
+			price.setTextColor(Color.parseColor("#d2d2d2"));
+			price.setBackgroundColor(Color.parseColor("#e5e5e5"));
 			if (pricenum != null)
 				price.setText("单价  " + (pricenum.contains(".") ? pricenum.substring(0, pricenum.indexOf(".")) : pricenum) + "元");
 			else {
 				price.setText("");
 			}
 			stateArray[pos] = true;
+		}
+		}else{
+			if (isrest == 1) {
+				time.setTextColor(Color.parseColor("#d2d2d2"));
+				price.setTextColor(Color.parseColor("#d2d2d2"));
+				price.setText("未开课");
+				price.setBackgroundColor(Color.parseColor("#e5e5e5"));
+				stateArray[pos] = false;
+			} else {
+				time.setTextColor(Color.parseColor("#20b478"));
+				price.setTextColor(Color.parseColor("#d2d2d2"));
+				price.setBackgroundColor(Color.parseColor("#20b478"));
+				if (pricenum != null)
+					price.setText("单价  " + (pricenum.contains(".") ? pricenum.substring(0, pricenum.indexOf(".")) : pricenum) + "元");
+				else {
+					price.setText("");
+				}
+				stateArray[pos] = true;
+			}
 		}
 
 		if (equalsDate(calToday.getTime(), calSelected.getTime()) && (pos + 5) <= mDeadHour) {

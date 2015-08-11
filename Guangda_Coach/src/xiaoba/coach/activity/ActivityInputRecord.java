@@ -54,7 +54,7 @@ public class ActivityInputRecord extends BaseActivity {
 
 	private void initData() {
 		// TODO Auto-generated method stub
-		tvTitle.setText("推荐码");
+		tvTitle.setText("邀请 码");
 		tvTitle.setTextColor(Color.parseColor("#2c2c2c"));
 		imgBack.setImageResource(R.drawable.back_arrow);
 	}

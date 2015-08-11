@@ -1,7 +1,11 @@
 package xiaoba.coach.activity;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +18,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.w3c.dom.Comment;
 
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.util.FileUtils;
@@ -44,7 +49,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
@@ -62,6 +69,13 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import ij.ImagePlus;
+import ij.io.FileSaver;
+import ij.io.Opener;
+import ij.process.ImageProcessor;
+//import java.awt.image.BufferedImage;
+//import java.io.File;
+//import javax.imageio.ImageIO;
 
 /*
  * 个人信息
@@ -584,7 +598,6 @@ public class SelfMaterialActivity extends BaseActivity {
 		// 相机返回1001
 		if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
 			File photoFile = new File(Settings.TEMP_PATH, getPhotoName());
-
 			if (photoFile.exists()) {// 如果照片存在
 				cropPhoto(photoFile, 200, 200);
 			} else {// 照片不存在,检查是否在data中
@@ -601,17 +614,21 @@ public class SelfMaterialActivity extends BaseActivity {
 					Toast.makeText(SelfMaterialActivity.this, "照片拍摄失败.", Toast.LENGTH_SHORT).show();
 				}
 			}
-
 		}
 
 		// 相册返回1002
 		if (requestCode == ALBUM_REQUEST_CODE && resultCode == RESULT_OK) {
 			String photoPath = getPhotoPathByUri(data.getData());
-//			File photoFile = new File(Settings.TEMP_PATH, getPhotoName());
+			Bitmap bitmap  = BitmapFactory.decodeFile(photoPath);
+			try {
+				bitmap.compress(CompressFormat.JPEG, 95, new FileOutputStream(Settings.TEMP_PATH+"/"+PHOTO_TEMP_FILE));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			File photoFile = new File(Settings.TEMP_PATH, getPhotoName());
 			if (photoPath.length() > 0) {
-//				Bitmap photo = data.getParcelableExtra("data");
-//				saveBitmapToFile(photo, photoFile);
-				cropPhoto(new File(photoPath), 200, 200);
+				cropPhoto(photoFile, 200, 200);
 			}
 		}
 		// 返回裁剪
@@ -625,6 +642,35 @@ public class SelfMaterialActivity extends BaseActivity {
 			}
 		}
 	}
+	
+	public static byte[] File2byte(String filePath)  
+    {  
+        byte[] buffer = null;  
+        try  
+        {  
+            File file = new File(filePath);  
+            FileInputStream fis = new FileInputStream(file);  
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();  
+            byte[] b = new byte[1024];  
+            int n;  
+            while ((n = fis.read(b)) != -1)  
+            {  
+                bos.write(b, 0, n);  
+            }  
+            fis.close();  
+            bos.close();  
+            buffer = bos.toByteArray();  
+        }  
+        catch (FileNotFoundException e)  
+        {  
+            e.printStackTrace();  
+        }  
+        catch (IOException e)  
+        {  
+            e.printStackTrace();  
+        }  
+        return buffer;  
+    }  
 
 	File cropFile;
 
@@ -660,7 +706,7 @@ public class SelfMaterialActivity extends BaseActivity {
 
 	// 截取图片
 	public void cropPhoto(File file, int width, int height) {
-		CROP_TEMP_FILE = "Crop_" + System.currentTimeMillis() + ".jpg";
+		CROP_TEMP_FILE = "Crop_" + System.currentTimeMillis() + ".jpeg";
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(Uri.fromFile(file), "image/*");
 		intent.putExtra("crop", "true");
@@ -707,6 +753,60 @@ public class SelfMaterialActivity extends BaseActivity {
 		}
 		return false;
 	}
+	
+//	  public static void convert(String source, String formatName, String result) {
+//	        try {
+//	            File f = new File(source);
+//	            f.canRead();
+////	            BufferedImage src = ImageIO.read(f);
+////	            ImageIO.write(src, formatName, new File(result));
+//	        } catch (Exception e) {
+//	            e.printStackTrace();
+//	        }
+//	    }
+
+	    /**
+	     * @param args
+	     */
+//	    public static void main(String[] args) {
+//	        // TODO Auto-generated method stub
+//
+//
+//	        ImgConverter.
+//
+//	    }
+
+	
+	public File saveBitmapToFileForPng(Bitmap bitmap, File file) {
+		BufferedOutputStream bos = null;
+		try {
+			File tempPicFile = new File(Settings.TEMP_PATH, FileUtils.getFileNameByPath(file.getPath()) + Settings.PICTURE_TEMP_EXTENSION);
+			tempPicFile.delete();
+			file.delete();
+			tempPicFile.getParentFile().mkdirs();
+			tempPicFile.createNewFile();
+			bos = new BufferedOutputStream(new FileOutputStream(tempPicFile));
+			bitmap.compress(CompressFormat.JPEG, 100, bos);
+			bos.flush();
+			bos.close();
+			bos = null;
+
+			return tempPicFile;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (bos != null) {
+				try {
+					bos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				bos = null;
+			}
+		}
+		return null;
+	}
 
 	Dialog mPhotoDialog;
 
@@ -746,6 +846,7 @@ public class SelfMaterialActivity extends BaseActivity {
 
 			@Override
 			public void doOnClick(View v) {
+				PHOTO_TEMP_FILE = "Image_" + System.currentTimeMillis() + ".jpg";
 				Intent intent = new Intent(Intent.ACTION_PICK);
 				intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 				startActivityForResult(intent, Settings.ALBUM);

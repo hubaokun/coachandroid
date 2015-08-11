@@ -5,6 +5,8 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 
+import org.androidannotations.api.view.OnViewChangedNotifier;
+
 import xiaoba.coach.R;
 import xiaoba.coach.utils.ImageLoadSaveTask;
 import xiaoba.coach.utils.ImageLoader;
@@ -13,40 +15,56 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageView;
 
 public class ShowAdvertisementDialog extends BaseDialog {
-	private ImageView imgAdver;
+	public ImageView imgAdvertisement;
 	private ImageLoader imgloader;
+	private ImageView imgClose;
 
 	public ShowAdvertisementDialog(Context context) {
 		super(context,R.style.dialog);
-		imgloader = new ImageLoader(context, R.drawable.portrait_test);
+		imgloader = new ImageLoader(context, R.drawable.im_advertisement);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public ShowAdvertisementDialog(Context context, int theme) {
 		super(context, theme);
 		mContext = context;
-		imgloader = new ImageLoader(context, R.drawable.portrait_test);
+		imgloader = new ImageLoader(context, R.drawable.im_advertisement);
 	}
 
 	public ShowAdvertisementDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
 		super(context, cancelable, cancelListener);
 		mContext = context;
-		imgloader = new ImageLoader(context, R.drawable.portrait_test);
+		imgloader = new ImageLoader(context, R.drawable.im_advertisement);
 	}
-
+	
+	public void setImageAdvertisement(String url)
+	{
+		imgloader.DisplayImage(url, imgAdvertisement);
+	}
+	
 	@Override
 	protected int getLayoutId() {
 		// TODO Auto-generated method stub
-		return R.layout.show_advertisement;
+		return R.layout.activity_advertisement;
 	}
 
 	@Override
 	protected void findViews() {
 		// TODO Auto-generated method stub
-		imgAdver = (ImageView)findViewById(R.id.img_advertisement);
+		imgAdvertisement = (ImageView)findViewById(R.id.img_advertisement);
+		imgClose = (ImageView)findViewById(R.id.img_close);
+		imgClose.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				dismiss();
+			}
+		});
 	}
 
 	@Override
@@ -56,16 +74,18 @@ public class ShowAdvertisementDialog extends BaseDialog {
 		setCanceledOnTouchOutside(false);
 	}
 	
-	public void setImage(String url)
-	{
-		   try {
-               new ImageLoadSaveTask(mContext, imgAdver).execute(url);
-       		   show();
-           } catch (Exception e) {
-               e.printStackTrace();
-           }
-
-	}
+//	public void setImage(String imgurl,String advertisemetnUrl)
+//	{
+//		imgloader.DisplayImage(imgurl, imgAdvertisement);
+//		imgAdvertisement.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//		});
+//	}
 	
 //	 public  Bitmap getHttpBitmap(String url){  
 //	        URL myFileURL;  

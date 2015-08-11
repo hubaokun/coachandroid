@@ -23,6 +23,7 @@ import xiaoba.coach.module.Coachscore;
 import xiaoba.coach.net.result.AddressResult;
 import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.GetAdvertisementResult;
+import xiaoba.coach.net.result.GetAdvertisementWindowResult;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.views.LoadingDialog;
 import xiaoba.coach.views.ShowAdvertisementDialog;
@@ -40,6 +41,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -90,6 +92,7 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 	NewMsgReceiver receiver;
 	IntentFilter filter;
 	private Context mContext;
+	private ShowAdvertisementDialog showAdvDialog;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -99,6 +102,8 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		filter = new IntentFilter();
 		filter.addAction("xiaoba.newmsg");
 		filter.addCategory(Intent.CATEGORY_DEFAULT);
+		showAdvDialog = new ShowAdvertisementDialog(mContext);
+
 //		showAdver = new ShowAdvertisementDialog(mContext);
 	}
 
@@ -127,6 +132,7 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		new GetAdvertisement().execute();
 //		new GetAllAddressTask().execute();
 	}
 
@@ -467,4 +473,65 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
  
     }
 	
+	private class GetAdvertisement extends AsyncTask<Void, Void, GetAdvertisementWindowResult> {
+
+		JSONAccessor accessor = new JSONAccessor(HomeActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
+
+		Coachscore score;
+		int orderid;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			if (mLoadingDialog != null)
+				mLoadingDialog.show();
+		}
+
+		@Override
+		protected GetAdvertisementWindowResult doInBackground(Void... arg0) {
+			HashMap<String, Object> param = new BaseParam();
+			param.put("action", "GETADVERTISEMENT");
+			param.put("coachid", mApplication.getUserInfo().getCoachid());
+			param.put("type", "1"); // 1: coach to student
+			return accessor.execute(Settings.ADVER_URL, param, GetAdvertisementWindowResult.class);
+		}
+
+		@Override
+		protected void onPostExecute(final GetAdvertisementWindowResult result) {
+			super.onPostExecute(result);
+			if (mLoadingDialog != null && mLoadingDialog.isShowing())
+				mLoadingDialog.dismiss();
+			if (result != null) {
+				if (result.getCode() == 1) {
+					if (result.getCurldisplay() == 1)
+					{
+						showAdvDialog.show();
+						showAdvDialog.setImageAdvertisement(result.getC_img());
+						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								Uri u = Uri.parse(result.getC_url().toString());  
+								 Intent it = new Intent(Intent.ACTION_VIEW, u);
+								 HomeActivity.this.startActivity(it); 
+							}
+						});
+					}
+				} else {
+					if (result.getMessage() != null)
+						CommonUtils.showToast(HomeActivity.this.getApplicationContext(), result.getMessage());
+					if (result.getCode() == 95) {
+						CommonUtils.gotoLogin(HomeActivity.this);
+					}
+				}
+
+			} else {
+				CommonUtils.showToast(HomeActivity.this.getApplicationContext(), getString(R.string.net_error));
+			}
+
+		}
+
+	}
+
 }

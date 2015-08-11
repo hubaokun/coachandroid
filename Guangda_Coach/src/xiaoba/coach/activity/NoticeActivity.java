@@ -243,8 +243,10 @@ public class NoticeActivity extends BaseActivity {
 					@Override
 					public void doOnClick(View v) {
 						int Position = Integer.valueOf(v.getTag().toString());
+						int noticeId = NoticeArray.get(Position).getNoticeid();
 						String content = NoticeArray.get(Position).getContent().trim();
 						noticeDetail.setNoticeContent(content);
+						new ReadNotice(noticeId, Position).execute();
 					}
 				});
 				holder.tvNoticeContent.setOnLongClickListener(new OnLongClickListener() {
@@ -287,6 +289,48 @@ public class NoticeActivity extends BaseActivity {
 		private class HolderView {
 			private TextView tvNoticeContent;
 			private TextView tvNoticeTime;
+		}
+	}
+	
+	private class ReadNotice extends AsyncTask<Void, Void, BaseResult> {
+		private int noticeId;
+		private int Position;
+
+		public ReadNotice(int noticeid, int position) {
+			noticeId = noticeid;
+			Position = position;
+		}
+
+		JSONAccessor accessor = new JSONAccessor(NoticeActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
+
+		@Override
+		protected BaseResult doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			HashMap<String, Object> param = new BaseParam();
+			param.put("action", "READNOTICE");
+			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());// CoachApplication.getInstance().getUserInfo().getCoachid()
+			param.put("noticeid", noticeId);
+			return accessor.execute(Settings.CMY_URL, param, BaseResult.class);
+		}
+
+		@Override
+		protected void onPostExecute(BaseResult result) {
+			super.onPostExecute(result);
+			if (result != null) {
+				if (result.getCode() == 1) {
+					
+				}else{
+					if (result.getMessage()!=null)
+					{
+						CommonUtils.showToast(NoticeActivity.this.getApplicationContext(), result.getMessage());
+					}
+				}
+				if (result.getCode() == 95) {
+					CommonUtils.gotoLogin(NoticeActivity.this);
+				}
+			} else {
+				CommonUtils.showToast(NoticeActivity.this.getApplicationContext(), getString(R.string.net_error));
+			}
 		}
 	}
 }

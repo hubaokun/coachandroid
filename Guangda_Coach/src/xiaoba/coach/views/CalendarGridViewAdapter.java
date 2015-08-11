@@ -281,8 +281,8 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 				} else {
 					if (daysBetween(calToday.getTime(), myDate)) {
 						holder.txtToDay.setText("未开课");
-						holder.txtToDay.setTextColor(resources.getColor(R.color.unable_grey));
-						holder.txtDay.setTextColor(resources.getColor(R.color.unable_grey));
+						holder.txtToDay.setTextColor(resources.getColor(R.color.not_open));
+						holder.txtDay.setTextColor(resources.getColor(R.color.not_open));
 						iv.setClickable(true);
 						iv.setOnClickListener(new DateClickListener(calCalendar, iv));
 

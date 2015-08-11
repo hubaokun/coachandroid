@@ -105,11 +105,9 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="15dp"
                     android:paddingLeft="17dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="15dp" >
-
+                    android:paddingRight="15dp">
+                    
                     <Button
                         android:id="@+id/btn_pay_cash"
                         android:layout_width="40dp"
@@ -120,21 +118,51 @@
                         android:padding="5dp"
                         android:text="查看"
                         android:textColor="@color/white"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_alignParentLeft="true"
                         android:layout_toLeftOf="@id/btn_pay_cash"
-                        android:orientation="horizontal" >
-
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical">
+                        
+                        <RelativeLayout android:layout_width="wrap_content"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical">
+                            
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/xiaoba_ticket"
                             android:textColor="@color/text_black"
-                            android:textSize="19dp" />
+                            android:textSize="19dp"
+                            android:id="@+id/tv_xiaoba_ticket" />
+                        <ImageView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_queg"
+                                android:layout_alignRight="@id/tv_xiaoba_ticket"
+                                android:id="@+id/img_ticket_coin_1"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="-8dp"/>
+                        </RelativeLayout>
+
+<!--                         <LinearLayout android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_que"/>
+                            
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="："
+                                android:textColor="@color/text_black"
+                                android:textSize="19dp" />
+                        </LinearLayout> -->
 
                         <TextView
                             android:id="@+id/tv_coupon_value"
@@ -158,10 +186,8 @@
                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="15dp"
                     android:paddingLeft="17dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="15dp" >
+                    android:layout_marginRight="15dp">
 
                     <Button
                         android:id="@+id/btn_pay_coin"
@@ -177,17 +203,34 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_alignParentLeft="true"
                         android:layout_toLeftOf="@id/btn_pay_coin"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical" >
+                        
+                        <RelativeLayout android:layout_width="wrap_content"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="小巴币个数："
                             android:textColor="@color/text_black"
-                            android:textSize="19dp" />
+                            android:textSize="19dp"
+                            android:id="@+id/tv_xiaoba_coin" />
+                        
+                        <ImageView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_queg"
+                                android:layout_alignRight="@id/tv_xiaoba_coin"
+                                android:layout_marginTop="-8dp"
+                                android:id="@+id/img_ticket_coin_2"/>
+                        
+                        </RelativeLayout>
 
                         <TextView
                             android:id="@+id/tv_coin_value"

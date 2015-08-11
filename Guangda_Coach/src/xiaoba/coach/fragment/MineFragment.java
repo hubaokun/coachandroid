@@ -24,6 +24,7 @@ import xiaoba.coach.net.result.GetMsgCountResult;
 import xiaoba.coach.net.result.RefreshUserMoneyResult;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.views.OverScrollView;
+import xiaoba.coach.views.TicketCoinRelusDialog;
 import xiaoba.coach.views.OverScrollView.OnScrollListener;
 
 import com.daoshun.lib.communication.http.JSONAccessor;
@@ -93,6 +94,9 @@ public class MineFragment extends Fragment {
 	private Button btnPayCoins;
 	private String coinnum = "0";
 	private TextView tv_coin_value;
+	private ImageView imgTicketCoin1;
+	private ImageView imgTicketCoin2;
+	private TicketCoinRelusDialog ticketcoinDialog; 
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -105,6 +109,7 @@ public class MineFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_mine, container, false);
 		mInflater = inflater;
 		totalDiastance = DensityUtils.dp2px(mActivity, 168);
+		ticketcoinDialog = new TicketCoinRelusDialog(mActivity);
 		initView(view);
 		addListeners();
 		initData();
@@ -148,6 +153,8 @@ public class MineFragment extends Fragment {
 		bg.setLayoutParams(new RelativeLayout.LayoutParams(Settings.DISPLAY_WIDTH, bgHeight));
 		btnPayCoins = (Button)view.findViewById(R.id.btn_pay_coin);
 		tv_coin_value=(TextView)view.findViewById(R.id.tv_coin_value);
+		imgTicketCoin1 = (ImageView)view.findViewById(R.id.img_ticket_coin_1);
+		imgTicketCoin2 = (ImageView)view.findViewById(R.id.img_ticket_coin_2);
 	}
 
 	private void addListeners() {
@@ -325,6 +332,24 @@ public class MineFragment extends Fragment {
 				}
 			}
 		});
+		
+		imgTicketCoin1.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				ticketcoinDialog.show();
+			}
+		});
+		
+		imgTicketCoin2.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				ticketcoinDialog.show();
+			}
+		});
 	}
 
 	int mScrollDistance;// 滚动距离
@@ -481,7 +506,7 @@ public class MineFragment extends Fragment {
 					userInfo.saveUserInfo(userInfo, mActivity);
 					setMoney();
 				}
-				if(result.getCoinnum()>0){
+				if(result.getCoinnum()>=0){
 					tv_coin_value.setText(String.valueOf(result.getCoinnum()));
 					coinnum=String.valueOf(result.getCoinnum());
 				}
@@ -565,10 +590,10 @@ public class MineFragment extends Fragment {
 			if (result != null && result.getCode() == 1) {
 				mTousuCount.setText("投诉" + (result.getComplaint1() + result.getComplaint2()) + "条");
 				mEvaluateCount.setText("评价" + (result.getEvaluation1() + result.getEvaluation2()) + "条");
-				if (result.getAllnoticecount() !=0)
+				if (result.getNoticecount() !=0)
 				{
 					mNoticeCount.setVisibility(View.VISIBLE);
-					mNoticeCount.setText(result.getAllnoticecount()+"");
+					mNoticeCount.setText(result.getNoticecount()+"");
 				}else{
 					mNoticeCount.setVisibility(View.GONE);
 				}

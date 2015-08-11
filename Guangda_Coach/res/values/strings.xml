@@ -163,8 +163,8 @@
 	<string name="no_car_pic">请拍摄驾照或学员证</string>
 	
 	<!-- 小巴券 -->
-	<string name="xiaoba_ticket">小巴券时间：</string>
-	<string name="hour">小时</string>
+	<string name="xiaoba_ticket">未兑换小巴券：</string>
+	<string name="hour">张</string>
 	<string name="cash">兑换</string>
 	<string name="my_coupon">我的小巴券</string>
 	<string name="has_chosed">已选</string>
@@ -196,5 +196,7 @@
 	<string name="share_tip2_one">开课成功后，被邀请教练首次订单完成，3个工作日内您可再获赠</string>
 	<string name="share_tip2_two">元到账户余额。</string>
 	<string name="scan_text">将二维码放入框内, 即可获取邀请码</string>
+	
+	<string name="ticket_coin_relus">①  学车完成后需双方互相评价，小巴券/小巴币才会结算到您的账户；\n② 若学员超过3天未评价，小巴券/小巴币将自动结算到您的账户。</string>
 	
 </resources>

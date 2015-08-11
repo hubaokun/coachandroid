@@ -19,6 +19,7 @@ public class Schedule implements Serializable {
 	String subject;
 	String addressdetail;
 	int hasbooked;
+	private int expire;
 
 	public String getDate() {
 		return date;
@@ -106,6 +107,14 @@ public class Schedule implements Serializable {
 
 	public void setHasbooked(int hasbooked) {
 		this.hasbooked = hasbooked;
+	}
+
+	public int getExpire() {
+		return expire;
+	}
+
+	public void setExpire(int expire) {
+		this.expire = expire;
 	}
 
 }
