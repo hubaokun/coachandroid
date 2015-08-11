@@ -1,5 +1,7 @@
 package xiaoba.coach.activity;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -48,6 +50,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -122,10 +125,10 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		try {
 			if (mApplication.isInvited==1)
 			{
-				if (judgmentDate(mApplication.getUserInfo().getAddtime()))
-				{
+//				if (judgmentDate(mApplication.getUserInfo().getAddtime()))
+//				{
 					startActivity(new Intent(mContext,ActivityInputRecord.class));
-				}
+//				}
 			}
 			
 		} catch (Exception e) {
@@ -512,9 +515,38 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 							@Override
 							public void onClick(View v) {
 								// TODO Auto-generated method stub
-								Uri u = Uri.parse(result.getC_url().toString());  
+								String url = "";
+								String code = "c"+mApplication.mUserInfo.getInvitecode().toLowerCase();
+								String name = "";
+								if (!TextUtils.isEmpty(CoachApplication.mUserInfo.getRealname()))
+								{
+								try
+								{
+									name = new String( URLEncoder.encode(CoachApplication.mUserInfo.getRealname(), "UTF-8"));
+								}catch(UnsupportedEncodingException e)
+								{
+									e.printStackTrace();
+								}
+								 url = result.getC_url().toString()+"code="+code+"&name="+name;
+								}else{
+								url = result.getC_url().toString()+"code="+code+"&name=";
+								}
+								Uri u = Uri.parse(url);  
 								 Intent it = new Intent(Intent.ACTION_VIEW, u);
 								 HomeActivity.this.startActivity(it); 
+							}
+						});
+					}
+					else if (result.getCurldisplay() == 2){
+						
+						showAdvDialog.show();
+						showAdvDialog.setImageAdvertisement(result.getC_img());
+						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								startActivity(new Intent(HomeActivity.this,ActivityShare.class));
 							}
 						});
 					}

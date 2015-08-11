@@ -69,13 +69,6 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import ij.ImagePlus;
-import ij.io.FileSaver;
-import ij.io.Opener;
-import ij.process.ImageProcessor;
-//import java.awt.image.BufferedImage;
-//import java.io.File;
-//import javax.imageio.ImageIO;
 
 /*
  * 个人信息

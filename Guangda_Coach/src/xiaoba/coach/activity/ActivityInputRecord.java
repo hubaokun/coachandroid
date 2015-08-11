@@ -113,8 +113,9 @@ public class ActivityInputRecord extends BaseActivity {
 			// TODO Auto-generated method stub
 			HashMap<String, Object> param = new BaseParam();
 			param.put("action", "CHEAKINVITECODE");
-			param.put("InvitedCoachid", CoachApplication.getInstance().getUserInfo().getCoachid());// CoachApplication.getInstance().getUserInfo().getCoachid()
+			param.put("InvitedPeopleid", CoachApplication.getInstance().getUserInfo().getCoachid());// CoachApplication.getInstance().getUserInfo().getCoachid()
 			param.put("InviteCode", etRecord.getText().toString().trim());
+			param.put("type",1);
 			return accessor.execute(Settings.CRECOMM, param, GetSendInviteCodeResult.class);
 		}
 		
