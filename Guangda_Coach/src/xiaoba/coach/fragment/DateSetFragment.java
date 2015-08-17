@@ -28,7 +28,7 @@ import xiaoba.coach.views.CalendarGridView;
 import xiaoba.coach.views.CalendarGridViewAdapter;
 import xiaoba.coach.views.CalendarGridViewAdapter.BallState;
 import xiaoba.coach.views.LoadingDialog;
-
+import xiaoba.coach.views.CalendarGridViewAdapter.DateClickListener;
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.listview.PullToRefreshBase;
 import com.daoshun.lib.listview.PullToRefreshBase.Mode;
@@ -2814,6 +2814,7 @@ public class DateSetFragment extends Fragment {
 				state.setShowB(false);
 				state.setShowY(false);
 				state.setShowR(false);
+				state.setOpen(false);
 			}
 
 			/*
@@ -2836,6 +2837,9 @@ public class DateSetFragment extends Fragment {
 					}
 				}
 				if (isOpen)
+				{
+					ballState.get(dayPos).setOpen(true);
+				
 					for (String hourStr : tempHour.keySet()) {
 						tempsc = tempHour.get(hourStr);
 						if (tempsc.getIsrest() == 0) {
@@ -2851,6 +2855,7 @@ public class DateSetFragment extends Fragment {
 							}
 						}
 					}
+				}
 			}
 
 			return null;
@@ -3374,7 +3379,7 @@ public class DateSetFragment extends Fragment {
 			View bBall = (View) iv.findViewById(R.id.blue_ball);
 
 			// 背景铺色
-			iv.setBackgroundColor(Color.parseColor("#444444"));
+			
 			// 今天的处理
 			TextView txtToDay = (TextView) iv.findViewById(R.id.calendar_status);
 			// 日期开始
@@ -3396,6 +3401,7 @@ public class DateSetFragment extends Fragment {
 					txtToDay.setTextColor(resources.getColor(R.color.unable_grey));
 					txtDay.setTextColor(resources.getColor(R.color.unable_grey));
 					txtToDay.setText("不可操作");
+					iv.setBackgroundColor(Color.parseColor("#222222"));
 					iv.setClickable(false);
 				} else {
 					if (equalsDate(calToday.getTime(), myDate)) {
@@ -3403,16 +3409,16 @@ public class DateSetFragment extends Fragment {
 						txtDay.setTextColor(resources.getColor(R.color.text_green));
 						txtToDay.setTextColor(resources.getColor(R.color.text_green));
 						txtToDay.setText("今日");
+						iv.setBackgroundColor(Color.parseColor("#2b3733"));
 						iv.setClickable(true);
-						// iv.setOnClickListener(new
-						// DateClickListener(calCalendar, iv));
+						iv.setOnClickListener(new dateClickListener(gAdapter, temp, iv));
 					} else {
 						if (daysBetween(calToday.getTime(), myDate)) {
 							txtToDay.setTextColor(resources.getColor(R.color.unable_grey));
 							txtDay.setTextColor(resources.getColor(R.color.unable_grey));
 							iv.setClickable(true);
-							// iv.setOnClickListener(new
-							// DateClickListener(calCalendar, iv));
+							iv.setBackgroundColor(Color.parseColor("#2b3733"));
+							iv.setOnClickListener(new dateClickListener(gAdapter, temp, iv));
 
 							position = selectItemLine * 7 + i;
 							if (ballState.get(position).isShowY()) {
@@ -3433,14 +3439,17 @@ public class DateSetFragment extends Fragment {
 							 */
 							if (ballState.get(position).isShowY() || ballState.get(position).isShowR() || ballState.get(position).isShowB()) {
 								txtDay.setTextColor(resources.getColor(R.color.white));
-
-								if (txtToDay.getVisibility() == View.VISIBLE)
-									txtToDay.setVisibility(View.INVISIBLE);
+								txtToDay.setText("已开课");
+								txtToDay.setTextColor(resources.getColor(R.color.white));
+								iv.setBackgroundColor(Color.parseColor("#2c4021"));
+//								if (txtToDay.getVisibility() == View.VISIBLE)
+//									txtToDay.setVisibility(View.INVISIBLE);
 							}
 						} else {
 							txtDay.setTextColor(resources.getColor(R.color.unable_grey));
 							txtToDay.setTextColor(resources.getColor(R.color.unable_grey));
 							txtToDay.setText("不可操作");
+							iv.setBackgroundColor(Color.parseColor("#222222"));
 							iv.setClickable(false);
 						}
 
@@ -3449,7 +3458,7 @@ public class DateSetFragment extends Fragment {
 			} else {
 				txtDay.setVisibility(View.INVISIBLE);
 				txtToDay.setVisibility(View.INVISIBLE);
-				iv.setBackgroundColor(Color.parseColor("#444444"));
+				iv.setBackgroundColor(Color.parseColor("#2b3733"));
 			}
 
 			// 设置背景颜色
@@ -3460,7 +3469,7 @@ public class DateSetFragment extends Fragment {
 				txtToDay.setTextColor(resources.getColor(R.color.text_black));
 				// gAdapter.selectedView = iv;
 			} else {
-				iv.setBackgroundColor(Color.parseColor("#444444"));
+//				iv.setBackgroundColor(Color.parseColor("#444444"));
 			}
 
 			mHangingContent.addView(iv);
@@ -3469,6 +3478,21 @@ public class DateSetFragment extends Fragment {
 			mHangingContent.setVisibility(View.INVISIBLE);
 		else {
 
+		}
+	}
+	
+	public class dateClickListener extends DateClickListener
+	{
+		private Calendar carlandar;
+		private View iv;
+		private int index;
+		public dateClickListener(CalendarGridViewAdapter calendarGridViewAdapter, Calendar mCarlandar, View view) {
+			calendarGridViewAdapter.super(mCarlandar, view);
+			carlandar = mCarlandar;
+			iv = view;
+			index = Integer.valueOf(iv.getTag().toString());
+			
+			// TODO Auto-generated constructor stub
 		}
 	}
 

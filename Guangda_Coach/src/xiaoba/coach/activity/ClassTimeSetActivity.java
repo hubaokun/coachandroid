@@ -424,7 +424,6 @@ public class ClassTimeSetActivity extends BaseActivity {
 		} else if (single != 0) {
 			mHours.setText(single + ":00");
 		}
-
 	}
 
 	StringBuilder getHourStr(String data, int startIndex) {
@@ -455,7 +454,6 @@ public class ClassTimeSetActivity extends BaseActivity {
 				count++;
 			}
 		}
-
 		return sb;
 	}
 
@@ -492,7 +490,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 					ClassTimeSetActivity.this.finish();
 			}
 		});
-		mDialog = dUtil.CallConfirmDialog("您修改了课程设置，确定要退出吗？","保存修改","确认退出",ClassTimeSetActivity.this, mDialog);
+		mDialog = dUtil.CallConfirmDialog("请点击保存，让您的修改生效","保存","放弃",ClassTimeSetActivity.this, mDialog);
 		}else{
 			ClassTimeSetActivity.this.finish();
 		}

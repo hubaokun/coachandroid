@@ -138,6 +138,7 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 		boolean showY; // 显示黄球
 		boolean showR; // 显示红球
 		boolean showB; // 显示蓝球
+		private boolean isOpen;
 
 		public boolean isShowY() {
 			return showY;
@@ -161,6 +162,14 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 
 		public void setShowB(boolean showB) {
 			this.showB = showB;
+		}
+
+		public boolean isOpen() {
+			return isOpen;
+		}
+
+		public void setOpen(boolean isOpen) {
+			this.isOpen = isOpen;
 		}
 
 	}
@@ -298,15 +307,26 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 							holder.bBall.setVisibility(View.VISIBLE);
 						} else {
 						}
+						
+//						if (ballState.get(position).isOpen())
+//						{
+//							holder.txtToDay.setText("已开课");
+//							holder.txtToDay.setTextColor(resources.getColor(R.color.not_open));
+//							holder.txtDay.setTextColor(resources.getColor(R.color.not_open));
+//						}else{
+//							
+//						}
 
 						/*
 						 * 若是有球显示,字为白色
 						 */
 						if (ballState.get(position).isShowY() || ballState.get(position).isShowR() || ballState.get(position).isShowB()) {
 							holder.txtDay.setTextColor(resources.getColor(R.color.white));
-
-							if (holder.txtToDay.getVisibility() == View.VISIBLE)
-								holder.txtToDay.setVisibility(View.INVISIBLE);
+							holder.txtToDay.setText("已开课");
+							holder.txtToDay.setTextColor(resources.getColor(R.color.white));
+//							if (holder.txtToDay.getVisibility() == View.VISIBLE)
+//								holder.txtToDay.setVisibility(View.INVISIBLE);
+							
 						}
 					} else {
 						holder.txtDay.setTextColor(resources.getColor(R.color.unable_grey));
@@ -332,7 +352,20 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 			holder.txtToDay.setTextColor(resources.getColor(R.color.text_black));
 			selectedView = iv;
 		} else {
-			iv.setBackgroundColor(Color.parseColor("#222222"));
+			
+			if (iv.isClickable())
+			{
+				iv.setBackgroundColor(Color.parseColor("#2b3733"));
+			}else{
+				iv.setBackgroundColor(Color.parseColor("#222222"));
+			}
+			
+			if (ballState.get(position).isOpen())
+			{
+				iv.setBackgroundColor(Color.parseColor("#2c4021"));
+			}else{
+				
+			}
 		}
 
 		return iv;
@@ -362,7 +395,7 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 		super.notifyDataSetChanged();
 	}
 
-	private class DateClickListener extends OnSingleClickListener {
+	public class DateClickListener extends OnSingleClickListener {
 
 		Calendar mCarlandar;
 		View view;
@@ -377,7 +410,8 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 			if (equalsDate(mCarlandar.getTime(), calSelected.getTime())) {
 				return; // click selected item
 			}
-			selectedView.setBackgroundColor(Color.parseColor("#222222"));
+			
+			selectedView.setBackgroundColor(Color.parseColor("#2b3733"));
 			view.setBackgroundColor(Color.parseColor("#ffffff"));
 			yBall = (View) selectedView.findViewById(R.id.yellow_ball);
 			rBall = (View) selectedView.findViewById(R.id.red_ball);
@@ -388,11 +422,14 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 				// last selected date is today
 				changeColor((ViewGroup) selectedView, resources.getColor(R.color.text_green));
 			} else {
+				changeColor((ViewGroup) selectedView, resources.getColor(R.color.white));
 				if (yBall.getVisibility() == View.VISIBLE || rBall.getVisibility() == View.VISIBLE || bBall.getVisibility() == View.VISIBLE)
-					changeColor((ViewGroup) selectedView, resources.getColor(R.color.white));
-				else {
-					changeColor((ViewGroup) selectedView, resources.getColor(R.color.unable_grey));
+				{
+					selectedView.setBackgroundColor(Color.parseColor("#2c4021"));
 				}
+//				else {
+//					changeColor((ViewGroup) selectedView, resources.getColor(R.color.unable_grey));
+//				}
 			}
 			calSelected = mCarlandar;
 			selectedView = v;
@@ -453,7 +490,7 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 		long time2 = cal.getTimeInMillis();
 		long between_days = (time2 - time1) / (1000 * 3600 * 24);
 
-		return Integer.parseInt(String.valueOf(between_days)) <= CoachApplication.mApplication.getMaxTays();
+		return Integer.parseInt(String.valueOf(between_days)) < CoachApplication.mApplication.getMaxTays();
 	}
 
 	View yBall, rBall, bBall;
