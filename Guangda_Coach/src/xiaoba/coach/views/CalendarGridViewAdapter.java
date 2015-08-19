@@ -26,10 +26,10 @@ import android.widget.TextView;
 public class CalendarGridViewAdapter extends BaseAdapter {
 
 	private Calendar calStartDate = Calendar.getInstance();// 当前显示的日历
-	private static Calendar calSelected = Calendar.getInstance(); // 选择的日历
-	private View selectedView;
+	public static Calendar calSelected = Calendar.getInstance(); // 选择的日历
+	public View selectedView;
 	private GetScheduleResult result;
-	private NotifyDateSelect mNotifyDateSelect;
+	public NotifyDateSelect mNotifyDateSelect;
 
 	private Activity activity;
 	private static Calendar calToday = Calendar.getInstance(); // 今日
@@ -258,7 +258,6 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 			holder.txtDay = (TextView) iv.findViewById(R.id.calendar_date);
 			iv.setTag(holder);
 		}
-
 		// 背景铺色
 		iv.setBackgroundColor(Color.parseColor("#222222"));
 
@@ -399,10 +398,14 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 
 		Calendar mCarlandar;
 		View view;
+//		boolean mIsHanging;
+//		int mPosition;
 
 		public DateClickListener(Calendar mCarlandar, View view) {
 			this.mCarlandar = mCarlandar;
 			this.view = view;
+//			mIsHanging = isHanging;
+//			mPosition = position;
 		}
 
 		@Override
@@ -410,13 +413,20 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 			if (equalsDate(mCarlandar.getTime(), calSelected.getTime())) {
 				return; // click selected item
 			}
-			
+			Date selectedDate = calSelected.getTime();
+			Date todayDate = calToday.getTime();
+			Date mDate = mCarlandar.getTime();
 			selectedView.setBackgroundColor(Color.parseColor("#2b3733"));
 			view.setBackgroundColor(Color.parseColor("#ffffff"));
 			yBall = (View) selectedView.findViewById(R.id.yellow_ball);
 			rBall = (View) selectedView.findViewById(R.id.red_ball);
 			bBall = (View) selectedView.findViewById(R.id.blue_ball);
-
+//			if (mIsHanging)
+//			{
+//				int data = mDate.getDate();
+//				int add = mPosition - data;
+//				mCarlandar.add(Calendar.DAY_OF_MONTH, add);
+//			}
 			changeColor((ViewGroup) view, resources.getColor(R.color.text_black));
 			if (equalsDate(calSelected.getTime(), calToday.getTime())) {
 				// last selected date is today
@@ -433,7 +443,6 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 			}
 			calSelected = mCarlandar;
 			selectedView = v;
-
 			if (mNotifyDateSelect != null)
 				mNotifyDateSelect.notify(calSelected);
 
@@ -444,7 +453,7 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 	/*
 	 * 
 	 */
-	void changeColor(ViewGroup group, int colorRes) {
+	public void changeColor(ViewGroup group, int colorRes) {
 		for (int i = 0; i < group.getChildCount(); i++) {
 			if (group.getChildAt(i) instanceof TextView) {
 				((TextView) group.getChildAt(i)).setTextColor(colorRes);
@@ -493,7 +502,7 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 		return Integer.parseInt(String.valueOf(between_days)) < CoachApplication.mApplication.getMaxTays();
 	}
 
-	View yBall, rBall, bBall;
+	public View yBall, rBall, bBall;
 	TextView status;
 
 	/*

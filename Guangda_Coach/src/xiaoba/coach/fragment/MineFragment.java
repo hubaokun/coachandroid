@@ -77,8 +77,8 @@ public class MineFragment extends Fragment {
 	private UserInfo userInfo;
 	private TextView mLeftMoney;
 	private TextView mGMoney; // 保证金和冻结金
-	private View bg;
-	private ImageView mBgPolygon;
+//	private View bg;
+//	private ImageView mBgPolygon;
 	private TextView mTousuCount, mEvaluateCount, mNoticeCount, mUnreadCount;
 	private Button mApply;
 	DisplayImageOptions options;
@@ -133,8 +133,8 @@ public class MineFragment extends Fragment {
 		mPrice = (TextView) view.findViewById(R.id.mine_price);
 		mOverScrollView = (OverScrollView) view.findViewById(R.id.mine_over_scroll);
 		mPortraitLayout = (RelativeLayout) view.findViewById(R.id.portrait_layout);
-		bg = (View) view.findViewById(R.id.mine_bg);
-		mBgPolygon = (ImageView) view.findViewById(R.id.bg_polygon);
+//		bg = (View) view.findViewById(R.id.mine_bg);
+//		mBgPolygon = (ImageView) view.findViewById(R.id.bg_polygon);
 		mTousuCount = (TextView) view.findViewById(R.id.tousu_msg_count);
 		mEvaluateCount = (TextView) view.findViewById(R.id.evaluation_msg_count);
 		mNoticeCount = (TextView) view.findViewById(R.id.notice_msg_count);
@@ -149,8 +149,8 @@ public class MineFragment extends Fragment {
 		mEvaluateLayout.setLayoutParams(params);
 		rlShare.setLayoutParams(params);
 		mRechargeLayout.setLayoutParams(params);
-		int bgHeight = Settings.DISPLAY_WIDTH * 345 / 640;
-		bg.setLayoutParams(new RelativeLayout.LayoutParams(Settings.DISPLAY_WIDTH, bgHeight));
+//		int bgHeight = Settings.DISPLAY_WIDTH * 345 / 640;
+//		bg.setLayoutParams(new RelativeLayout.LayoutParams(Settings.DISPLAY_WIDTH, bgHeight));
 		btnPayCoins = (Button)view.findViewById(R.id.btn_pay_coin);
 		tv_coin_value=(TextView)view.findViewById(R.id.tv_coin_value);
 		imgTicketCoin1 = (ImageView)view.findViewById(R.id.img_ticket_coin_1);
@@ -270,8 +270,8 @@ public class MineFragment extends Fragment {
 			public void transform(int overscrollDistance) {
 				if (overscrollDistance >= 0 && mScrollDistance == 0) {// 设置过度滚动时，头像区域的位置
 					mPortraitLayout.setTranslationY(overscrollDistance);
-					mBgPolygon.setScaleX(1 + overscrollDistance * 1.0f / totalDiastance);
-					mBgPolygon.setScaleY(1 + overscrollDistance * 1.0f / totalDiastance);
+//					mBgPolygon.setScaleX(1 + overscrollDistance * 1.0f / totalDiastance);
+//					mBgPolygon.setScaleY(1 + overscrollDistance * 1.0f / totalDiastance);
 				}
 				if (overscrollDistance <= 0 && mScrollDistance > 0) {
 					mOverUpDistance = mScrollDistance - overscrollDistance;

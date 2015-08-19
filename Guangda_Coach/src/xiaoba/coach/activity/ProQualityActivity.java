@@ -51,6 +51,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -100,6 +101,10 @@ public class ProQualityActivity extends BaseActivity {
 	LinearLayout mPhotoCoachCard;
 	@ViewById(R.id.photo_coach_car)
 	LinearLayout mPhotoCar;
+	@ViewById(R.id.check_c1)
+	CheckBox cbC1;
+	@ViewById(R.id.check_c2)
+	CheckBox cbC2;
 	/*
 	 * @ViewById(R.id.enter_id) EditText mId;
 	 * 
@@ -558,6 +563,20 @@ public class ProQualityActivity extends BaseActivity {
 			 * = new TextView(ProQualityActivity.this); tv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DensityUtils.dp2px(ProQualityActivity.this, 30)));
 			 * tv.setText(info.getModellist().get(i).getModelname()); tv.setTextSize(18); mCartypeLayout.addView(tv); } }
 			 */
+			for (CarType cartype:info.getModellist())
+			{
+				switch (cartype.getModelid()) {
+				case 17:
+					cbC1.setChecked(true);
+					break;
+				case 18:
+					cbC2.setChecked(true);
+					break;
+				default:
+					break;
+				}
+			}
+				
 			selectmodels.add(info.getModellist().get(0).getModelname());
 			// mCarType1.setTextColor(getResources().getColor(R.color.text_black));
 			// mCarType1.setText(info.getModellist().get(0).getModelname());
@@ -765,26 +784,70 @@ public class ProQualityActivity extends BaseActivity {
 				return;
 			}
 		}
-
-		if (file3==null) {
+		
+		if (!cbC1.isChecked()&&!cbC2.isChecked())
+		{
+			Toast.makeText(mApplication, "请选择教学用车型号", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+//		if (info.getCoach_cardpicurl()==null||"".equals(info.getCoach_cardpicurl()))
+//		{
+//		if (file3==null) {
+//			Toast.makeText(mApplication, "请完善教练证照片", Toast.LENGTH_SHORT).show();
+//			return;
+//		}
+//		}
+		
+		if (mDelCoachCard.getVisibility()!=View.VISIBLE)
+		{
 			Toast.makeText(mApplication, "请完善教练证照片", Toast.LENGTH_SHORT).show();
 			return;
 		}
-
-		if (file4 == null) {
+		
+//		if (info.getDrive_cardpicurl() == null||"".equals(info.getDrive_cardpicurl()))
+//		{
+//		if (file4 == null) {
+//			Toast.makeText(mApplication, "请完善驾驶证照片", Toast.LENGTH_SHORT).show();
+//			return;
+//		}
+//		}
+		
+		if (mDelDriveCard.getVisibility() != View.VISIBLE)
+		{
 			Toast.makeText(mApplication, "请完善驾驶证照片", Toast.LENGTH_SHORT).show();
 			return;
 		}
 
-		if (file5 == null) {
+//		if (info.getCar_cardpicfurl() == null||"".equals(info.getCar_cardpicfurl()))
+//		{
+//		if (file5 == null) {
+//			Toast.makeText(mApplication, "请完善车辆行驶证正本", Toast.LENGTH_SHORT).show();
+//			return;
+//		}
+//		}
+		
+		if (mDelCarFront.getVisibility() != View.VISIBLE)
+		{
 			Toast.makeText(mApplication, "请完善车辆行驶证正本", Toast.LENGTH_SHORT).show();
 			return;
 		}
 
-		if (file6 == null) {
+//		if (info.getCar_cardpicburl() == null ||"".equals(info.getCar_cardpicburl()))
+//		{
+//		if (file6 == null) {
+//			Toast.makeText(mApplication, "请完善车辆行驶证副本", Toast.LENGTH_SHORT).show();
+//			return;
+//		}
+//		}
+		
+		if (mDelCarBack.getVisibility() != View.VISIBLE)
+		{
 			Toast.makeText(mApplication, "请完善车辆行驶证副本", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		
+		
 
 		DialogUtil dUtil = new DialogUtil(new DialogConfirmListener() {
 
@@ -1447,20 +1510,32 @@ public class ProQualityActivity extends BaseActivity {
 			// param.setDrivecardextime(mDriveInvalidTime.getText().toString());
 			// if (hasTime4)
 			// param.setCarcardextime(mCarInvalidTime.getText().toString());
-			if (selectmodels.size() > 0) {
-				StringBuilder modelStr = new StringBuilder();
-				for (String item : selectmodels) {
-					modelStr.append(item);
-					modelStr.append(",");
-				}
-				if (modelStr.length() > 0) {
-					String str = modelStr.toString().substring(0, modelStr.length() - 1);
-					for (CarModel model : carmodelList) {
-						if (model.getModelname() != null && model.getModelname().equals(str))
-							param.setModelid(model.getModelid() + "");
-					}
-				}
+//			if (selectmodels.size() > 0) {
+//				StringBuilder modelStr = new StringBuilder();
+//				for (String item : selectmodels) {
+//					modelStr.append(item);
+//					modelStr.append(",");
+//				}
+//				if (modelStr.length() > 0) {
+//					String str = modelStr.toString().substring(0, modelStr.length() - 1);
+//					for (CarModel model : carmodelList) {
+//						if (model.getModelname() != null && model.getModelname().equals(str))
+//							param.setModelid(model.getModelid() + "");
+//					}
+//				}
+//			}
+			StringBuilder modelStr = new StringBuilder();
+			if (cbC1.isChecked())
+			{
+				modelStr.append("17");
 			}
+			if (cbC2.isChecked())
+			{
+				modelStr.append(",18");
+			}
+			String str = modelStr.toString();
+			param.setModelid(str);
+			
 			/*
 			 * 教学用车
 			 */
@@ -1536,19 +1611,33 @@ public class ProQualityActivity extends BaseActivity {
 					// if (hasTeachCar) {
 					// info.setCarmodel(mCarModel.getText().toString());
 					// }
-					if (selectmodels != null && selectmodels.size() > 0) {
-						List<CarType> temp = new ArrayList<CarType>();
-						for (CarModel car : carmodelList) {
-							if (car.getModelname() != null && car.getModelname().equals(selectmodels.get(0))) {
-								CarType type = new CarType();
-								type.setModelid(car.getModelid());
-								type.setModelname(car.getModelname());
-								temp.add(type);
-								break;
-							}
-						}
-						info.setModellist(temp);
+//					if (selectmodels != null && selectmodels.size() > 0) {
+//						List<CarType> temp = new ArrayList<CarType>();
+//						for (CarModel car : carmodelList) {
+//							if (car.getModelname() != null && car.getModelname().equals(selectmodels.get(0))) {
+//								CarType type = new CarType();
+//								type.setModelid(car.getModelid());
+//								type.setModelname(car.getModelname());
+//								temp.add(type);
+//								break;
+//							}
+//						}
+//						info.setModellist(temp);
+//					}
+					List<CarType> temp = new ArrayList<CarType>();
+					if (cbC1.isChecked())
+					{
+						CarType type = new CarType();
+						type.setModelid(17);
+						temp.add(type);
 					}
+					if (cbC2.isChecked())
+					{
+						CarType type = new CarType();
+						type.setModelid(18);
+						temp.add(type);
+					}
+					info.setModellist(temp);
 					info.saveUserInfo(info, ProQualityActivity.this);
 					//
 					CommonUtils.showToast(ProQualityActivity.this.getApplicationContext(), "提交成功");

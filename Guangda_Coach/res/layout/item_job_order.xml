@@ -26,10 +26,10 @@
             android:src="@drawable/portrait_test"
             app:poly_border="false"
             app:poly_corner_radius="10"
-            app:poly_rotation_angle="30"
+            app:poly_rotation_angle="0"
             app:poly_shadow="true"
             app:poly_shadow_color="@color/divider_grey"
-            app:poly_vertices="6" />
+            app:poly_vertices="0" />
 
         <RelativeLayout
             android:layout_width="0dp"

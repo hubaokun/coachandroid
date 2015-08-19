@@ -130,10 +130,10 @@
                     app:poly_border_color="@android:color/white"
                     app:poly_border_width="1dp"
                     app:poly_corner_radius="10"
-                    app:poly_rotation_angle="30"
+                    app:poly_rotation_angle="0"
                     app:poly_shadow="true"
                     app:poly_shadow_color="@color/divider_grey"
-                    app:poly_vertices="6" />
+                    app:poly_vertices="0" />
             </RelativeLayout>
 
             <View

@@ -551,25 +551,39 @@
                 android:layout_marginLeft="11dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
+               <CheckBox android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/check_c1"
+                       android:background="@drawable/check_box_selector"
+                       android:button="@null"/>
                    <TextView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="C1"
-                       android:textColor="@color/text_black"
-                       android:textSize="18sp"/>  
-                       
-                   <CheckBox android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:id="@+id/check_c1"/>
-                   <TextView android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="C2"
+                       android:text="C1手动挡"
                        android:textColor="@color/text_black"
                        android:textSize="18sp"
-                       android:layout_marginLeft="10dp"/>  
-                       
+                       android:layout_marginLeft="5dp"/> 
                    <CheckBox android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:id="@+id/check_c2"/>
+                       android:id="@+id/check_c2"
+                       android:background="@drawable/check_box_selector"
+                       android:layout_marginLeft="15dp"
+                       android:button="@null"/>
+                   <TextView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="C2自动挡"
+                       android:textColor="@color/text_black"
+                       android:textSize="18sp"
+                       android:layout_marginLeft="5dp"
+                       />  
+                       
+                   
+                   <TextView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="(可多选)"
+                       android:textSize="16sp"
+                       android:textColor="@color/text_grey"
+                       android:layout_marginLeft="20dp"/>
+
             </LinearLayout>
 
 <!--             <LinearLayout

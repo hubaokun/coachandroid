@@ -213,6 +213,7 @@ public class DateSetFragment extends Fragment {
 	private Calendar calToday = Calendar.getInstance(); // 今日
 	private CalendarGridViewAdapter gAdapter;
 	private CalendarGridViewAdapter gAdapterNextMonth;
+	private CalendarGridViewAdapter gSelectAdapter;
 	private RelativeLayout mainLayout;
 
 	// 保存接口数据
@@ -588,9 +589,16 @@ public class DateSetFragment extends Fragment {
 			@Override
 			public void onSScroll(int scrollY) {
 				if (scrollY > (Settings.DISPLAY_WIDTH - 12) / 7 * selectItemLine)
+				{
+					//gCurrnetMonthView.setNumColumns(1);
 					mHangingContent.setVisibility(View.VISIBLE);
+				}
+					//mHangingContent.setVisibility(View.VISIBLE);
 				else {
+//					RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, (Settings.DISPLAY_WIDTH - 12) / 7 * lineNum + (lineNum - 1) * 2);
+//					gCurrnetMonthView.setLayoutParams(param);
 					mHangingContent.setVisibility(View.INVISIBLE);
+					gSelectAdapter.notifyDataSetChanged();
 				}
 				if (scrollY > (Settings.DISPLAY_WIDTH - 12) / 7 * (lineNum - 1)) {
 					mHangingArrow.setVisibility(View.VISIBLE);
@@ -2355,6 +2363,7 @@ public class DateSetFragment extends Fragment {
 
 		calSelected = calToday;
 		gAdapter.setSelectedDate(calSelected);
+		gSelectAdapter = gAdapter;
 		handler.post(new Runnable() {
 			@Override
 			public void run() {
@@ -2390,6 +2399,7 @@ public class DateSetFragment extends Fragment {
 
 		calSelected = calStartDate;
 		gAdapterNextMonth.setSelectedDate(calSelected);
+		gSelectAdapter = gAdapterNextMonth;
 		handler.post(new Runnable() {
 			@Override
 			public void run() {
@@ -2700,9 +2710,11 @@ public class DateSetFragment extends Fragment {
 							 */
 							gAdapter.setSelectedDate(calSelected);
 							gAdapter.notifyDataSetChanged();
+							gSelectAdapter = gAdapter;
 						} else {
 							gAdapterNextMonth.setSelectedDate(calSelected);
 							gAdapterNextMonth.notifyDataSetChanged();
+							gSelectAdapter = gAdapterNextMonth;
 						}
 						// checkUpdate(DateSetFragment.calSelected);
 					}
@@ -2867,9 +2879,11 @@ public class DateSetFragment extends Fragment {
 			if (iMonthViewCurrentMonth == calToday.get(Calendar.MONTH)) {
 				gAdapter.setBallState(ballState);
 				gAdapter.notifyDataSetChanged();
+				gSelectAdapter = gAdapter;
 			} else {
 				gAdapterNextMonth.setBallState(ballState);
 				gAdapterNextMonth.notifyDataSetChanged();
+				gSelectAdapter = gAdapterNextMonth;
 			}
 			initialHangingContent(calSelected, calToday);
 			checkUpdate(calSelected);
@@ -3349,13 +3363,15 @@ public class DateSetFragment extends Fragment {
 	/*
 	 * 初始化悬停部分显示的日期等
 	 */
+	
+	private static Calendar mCalen;
 	public void initialHangingContent(Calendar selectCalendar, Calendar calToday) {
 		mHangingContent.removeAllViewsInLayout();
 		Calendar temp = Calendar.getInstance();
 		temp.setTime(selectCalendar.getTime());
 		Date myDate;
 		Calendar monday = getLastSunday(temp);
-		int position; // select item 在adapter中位置
+		int position = 0; // select item 在adapter中位置
 		/*
 		 * 循环7次
 		 */
@@ -3366,7 +3382,7 @@ public class DateSetFragment extends Fragment {
 			}
 			myDate = monday.getTime();
 
-			View iv = LayoutInflater.from(mActivity).inflate(R.layout.item_date_picker, null);
+			final View iv = LayoutInflater.from(mActivity).inflate(R.layout.item_date_picker, null);
 			LinearLayout.LayoutParams param = new LinearLayout.LayoutParams((Settings.DISPLAY_WIDTH - 12) / 7, (Settings.DISPLAY_WIDTH - 12) / 7);
 			if (i != 0) // 不是第一个view 设置marginLeft 2px
 				param.setMargins(2, 0, 0, 0);
@@ -3377,7 +3393,6 @@ public class DateSetFragment extends Fragment {
 			View yBall = (View) iv.findViewById(R.id.yellow_ball);
 			View rBall = (View) iv.findViewById(R.id.red_ball);
 			View bBall = (View) iv.findViewById(R.id.blue_ball);
-
 			// 背景铺色
 			
 			// 今天的处理
@@ -3403,6 +3418,7 @@ public class DateSetFragment extends Fragment {
 					txtToDay.setText("不可操作");
 					iv.setBackgroundColor(Color.parseColor("#222222"));
 					iv.setClickable(false);
+					iv.setEnabled(false);
 				} else {
 					if (equalsDate(calToday.getTime(), myDate)) {
 						// 当前日期
@@ -3411,14 +3427,50 @@ public class DateSetFragment extends Fragment {
 						txtToDay.setText("今日");
 						iv.setBackgroundColor(Color.parseColor("#2b3733"));
 						iv.setClickable(true);
-						iv.setOnClickListener(new dateClickListener(gAdapter, temp, iv));
+						iv.setEnabled(true);
+						iv.setOnClickListener(new OnSingleClickListener() {
+							
+							@Override
+							public void doOnClick(View v) {
+								// TODO Auto-generated method stub
+								ivClick((Date) v.getTag(), v);
+							}
+						});
+//						iv.setOnClickListener(new OnSingleClickListener() {
+//							
+//							@Override
+//							public void doOnClick(View v) {
+//								// TODO Auto-generated method stub
+//								CommonUtils.showToast(mActivity, iv.getTag().toString());
+//							}
+//						});
+						//iv.setOnClickListener(new dateClickListener((Calendar) iv.getTag(), iv));
+						//iv.setOnClickListener(new dateClickListener(gAdapter, (Calendar) iv.getTag(), iv,false,0));
 					} else {
 						if (daysBetween(calToday.getTime(), myDate)) {
-							txtToDay.setTextColor(resources.getColor(R.color.unable_grey));
-							txtDay.setTextColor(resources.getColor(R.color.unable_grey));
+							txtToDay.setTextColor(resources.getColor(R.color.not_open));
+							txtDay.setTextColor(resources.getColor(R.color.not_open));
 							iv.setClickable(true);
+							iv.setEnabled(true);
 							iv.setBackgroundColor(Color.parseColor("#2b3733"));
-							iv.setOnClickListener(new dateClickListener(gAdapter, temp, iv));
+							iv.setOnClickListener(new OnSingleClickListener() {
+								
+								@Override
+								public void doOnClick(View v) {
+									// TODO Auto-generated method stub
+									ivClick((Date) v.getTag(), v);
+								}
+							});
+//							iv.setOnClickListener(new dateClickListener((Calendar) iv.getTag(), iv));
+//							iv.setOnClickListener(new OnSingleClickListener() {
+//								
+//								@Override
+//								public void doOnClick(View v) {
+//									// TODO Auto-generated method stub
+//									CommonUtils.showToast(mActivity, v.getTag().toString());
+//								}
+//							});
+							//iv.setOnClickListener(new dateClickListener(gAdapter, (Calendar) iv.getTag(), iv,false,0));
 
 							position = selectItemLine * 7 + i;
 							if (ballState.get(position).isShowY()) {
@@ -3481,20 +3533,102 @@ public class DateSetFragment extends Fragment {
 		}
 	}
 	
-	public class dateClickListener extends DateClickListener
+	private void ivClick(Date mDate, View view)
 	{
-		private Calendar carlandar;
-		private View iv;
-		private int index;
-		public dateClickListener(CalendarGridViewAdapter calendarGridViewAdapter, Calendar mCarlandar, View view) {
-			calendarGridViewAdapter.super(mCarlandar, view);
-			carlandar = mCarlandar;
-			iv = view;
-			index = Integer.valueOf(iv.getTag().toString());
-			
-			// TODO Auto-generated constructor stub
+		Calendar mCarlandar=Calendar.getInstance();
+		mCarlandar.setTime(mDate);
+		if (equalsDate(mCarlandar.getTime(), calSelected.getTime())) {
+			return; // click selected item
 		}
+		Date selectedDate = calSelected.getTime();
+		Date todayDate = calToday.getTime();
+//		Date mDate = mCarlandar.getTime();
+		gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2b3733"));
+		view.setBackgroundColor(Color.parseColor("#ffffff"));
+		gSelectAdapter.yBall = (View) gSelectAdapter.selectedView.findViewById(R.id.yellow_ball);
+		gSelectAdapter.rBall = (View) gSelectAdapter.selectedView.findViewById(R.id.red_ball);
+		gSelectAdapter.bBall = (View) gSelectAdapter.selectedView.findViewById(R.id.blue_ball);
+//		if (mIsHanging)
+//		{
+//			int data = mDate.getDate();
+//			int add = mPosition - data;
+//			mCarlandar.add(Calendar.DAY_OF_MONTH, add);
+//		}
+		gSelectAdapter.changeColor((ViewGroup) view, resources.getColor(R.color.text_black));
+		if (equalsDate(calSelected.getTime(), calToday.getTime())) {
+			// last selected date is today
+			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.text_green));
+		} else {
+			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.white));
+			if (gSelectAdapter.yBall.getVisibility() == View.VISIBLE || gSelectAdapter.rBall.getVisibility() == View.VISIBLE || gSelectAdapter.bBall.getVisibility() == View.VISIBLE)
+			{
+				gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2c4021"));
+			}
+//			else {
+//				changeColor((ViewGroup) selectedView, resources.getColor(R.color.unable_grey));
+//			}
+		}
+		calSelected = mCarlandar;
+		gSelectAdapter.calSelected = mCarlandar;
+		gSelectAdapter.selectedView = view;
+		if (gSelectAdapter.mNotifyDateSelect != null)
+			gSelectAdapter.mNotifyDateSelect.notify(calSelected);
 	}
+	
+//	public class dateClickListener extends OnSingleClickListener
+//	{
+//		Calendar mCarlandar;
+//		View view;
+//		//	boolean mIsHanging;
+//		//	int mPosition;
+//
+//	public dateClickListener(Calendar mCarlandar, View view) {
+//		this.mCarlandar = mCarlandar;
+//		this.view = view;
+////		mIsHanging = isHanging;
+////		mPosition = position;
+//	}
+//
+//	@Override
+//	public void doOnClick(View v) {
+//		if (equalsDate(mCarlandar.getTime(), calSelected.getTime())) {
+//			return; // click selected item
+//		}
+//		Date selectedDate = calSelected.getTime();
+//		Date todayDate = calToday.getTime();
+//		Date mDate = mCarlandar.getTime();
+//		gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2b3733"));
+//		view.setBackgroundColor(Color.parseColor("#ffffff"));
+//		gSelectAdapter.yBall = (View) gSelectAdapter.selectedView.findViewById(R.id.yellow_ball);
+//		gSelectAdapter.rBall = (View) gSelectAdapter.selectedView.findViewById(R.id.red_ball);
+//		gSelectAdapter.bBall = (View) gSelectAdapter.selectedView.findViewById(R.id.blue_ball);
+////		if (mIsHanging)
+////		{
+////			int data = mDate.getDate();
+////			int add = mPosition - data;
+////			mCarlandar.add(Calendar.DAY_OF_MONTH, add);
+////		}
+//		gSelectAdapter.changeColor((ViewGroup) view, resources.getColor(R.color.text_black));
+//		if (equalsDate(calSelected.getTime(), calToday.getTime())) {
+//			// last selected date is today
+//			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.text_green));
+//		} else {
+//			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.white));
+//			if (gSelectAdapter.yBall.getVisibility() == View.VISIBLE || gSelectAdapter.rBall.getVisibility() == View.VISIBLE || gSelectAdapter.bBall.getVisibility() == View.VISIBLE)
+//			{
+//				gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2c4021"));
+//			}
+////			else {
+////				changeColor((ViewGroup) selectedView, resources.getColor(R.color.unable_grey));
+////			}
+//		}
+//		calSelected = mCarlandar;
+//		gSelectAdapter.selectedView = v;
+//		if (gSelectAdapter.mNotifyDateSelect != null)
+//			gSelectAdapter.mNotifyDateSelect.notify(calSelected);
+//
+//	}
+//	}
 
 	/*
 	 * 刷新课程状态
@@ -3605,8 +3739,7 @@ public class DateSetFragment extends Fragment {
 		cal.setTime(date2);
 		long time2 = cal.getTimeInMillis();
 		long between_days = (time2 - time1) / (1000 * 3600 * 24);
-
-		return Integer.parseInt(String.valueOf(between_days)) <= 29;
+		return Integer.parseInt(String.valueOf(between_days)) <CoachApplication.mApplication.getMaxTays();
 	}
 
 	/*

@@ -8,16 +8,16 @@
     <View
         android:id="@+id/mine_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="280dp"
         android:background="@drawable/mine_bg" />
 
-    <ImageView
+<!--     <ImageView
         android:id="@+id/bg_polygon"
         android:layout_width="240dp"
         android:layout_height="260dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-50dp"
-        android:src="@drawable/bg_polygon" />
+        android:src="@drawable/bg_polygon" /> -->
 
     <xiaoba.coach.views.OverScrollView
         android:id="@+id/mine_over_scroll"
@@ -461,11 +461,18 @@
             app:poly_border_color="@android:color/white"
             app:poly_border_width="1dp"
             app:poly_corner_radius="10"
-            app:poly_rotation_angle="30"
+            app:poly_rotation_angle="0"
             app:poly_shadow="true"
             app:poly_shadow_color="@color/divider_grey"
-            app:poly_vertices="6" />
-        
+            app:poly_vertices="0"
+             />
+          <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edite"
+            android:layout_alignRight="@id/potrait"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignBottom="@id/potrait"/>
 
 
         <TextView
@@ -477,12 +484,12 @@
             android:textColor="@color/white"
             android:textSize="24dp" />
         
-       <ImageView android:layout_width="wrap_content"
+<!--        <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/pencile"
             android:layout_toRightOf="@id/name"
             android:layout_marginBottom="5dp"
-            android:layout_alignBottom="@id/name"/>
+            android:layout_alignBottom="@id/name"/> -->
 
         <RatingBar
             android:layout_below="@+id/name"

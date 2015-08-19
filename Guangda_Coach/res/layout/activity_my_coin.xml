@@ -69,4 +69,15 @@
        android:background="@drawable/shape_grey_round"
        android:layout_marginTop="20dp"/>
     </LinearLayout>
+    
+       <com.daoshun.lib.listview.PullToRefreshListView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv_my_coin"
+        android:background="@color/white"
+        android:scrollbars="none"
+       	android:cacheColorHint="@android:color/transparent"
+        android:divider="@color/divider_grey"
+        android:dividerHeight="0.5dp"
+        android:listSelector="@android:color/transparent"/>
 </LinearLayout>
