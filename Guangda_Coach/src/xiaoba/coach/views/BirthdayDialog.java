@@ -50,17 +50,17 @@ public class BirthdayDialog extends BaseDialog {
 		mDayWheel = (WheelView) findViewById(R.id.data);
 
 		mYearWheel.setShadowColor(0x00ffffff, 0x00ffffff, 0x00ffffff);
-		mYearWheel.setWheelBackground(android.R.color.transparent);
+		mYearWheel.setWheelBackground(android.R.color.white);
 		mYearWheel.setWheelForeground(R.drawable.wheel_val);
 		mYearWheel.setVisibleItems(5);
 		
 		mMonthWheel.setShadowColor(0x00ffffff, 0x00ffffff, 0x00ffffff);
-		mMonthWheel.setWheelBackground(android.R.color.transparent);
+		mMonthWheel.setWheelBackground(android.R.color.white);
 		mMonthWheel.setWheelForeground(R.drawable.wheel_val);
 		mMonthWheel.setVisibleItems(5);
 
 		mDayWheel.setShadowColor(0x00ffffff, 0x00ffffff, 0x00ffffff);
-		mDayWheel.setWheelBackground(android.R.color.transparent);
+		mDayWheel.setWheelBackground(android.R.color.white);
 		mDayWheel.setWheelForeground(R.drawable.wheel_val);
 		mDayWheel.setVisibleItems(5);
 		
@@ -154,7 +154,7 @@ public class BirthdayDialog extends BaseDialog {
 			// if (currentGet == currentSet) {
 			// view.setTextColor(Color.parseColor("#17b3ec"));
 			// }
-			view.setTextColor(Color.WHITE);
+			view.setTextColor(Color.BLACK);
 			view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 21);
 			view.setTypeface(Typeface.SANS_SERIF);
 		}

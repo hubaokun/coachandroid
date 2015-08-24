@@ -49,8 +49,8 @@
     <!-- rating bar -->
     <style name="myRatingBarGrey" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/myrating_grey</item>
-        <item name="android:minHeight">28dip</item>
-        <item name="android:maxHeight">28dip</item>
+        <item name="android:minHeight">19dip</item>
+        <item name="android:maxHeight">19dip</item>
     </style>
 
     <!-- divider -->

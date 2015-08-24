@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="15dp" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
         <include 
             android:id="@+id/five_part"
-            layout="@layout/time_with_geer" />
+            layout="@layout/time_with_geer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
 
-        <View
-            android:layout_width="12dp"
-            android:layout_height="match_parent" />
-
-        <include 
+        <include
             android:id="@+id/six_part"
-            layout="@layout/time_with_geer" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            layout="@layout/time_with_geer"
+            android:layout_margin="8dp"  />
+        
+                <include 
+             android:id="@+id/seven_part"
+            layout="@layout/time_with_geer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" 
+            android:layout_margin="8dp" />
+
+        <include
+            android:id="@+id/eight_part"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            layout="@layout/time_with_geer"
+            android:layout_margin="8dp"  />
+
     </LinearLayout>
 
-    <LinearLayout
+    <!-- <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -43,29 +63,51 @@
         <include 
              android:id="@+id/eight_part"
             layout="@layout/time_with_geer" />
-    </LinearLayout>
+    </LinearLayout> -->
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
         <include 
              android:id="@+id/nine_part"
-            layout="@layout/time_with_geer" />
+            layout="@layout/time_with_geer" 
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
+        
 
-        <View
-            android:layout_width="12dp"
-            android:layout_height="match_parent" />
 
         <include 
              android:id="@+id/ten_part"
-            layout="@layout/time_with_geer" />
+            layout="@layout/time_with_geer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" 
+            android:layout_margin="8dp" />
+        
+        <include 
+             android:id="@+id/eleven_part"
+            layout="@layout/time_with_geer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
+
+
+
+        <include 
+            android:id="@+id/tweleve_part"
+            layout="@layout/time_with_geer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" 
+            android:layout_margin="8dp" />
     </LinearLayout>
 
-    <LinearLayout
+    <!-- <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -83,7 +125,7 @@
         <include 
             android:visibility="invisible"
             layout="@layout/time_with_geer" />
-    </LinearLayout>
+    </LinearLayout> -->
 
     <!-- 注 -->
 
@@ -130,7 +172,7 @@
             android:textSize="11dp" />
     </LinearLayout> -->
 
-    <View
+   <!--  <View
         style="@style/dividerLine"
         android:layout_marginTop="18dp" />
 
@@ -180,6 +222,6 @@
             android:textColor="@color/white"
             android:textSize="16dp" >
         </Button>
-    </LinearLayout>
+    </LinearLayout> -->
 
 </LinearLayout>

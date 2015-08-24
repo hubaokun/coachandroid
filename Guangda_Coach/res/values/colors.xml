@@ -49,5 +49,7 @@
     <color name="red">#ff0000</color>
     <color name="job_back_yellow">#FDF390</color>
     <color name="back_green">#22c064</color>
+    <color name="gray_bar">#aaaaaa</color>
+    <color name="green_bar">#50cb8c</color>
 
 </resources>

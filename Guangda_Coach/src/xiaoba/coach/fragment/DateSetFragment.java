@@ -8,7 +8,6 @@ import java.util.List;
 
 import xiaoba.coach.CoachApplication;
 import xiaoba.coach.R;
-import xiaoba.coach.activity.ActivityDateSet;
 import xiaoba.coach.activity.AddressSetActivity;
 import xiaoba.coach.activity.AddressSetActivity_;
 import xiaoba.coach.activity.ClassTimeSetActivity_;
@@ -80,118 +79,118 @@ public class DateSetFragment extends Fragment {
 	TextView mTitle;
 	ImageView mToLastMonth;
 	ImageView mToNextMonth;
-	LinearLayout mMorningBar; // 早上显示栏
-	LinearLayout mAfternoonBar; // 下午显示栏
-	LinearLayout mNightBar; // 晚上显示栏
-	LinearLayout mMorningSSet; // 早上设置栏
-	LinearLayout mAfternoonSet; // 下午设置栏
-	LinearLayout mNightSet; // 晚上设置栏
-	RelativeLayout mMorSelectAll; // 早上时间全选
-	RelativeLayout mAftSelectAll; // 下午时间全选
-	RelativeLayout mNigSelectAll; // 晚上时间全选
-	ImageView mMorSelectAllImg;
-	ImageView mAftSelectAllImg;
-	ImageView mNigSelectAllImg;
-	TextView mMorSelectAllTv;
-	TextView mAftSelectAllTv;
-	TextView mNigSelectAllTv;
-	View mMorPoint;
-	TextView mMorTime;
-	ImageView mMorArrow;
-	View mAftPoint;
-	TextView mAftTime;
-	ImageView mAftArrow;
-	View mNigPoint;
-	TextView mNigTime;
-	ImageView mNigArrow;
-	Button mAllDaySetClose;
+//	LinearLayout mMorningBar; // 早上显示栏
+//	LinearLayout mAfternoonBar; // 下午显示栏
+//	LinearLayout mNightBar; // 晚上显示栏
+//	LinearLayout mMorningSSet; // 早上设置栏
+//	LinearLayout mAfternoonSet; // 下午设置栏
+//	LinearLayout mNightSet; // 晚上设置栏
+//	RelativeLayout mMorSelectAll; // 早上时间全选
+//	RelativeLayout mAftSelectAll; // 下午时间全选
+//	RelativeLayout mNigSelectAll; // 晚上时间全选
+//	ImageView mMorSelectAllImg;
+//	ImageView mAftSelectAllImg;
+//	ImageView mNigSelectAllImg;
+//	TextView mMorSelectAllTv;
+//	TextView mAftSelectAllTv;
+//	TextView mNigSelectAllTv;
+//	View mMorPoint;
+//	TextView mMorTime;
+//	ImageView mMorArrow;
+//	View mAftPoint;
+//	TextView mAftTime;
+//	ImageView mAftArrow;
+//	View mNigPoint;
+//	TextView mNigTime;
+//	ImageView mNigArrow;
+//	Button mAllDaySetClose;
 	LinearLayout mOnClassLayout;
 	LinearLayout mRestLayout;
 	RelativeLayout mArrowUp;
 	/************* MORNING TIME *********/
-	private TextView mFiveTime;
-	private TextView mSixTime;
-	private TextView mSevenTime;
-	private TextView mEightTime;
-	private TextView mNineTime;
-	private TextView mTenTime;
-	private TextView mElevenTime;
-	private TextView mFivePrice;
-	private TextView mSixPrice;
-	private TextView mSevenPrice;
-	private TextView mEightPrice;
-	private TextView mNinePrice;
-	private TextView mTenPrice;
-	private TextView mElevenPrice;
-	private TextView mFiveSelect;
-	private TextView mSixSelect;
-	private TextView mSevenSelect;
-	private TextView mEightSelect;
-	private TextView mNineSelect;
-	private TextView mTenSelect;
-	private TextView mElevenSelect;
+//	private TextView mFiveTime;
+//	private TextView mSixTime;
+//	private TextView mSevenTime;
+//	private TextView mEightTime;
+//	private TextView mNineTime;
+//	private TextView mTenTime;
+//	private TextView mElevenTime;
+//	private TextView mFivePrice;
+//	private TextView mSixPrice;
+//	private TextView mSevenPrice;
+//	private TextView mEightPrice;
+//	private TextView mNinePrice;
+//	private TextView mTenPrice;
+//	private TextView mElevenPrice;
+//	private TextView mFiveSelect;
+//	private TextView mSixSelect;
+//	private TextView mSevenSelect;
+//	private TextView mEightSelect;
+//	private TextView mNineSelect;
+//	private TextView mTenSelect;
+//	private TextView mElevenSelect;
 	/************* AFTERNOON TIME *********/
-	private TextView mTwelveTime;
-	private TextView mThirteenTime;
-	private TextView mFourteenTime;
-	private TextView mFifteenTime;
-	private TextView mSixteenTime;
-	private TextView mSeventeenTime;
-	private TextView mEighteenTime;
-	private TextView mTwelvePrice;
-	private TextView mThirteenPrice;
-	private TextView mFourteenPrice;
-	private TextView mFifteenPrice;
-	private TextView mSixteenPrice;
-	private TextView mSeventeenPrice;
-	private TextView mEighteenPrice;
-	private TextView mTwelveSelect;
-	private TextView mThirteenSelect;
-	private TextView mFourteenSelect;
-	private TextView mFifteenSelect;
-	private TextView mSixteenSelect;
-	private TextView mSeventeenSelect;
-	private TextView mEighteenSelect;
+//	private TextView mTwelveTime;
+//	private TextView mThirteenTime;
+//	private TextView mFourteenTime;
+//	private TextView mFifteenTime;
+//	private TextView mSixteenTime;
+//	private TextView mSeventeenTime;
+//	private TextView mEighteenTime;
+//	private TextView mTwelvePrice;
+//	private TextView mThirteenPrice;
+//	private TextView mFourteenPrice;
+//	private TextView mFifteenPrice;
+//	private TextView mSixteenPrice;
+//	private TextView mSeventeenPrice;
+//	private TextView mEighteenPrice;
+//	private TextView mTwelveSelect;
+//	private TextView mThirteenSelect;
+//	private TextView mFourteenSelect;
+//	private TextView mFifteenSelect;
+//	private TextView mSixteenSelect;
+//	private TextView mSeventeenSelect;
+//	private TextView mEighteenSelect;
 	/************* NIGHT TIME *****************/
-	private TextView mNineteenTime;
-	private TextView mTwentyTime;
-	private TextView mTwentyOneTime;
-	private TextView mTwentyTwoTime;
-	private TextView mTwentyThreeTime;
-	private TextView mNineteenPrice;
-	private TextView mTwentyPrice;
-	private TextView mTwentyOnePrice;
-	private TextView mTwentyTwoPrice;
-	private TextView mTwentyThreePrice;
-	private TextView mNineteenSelect;
-	private TextView mTwentySelect;
-	private TextView mTwentyOneSelect;
-	private TextView mTwentyTwoSelect;
-	private TextView mTwentyThreeSelect;
+//	private TextView mNineteenTime;
+//	private TextView mTwentyTime;
+//	private TextView mTwentyOneTime;
+//	private TextView mTwentyTwoTime;
+//	private TextView mTwentyThreeTime;
+//	private TextView mNineteenPrice;
+//	private TextView mTwentyPrice;
+//	private TextView mTwentyOnePrice;
+//	private TextView mTwentyTwoPrice;
+//	private TextView mTwentyThreePrice;
+//	private TextView mNineteenSelect;
+//	private TextView mTwentySelect;
+//	private TextView mTwentyOneSelect;
+//	private TextView mTwentyTwoSelect;
+//	private TextView mTwentyThreeSelect;
 	// gears
-	private RelativeLayout mFiveGear;
-	private RelativeLayout mSixGear;
-	private RelativeLayout mSevenGear;
-	private RelativeLayout mEightGear;
-	private RelativeLayout mNineGear;
-	private RelativeLayout mTenGear;
-	private RelativeLayout mElevenGear;
-	private RelativeLayout mTwelveGear;
-	private RelativeLayout mThirteenGear;
-	private RelativeLayout mFourteenGear;
-	private RelativeLayout mFifteenGear;
-	private RelativeLayout mSixteenGear;
-	private RelativeLayout mSeventeenGear;
-	private RelativeLayout mEighteenGear;
-	private RelativeLayout mNineteenGear;
-	private RelativeLayout mTwentyGear;
-	private RelativeLayout mTwentyOneGear;
-	private RelativeLayout mTwentyTwoGear;
-	private RelativeLayout mTwentyThreeGear;
+//	private RelativeLayout mFiveGear;
+//	private RelativeLayout mSixGear;
+//	private RelativeLayout mSevenGear;
+//	private RelativeLayout mEightGear;
+//	private RelativeLayout mNineGear;
+//	private RelativeLayout mTenGear;
+//	private RelativeLayout mElevenGear;
+//	private RelativeLayout mTwelveGear;
+//	private RelativeLayout mThirteenGear;
+//	private RelativeLayout mFourteenGear;
+//	private RelativeLayout mFifteenGear;
+//	private RelativeLayout mSixteenGear;
+//	private RelativeLayout mSeventeenGear;
+//	private RelativeLayout mEighteenGear;
+//	private RelativeLayout mNineteenGear;
+//	private RelativeLayout mTwentyGear;
+//	private RelativeLayout mTwentyOneGear;
+//	private RelativeLayout mTwentyTwoGear;
+//	private RelativeLayout mTwentyThreeGear;
 	// 批量设置
-	private Button mMorMultiSet;
-	private Button mAftMultiSet;
-	private Button mNigMultiSet;
+//	private Button mMorMultiSet;
+//	private Button mAftMultiSet;
+//	private Button mNigMultiSet;
 	public LoadingDialog mLoadingDialog;// 普通加载对话框
 	// 判断手势用
 	private static final int SWIPE_MIN_DISTANCE = 120;
@@ -335,122 +334,122 @@ public class DateSetFragment extends Fragment {
 			mToLastMonth.setImageResource(R.drawable.triangle_grey);
 		}
 
-		mMorningBar = (LinearLayout) view.findViewById(R.id.mor_show_part);
-		mAfternoonBar = (LinearLayout) view.findViewById(R.id.afternoon_show_part);
-		mNightBar = (LinearLayout) view.findViewById(R.id.night_show_part);
-		mMorningSSet = (LinearLayout) view.findViewById(R.id.mor_hide_part);
-		mAfternoonSet = (LinearLayout) view.findViewById(R.id.afternoon_hide_part);
-		mNightSet = (LinearLayout) view.findViewById(R.id.night_hide_part);
-		mMorSelectAll = (RelativeLayout) mMorningSSet.findViewById(R.id.all_select_layout);
-		mAftSelectAll = (RelativeLayout) mAfternoonSet.findViewById(R.id.all_select_layout);
-		mNigSelectAll = (RelativeLayout) mNightSet.findViewById(R.id.all_select_layout);
-		mMorSelectAllImg = (ImageView) mMorningSSet.findViewById(R.id.all_select);
-		mAftSelectAllImg = (ImageView) mAfternoonSet.findViewById(R.id.all_select);
-		mNigSelectAllImg = (ImageView) mNightSet.findViewById(R.id.all_select);
-		mNigSelectAllImg.setSelected(true);
-		mAftSelectAllImg.setSelected(true);
-		mMorSelectAllImg.setSelected(true);
-		mMorSelectAllTv = (TextView) mMorningSSet.findViewById(R.id.all_select_tv);
-		mAftSelectAllTv = (TextView) mAfternoonSet.findViewById(R.id.all_select_tv);
-		mNigSelectAllTv = (TextView) mNightSet.findViewById(R.id.all_select_tv);
-		mMorSelectAllTv.setText("取消全选");
-		mAftSelectAllTv.setText("取消全选");
-		mNigSelectAllTv.setText("取消全选");
-		mMorPoint = (View) view.findViewById(R.id.mor_point);
-		mMorTime = (TextView) view.findViewById(R.id.mor_time);
-		mMorArrow = (ImageView) view.findViewById(R.id.mor_arrow);
-		mAftPoint = (View) view.findViewById(R.id.aft_point);
-		mAftTime = (TextView) view.findViewById(R.id.aft_time);
-		mAftArrow = (ImageView) view.findViewById(R.id.aft_arrow);
-		mNigPoint = (View) view.findViewById(R.id.nig_point);
-		mNigTime = (TextView) view.findViewById(R.id.nig_time);
-		mNigArrow = (ImageView) view.findViewById(R.id.nig_arrow);
-		mMorMultiSet = (Button) mMorningSSet.findViewById(R.id.multy_set);
-		mAftMultiSet = (Button) mAfternoonSet.findViewById(R.id.multy_set);
-		mNigMultiSet = (Button) mNightSet.findViewById(R.id.multy_set);
-		mAllDaySetClose = (Button) view.findViewById(R.id.close_class);
+//		mMorningBar = (LinearLayout) view.findViewById(R.id.mor_show_part);
+//		mAfternoonBar = (LinearLayout) view.findViewById(R.id.afternoon_show_part);
+//		mNightBar = (LinearLayout) view.findViewById(R.id.night_show_part);
+//		mMorningSSet = (LinearLayout) view.findViewById(R.id.mor_hide_part);
+//		mAfternoonSet = (LinearLayout) view.findViewById(R.id.afternoon_hide_part);
+//		mNightSet = (LinearLayout) view.findViewById(R.id.night_hide_part);
+//		mMorSelectAll = (RelativeLayout) mMorningSSet.findViewById(R.id.all_select_layout);
+//		mAftSelectAll = (RelativeLayout) mAfternoonSet.findViewById(R.id.all_select_layout);
+//		mNigSelectAll = (RelativeLayout) mNightSet.findViewById(R.id.all_select_layout);
+//		mMorSelectAllImg = (ImageView) mMorningSSet.findViewById(R.id.all_select);
+//		mAftSelectAllImg = (ImageView) mAfternoonSet.findViewById(R.id.all_select);
+//		mNigSelectAllImg = (ImageView) mNightSet.findViewById(R.id.all_select);
+//		mNigSelectAllImg.setSelected(true);
+//		mAftSelectAllImg.setSelected(true);
+//		mMorSelectAllImg.setSelected(true);
+//		mMorSelectAllTv = (TextView) mMorningSSet.findViewById(R.id.all_select_tv);
+//		mAftSelectAllTv = (TextView) mAfternoonSet.findViewById(R.id.all_select_tv);
+//		mNigSelectAllTv = (TextView) mNightSet.findViewById(R.id.all_select_tv);
+//		mMorSelectAllTv.setText("取消全选");
+//		mAftSelectAllTv.setText("取消全选");
+//		mNigSelectAllTv.setText("取消全选");
+//		mMorPoint = (View) view.findViewById(R.id.mor_point);
+//		mMorTime = (TextView) view.findViewById(R.id.mor_time);
+//		mMorArrow = (ImageView) view.findViewById(R.id.mor_arrow);
+//		mAftPoint = (View) view.findViewById(R.id.aft_point);
+//		mAftTime = (TextView) view.findViewById(R.id.aft_time);
+//		mAftArrow = (ImageView) view.findViewById(R.id.aft_arrow);
+//		mNigPoint = (View) view.findViewById(R.id.nig_point);
+//		mNigTime = (TextView) view.findViewById(R.id.nig_time);
+//		mNigArrow = (ImageView) view.findViewById(R.id.nig_arrow);
+//		mMorMultiSet = (Button) mMorningSSet.findViewById(R.id.multy_set);
+//		mAftMultiSet = (Button) mAfternoonSet.findViewById(R.id.multy_set);
+//		mNigMultiSet = (Button) mNightSet.findViewById(R.id.multy_set);
+//		mAllDaySetClose = (Button) view.findViewById(R.id.close_class);
 		mOnClassLayout = (LinearLayout) view.findViewById(R.id.onclass_layout);
 		mRestLayout = (LinearLayout) view.findViewById(R.id.rest_layout);
 		// morning time
-		mFiveTime = (TextView) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_time);
-		mFivePrice = (TextView) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_price);
-		mFiveSelect = (TextView) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_select);
-		mSixTime = (TextView) mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tg_time);
-		mSixPrice = (TextView) mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tg_price);
-		mSixSelect = (TextView) mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tg_select);
-		mSevenTime = (TextView) mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tg_time);
-		mSevenPrice = (TextView) mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tg_price);
-		mSevenSelect = (TextView) mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tg_select);
-		mEightTime = (TextView) mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tg_time);
-		mEightPrice = (TextView) mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tg_price);
-		mEightSelect = (TextView) mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tg_select);
-		mNineTime = (TextView) mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tg_time);
-		mNinePrice = (TextView) mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tg_price);
-		mNineSelect = (TextView) mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tg_select);
-		mTenTime = (TextView) mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tg_time);
-		mTenPrice = (TextView) mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tg_price);
-		mTenSelect = (TextView) mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tg_select);
-		mElevenTime = (TextView) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_time);
-		mElevenPrice = (TextView) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_price);
-		mElevenSelect = (TextView) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_select);
+//		mFiveTime = (TextView) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_time);
+//		mFivePrice = (TextView) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_price);
+//		mFiveSelect = (TextView) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_select);
+//		mSixTime = (TextView) mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tg_time);
+//		mSixPrice = (TextView) mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tg_price);
+//		mSixSelect = (TextView) mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tg_select);
+//		mSevenTime = (TextView) mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tg_time);
+//		mSevenPrice = (TextView) mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tg_price);
+//		mSevenSelect = (TextView) mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tg_select);
+//		mEightTime = (TextView) mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tg_time);
+//		mEightPrice = (TextView) mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tg_price);
+//		mEightSelect = (TextView) mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tg_select);
+//		mNineTime = (TextView) mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tg_time);
+//		mNinePrice = (TextView) mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tg_price);
+//		mNineSelect = (TextView) mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tg_select);
+//		mTenTime = (TextView) mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tg_time);
+//		mTenPrice = (TextView) mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tg_price);
+//		mTenSelect = (TextView) mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tg_select);
+//		mElevenTime = (TextView) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_time);
+//		mElevenPrice = (TextView) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_price);
+//		mElevenSelect = (TextView) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_select);
 		// afternoon time
-		mTwelveTime = (TextView) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_time);
-		mTwelvePrice = (TextView) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_price);
-		mTwelveSelect = (TextView) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_select);
-		mThirteenTime = (TextView) mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tg_time);
-		mThirteenPrice = (TextView) mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tg_price);
-		mThirteenSelect = (TextView) mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tg_select);
-		mFourteenTime = (TextView) mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tg_time);
-		mFourteenPrice = (TextView) mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tg_price);
-		mFourteenSelect = (TextView) mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tg_select);
-		mFifteenTime = (TextView) mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tg_time);
-		mFifteenPrice = (TextView) mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tg_price);
-		mFifteenSelect = (TextView) mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tg_select);
-		mSixteenTime = (TextView) mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tg_time);
-		mSixteenPrice = (TextView) mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tg_price);
-		mSixteenSelect = (TextView) mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tg_select);
-		mSeventeenTime = (TextView) mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tg_time);
-		mSeventeenPrice = (TextView) mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tg_price);
-		mSeventeenSelect = (TextView) mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tg_select);
-		mEighteenTime = (TextView) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_time);
-		mEighteenPrice = (TextView) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_price);
-		mEighteenSelect = (TextView) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_select);
+//		mTwelveTime = (TextView) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_time);
+//		mTwelvePrice = (TextView) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_price);
+//		mTwelveSelect = (TextView) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_select);
+//		mThirteenTime = (TextView) mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tg_time);
+//		mThirteenPrice = (TextView) mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tg_price);
+//		mThirteenSelect = (TextView) mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tg_select);
+//		mFourteenTime = (TextView) mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tg_time);
+//		mFourteenPrice = (TextView) mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tg_price);
+//		mFourteenSelect = (TextView) mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tg_select);
+//		mFifteenTime = (TextView) mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tg_time);
+//		mFifteenPrice = (TextView) mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tg_price);
+//		mFifteenSelect = (TextView) mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tg_select);
+//		mSixteenTime = (TextView) mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tg_time);
+//		mSixteenPrice = (TextView) mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tg_price);
+//		mSixteenSelect = (TextView) mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tg_select);
+//		mSeventeenTime = (TextView) mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tg_time);
+//		mSeventeenPrice = (TextView) mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tg_price);
+//		mSeventeenSelect = (TextView) mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tg_select);
+//		mEighteenTime = (TextView) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_time);
+//		mEighteenPrice = (TextView) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_price);
+//		mEighteenSelect = (TextView) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_select);
 		// night time
-		mNineteenTime = (TextView) mNightSet.findViewById(R.id.nineteen_part).findViewById(R.id.tg_time);
-		mTwentyTime = (TextView) mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tg_time);
-		mTwentyOneTime = (TextView) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_time);
-		mTwentyTwoTime = (TextView) mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tg_time);
-		mTwentyThreeTime = (TextView) mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tg_time);
-		mNineteenPrice = (TextView) mNightSet.findViewById(R.id.nineteen_part).findViewById(R.id.tg_price);
-		mTwentyPrice = (TextView) mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tg_price);
-		mTwentyOnePrice = (TextView) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_price);
-		mTwentyTwoPrice = (TextView) mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tg_price);
-		mTwentyThreePrice = (TextView) mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tg_price);
-		mNineteenSelect = (TextView) mNightSet.findViewById(R.id.nineteen_part).findViewById(R.id.tg_select);
-		mTwentySelect = (TextView) mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tg_select);
-		mTwentyOneSelect = (TextView) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_select);
-		mTwentyTwoSelect = (TextView) mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tg_select);
-		mTwentyThreeSelect = (TextView) mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tg_select);
+//		mNineteenTime = (TextView) mNightSet.findViewById(R.id.nineteen_part).findViewById(R.id.tg_time);
+//		mTwentyTime = (TextView) mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tg_time);
+//		mTwentyOneTime = (TextView) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_time);
+//		mTwentyTwoTime = (TextView) mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tg_time);
+//		mTwentyThreeTime = (TextView) mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tg_time);
+//		mNineteenPrice = (TextView) mNightSet.findViewById(R.id.nineteen_part).findViewById(R.id.tg_price);
+//		mTwentyPrice = (TextView) mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tg_price);
+//		mTwentyOnePrice = (TextView) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_price);
+//		mTwentyTwoPrice = (TextView) mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tg_price);
+//		mTwentyThreePrice = (TextView) mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tg_price);
+//		mNineteenSelect = (TextView) mNightSet.findViewById(R.id.nineteen_part).findViewById(R.id.tg_select);
+//		mTwentySelect = (TextView) mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tg_select);
+//		mTwentyOneSelect = (TextView) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_select);
+//		mTwentyTwoSelect = (TextView) mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tg_select);
+//		mTwentyThreeSelect = (TextView) mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tg_select);
 		// gears
-		mFiveGear = (RelativeLayout) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_geer);
-		mSixGear = (RelativeLayout) mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tg_geer);
-		mSevenGear = (RelativeLayout) mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tg_geer);
-		mEightGear = (RelativeLayout) mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tg_geer);
-		mNineGear = (RelativeLayout) mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tg_geer);
-		mTenGear = (RelativeLayout) mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tg_geer);
-		mElevenGear = (RelativeLayout) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_geer);
-		mTwelveGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_geer);
-		mThirteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tg_geer);
-		mFourteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tg_geer);
-		mFifteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tg_geer);
-		mSixteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tg_geer);
-		mSeventeenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tg_geer);
-		mEighteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_geer);
-		mNineteenGear = (RelativeLayout) mNightSet.findViewById(R.id.nineteen_part).findViewById(R.id.tg_geer);
-		mTwentyGear = (RelativeLayout) mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tg_geer);
-		mTwentyOneGear = (RelativeLayout) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_geer);
-		mTwentyTwoGear = (RelativeLayout) mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tg_geer);
-		mTwentyThreeGear = (RelativeLayout) mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tg_geer);
+//		mFiveGear = (RelativeLayout) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_geer);
+//		mSixGear = (RelativeLayout) mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tg_geer);
+//		mSevenGear = (RelativeLayout) mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tg_geer);
+//		mEightGear = (RelativeLayout) mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tg_geer);
+//		mNineGear = (RelativeLayout) mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tg_geer);
+//		mTenGear = (RelativeLayout) mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tg_geer);
+//		mElevenGear = (RelativeLayout) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_geer);
+//		mTwelveGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_geer);
+//		mThirteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tg_geer);
+//		mFourteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tg_geer);
+//		mFifteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tg_geer);
+//		mSixteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tg_geer);
+//		mSeventeenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tg_geer);
+//		mEighteenGear = (RelativeLayout) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_geer);
+//		mNineteenGear = (RelativeLayout) mNightSet.findViewById(R.id.nineteen_part).findViewById(R.id.tg_geer);
+//		mTwentyGear = (RelativeLayout) mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tg_geer);
+//		mTwentyOneGear = (RelativeLayout) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_geer);
+//		mTwentyTwoGear = (RelativeLayout) mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tg_geer);
+//		mTwentyThreeGear = (RelativeLayout) mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tg_geer);
 
 		mHangingArrow = (RelativeLayout) view.findViewById(R.id.hanging_arrow_part);
 		mHangingContent = (LinearLayout) view.findViewById(R.id.hanging_content);
@@ -482,93 +481,93 @@ public class DateSetFragment extends Fragment {
 		/*
 		 * click morning to set morning time for training
 		 */
-		mMorningBar.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (mMorningSSet.getVisibility() == View.VISIBLE) {
-					mMorningSSet.setVisibility(View.GONE);
-					mMorArrow.setImageResource(R.drawable.arrow_grey);
-					mMorTime.startAnimation(mAppearAnimation);
-				} else {
-					if (mAfternoonSet.getVisibility() == View.VISIBLE) {
-						mAfternoonSet.setVisibility(View.GONE);
-						mAftArrow.setImageResource(R.drawable.arrow_grey);
-						mAftTime.startAnimation(mAppearAnimation);
-					}
-					if (mNightSet.getVisibility() == View.VISIBLE) {
-						mNightSet.setVisibility(View.GONE);
-						mNigArrow.setImageResource(R.drawable.arrow_grey);
-						mNigTime.startAnimation(mAppearAnimation);
-					}
-					mMorningSSet.setVisibility(View.VISIBLE);
-					mMorArrow.setImageResource(R.drawable.arrow_black_down);
-					mMorTime.startAnimation(mDisappearAnimation);
-				}
-			}
-		});
+//		mMorningBar.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (mMorningSSet.getVisibility() == View.VISIBLE) {
+//					mMorningSSet.setVisibility(View.GONE);
+//					mMorArrow.setImageResource(R.drawable.arrow_grey);
+//					mMorTime.startAnimation(mAppearAnimation);
+//				} else {
+//					if (mAfternoonSet.getVisibility() == View.VISIBLE) {
+//						mAfternoonSet.setVisibility(View.GONE);
+//						mAftArrow.setImageResource(R.drawable.arrow_grey);
+//						mAftTime.startAnimation(mAppearAnimation);
+//					}
+//					if (mNightSet.getVisibility() == View.VISIBLE) {
+//						mNightSet.setVisibility(View.GONE);
+//						mNigArrow.setImageResource(R.drawable.arrow_grey);
+//						mNigTime.startAnimation(mAppearAnimation);
+//					}
+//					mMorningSSet.setVisibility(View.VISIBLE);
+//					mMorArrow.setImageResource(R.drawable.arrow_black_down);
+//					mMorTime.startAnimation(mDisappearAnimation);
+//				}
+//			}
+//		});
 
 		/*
 		 * click afternoon to set afternoon time for training
 		 */
-		mAfternoonBar.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (mAfternoonSet.getVisibility() == View.VISIBLE) {
-					mAfternoonSet.setVisibility(View.GONE);
-					mAftArrow.setImageResource(R.drawable.arrow_grey);
-					// mAftTime.setVisibility(View.VISIBLE);
-					mAftTime.startAnimation(mAppearAnimation);
-				} else {
-					if (mMorningSSet.getVisibility() == View.VISIBLE) {
-						mMorningSSet.setVisibility(View.GONE);
-						mMorArrow.setImageResource(R.drawable.arrow_grey);
-						mMorTime.startAnimation(mAppearAnimation);
-					}
-					if (mNightSet.getVisibility() == View.VISIBLE) {
-						mNightSet.setVisibility(View.GONE);
-						mNigArrow.setImageResource(R.drawable.arrow_grey);
-						mNigTime.startAnimation(mAppearAnimation);
-					}
-					mAfternoonSet.setVisibility(View.VISIBLE);
-					mAftArrow.setImageResource(R.drawable.arrow_black_down);
-					// mAftTime.setVisibility(View.INVISIBLE);
-					mAftTime.startAnimation(mDisappearAnimation);
-				}
-			}
-		});
-
-		/*
-		 * click night to set night time for training
-		 */
-		mNightBar.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (mNightSet.getVisibility() == View.VISIBLE) {
-					mNightSet.setVisibility(View.GONE);
-					mNigArrow.setImageResource(R.drawable.arrow_grey);
-					// mNigTime.setVisibility(View.VISIBLE);
-					mNigTime.startAnimation(mAppearAnimation);
-				} else {
-					if (mAfternoonSet.getVisibility() == View.VISIBLE) {
-						mAfternoonSet.setVisibility(View.GONE);
-						mAftArrow.setImageResource(R.drawable.arrow_grey);
-						mAftTime.startAnimation(mAppearAnimation);
-					}
-					if (mMorningSSet.getVisibility() == View.VISIBLE) {
-						mMorningSSet.setVisibility(View.GONE);
-						mMorArrow.setImageResource(R.drawable.arrow_grey);
-						mMorTime.startAnimation(mAppearAnimation);
-					}
-					mNightSet.setVisibility(View.VISIBLE);
-					mNigArrow.setImageResource(R.drawable.arrow_black_down);
-					// mNigTime.setVisibility(View.INVISIBLE);
-					mNigTime.startAnimation(mDisappearAnimation);
-				}
-			}
-		});
+//		mAfternoonBar.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (mAfternoonSet.getVisibility() == View.VISIBLE) {
+//					mAfternoonSet.setVisibility(View.GONE);
+//					mAftArrow.setImageResource(R.drawable.arrow_grey);
+//					// mAftTime.setVisibility(View.VISIBLE);
+//					mAftTime.startAnimation(mAppearAnimation);
+//				} else {
+//					if (mMorningSSet.getVisibility() == View.VISIBLE) {
+//						mMorningSSet.setVisibility(View.GONE);
+////						mMorArrow.setImageResource(R.drawable.arrow_grey);
+////						mMorTime.startAnimation(mAppearAnimation);
+//					}
+//					if (mNightSet.getVisibility() == View.VISIBLE) {
+//						mNightSet.setVisibility(View.GONE);
+//						mNigArrow.setImageResource(R.drawable.arrow_grey);
+//						mNigTime.startAnimation(mAppearAnimation);
+//					}
+//					mAfternoonSet.setVisibility(View.VISIBLE);
+//					mAftArrow.setImageResource(R.drawable.arrow_black_down);
+//					// mAftTime.setVisibility(View.INVISIBLE);
+//					mAftTime.startAnimation(mDisappearAnimation);
+//				}
+//			}
+//		});
+//
+//		/*
+//		 * click night to set night time for training
+//		 */
+//		mNightBar.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (mNightSet.getVisibility() == View.VISIBLE) {
+//					mNightSet.setVisibility(View.GONE);
+//					mNigArrow.setImageResource(R.drawable.arrow_grey);
+//					// mNigTime.setVisibility(View.VISIBLE);
+//					mNigTime.startAnimation(mAppearAnimation);
+//				} else {
+//					if (mAfternoonSet.getVisibility() == View.VISIBLE) {
+//						mAfternoonSet.setVisibility(View.GONE);
+//						mAftArrow.setImageResource(R.drawable.arrow_grey);
+//						mAftTime.startAnimation(mAppearAnimation);
+//					}
+//					if (mMorningSSet.getVisibility() == View.VISIBLE) {
+//						mMorningSSet.setVisibility(View.GONE);
+////						mMorArrow.setImageResource(R.drawable.arrow_grey);
+////						mMorTime.startAnimation(mAppearAnimation);
+//					}
+//					mNightSet.setVisibility(View.VISIBLE);
+//					mNigArrow.setImageResource(R.drawable.arrow_black_down);
+//					// mNigTime.setVisibility(View.INVISIBLE);
+//					mNigTime.startAnimation(mDisappearAnimation);
+//				}
+//			}
+//		});
 
 		mScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
 
@@ -608,1473 +607,1473 @@ public class DateSetFragment extends Fragment {
 			}
 		});
 
-		mMorSelectAll.setOnClickListener(new OnSingleClickListener() {
+//		mMorSelectAll.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (mMorSelectAllImg.isSelected()) {
+//					mMorSelectAllImg.setSelected(false);
+//					mMorSelectAllTv.setText("全选");
+//					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
+//						/*
+//						 * 今天
+//						 */
+//						if (mDeadHour < 5 && !bookArray[0]) {
+//							mFiveSelect.setVisibility(View.INVISIBLE);
+//							selectArray[0] = true;
+//						}
+//						if (mDeadHour < 6 && !bookArray[1]) {
+//							mSixSelect.setVisibility(View.INVISIBLE);
+//							selectArray[1] = true;
+//						}
+//						if (mDeadHour < 7 && !bookArray[2]) {
+//							mSevenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[2] = true;
+//						}
+//						if (mDeadHour < 8 && !bookArray[3]) {
+//							mEightSelect.setVisibility(View.INVISIBLE);
+//							selectArray[3] = true;
+//						}
+//						if (mDeadHour < 9 && !bookArray[4]) {
+//							mNineSelect.setVisibility(View.INVISIBLE);
+//							selectArray[4] = true;
+//						}
+//						if (mDeadHour < 10 && !bookArray[5]) {
+//							mTenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[5] = true;
+//						}
+//						if (mDeadHour < 11 && !bookArray[6]) {
+//							mElevenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[6] = true;
+//						}
+//					} else {
+//						/*
+//						 * 明天过后
+//						 */
+//						if (!bookArray[0]) {
+//							mFiveSelect.setVisibility(View.INVISIBLE);
+//							selectArray[0] = true;
+//						}
+//						if (!bookArray[1]) {
+//							mSixSelect.setVisibility(View.INVISIBLE);
+//							selectArray[1] = true;
+//						}
+//						if (!bookArray[2]) {
+//							mSevenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[2] = true;
+//						}
+//						if (!bookArray[3]) {
+//							mEightSelect.setVisibility(View.INVISIBLE);
+//							selectArray[3] = true;
+//						}
+//						if (!bookArray[4]) {
+//							mNineSelect.setVisibility(View.INVISIBLE);
+//							selectArray[4] = true;
+//						}
+//						if (!bookArray[5]) {
+//							mTenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[5] = true;
+//						}
+//						if (!bookArray[6]) {
+//							mElevenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[6] = true;
+//						}
+//					}
+//				} else {
+//					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
+//						/*
+//						 * 今天
+//						 */
+//						if (mDeadHour < 5 && !bookArray[0]) {
+//							mFiveSelect.setVisibility(View.VISIBLE);
+//							selectArray[0] = false;
+//						}
+//						if (mDeadHour < 6 && !bookArray[1]) {
+//							mSixSelect.setVisibility(View.VISIBLE);
+//							selectArray[1] = false;
+//						}
+//						if (mDeadHour < 7 && !bookArray[2]) {
+//							mSevenSelect.setVisibility(View.VISIBLE);
+//							selectArray[2] = false;
+//						}
+//						if (mDeadHour < 8 && !bookArray[3]) {
+//							mEightSelect.setVisibility(View.VISIBLE);
+//							selectArray[3] = false;
+//						}
+//						if (mDeadHour < 9 && !bookArray[4]) {
+//							mNineSelect.setVisibility(View.VISIBLE);
+//							selectArray[4] = false;
+//						}
+//						if (mDeadHour < 10 && !bookArray[5]) {
+//							mTenSelect.setVisibility(View.VISIBLE);
+//							selectArray[5] = false;
+//						}
+//						if (mDeadHour < 11 && !bookArray[6]) {
+//							mElevenSelect.setVisibility(View.VISIBLE);
+//							selectArray[6] = false;
+//						}
+//					} else {
+//						if (!bookArray[0]) {
+//							mFiveSelect.setVisibility(View.VISIBLE);
+//							selectArray[0] = false;
+//						}
+//						if (!bookArray[1]) {
+//							mSixSelect.setVisibility(View.VISIBLE);
+//							selectArray[1] = false;
+//						}
+//						if (!bookArray[2]) {
+//							mSevenSelect.setVisibility(View.VISIBLE);
+//							selectArray[2] = false;
+//						}
+//						if (!bookArray[3]) {
+//							mEightSelect.setVisibility(View.VISIBLE);
+//							selectArray[3] = false;
+//						}
+//						if (!bookArray[4]) {
+//							mNineSelect.setVisibility(View.VISIBLE);
+//							selectArray[4] = false;
+//						}
+//						if (!bookArray[5]) {
+//							mTenSelect.setVisibility(View.VISIBLE);
+//							selectArray[5] = false;
+//						}
+//						if (!bookArray[6]) {
+//							mElevenSelect.setVisibility(View.VISIBLE);
+//							selectArray[6] = false;
+//						}
+//					}
+//
+//					boolean hasSelect = false;
+//					for (int i = 0; i < 7; i++) {
+//						if (!selectArray[i]) {
+//							hasSelect = true;
+//							break;
+//						}
+//					}
+//					if (hasSelect) {
+//						mMorSelectAllImg.setSelected(true);
+//						mMorSelectAllTv.setText("取消全选");
+//					} else {
+//						Toast.makeText(mActivity, "当前时间段不可用", Toast.LENGTH_SHORT).show();
+//					}
+//				}
+//			}
+//		});
 
-			@Override
-			public void doOnClick(View v) {
-				if (mMorSelectAllImg.isSelected()) {
-					mMorSelectAllImg.setSelected(false);
-					mMorSelectAllTv.setText("全选");
-					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
-						/*
-						 * 今天
-						 */
-						if (mDeadHour < 5 && !bookArray[0]) {
-							mFiveSelect.setVisibility(View.INVISIBLE);
-							selectArray[0] = true;
-						}
-						if (mDeadHour < 6 && !bookArray[1]) {
-							mSixSelect.setVisibility(View.INVISIBLE);
-							selectArray[1] = true;
-						}
-						if (mDeadHour < 7 && !bookArray[2]) {
-							mSevenSelect.setVisibility(View.INVISIBLE);
-							selectArray[2] = true;
-						}
-						if (mDeadHour < 8 && !bookArray[3]) {
-							mEightSelect.setVisibility(View.INVISIBLE);
-							selectArray[3] = true;
-						}
-						if (mDeadHour < 9 && !bookArray[4]) {
-							mNineSelect.setVisibility(View.INVISIBLE);
-							selectArray[4] = true;
-						}
-						if (mDeadHour < 10 && !bookArray[5]) {
-							mTenSelect.setVisibility(View.INVISIBLE);
-							selectArray[5] = true;
-						}
-						if (mDeadHour < 11 && !bookArray[6]) {
-							mElevenSelect.setVisibility(View.INVISIBLE);
-							selectArray[6] = true;
-						}
-					} else {
-						/*
-						 * 明天过后
-						 */
-						if (!bookArray[0]) {
-							mFiveSelect.setVisibility(View.INVISIBLE);
-							selectArray[0] = true;
-						}
-						if (!bookArray[1]) {
-							mSixSelect.setVisibility(View.INVISIBLE);
-							selectArray[1] = true;
-						}
-						if (!bookArray[2]) {
-							mSevenSelect.setVisibility(View.INVISIBLE);
-							selectArray[2] = true;
-						}
-						if (!bookArray[3]) {
-							mEightSelect.setVisibility(View.INVISIBLE);
-							selectArray[3] = true;
-						}
-						if (!bookArray[4]) {
-							mNineSelect.setVisibility(View.INVISIBLE);
-							selectArray[4] = true;
-						}
-						if (!bookArray[5]) {
-							mTenSelect.setVisibility(View.INVISIBLE);
-							selectArray[5] = true;
-						}
-						if (!bookArray[6]) {
-							mElevenSelect.setVisibility(View.INVISIBLE);
-							selectArray[6] = true;
-						}
-					}
-				} else {
-					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
-						/*
-						 * 今天
-						 */
-						if (mDeadHour < 5 && !bookArray[0]) {
-							mFiveSelect.setVisibility(View.VISIBLE);
-							selectArray[0] = false;
-						}
-						if (mDeadHour < 6 && !bookArray[1]) {
-							mSixSelect.setVisibility(View.VISIBLE);
-							selectArray[1] = false;
-						}
-						if (mDeadHour < 7 && !bookArray[2]) {
-							mSevenSelect.setVisibility(View.VISIBLE);
-							selectArray[2] = false;
-						}
-						if (mDeadHour < 8 && !bookArray[3]) {
-							mEightSelect.setVisibility(View.VISIBLE);
-							selectArray[3] = false;
-						}
-						if (mDeadHour < 9 && !bookArray[4]) {
-							mNineSelect.setVisibility(View.VISIBLE);
-							selectArray[4] = false;
-						}
-						if (mDeadHour < 10 && !bookArray[5]) {
-							mTenSelect.setVisibility(View.VISIBLE);
-							selectArray[5] = false;
-						}
-						if (mDeadHour < 11 && !bookArray[6]) {
-							mElevenSelect.setVisibility(View.VISIBLE);
-							selectArray[6] = false;
-						}
-					} else {
-						if (!bookArray[0]) {
-							mFiveSelect.setVisibility(View.VISIBLE);
-							selectArray[0] = false;
-						}
-						if (!bookArray[1]) {
-							mSixSelect.setVisibility(View.VISIBLE);
-							selectArray[1] = false;
-						}
-						if (!bookArray[2]) {
-							mSevenSelect.setVisibility(View.VISIBLE);
-							selectArray[2] = false;
-						}
-						if (!bookArray[3]) {
-							mEightSelect.setVisibility(View.VISIBLE);
-							selectArray[3] = false;
-						}
-						if (!bookArray[4]) {
-							mNineSelect.setVisibility(View.VISIBLE);
-							selectArray[4] = false;
-						}
-						if (!bookArray[5]) {
-							mTenSelect.setVisibility(View.VISIBLE);
-							selectArray[5] = false;
-						}
-						if (!bookArray[6]) {
-							mElevenSelect.setVisibility(View.VISIBLE);
-							selectArray[6] = false;
-						}
-					}
-
-					boolean hasSelect = false;
-					for (int i = 0; i < 7; i++) {
-						if (!selectArray[i]) {
-							hasSelect = true;
-							break;
-						}
-					}
-					if (hasSelect) {
-						mMorSelectAllImg.setSelected(true);
-						mMorSelectAllTv.setText("取消全选");
-					} else {
-						Toast.makeText(mActivity, "当前时间段不可用", Toast.LENGTH_SHORT).show();
-					}
-				}
-			}
-		});
-
-		mAftSelectAll.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (mAftSelectAllImg.isSelected()) {
-					mAftSelectAllImg.setSelected(false);
-					mAftSelectAllTv.setText("全选");
-
-					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
-						/*
-						 * 今天
-						 */
-
-						if (mDeadHour < 12 && !bookArray[7]) {
-							mTwelveSelect.setVisibility(View.INVISIBLE);
-							selectArray[7] = true;
-						}
-						if (mDeadHour < 13 && !bookArray[8]) {
-							mThirteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[8] = true;
-						}
-						if (mDeadHour < 14 && !bookArray[9]) {
-							mFourteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[9] = true;
-						}
-						if (mDeadHour < 15 && !bookArray[10]) {
-							mFifteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[10] = true;
-						}
-						if (mDeadHour < 16 && !bookArray[11]) {
-							mSixteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[11] = true;
-						}
-						if (mDeadHour < 17 && !bookArray[12]) {
-							mSeventeenSelect.setVisibility(View.INVISIBLE);
-							selectArray[12] = true;
-						}
-						if (mDeadHour < 18 && !bookArray[13]) {
-							mEighteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[13] = true;
-						}
-					} else {
-						if (!bookArray[7]) {
-							mTwelveSelect.setVisibility(View.INVISIBLE);
-							selectArray[7] = true;
-						}
-						if (!bookArray[8]) {
-							mThirteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[8] = true;
-						}
-						if (!bookArray[9]) {
-							mFourteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[9] = true;
-						}
-						if (!bookArray[10]) {
-							mFifteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[10] = true;
-						}
-						if (!bookArray[11]) {
-							mSixteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[11] = true;
-						}
-						if (!bookArray[12]) {
-							mSeventeenSelect.setVisibility(View.INVISIBLE);
-							selectArray[12] = true;
-						}
-						if (!bookArray[13]) {
-							mEighteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[13] = true;
-						}
-					}
-				} else {
-					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
-						/*
-						 * 今天
-						 */
-
-						if (mDeadHour < 12 && !bookArray[7]) {
-							mTwelveSelect.setVisibility(View.VISIBLE);
-							selectArray[7] = false;
-						}
-						if (mDeadHour < 13 && !bookArray[8]) {
-							mThirteenSelect.setVisibility(View.VISIBLE);
-							selectArray[8] = false;
-						}
-						if (mDeadHour < 14 && !bookArray[9]) {
-							mFourteenSelect.setVisibility(View.VISIBLE);
-							selectArray[9] = false;
-						}
-						if (mDeadHour < 15 && !bookArray[10]) {
-							mFifteenSelect.setVisibility(View.VISIBLE);
-							selectArray[10] = false;
-						}
-						if (mDeadHour < 16 && !bookArray[11]) {
-							mSixteenSelect.setVisibility(View.VISIBLE);
-							selectArray[11] = false;
-						}
-						if (mDeadHour < 17 && !bookArray[12]) {
-							mSeventeenSelect.setVisibility(View.VISIBLE);
-							selectArray[12] = false;
-						}
-						if (mDeadHour < 18 && !bookArray[13]) {
-							mEighteenSelect.setVisibility(View.VISIBLE);
-							selectArray[13] = false;
-						}
-					} else {
-						if (!bookArray[7]) {
-							mTwelveSelect.setVisibility(View.VISIBLE);
-							selectArray[7] = false;
-						}
-						if (!bookArray[8]) {
-							mThirteenSelect.setVisibility(View.VISIBLE);
-							selectArray[8] = false;
-						}
-						if (!bookArray[9]) {
-							mFourteenSelect.setVisibility(View.VISIBLE);
-							selectArray[9] = false;
-						}
-						if (!bookArray[10]) {
-							mFifteenSelect.setVisibility(View.VISIBLE);
-							selectArray[10] = false;
-						}
-						if (!bookArray[11]) {
-							mSixteenSelect.setVisibility(View.VISIBLE);
-							selectArray[11] = false;
-						}
-						if (!bookArray[12]) {
-							mSeventeenSelect.setVisibility(View.VISIBLE);
-							selectArray[12] = false;
-						}
-						if (!bookArray[13]) {
-							mEighteenSelect.setVisibility(View.VISIBLE);
-							selectArray[13] = false;
-						}
-					}
-
-					boolean hasSelect = false;
-					for (int i = 7; i < 14; i++) {
-						if (!selectArray[i]) {
-							hasSelect = true;
-							break;
-						}
-					}
-					if (hasSelect) {
-						mAftSelectAllImg.setSelected(true);
-						mAftSelectAllTv.setText("取消全选");
-					} else {
-						Toast.makeText(mActivity, "当前时间段不可用", Toast.LENGTH_SHORT).show();
-					}
-				}
-			}
-		});
-
-		mNigSelectAll.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (mNigSelectAllImg.isSelected()) {
-					mNigSelectAllImg.setSelected(false);
-					mNigSelectAllTv.setText("全选");
-
-					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
-						if (mDeadHour < 19 && !bookArray[14]) {
-							mNineteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[14] = true;
-						}
-						if (mDeadHour < 20 && !bookArray[15]) {
-							mTwentySelect.setVisibility(View.INVISIBLE);
-							selectArray[15] = true;
-						}
-						if (mDeadHour < 21 && !bookArray[16]) {
-							mTwentyOneSelect.setVisibility(View.INVISIBLE);
-							selectArray[16] = true;
-						}
-						if (mDeadHour < 22 && !bookArray[17]) {
-							mTwentyTwoSelect.setVisibility(View.INVISIBLE);
-							selectArray[17] = true;
-						}
-						if (mDeadHour < 23 && !bookArray[18]) {
-							mTwentyThreeSelect.setVisibility(View.INVISIBLE);
-							selectArray[18] = true;
-						}
-					} else {
-						if (!bookArray[14]) {
-							mNineteenSelect.setVisibility(View.INVISIBLE);
-							selectArray[14] = true;
-						}
-						if (!bookArray[15]) {
-							mTwentySelect.setVisibility(View.INVISIBLE);
-							selectArray[15] = true;
-						}
-						if (!bookArray[16]) {
-							mTwentyOneSelect.setVisibility(View.INVISIBLE);
-							selectArray[16] = true;
-						}
-						if (!bookArray[17]) {
-							mTwentyTwoSelect.setVisibility(View.INVISIBLE);
-							selectArray[17] = true;
-						}
-						if (!bookArray[18]) {
-							mTwentyThreeSelect.setVisibility(View.INVISIBLE);
-							selectArray[18] = true;
-						}
-					}
-				} else {
-					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
-						if (mDeadHour < 19 && !bookArray[14]) {
-							mNineteenSelect.setVisibility(View.VISIBLE);
-							selectArray[14] = false;
-						}
-						if (mDeadHour < 20 && !bookArray[15]) {
-							mTwentySelect.setVisibility(View.VISIBLE);
-							selectArray[15] = false;
-						}
-						if (mDeadHour < 21 && !bookArray[16]) {
-							mTwentyOneSelect.setVisibility(View.VISIBLE);
-							selectArray[16] = false;
-						}
-						if (mDeadHour < 22 && !bookArray[17]) {
-							mTwentyTwoSelect.setVisibility(View.VISIBLE);
-							selectArray[17] = false;
-						}
-						if (mDeadHour < 23 && !bookArray[18]) {
-							mTwentyThreeSelect.setVisibility(View.VISIBLE);
-							selectArray[18] = false;
-						}
-					} else {
-						if (!bookArray[14]) {
-							mNineteenSelect.setVisibility(View.VISIBLE);
-							selectArray[14] = false;
-						}
-						if (!bookArray[15]) {
-							mTwentySelect.setVisibility(View.VISIBLE);
-							selectArray[15] = false;
-						}
-						if (!bookArray[16]) {
-							mTwentyOneSelect.setVisibility(View.VISIBLE);
-							selectArray[16] = false;
-						}
-						if (!bookArray[17]) {
-							mTwentyTwoSelect.setVisibility(View.VISIBLE);
-							selectArray[17] = false;
-						}
-						if (!bookArray[18]) {
-							mTwentyThreeSelect.setVisibility(View.VISIBLE);
-							selectArray[18] = false;
-						}
-					}
-
-					boolean hasSelect = false;
-					for (int i = 14; i < 19; i++) {
-						if (!selectArray[i]) {
-							hasSelect = true;
-							break;
-						}
-					}
-					if (hasSelect) {
-						mNigSelectAllImg.setSelected(true);
-						mNigSelectAllTv.setText("取消全选");
-					} else {
-						Toast.makeText(mActivity, "当前时间段不可用", Toast.LENGTH_SHORT).show();
-					}
-				}
-			}
-		});
+//		mAftSelectAll.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (mAftSelectAllImg.isSelected()) {
+//					mAftSelectAllImg.setSelected(false);
+//					mAftSelectAllTv.setText("全选");
+//
+//					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
+//						/*
+//						 * 今天
+//						 */
+//
+//						if (mDeadHour < 12 && !bookArray[7]) {
+//							mTwelveSelect.setVisibility(View.INVISIBLE);
+//							selectArray[7] = true;
+//						}
+//						if (mDeadHour < 13 && !bookArray[8]) {
+//							mThirteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[8] = true;
+//						}
+//						if (mDeadHour < 14 && !bookArray[9]) {
+//							mFourteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[9] = true;
+//						}
+//						if (mDeadHour < 15 && !bookArray[10]) {
+//							mFifteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[10] = true;
+//						}
+//						if (mDeadHour < 16 && !bookArray[11]) {
+//							mSixteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[11] = true;
+//						}
+//						if (mDeadHour < 17 && !bookArray[12]) {
+//							mSeventeenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[12] = true;
+//						}
+//						if (mDeadHour < 18 && !bookArray[13]) {
+//							mEighteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[13] = true;
+//						}
+//					} else {
+//						if (!bookArray[7]) {
+//							mTwelveSelect.setVisibility(View.INVISIBLE);
+//							selectArray[7] = true;
+//						}
+//						if (!bookArray[8]) {
+//							mThirteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[8] = true;
+//						}
+//						if (!bookArray[9]) {
+//							mFourteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[9] = true;
+//						}
+//						if (!bookArray[10]) {
+//							mFifteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[10] = true;
+//						}
+//						if (!bookArray[11]) {
+//							mSixteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[11] = true;
+//						}
+//						if (!bookArray[12]) {
+//							mSeventeenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[12] = true;
+//						}
+//						if (!bookArray[13]) {
+//							mEighteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[13] = true;
+//						}
+//					}
+//				} else {
+//					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
+//						/*
+//						 * 今天
+//						 */
+//
+//						if (mDeadHour < 12 && !bookArray[7]) {
+//							mTwelveSelect.setVisibility(View.VISIBLE);
+//							selectArray[7] = false;
+//						}
+//						if (mDeadHour < 13 && !bookArray[8]) {
+//							mThirteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[8] = false;
+//						}
+//						if (mDeadHour < 14 && !bookArray[9]) {
+//							mFourteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[9] = false;
+//						}
+//						if (mDeadHour < 15 && !bookArray[10]) {
+//							mFifteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[10] = false;
+//						}
+//						if (mDeadHour < 16 && !bookArray[11]) {
+//							mSixteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[11] = false;
+//						}
+//						if (mDeadHour < 17 && !bookArray[12]) {
+//							mSeventeenSelect.setVisibility(View.VISIBLE);
+//							selectArray[12] = false;
+//						}
+//						if (mDeadHour < 18 && !bookArray[13]) {
+//							mEighteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[13] = false;
+//						}
+//					} else {
+//						if (!bookArray[7]) {
+//							mTwelveSelect.setVisibility(View.VISIBLE);
+//							selectArray[7] = false;
+//						}
+//						if (!bookArray[8]) {
+//							mThirteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[8] = false;
+//						}
+//						if (!bookArray[9]) {
+//							mFourteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[9] = false;
+//						}
+//						if (!bookArray[10]) {
+//							mFifteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[10] = false;
+//						}
+//						if (!bookArray[11]) {
+//							mSixteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[11] = false;
+//						}
+//						if (!bookArray[12]) {
+//							mSeventeenSelect.setVisibility(View.VISIBLE);
+//							selectArray[12] = false;
+//						}
+//						if (!bookArray[13]) {
+//							mEighteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[13] = false;
+//						}
+//					}
+//
+//					boolean hasSelect = false;
+//					for (int i = 7; i < 14; i++) {
+//						if (!selectArray[i]) {
+//							hasSelect = true;
+//							break;
+//						}
+//					}
+//					if (hasSelect) {
+//						mAftSelectAllImg.setSelected(true);
+//						mAftSelectAllTv.setText("取消全选");
+//					} else {
+//						Toast.makeText(mActivity, "当前时间段不可用", Toast.LENGTH_SHORT).show();
+//					}
+//				}
+//			}
+//		});
+//
+//		mNigSelectAll.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (mNigSelectAllImg.isSelected()) {
+//					mNigSelectAllImg.setSelected(false);
+//					mNigSelectAllTv.setText("全选");
+//
+//					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
+//						if (mDeadHour < 19 && !bookArray[14]) {
+//							mNineteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[14] = true;
+//						}
+//						if (mDeadHour < 20 && !bookArray[15]) {
+//							mTwentySelect.setVisibility(View.INVISIBLE);
+//							selectArray[15] = true;
+//						}
+//						if (mDeadHour < 21 && !bookArray[16]) {
+//							mTwentyOneSelect.setVisibility(View.INVISIBLE);
+//							selectArray[16] = true;
+//						}
+//						if (mDeadHour < 22 && !bookArray[17]) {
+//							mTwentyTwoSelect.setVisibility(View.INVISIBLE);
+//							selectArray[17] = true;
+//						}
+//						if (mDeadHour < 23 && !bookArray[18]) {
+//							mTwentyThreeSelect.setVisibility(View.INVISIBLE);
+//							selectArray[18] = true;
+//						}
+//					} else {
+//						if (!bookArray[14]) {
+//							mNineteenSelect.setVisibility(View.INVISIBLE);
+//							selectArray[14] = true;
+//						}
+//						if (!bookArray[15]) {
+//							mTwentySelect.setVisibility(View.INVISIBLE);
+//							selectArray[15] = true;
+//						}
+//						if (!bookArray[16]) {
+//							mTwentyOneSelect.setVisibility(View.INVISIBLE);
+//							selectArray[16] = true;
+//						}
+//						if (!bookArray[17]) {
+//							mTwentyTwoSelect.setVisibility(View.INVISIBLE);
+//							selectArray[17] = true;
+//						}
+//						if (!bookArray[18]) {
+//							mTwentyThreeSelect.setVisibility(View.INVISIBLE);
+//							selectArray[18] = true;
+//						}
+//					}
+//				} else {
+//					if (equalsDate(calToday.getTime(), calSelected.getTime())) {
+//						if (mDeadHour < 19 && !bookArray[14]) {
+//							mNineteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[14] = false;
+//						}
+//						if (mDeadHour < 20 && !bookArray[15]) {
+//							mTwentySelect.setVisibility(View.VISIBLE);
+//							selectArray[15] = false;
+//						}
+//						if (mDeadHour < 21 && !bookArray[16]) {
+//							mTwentyOneSelect.setVisibility(View.VISIBLE);
+//							selectArray[16] = false;
+//						}
+//						if (mDeadHour < 22 && !bookArray[17]) {
+//							mTwentyTwoSelect.setVisibility(View.VISIBLE);
+//							selectArray[17] = false;
+//						}
+//						if (mDeadHour < 23 && !bookArray[18]) {
+//							mTwentyThreeSelect.setVisibility(View.VISIBLE);
+//							selectArray[18] = false;
+//						}
+//					} else {
+//						if (!bookArray[14]) {
+//							mNineteenSelect.setVisibility(View.VISIBLE);
+//							selectArray[14] = false;
+//						}
+//						if (!bookArray[15]) {
+//							mTwentySelect.setVisibility(View.VISIBLE);
+//							selectArray[15] = false;
+//						}
+//						if (!bookArray[16]) {
+//							mTwentyOneSelect.setVisibility(View.VISIBLE);
+//							selectArray[16] = false;
+//						}
+//						if (!bookArray[17]) {
+//							mTwentyTwoSelect.setVisibility(View.VISIBLE);
+//							selectArray[17] = false;
+//						}
+//						if (!bookArray[18]) {
+//							mTwentyThreeSelect.setVisibility(View.VISIBLE);
+//							selectArray[18] = false;
+//						}
+//					}
+//
+//					boolean hasSelect = false;
+//					for (int i = 14; i < 19; i++) {
+//						if (!selectArray[i]) {
+//							hasSelect = true;
+//							break;
+//						}
+//					}
+//					if (hasSelect) {
+//						mNigSelectAllImg.setSelected(true);
+//						mNigSelectAllTv.setText("取消全选");
+//					} else {
+//						Toast.makeText(mActivity, "当前时间段不可用", Toast.LENGTH_SHORT).show();
+//					}
+//				}
+//			}
+//		});
 		/*
 		 * stop class
 		 */
-		mAllDaySetClose.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-
-//				int isrest = 0; //0:没有课，1：有开一节课以上
-//				for (Schedule schedule : scheduleResult.getDatelist()) {
-//					Date date2;
-//					try {
-//						date2 = TimeUtil.StringToDate(schedule.getDate());
-//					} catch (Exception e) {
-//						return;
-//					}
+//		mAllDaySetClose.setOnClickListener(new OnSingleClickListener() {
 //
-//					if (equalsDate(calSelected.getTime(), date2)) {
-//
-//						if (schedule.getHour() == 0) {
-//							/*
-//							 * 全局设置
-//							 */
-////							if (schedule.getState() == 0) {
-////								// rest
-////								mAllDaySetClose.setText("发布课程");
-////								mAllDaySetClose.setBackgroundResource(R.drawable.shape_green_round);
-////								isAllDayOpen = false;
-////							} else if (schedule.getState() == 1) {
-////								mAllDaySetClose.setText("当天停课");
-////								mAllDaySetClose.setBackgroundResource(R.drawable.shape_red_round);
-////								isAllDayOpen = true;
-////							}
-//
-//						} else {
-//							if (schedule.getIsrest() == 0)
-//							{
-//								isrest = 1;
-//							}
-//						}
-//					}
-//				}
-//				
-//				if (isrest == 0)
-//				{
-//					Toast.makeText(getActivity(), "至少有一节课是开课状态才能发布", 0).show();
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
 //					return;
 //				}
-				
-				if (isAllDayOpen) {
-					new ChangeAllDayScheduleTask("2").execute();
-				} else {
-					showSetDefaultDialog();
-				}
-			}
-		});
+//
+////				int isrest = 0; //0:没有课，1：有开一节课以上
+////				for (Schedule schedule : scheduleResult.getDatelist()) {
+////					Date date2;
+////					try {
+////						date2 = TimeUtil.StringToDate(schedule.getDate());
+////					} catch (Exception e) {
+////						return;
+////					}
+////
+////					if (equalsDate(calSelected.getTime(), date2)) {
+////
+////						if (schedule.getHour() == 0) {
+////							/*
+////							 * 全局设置
+////							 */
+//////							if (schedule.getState() == 0) {
+//////								// rest
+//////								mAllDaySetClose.setText("发布课程");
+//////								mAllDaySetClose.setBackgroundResource(R.drawable.shape_green_round);
+//////								isAllDayOpen = false;
+//////							} else if (schedule.getState() == 1) {
+//////								mAllDaySetClose.setText("当天停课");
+//////								mAllDaySetClose.setBackgroundResource(R.drawable.shape_red_round);
+//////								isAllDayOpen = true;
+//////							}
+////
+////						} else {
+////							if (schedule.getIsrest() == 0)
+////							{
+////								isrest = 1;
+////							}
+////						}
+////					}
+////				}
+////				
+////				if (isrest == 0)
+////				{
+////					Toast.makeText(getActivity(), "至少有一节课是开课状态才能发布", 0).show();
+////					return;
+////				}
+//				
+//				if (isAllDayOpen) {
+//					new ChangeAllDayScheduleTask("2").execute();
+//				} else {
+//					showSetDefaultDialog();
+//				}
+//			}
+//		});
 
-		mMorningSSet.findViewById(R.id.five_part).setOnClickListener(new OnSingleClickListener() {
+//		mMorningSSet.findViewById(R.id.five_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 5 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[0]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[0]) {
+//						mFiveSelect.setVisibility(View.INVISIBLE);
+//						selectArray[0] = true;
+//						fixMorAllSelect();
+//					} else {
+//						mFiveSelect.setVisibility(View.VISIBLE);
+//						selectArray[0] = false;
+//					}
+//				}
+//			}
+//		});
+//		mMorningSSet.findViewById(R.id.six_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 6 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[1]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[1]) {
+//						mSixSelect.setVisibility(View.INVISIBLE);
+//						selectArray[1] = true;
+//						fixMorAllSelect();
+//					} else {
+//						mSixSelect.setVisibility(View.VISIBLE);
+//						selectArray[1] = false;
+//					}
+//				}
+//			}
+//		});
+//		mMorningSSet.findViewById(R.id.seven_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 7 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[2]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[2]) {
+//						mSevenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[2] = true;
+//						fixMorAllSelect();
+//					} else {
+//						mSevenSelect.setVisibility(View.VISIBLE);
+//						selectArray[2] = false;
+//					}
+//				}
+//			}
+//		});
+//		mMorningSSet.findViewById(R.id.eight_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 8 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[3]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[3]) {
+//						mEightSelect.setVisibility(View.INVISIBLE);
+//						selectArray[3] = true;
+//						fixMorAllSelect();
+//					} else {
+//						mEightSelect.setVisibility(View.VISIBLE);
+//						selectArray[3] = false;
+//					}
+//				}
+//			}
+//		});
+//		mMorningSSet.findViewById(R.id.nine_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 9 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[4]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[4]) {
+//						mNineSelect.setVisibility(View.INVISIBLE);
+//						selectArray[4] = true;
+//						fixMorAllSelect();
+//					} else {
+//						mNineSelect.setVisibility(View.VISIBLE);
+//						selectArray[4] = false;
+//					}
+//				}
+//			}
+//		});
+//		mMorningSSet.findViewById(R.id.ten_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 10 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[5]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[5]) {
+//						mTenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[5] = true;
+//						fixMorAllSelect();
+//					} else {
+//						mTenSelect.setVisibility(View.VISIBLE);
+//						selectArray[5] = false;
+//					}
+//				}
+//			}
+//		});
+//
+//		mMorningSSet.findViewById(R.id.eleven_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 11 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[6]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[6]) {
+//						mElevenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[6] = true;
+//					} else {
+//						mElevenSelect.setVisibility(View.VISIBLE);
+//						selectArray[6] = false;
+//					}
+//				}
+//			}
+//		});
+//
+//		mAfternoonSet.findViewById(R.id.twelve_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 12 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[7]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[7]) {
+//						mTwelveSelect.setVisibility(View.INVISIBLE);
+//						selectArray[7] = true;
+//						fixAftAllSelect();
+//					} else {
+//						mTwelveSelect.setVisibility(View.VISIBLE);
+//						selectArray[7] = false;
+//					}
+//				}
+//			}
+//		});
+//		mAfternoonSet.findViewById(R.id.thirteen_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 13 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[8]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[8]) {
+//						mThirteenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[8] = true;
+//						fixAftAllSelect();
+//					} else {
+//						mThirteenSelect.setVisibility(View.VISIBLE);
+//						selectArray[8] = false;
+//					}
+//				}
+//			}
+//		});
+//		mAfternoonSet.findViewById(R.id.fourteen_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 14 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[9]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[9]) {
+//						mFourteenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[9] = true;
+//						fixAftAllSelect();
+//					} else {
+//						mFourteenSelect.setVisibility(View.VISIBLE);
+//						selectArray[9] = false;
+//					}
+//				}
+//			}
+//		});
+//		mAfternoonSet.findViewById(R.id.fifteen_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 15 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[10]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[10]) {
+//						mFifteenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[10] = true;
+//						fixAftAllSelect();
+//					} else {
+//						mFifteenSelect.setVisibility(View.VISIBLE);
+//						selectArray[10] = false;
+//					}
+//				}
+//			}
+//		});
+//		mAfternoonSet.findViewById(R.id.sixteen_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 16 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[11]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[11]) {
+//						mSixteenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[11] = true;
+//						fixAftAllSelect();
+//					} else {
+//						mSixteenSelect.setVisibility(View.VISIBLE);
+//						selectArray[11] = false;
+//					}
+//				}
+//			}
+//		});
+//		mAfternoonSet.findViewById(R.id.seventeen_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 17 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[12]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[12]) {
+//						mSeventeenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[12] = true;
+//						fixAftAllSelect();
+//					} else {
+//						mSeventeenSelect.setVisibility(View.VISIBLE);
+//						selectArray[12] = false;
+//					}
+//				}
+//			}
+//		});
+//
+//		mAfternoonSet.findViewById(R.id.eighteen_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 18 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[13]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[13]) {
+//						mEighteenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[13] = true;
+//						fixAftAllSelect();
+//					} else {
+//						mEighteenSelect.setVisibility(View.VISIBLE);
+//						selectArray[13] = false;
+//					}
+//				}
+//			}
+//		});
+//
+//		mNightSet.findViewById(R.id.nineteen_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 19 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[14]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[14]) {
+//						mNineteenSelect.setVisibility(View.INVISIBLE);
+//						selectArray[14] = true;
+//						fixNigAllSelect();
+//					} else {
+//						mNineteenSelect.setVisibility(View.VISIBLE);
+//						selectArray[14] = false;
+//					}
+//				}
+//			}
+//		});
+//		mNightSet.findViewById(R.id.twenty_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 20 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[15]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[15]) {
+//						mTwentySelect.setVisibility(View.INVISIBLE);
+//						selectArray[15] = true;
+//						fixNigAllSelect();
+//					} else {
+//						mTwentySelect.setVisibility(View.VISIBLE);
+//						selectArray[15] = false;
+//					}
+//				}
+//
+//			}
+//		});
+//		mNightSet.findViewById(R.id.twentyone_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 21 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[16]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[16]) {
+//						mTwentyOneSelect.setVisibility(View.INVISIBLE);
+//						selectArray[16] = true;
+//						fixNigAllSelect();
+//					} else {
+//						mTwentyOneSelect.setVisibility(View.VISIBLE);
+//						selectArray[16] = false;
+//					}
+//				}
+//			}
+//		});
+//		mNightSet.findViewById(R.id.twentytwo_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 22 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[17]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[17]) {
+//						mTwentyTwoSelect.setVisibility(View.INVISIBLE);
+//						selectArray[17] = true;
+//						fixNigAllSelect();
+//					} else {
+//						mTwentyTwoSelect.setVisibility(View.VISIBLE);
+//						selectArray[17] = false;
+//					}
+//				}
+//			}
+//		});
+//		mNightSet.findViewById(R.id.twentythree_part).setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 23 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[18]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					if (!selectArray[18]) {
+//						mTwentyThreeSelect.setVisibility(View.INVISIBLE);
+//						selectArray[18] = true;
+//						fixNigAllSelect();
+//					} else {
+//						mTwentyThreeSelect.setVisibility(View.VISIBLE);
+//						selectArray[18] = false;
+//					}
+//				}
+//			}
+//		});
+//
+//		mFiveGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 5 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[0]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 5).putExtra("rest", stateArray[0]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//
+//		mSixGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 6 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[1]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 6).putExtra("rest", stateArray[1]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//
+//		mSevenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 7 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[2]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 7).putExtra("rest", stateArray[2]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//
+//		mEightGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 8 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[3]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 8).putExtra("rest", stateArray[3]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mNineGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 9 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[4]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 9).putExtra("rest", stateArray[4]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mTenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 10 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[5]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 10).putExtra("rest", stateArray[5]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mElevenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 11 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[6]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 11).putExtra("rest", stateArray[6]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mTwelveGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 12 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[7]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 12).putExtra("rest", stateArray[7]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mThirteenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 13 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[8]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 13).putExtra("rest", stateArray[8]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mFourteenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 14 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[9]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 14).putExtra("rest", stateArray[9]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mFifteenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 15 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[10]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 15).putExtra("rest", stateArray[10]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mSixteenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 16 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[11]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 16).putExtra("rest", stateArray[11]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mSeventeenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 17 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[12]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 17).putExtra("rest", stateArray[12]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mEighteenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 18 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[13]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 18).putExtra("rest", stateArray[13]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mNineteenGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 19 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[14]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 19).putExtra("rest", stateArray[14]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//		mTwentyGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 20 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[15]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 20).putExtra("rest", stateArray[15]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//
+//		mTwentyOneGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 21 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[16]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 21).putExtra("rest", stateArray[16]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//
+//		mTwentyTwoGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 22 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[17]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 22).putExtra("rest", stateArray[17]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
+//
+//		mTwentyThreeGear.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 23 <= mDeadHour) {
+//					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+//				} else {
+//					if (bookArray[18]) {
+//						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+//						return;
+//					}
+//					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 23).putExtra("rest", stateArray[18]).putExtra("result", scheduleResult)
+//							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//				}
+//			}
+//		});
 
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 5 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[0]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[0]) {
-						mFiveSelect.setVisibility(View.INVISIBLE);
-						selectArray[0] = true;
-						fixMorAllSelect();
-					} else {
-						mFiveSelect.setVisibility(View.VISIBLE);
-						selectArray[0] = false;
-					}
-				}
-			}
-		});
-		mMorningSSet.findViewById(R.id.six_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 6 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[1]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[1]) {
-						mSixSelect.setVisibility(View.INVISIBLE);
-						selectArray[1] = true;
-						fixMorAllSelect();
-					} else {
-						mSixSelect.setVisibility(View.VISIBLE);
-						selectArray[1] = false;
-					}
-				}
-			}
-		});
-		mMorningSSet.findViewById(R.id.seven_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 7 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[2]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[2]) {
-						mSevenSelect.setVisibility(View.INVISIBLE);
-						selectArray[2] = true;
-						fixMorAllSelect();
-					} else {
-						mSevenSelect.setVisibility(View.VISIBLE);
-						selectArray[2] = false;
-					}
-				}
-			}
-		});
-		mMorningSSet.findViewById(R.id.eight_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 8 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[3]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[3]) {
-						mEightSelect.setVisibility(View.INVISIBLE);
-						selectArray[3] = true;
-						fixMorAllSelect();
-					} else {
-						mEightSelect.setVisibility(View.VISIBLE);
-						selectArray[3] = false;
-					}
-				}
-			}
-		});
-		mMorningSSet.findViewById(R.id.nine_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 9 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[4]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[4]) {
-						mNineSelect.setVisibility(View.INVISIBLE);
-						selectArray[4] = true;
-						fixMorAllSelect();
-					} else {
-						mNineSelect.setVisibility(View.VISIBLE);
-						selectArray[4] = false;
-					}
-				}
-			}
-		});
-		mMorningSSet.findViewById(R.id.ten_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 10 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[5]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[5]) {
-						mTenSelect.setVisibility(View.INVISIBLE);
-						selectArray[5] = true;
-						fixMorAllSelect();
-					} else {
-						mTenSelect.setVisibility(View.VISIBLE);
-						selectArray[5] = false;
-					}
-				}
-			}
-		});
-
-		mMorningSSet.findViewById(R.id.eleven_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 11 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[6]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[6]) {
-						mElevenSelect.setVisibility(View.INVISIBLE);
-						selectArray[6] = true;
-					} else {
-						mElevenSelect.setVisibility(View.VISIBLE);
-						selectArray[6] = false;
-					}
-				}
-			}
-		});
-
-		mAfternoonSet.findViewById(R.id.twelve_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 12 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[7]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[7]) {
-						mTwelveSelect.setVisibility(View.INVISIBLE);
-						selectArray[7] = true;
-						fixAftAllSelect();
-					} else {
-						mTwelveSelect.setVisibility(View.VISIBLE);
-						selectArray[7] = false;
-					}
-				}
-			}
-		});
-		mAfternoonSet.findViewById(R.id.thirteen_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 13 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[8]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[8]) {
-						mThirteenSelect.setVisibility(View.INVISIBLE);
-						selectArray[8] = true;
-						fixAftAllSelect();
-					} else {
-						mThirteenSelect.setVisibility(View.VISIBLE);
-						selectArray[8] = false;
-					}
-				}
-			}
-		});
-		mAfternoonSet.findViewById(R.id.fourteen_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 14 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[9]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[9]) {
-						mFourteenSelect.setVisibility(View.INVISIBLE);
-						selectArray[9] = true;
-						fixAftAllSelect();
-					} else {
-						mFourteenSelect.setVisibility(View.VISIBLE);
-						selectArray[9] = false;
-					}
-				}
-			}
-		});
-		mAfternoonSet.findViewById(R.id.fifteen_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 15 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[10]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[10]) {
-						mFifteenSelect.setVisibility(View.INVISIBLE);
-						selectArray[10] = true;
-						fixAftAllSelect();
-					} else {
-						mFifteenSelect.setVisibility(View.VISIBLE);
-						selectArray[10] = false;
-					}
-				}
-			}
-		});
-		mAfternoonSet.findViewById(R.id.sixteen_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 16 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[11]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[11]) {
-						mSixteenSelect.setVisibility(View.INVISIBLE);
-						selectArray[11] = true;
-						fixAftAllSelect();
-					} else {
-						mSixteenSelect.setVisibility(View.VISIBLE);
-						selectArray[11] = false;
-					}
-				}
-			}
-		});
-		mAfternoonSet.findViewById(R.id.seventeen_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 17 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[12]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[12]) {
-						mSeventeenSelect.setVisibility(View.INVISIBLE);
-						selectArray[12] = true;
-						fixAftAllSelect();
-					} else {
-						mSeventeenSelect.setVisibility(View.VISIBLE);
-						selectArray[12] = false;
-					}
-				}
-			}
-		});
-
-		mAfternoonSet.findViewById(R.id.eighteen_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 18 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[13]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[13]) {
-						mEighteenSelect.setVisibility(View.INVISIBLE);
-						selectArray[13] = true;
-						fixAftAllSelect();
-					} else {
-						mEighteenSelect.setVisibility(View.VISIBLE);
-						selectArray[13] = false;
-					}
-				}
-			}
-		});
-
-		mNightSet.findViewById(R.id.nineteen_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 19 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[14]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[14]) {
-						mNineteenSelect.setVisibility(View.INVISIBLE);
-						selectArray[14] = true;
-						fixNigAllSelect();
-					} else {
-						mNineteenSelect.setVisibility(View.VISIBLE);
-						selectArray[14] = false;
-					}
-				}
-			}
-		});
-		mNightSet.findViewById(R.id.twenty_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 20 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[15]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[15]) {
-						mTwentySelect.setVisibility(View.INVISIBLE);
-						selectArray[15] = true;
-						fixNigAllSelect();
-					} else {
-						mTwentySelect.setVisibility(View.VISIBLE);
-						selectArray[15] = false;
-					}
-				}
-
-			}
-		});
-		mNightSet.findViewById(R.id.twentyone_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 21 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[16]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[16]) {
-						mTwentyOneSelect.setVisibility(View.INVISIBLE);
-						selectArray[16] = true;
-						fixNigAllSelect();
-					} else {
-						mTwentyOneSelect.setVisibility(View.VISIBLE);
-						selectArray[16] = false;
-					}
-				}
-			}
-		});
-		mNightSet.findViewById(R.id.twentytwo_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 22 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[17]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[17]) {
-						mTwentyTwoSelect.setVisibility(View.INVISIBLE);
-						selectArray[17] = true;
-						fixNigAllSelect();
-					} else {
-						mTwentyTwoSelect.setVisibility(View.VISIBLE);
-						selectArray[17] = false;
-					}
-				}
-			}
-		});
-		mNightSet.findViewById(R.id.twentythree_part).setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 23 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能选择", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[18]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (!selectArray[18]) {
-						mTwentyThreeSelect.setVisibility(View.INVISIBLE);
-						selectArray[18] = true;
-						fixNigAllSelect();
-					} else {
-						mTwentyThreeSelect.setVisibility(View.VISIBLE);
-						selectArray[18] = false;
-					}
-				}
-			}
-		});
-
-		mFiveGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 5 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[0]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 5).putExtra("rest", stateArray[0]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-
-		mSixGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 6 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[1]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 6).putExtra("rest", stateArray[1]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-
-		mSevenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 7 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[2]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 7).putExtra("rest", stateArray[2]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-
-		mEightGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 8 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[3]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 8).putExtra("rest", stateArray[3]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mNineGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 9 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[4]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 9).putExtra("rest", stateArray[4]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mTenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 10 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[5]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 10).putExtra("rest", stateArray[5]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mElevenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 11 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[6]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 11).putExtra("rest", stateArray[6]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mTwelveGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 12 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[7]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 12).putExtra("rest", stateArray[7]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mThirteenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 13 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[8]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 13).putExtra("rest", stateArray[8]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mFourteenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 14 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[9]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 14).putExtra("rest", stateArray[9]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mFifteenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 15 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[10]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 15).putExtra("rest", stateArray[10]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mSixteenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 16 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[11]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 16).putExtra("rest", stateArray[11]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mSeventeenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 17 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[12]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 17).putExtra("rest", stateArray[12]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mEighteenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 18 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[13]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 18).putExtra("rest", stateArray[13]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mNineteenGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 19 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[14]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 19).putExtra("rest", stateArray[14]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-		mTwentyGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 20 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[15]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 20).putExtra("rest", stateArray[15]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-
-		mTwentyOneGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 21 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[16]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 21).putExtra("rest", stateArray[16]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-
-		mTwentyTwoGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 22 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[17]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 22).putExtra("rest", stateArray[17]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-
-		mTwentyThreeGear.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				if (equalsDate(calToday.getTime(), calSelected.getTime()) && 23 <= mDeadHour) {
-					Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-				} else {
-					if (bookArray[18]) {
-						Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-						return;
-					}
-					mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("single", 23).putExtra("rest", stateArray[18]).putExtra("result", scheduleResult)
-							.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-				}
-			}
-		});
-
-		mMorMultiSet.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				boolean isRest = false;
-				boolean hasSelect = false;
-				for (int j = 0; j < 7; j++) {
-					if (!selectArray[j]) {
-						hasSelect = true;
-						break;
-					}
-				}
-				if (!hasSelect) {
-					Toast.makeText(mActivity, "请选择时间", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				StringBuilder mor = new StringBuilder();
-				for (int i = 0; i <= 6; i++) {
-					if (!selectArray[i]) {
-						if (equalsDate(calToday.getTime(), calSelected.getTime()) && (i + 5) <= mDeadHour) {
-							mor.append("0");
-						} else {
-							if (bookArray[i])
-								mor.append("0");
-							else {
-								mor.append("1");
-								if (!stateArray[i])
-									isRest = true;
-							}
-						}
-						if (!stateArray[i])
-							isRest = true;
-					} else {
-						mor.append("0");
-					}
-				}
-
-				if (!mor.toString().contains("1")) {
-					Toast.makeText(mActivity, "当前时间段无法设置", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("mor", mor.toString()).putExtra("rest", !isRest).putExtra("result", scheduleResult)
-						.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-			}
-		});
-
-		mAftMultiSet.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				
-				boolean isRest = false;
-				boolean hasSelect = false;
-				for (int j = 7; j < 14; j++) {
-					if (!selectArray[j]) {
-						hasSelect = true;
-						break;
-					}
-				}
-				if (!hasSelect) {
-					Toast.makeText(mActivity, "请选择时间", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				StringBuilder mor = new StringBuilder();
-				for (int i = 7; i <= 13; i++) {
-					if (!selectArray[i]) {
-						if (equalsDate(calToday.getTime(), calSelected.getTime()) && (i + 5) <= mDeadHour) {
-							mor.append("0");
-						} else {
-							if (bookArray[i])
-								mor.append("0");
-							else {
-								mor.append("1");
-								if (!stateArray[i])
-									isRest = true;
-							}
-						}
-					} else {
-						mor.append("0");
-					}
-
-				}
-
-				if (!mor.toString().contains("1")) {
-					Toast.makeText(mActivity, "当前时间段无法设置", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("aft", mor.toString()).putExtra("rest", !isRest).putExtra("result", scheduleResult)
-						.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-			}
-		});
-
-		mNigMultiSet.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				
-				if (!finishLoadingData) {
-					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				
-				boolean isRest = false;
-				boolean hasSelect = false;
-				for (int j = 14; j < 19; j++) {
-					if (!selectArray[j]) {
-						hasSelect = true;
-						break;
-					}
-				}
-				if (!hasSelect) {
-					Toast.makeText(mActivity, "请选择时间", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				StringBuilder mor = new StringBuilder();
-				for (int i = 14; i <= 18; i++) {
-					if (!selectArray[i]) {
-						if (equalsDate(calToday.getTime(), calSelected.getTime()) && (i + 5) <= mDeadHour) {
-							mor.append("0");
-						} else {
-							if (bookArray[i])
-								mor.append("0");
-							else {
-								if (!stateArray[i])
-									isRest = true;
-								mor.append("1");
-							}
-						}
-						if (!stateArray[i])
-							isRest = true;
-					} else {
-						mor.append("0");
-					}
-				}
-
-				if (!mor.toString().contains("1")) {
-					Toast.makeText(mActivity, "当前时间段无法设置", Toast.LENGTH_SHORT).show();
-					return;
-				}
-
-				mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("nig", mor.toString()).putExtra("rest", !isRest).putExtra("result", scheduleResult)
-						.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-			}
-		});
+//		mMorMultiSet.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				boolean isRest = false;
+//				boolean hasSelect = false;
+//				for (int j = 0; j < 7; j++) {
+//					if (!selectArray[j]) {
+//						hasSelect = true;
+//						break;
+//					}
+//				}
+//				if (!hasSelect) {
+//					Toast.makeText(mActivity, "请选择时间", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				StringBuilder mor = new StringBuilder();
+//				for (int i = 0; i <= 6; i++) {
+//					if (!selectArray[i]) {
+//						if (equalsDate(calToday.getTime(), calSelected.getTime()) && (i + 5) <= mDeadHour) {
+//							mor.append("0");
+//						} else {
+//							if (bookArray[i])
+//								mor.append("0");
+//							else {
+//								mor.append("1");
+//								if (!stateArray[i])
+//									isRest = true;
+//							}
+//						}
+//						if (!stateArray[i])
+//							isRest = true;
+//					} else {
+//						mor.append("0");
+//					}
+//				}
+//
+//				if (!mor.toString().contains("1")) {
+//					Toast.makeText(mActivity, "当前时间段无法设置", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("mor", mor.toString()).putExtra("rest", !isRest).putExtra("result", scheduleResult)
+//						.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//			}
+//		});
+//
+//		mAftMultiSet.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				
+//				boolean isRest = false;
+//				boolean hasSelect = false;
+//				for (int j = 7; j < 14; j++) {
+//					if (!selectArray[j]) {
+//						hasSelect = true;
+//						break;
+//					}
+//				}
+//				if (!hasSelect) {
+//					Toast.makeText(mActivity, "请选择时间", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				StringBuilder mor = new StringBuilder();
+//				for (int i = 7; i <= 13; i++) {
+//					if (!selectArray[i]) {
+//						if (equalsDate(calToday.getTime(), calSelected.getTime()) && (i + 5) <= mDeadHour) {
+//							mor.append("0");
+//						} else {
+//							if (bookArray[i])
+//								mor.append("0");
+//							else {
+//								mor.append("1");
+//								if (!stateArray[i])
+//									isRest = true;
+//							}
+//						}
+//					} else {
+//						mor.append("0");
+//					}
+//
+//				}
+//
+//				if (!mor.toString().contains("1")) {
+//					Toast.makeText(mActivity, "当前时间段无法设置", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("aft", mor.toString()).putExtra("rest", !isRest).putExtra("result", scheduleResult)
+//						.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//			}
+//		});
+//
+//		mNigMultiSet.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				
+//				if (!finishLoadingData) {
+//					Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				
+//				boolean isRest = false;
+//				boolean hasSelect = false;
+//				for (int j = 14; j < 19; j++) {
+//					if (!selectArray[j]) {
+//						hasSelect = true;
+//						break;
+//					}
+//				}
+//				if (!hasSelect) {
+//					Toast.makeText(mActivity, "请选择时间", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				StringBuilder mor = new StringBuilder();
+//				for (int i = 14; i <= 18; i++) {
+//					if (!selectArray[i]) {
+//						if (equalsDate(calToday.getTime(), calSelected.getTime()) && (i + 5) <= mDeadHour) {
+//							mor.append("0");
+//						} else {
+//							if (bookArray[i])
+//								mor.append("0");
+//							else {
+//								if (!stateArray[i])
+//									isRest = true;
+//								mor.append("1");
+//							}
+//						}
+//						if (!stateArray[i])
+//							isRest = true;
+//					} else {
+//						mor.append("0");
+//					}
+//				}
+//
+//				if (!mor.toString().contains("1")) {
+//					Toast.makeText(mActivity, "当前时间段无法设置", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//
+//				mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putExtra("nig", mor.toString()).putExtra("rest", !isRest).putExtra("result", scheduleResult)
+//						.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
+//			}
+//		});
 
 		mHangingArrow.setOnClickListener(new OnSingleClickListener() {
 
@@ -2116,53 +2115,53 @@ public class DateSetFragment extends Fragment {
 		}
 	};
 
-	protected void fixMorAllSelect() {
-		// 修正全选
-		boolean hasSelect = false;
-		for (int i = 0; i < 7; i++) {
-			if (!selectArray[i]) {
-				hasSelect = true;
-				break;
-			}
-		}
-		if (!hasSelect) {
-			mMorSelectAllImg.setSelected(false);
-			mMorSelectAllTv.setText("全选");
-		}
-
-	}
-
-	protected void fixAftAllSelect() {
-		// 修正全选
-		boolean hasSelect = false;
-		for (int i = 7; i < 14; i++) {
-			if (!selectArray[i]) {
-				hasSelect = true;
-				break;
-			}
-		}
-		if (!hasSelect) {
-			mAftSelectAllImg.setSelected(false);
-			mAftSelectAllTv.setText("全选");
-		}
-
-	}
-
-	protected void fixNigAllSelect() {
-		// 修正全选
-		boolean hasSelect = false;
-		for (int i = 14; i < 19; i++) {
-			if (!selectArray[i]) {
-				hasSelect = true;
-				break;
-			}
-		}
-		if (!hasSelect) {
-			mNigSelectAllImg.setSelected(false);
-			mNigSelectAllTv.setText("全选");
-		}
-
-	}
+//	protected void fixMorAllSelect() {
+//		// 修正全选
+//		boolean hasSelect = false;
+//		for (int i = 0; i < 7; i++) {
+//			if (!selectArray[i]) {
+//				hasSelect = true;
+//				break;
+//			}
+//		}
+//		if (!hasSelect) {
+//			mMorSelectAllImg.setSelected(false);
+//			mMorSelectAllTv.setText("全选");
+//		}
+//
+//	}
+//
+//	protected void fixAftAllSelect() {
+//		// 修正全选
+//		boolean hasSelect = false;
+//		for (int i = 7; i < 14; i++) {
+//			if (!selectArray[i]) {
+//				hasSelect = true;
+//				break;
+//			}
+//		}
+//		if (!hasSelect) {
+//			mAftSelectAllImg.setSelected(false);
+//			mAftSelectAllTv.setText("全选");
+//		}
+//
+//	}
+//
+//	protected void fixNigAllSelect() {
+//		// 修正全选
+//		boolean hasSelect = false;
+//		for (int i = 14; i < 19; i++) {
+//			if (!selectArray[i]) {
+//				hasSelect = true;
+//				break;
+//			}
+//		}
+//		if (!hasSelect) {
+//			mNigSelectAllImg.setSelected(false);
+//			mNigSelectAllTv.setText("全选");
+//		}
+//
+//	}
 
 	boolean isAllDayOpen;
 	Dialog setDefaultDialog;
@@ -2284,36 +2283,36 @@ public class DateSetFragment extends Fragment {
 	}
 
 	private void setTimes() {
-		mFiveTime.setText("05:00");
-		mSixTime.setText("06:00");
-		mSevenTime.setText("07:00");
-		mEightTime.setText("08:00");
-		mNineTime.setText("09:00");
-		mTenTime.setText("10:00");
-		mElevenTime.setText("11:00");
-		mTwelveTime.setText("12:00");
-		mThirteenTime.setText("13:00");
-		mFourteenTime.setText("14:00");
-		mFifteenTime.setText("15:00");
-		mSixteenTime.setText("16:00");
-		mSeventeenTime.setText("17:00");
-		mEighteenTime.setText("18:00");
-		mNineteenTime.setText("19:00");
-		mTwentyTime.setText("20:00");
-		mTwentyOneTime.setText("21:00");
-		mTwentyTwoTime.setText("22:00");
-		mTwentyThreeTime.setText("23:00");
-		// default rest time 12:00 & 18:00
-		stateArray[7] = true;
-		stateArray[13] = true;
-		mTwelveTime.setTextColor(Color.parseColor("#d2d2d2"));
-		mTwelvePrice.setTextColor(Color.parseColor("#d2d2d2"));
-		mTwelvePrice.setText("未开课");
-		mTwelvePrice.setBackgroundColor(Color.parseColor("#e5e5e5"));
-		mEighteenTime.setTextColor(Color.parseColor("#d2d2d2"));
-		mEighteenPrice.setTextColor(Color.parseColor("#d2d2d2"));
-		mEighteenPrice.setBackgroundColor(Color.parseColor("#e5e5e5"));
-		mEighteenPrice.setText("未开课");
+//		mFiveTime.setText("05:00");
+//		mSixTime.setText("06:00");
+//		mSevenTime.setText("07:00");
+//		mEightTime.setText("08:00");
+//		mNineTime.setText("09:00");
+//		mTenTime.setText("10:00");
+//		mElevenTime.setText("11:00");
+//		mTwelveTime.setText("12:00");
+//		mThirteenTime.setText("13:00");
+//		mFourteenTime.setText("14:00");
+//		mFifteenTime.setText("15:00");
+//		mSixteenTime.setText("16:00");
+//		mSeventeenTime.setText("17:00");
+//		mEighteenTime.setText("18:00");
+//		mNineteenTime.setText("19:00");
+//		mTwentyTime.setText("20:00");
+//		mTwentyOneTime.setText("21:00");
+//		mTwentyTwoTime.setText("22:00");
+//		mTwentyThreeTime.setText("23:00");
+//		// default rest time 12:00 & 18:00
+//		stateArray[7] = true;
+//		stateArray[13] = true;
+//		mTwelveTime.setTextColor(Color.parseColor("#d2d2d2"));
+//		mTwelvePrice.setTextColor(Color.parseColor("#d2d2d2"));
+//		mTwelvePrice.setText("未开课");
+//		mTwelvePrice.setBackgroundColor(Color.parseColor("#e5e5e5"));
+//		mEighteenTime.setTextColor(Color.parseColor("#d2d2d2"));
+//		mEighteenPrice.setTextColor(Color.parseColor("#d2d2d2"));
+//		mEighteenPrice.setBackgroundColor(Color.parseColor("#e5e5e5"));
+//		mEighteenPrice.setText("未开课");
 	}
 
 	void goToLastMonth() {
@@ -2920,117 +2919,117 @@ public class DateSetFragment extends Fragment {
 					/*
 					 * 全局设置
 					 */
-					if (schedule.getState() == 0) {
-						// rest
-						mAllDaySetClose.setText("发布课程");
-						mAllDaySetClose.setBackgroundResource(R.drawable.shape_green_round);
-						isAllDayOpen = false;
-					} else if (schedule.getState() == 1) {
-						mAllDaySetClose.setText("当天停课");
-						mAllDaySetClose.setBackgroundResource(R.drawable.shape_red_round);
-						isAllDayOpen = true;
-					}
+//					if (schedule.getState() == 0) {
+//						// rest
+//						mAllDaySetClose.setText("发布课程");
+//						mAllDaySetClose.setBackgroundResource(R.drawable.shape_green_round);
+//						isAllDayOpen = false;
+//					} else if (schedule.getState() == 1) {
+//						mAllDaySetClose.setText("当天停课");
+//						mAllDaySetClose.setBackgroundResource(R.drawable.shape_red_round);
+//						isAllDayOpen = true;
+//					}
 
 				} else {
 					/*
 					 * 单个小时设置
 					 */
-					switch (schedule.getHour()) {
-					case 5:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFiveTime, mFivePrice, mFiveSelect, 0,schedule.getExpire());
-						break;
-					case 6:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixTime, mSixPrice, mSixSelect, 1,schedule.getExpire());
-						break;
-					case 7:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSevenTime, mSevenPrice, mSevenSelect, 2,schedule.getExpire());
-						break;
-					case 8:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEightTime, mEightPrice, mEightSelect, 3,schedule.getExpire());
-						break;
-					case 9:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineTime, mNinePrice, mNineSelect, 4,schedule.getExpire());
-						break;
-					case 10:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTenTime, mTenPrice, mTenSelect, 5,schedule.getExpire());
-						break;
-					case 11:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mElevenTime, mElevenPrice, mElevenSelect, 6,schedule.getExpire());
-						break;
-					case 12:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwelveTime, mTwelvePrice, mTwelveSelect, 7,schedule.getExpire());
-						break;
-					case 13:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mThirteenTime, mThirteenPrice, mThirteenSelect, 8,schedule.getExpire());
-						break;
-					case 14:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFourteenTime, mFourteenPrice, mFourteenSelect, 9,schedule.getExpire());
-						break;
-					case 15:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFifteenTime, mFifteenPrice, mFifteenSelect, 10,schedule.getExpire());
-						break;
-					case 16:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixteenTime, mSixteenPrice, mSixteenSelect, 11,schedule.getExpire());
-						break;
-					case 17:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSeventeenTime, mSeventeenPrice, mSeventeenSelect, 12,schedule.getExpire());
-						break;
-					case 18:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEighteenTime, mEighteenPrice, mEighteenSelect, 13,schedule.getExpire());
-						break;
-					case 19:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineteenTime, mNineteenPrice, mNineteenSelect, 14,schedule.getExpire());
-						break;
-					case 20:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTime, mTwentyPrice, mTwentySelect, 15,schedule.getExpire());
-						break;
-					case 21:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyOneTime, mTwentyOnePrice, mTwentyOneSelect, 16,schedule.getExpire());
-						break;
-					case 22:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTwoTime, mTwentyTwoPrice, mTwentyTwoSelect, 17,schedule.getExpire());
-						break;
-					case 23:
-						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyThreeTime, mTwentyThreePrice, mTwentyThreeSelect, 18,schedule.getExpire());
-						break;
-					}
+//					switch (schedule.getHour()) {
+//					case 5:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFiveTime, mFivePrice, mFiveSelect, 0,schedule.getExpire());
+//						break;
+//					case 6:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixTime, mSixPrice, mSixSelect, 1,schedule.getExpire());
+//						break;
+//					case 7:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSevenTime, mSevenPrice, mSevenSelect, 2,schedule.getExpire());
+//						break;
+//					case 8:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEightTime, mEightPrice, mEightSelect, 3,schedule.getExpire());
+//						break;
+//					case 9:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineTime, mNinePrice, mNineSelect, 4,schedule.getExpire());
+//						break;
+//					case 10:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTenTime, mTenPrice, mTenSelect, 5,schedule.getExpire());
+//						break;
+//					case 11:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mElevenTime, mElevenPrice, mElevenSelect, 6,schedule.getExpire());
+//						break;
+//					case 12:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwelveTime, mTwelvePrice, mTwelveSelect, 7,schedule.getExpire());
+//						break;
+//					case 13:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mThirteenTime, mThirteenPrice, mThirteenSelect, 8,schedule.getExpire());
+//						break;
+//					case 14:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFourteenTime, mFourteenPrice, mFourteenSelect, 9,schedule.getExpire());
+//						break;
+//					case 15:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFifteenTime, mFifteenPrice, mFifteenSelect, 10,schedule.getExpire());
+//						break;
+//					case 16:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixteenTime, mSixteenPrice, mSixteenSelect, 11,schedule.getExpire());
+//						break;
+//					case 17:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSeventeenTime, mSeventeenPrice, mSeventeenSelect, 12,schedule.getExpire());
+//						break;
+//					case 18:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEighteenTime, mEighteenPrice, mEighteenSelect, 13,schedule.getExpire());
+//						break;
+//					case 19:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineteenTime, mNineteenPrice, mNineteenSelect, 14,schedule.getExpire());
+//						break;
+//					case 20:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTime, mTwentyPrice, mTwentySelect, 15,schedule.getExpire());
+//						break;
+//					case 21:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyOneTime, mTwentyOnePrice, mTwentyOneSelect, 16,schedule.getExpire());
+//						break;
+//					case 22:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTwoTime, mTwentyTwoPrice, mTwentyTwoSelect, 17,schedule.getExpire());
+//						break;
+//					case 23:
+//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyThreeTime, mTwentyThreePrice, mTwentyThreeSelect, 18,schedule.getExpire());
+//						break;
+//					}
 				}
 			}
 		}
 
-		checkDayTime();
-		checkSelect();
+		//checkDayTime();
+		//checkSelect();
 	}
 
 	/*
 	 * 修改全选显示情况
 	 */
-	private void checkSelect() {
-		// morning
-		if (hasSel(0, 7)) {
-			mMorSelectAllImg.setSelected(true);
-			mMorSelectAllTv.setText("取消全选");
-		} else {
-			mMorSelectAllImg.setSelected(false);
-			mMorSelectAllTv.setText("全选");
-		}
-		// afternoon
-		if (hasSel(7, 7)) {
-			mAftSelectAllImg.setSelected(true);
-			mAftSelectAllTv.setText("取消全选");
-		} else {
-			mAftSelectAllImg.setSelected(false);
-			mAftSelectAllTv.setText("全选");
-		}
-		// night
-		if (hasSel(14, 5)) {
-			mNigSelectAllImg.setSelected(true);
-			mNigSelectAllTv.setText("取消全选");
-		} else {
-			mNigSelectAllImg.setSelected(false);
-			mNigSelectAllTv.setText("全选");
-		}
-	}
+//	private void checkSelect() {
+//		// morning
+//		if (hasSel(0, 7)) {
+//			mMorSelectAllImg.setSelected(true);
+//			mMorSelectAllTv.setText("取消全选");
+//		} else {
+//			mMorSelectAllImg.setSelected(false);
+//			mMorSelectAllTv.setText("全选");
+//		}
+//		// afternoon
+//		if (hasSel(7, 7)) {
+//			mAftSelectAllImg.setSelected(true);
+//			mAftSelectAllTv.setText("取消全选");
+//		} else {
+//			mAftSelectAllImg.setSelected(false);
+//			mAftSelectAllTv.setText("全选");
+//		}
+//		// night
+//		if (hasSel(14, 5)) {
+//			mNigSelectAllImg.setSelected(true);
+//			mNigSelectAllTv.setText("取消全选");
+//		} else {
+//			mNigSelectAllImg.setSelected(false);
+//			mNigSelectAllTv.setText("全选");
+//		}
+//	}
 
 	private boolean hasSel(int start, int length) {
 		for (int i = start; i < (start + length); i++) {
@@ -3043,58 +3042,58 @@ public class DateSetFragment extends Fragment {
 	/*
 	 * get time space
 	 */
-	private void checkDayTime() {
-		String morTimeStr = checkMANTime(0, 6);
-		if (morTimeStr != null) {
-			mMorTime.setText(morTimeStr);
-		}
-		// afternoon
-		String aftTimeStr = checkMANTime(7, 13);
-		if (aftTimeStr != null) {
-			mAftTime.setText(aftTimeStr);
-		}
-		// night
-		String nigTimeStr = checkMANTime(14, 18);
-		if (nigTimeStr != null) {
-			mNigTime.setText(nigTimeStr);
-		}
-
-		// Check Points
-		checkPoints();
-	}
+//	private void checkDayTime() {
+//		String morTimeStr = checkMANTime(0, 6);
+////		if (morTimeStr != null) {
+////			mMorTime.setText(morTimeStr);
+////		}
+//		// afternoon
+//		String aftTimeStr = checkMANTime(7, 13);
+//		if (aftTimeStr != null) {
+//			mAftTime.setText(aftTimeStr);
+//		}
+//		// night
+//		String nigTimeStr = checkMANTime(14, 18);
+//		if (nigTimeStr != null) {
+//			mNigTime.setText(nigTimeStr);
+//		}
+//
+//		// Check Points
+//		checkPoints();
+//	}
 
 	/*
 	 * set the points' color and visibility
 	 */
-	private void checkPoints() {
-		checkMorRest();
-		checkAftRest();
-		checkNigRest();
-	}
+//	private void checkPoints() {
+//		checkMorRest();
+//		checkAftRest();
+//		checkNigRest();
+//	}
 
 	/*
 	 * 
 	 */
-	private void checkMorRest() {
-		if (isRest(0, 6)) {
-			mMorPoint.setBackgroundResource(R.drawable.shape_grey_ball);
-		} else {
-			mMorPoint.setBackgroundResource(R.drawable.shape_yellow_ball);
-		}
-
-		if (isRest(7, 13)) {
-			mAftPoint.setBackgroundResource(R.drawable.shape_grey_ball);
-		} else {
-			mAftPoint.setBackgroundResource(R.drawable.shape_red_ball);
-		}
-
-		if (isRest(14, 18)) {
-			mNigPoint.setBackgroundResource(R.drawable.shape_grey_ball);
-		} else {
-			mNigPoint.setBackgroundResource(R.drawable.shape_blue_ball);
-		}
-
-	}
+//	private void checkMorRest() {
+////		if (isRest(0, 6)) {
+////			mMorPoint.setBackgroundResource(R.drawable.shape_grey_ball);
+////		} else {
+////			mMorPoint.setBackgroundResource(R.drawable.shape_yellow_ball);
+////		}
+//
+//		if (isRest(7, 13)) {
+//			mAftPoint.setBackgroundResource(R.drawable.shape_grey_ball);
+//		} else {
+//			mAftPoint.setBackgroundResource(R.drawable.shape_red_ball);
+//		}
+//
+//		if (isRest(14, 18)) {
+//			mNigPoint.setBackgroundResource(R.drawable.shape_grey_ball);
+//		} else {
+//			mNigPoint.setBackgroundResource(R.drawable.shape_blue_ball);
+//		}
+//
+//	}
 
 	private boolean isRest(int start, int end) {
 		for (int i = start; i <= end; i++) {
@@ -3324,17 +3323,17 @@ public class DateSetFragment extends Fragment {
 
 			if (result != null) {
 				if (result.getCode() == 1) {
-					if (type != null && type.equals("1")) {
-						isAllDayOpen = true;
-						mAllDaySetClose.setText("当天停课");
-						mAllDaySetClose.setBackgroundResource(R.drawable.shape_red_round);
-						new ChangeClassStateTask(1, day).execute();
-					} else {
-						isAllDayOpen = false;
-						mAllDaySetClose.setText("发布课程");
-						mAllDaySetClose.setBackgroundResource(R.drawable.shape_green_round);
-						new ChangeClassStateTask(0, day).execute();
-					}
+//					if (type != null && type.equals("1")) {
+//						isAllDayOpen = true;
+//						mAllDaySetClose.setText("当天停课");
+//						mAllDaySetClose.setBackgroundResource(R.drawable.shape_red_round);
+//						new ChangeClassStateTask(1, day).execute();
+//					} else {
+//						isAllDayOpen = false;
+//						mAllDaySetClose.setText("发布课程");
+//						mAllDaySetClose.setBackgroundResource(R.drawable.shape_green_round);
+//						new ChangeClassStateTask(0, day).execute();
+//					}
 				} else {
 					if (result.getCode() == 95) {
 						if (result.getMessage() != null)
@@ -3454,7 +3453,6 @@ public class DateSetFragment extends Fragment {
 							iv.setEnabled(true);
 							iv.setBackgroundColor(Color.parseColor("#2b3733"));
 							iv.setOnClickListener(new OnSingleClickListener() {
-								
 								@Override
 								public void doOnClick(View v) {
 									// TODO Auto-generated method stub
@@ -3523,7 +3521,6 @@ public class DateSetFragment extends Fragment {
 			} else {
 //				iv.setBackgroundColor(Color.parseColor("#444444"));
 			}
-
 			mHangingContent.addView(iv);
 		}
 		if (getSelectLine(selectCalendar) > selectItemLine)

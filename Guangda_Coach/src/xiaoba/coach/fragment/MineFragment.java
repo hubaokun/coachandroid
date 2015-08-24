@@ -75,28 +75,34 @@ public class MineFragment extends Fragment {
 	private LinearLayout mTousuLayout, mEvaluateLayout, mRechargeLayout;
 	private RelativeLayout mNoticeLayout;
 	private UserInfo userInfo;
-	private TextView mLeftMoney;
-	private TextView mGMoney; // 保证金和冻结金
+//	private TextView mLeftMoney;
+//	private TextView mGMoney; // 保证金和冻结金
 //	private View bg;
 //	private ImageView mBgPolygon;
 	private TextView mTousuCount, mEvaluateCount, mNoticeCount, mUnreadCount;
-	private Button mApply;
+//	private Button mApply;
 	DisplayImageOptions options;
 	ImageSize mImageSize;
 	private LinearLayout mYueLayout;
 	float mBalance;
-	Button btnPayCash;
+//	Button btnPayCash;
 	private TextView tvStudentCount;
 	private RatingBar mRatingBar;
 	private TextView mHourTv;
 	private RelativeLayout rlShare;
 	private RelativeLayout rlInfo;
-	private Button btnPayCoins;
+//	private Button btnPayCoins;
 	private String coinnum = "0";
 	private TextView tv_coin_value;
 	private ImageView imgTicketCoin1;
 	private ImageView imgTicketCoin2;
-	private TicketCoinRelusDialog ticketcoinDialog; 
+	private TicketCoinRelusDialog ticketcoinDialog;
+	private TextView tvPhone;
+	private TextView tvTime;
+	private TextView tvMyMoney;
+	private LinearLayout llMyMoney;
+	private RelativeLayout rlXiaoBaTicket;
+	private RelativeLayout rlXiaoBaCoin;
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -120,8 +126,8 @@ public class MineFragment extends Fragment {
 		rlInfo = (RelativeLayout)view.findViewById(R.id.rl_info);
 		mHourTv = (TextView) view.findViewById(R.id.tv_coupon_value);
 		mRatingBar = (RatingBar) view.findViewById(R.id.mine_ratingBar);
-		mGMoney = (TextView) view.findViewById(R.id.mine_gmoney);
-		mLeftMoney = (TextView) view.findViewById(R.id.mine_yue);
+//		mGMoney = (TextView) view.findViewById(R.id.mine_gmoney);
+//		mLeftMoney = (TextView) view.findViewById(R.id.mine_yue);
 		mTousuLayout = (LinearLayout) view.findViewById(R.id.tousu_layout);
 		mEvaluateLayout = (LinearLayout) view.findViewById(R.id.evaluate_layout);
 		mRechargeLayout = (LinearLayout) view.findViewById(R.id.recharge_layout);
@@ -140,8 +146,8 @@ public class MineFragment extends Fragment {
 		mNoticeCount = (TextView) view.findViewById(R.id.notice_msg_count);
 //		mUnreadCount = (TextView) view.findViewById(R.id.notice_unread_msg_count);
 		mYueLayout = (LinearLayout) view.findViewById(R.id.mine_yue_layout);
-		mApply = (Button) view.findViewById(R.id.mine_apply_btn);
-		btnPayCash = (Button) view.findViewById(R.id.btn_pay_cash);
+//		mApply = (Button) view.findViewById(R.id.mine_apply_btn);
+//		btnPayCash = (Button) view.findViewById(R.id.btn_pay_cash);
 		tvStudentCount = (TextView) view.findViewById(R.id.tv_student_count);
 		int layoutWidth = (Settings.DISPLAY_WIDTH - DensityUtils.dp2px(mActivity, 30)) / 2;
 		LayoutParams params = new LayoutParams(layoutWidth, layoutWidth);
@@ -151,10 +157,16 @@ public class MineFragment extends Fragment {
 		mRechargeLayout.setLayoutParams(params);
 //		int bgHeight = Settings.DISPLAY_WIDTH * 345 / 640;
 //		bg.setLayoutParams(new RelativeLayout.LayoutParams(Settings.DISPLAY_WIDTH, bgHeight));
-		btnPayCoins = (Button)view.findViewById(R.id.btn_pay_coin);
+//		btnPayCoins = (Button)view.findViewById(R.id.btn_pay_coin);
 		tv_coin_value=(TextView)view.findViewById(R.id.tv_coin_value);
 		imgTicketCoin1 = (ImageView)view.findViewById(R.id.img_ticket_coin_1);
 		imgTicketCoin2 = (ImageView)view.findViewById(R.id.img_ticket_coin_2);
+		tvPhone = (TextView)view.findViewById(R.id.tv_phone);
+		tvTime = (TextView)view.findViewById(R.id.tv_time);
+		tvMyMoney = (TextView)view.findViewById(R.id.tv_my_money);
+		llMyMoney = (LinearLayout)view.findViewById(R.id.ll_my_money);
+		rlXiaoBaTicket = (RelativeLayout)view.findViewById(R.id.rl_xiaoba_ticket);
+		rlXiaoBaCoin = (RelativeLayout)view.findViewById(R.id.rl_xiaoba_coin);
 	}
 
 	private void addListeners() {
@@ -213,7 +225,7 @@ public class MineFragment extends Fragment {
 			}
 		});
 
-		mApply.setOnClickListener(new OnSingleClickListener() {
+		llMyMoney.setOnClickListener(new OnSingleClickListener() {
 
 			@Override
 			public void doOnClick(View v) {
@@ -230,7 +242,7 @@ public class MineFragment extends Fragment {
 			}
 		});
 
-		btnPayCash.setOnClickListener(new OnSingleClickListener() {
+		rlXiaoBaTicket.setOnClickListener(new OnSingleClickListener() {
 
 			@Override
 			public void doOnClick(View v) {
@@ -239,7 +251,7 @@ public class MineFragment extends Fragment {
 			}
 		});
 		
-		btnPayCoins.setOnClickListener(new OnSingleClickListener() {
+		rlXiaoBaCoin.setOnClickListener(new OnSingleClickListener() {
 			
 			@Override
 			public void doOnClick(View v) {
@@ -374,8 +386,17 @@ public class MineFragment extends Fragment {
 		{
 			mName.setText(userInfo.getRealname());
 		}else{
-			mName.setText(userInfo.getPhone());
+			mName.setText("未设置");
 		}
+		
+		if (!TextUtils.isEmpty(userInfo.getPhone()))
+		{
+			tvPhone.setText(userInfo.getPhone());
+		}else{
+			tvPhone.setText("未设置");
+		}
+		
+		tvTime.setText("已累计培训"+userInfo.getTotaltime()+"个小时");
 
 		SpannableString ss = new SpannableString(userInfo.getPrice() + "元/小时  上车地址");
 		ss.setSpan(new ForegroundColorSpan(Color.parseColor("#ffffff")), 0, userInfo.getPrice().length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
@@ -414,9 +435,9 @@ public class MineFragment extends Fragment {
 		userInfo = CoachApplication.getInstance().getUserInfo();
 
 		if (userInfo.getMoney() != null)
-			mLeftMoney.setText("余额：" + (userInfo.getMoney().contains(".") ? userInfo.getMoney().substring(0, userInfo.getMoney().indexOf(".")) : userInfo.getMoney()) + "元");
+			tvMyMoney.setText(userInfo.getMoney().contains(".") ? userInfo.getMoney().substring(0, userInfo.getMoney().indexOf(".")) : userInfo.getMoney());
 		else {
-			mLeftMoney.setText("余额：未取得");
+			tvMyMoney.setText("0");
 		}
 		/*
 		 * 需求修改为隐藏（机智的我,果然改回来了）
@@ -443,11 +464,11 @@ public class MineFragment extends Fragment {
 		 */
 		if (canUseMoney < 0)
 			canUseMoney = 0;
-		SpannableString ss = new SpannableString("(" + canUseMoney + "元可用余额/" + fmoney + "元冻结金)");
-		ss.setSpan(new ForegroundColorSpan(Color.parseColor("#e0483d")), 1, (canUseMoney + "").length() + 1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-		ss.setSpan(new ForegroundColorSpan(Color.parseColor("#e0483d")), (canUseMoney + "").length() + 7, fmoney.length() + (canUseMoney + "").length() + 7, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-		ss.setSpan(new ForegroundColorSpan(Color.parseColor("#d2d2d2")), ss.toString().indexOf("/"), ss.toString().indexOf("/") + 1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-		mGMoney.setText(ss);
+//		SpannableString ss = new SpannableString("(" + canUseMoney + "元可用余额/" + fmoney + "元冻结金)");
+//		ss.setSpan(new ForegroundColorSpan(Color.parseColor("#e0483d")), 1, (canUseMoney + "").length() + 1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+//		ss.setSpan(new ForegroundColorSpan(Color.parseColor("#e0483d")), (canUseMoney + "").length() + 7, fmoney.length() + (canUseMoney + "").length() + 7, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+//		ss.setSpan(new ForegroundColorSpan(Color.parseColor("#d2d2d2")), ss.toString().indexOf("/"), ss.toString().indexOf("/") + 1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+//		mGMoney.setText(ss);
 	}
 
 	@Override

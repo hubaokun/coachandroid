@@ -12,20 +12,45 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
-        <include 
-            android:id="@+id/nineteen_part"
-            layout="@layout/time_with_geer" />
-
-        <View
-            android:layout_width="12dp"
-            android:layout_height="match_parent" />
 
         <include 
             android:id="@+id/twenty_part"
-            layout="@layout/time_with_geer" />
+            layout="@layout/time_with_geer"
+                        android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"  />
+        
+         <include 
+            android:id="@+id/twentyone_part"
+            layout="@layout/time_with_geer" 
+                        android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
+
+
+
+        <include 
+            android:id="@+id/twentytwo_part"
+            layout="@layout/time_with_geer"
+                        android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"  />
+        
+                <include 
+            android:id="@+id/twentythree_part"
+            layout="@layout/time_with_geer" 
+                        android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
+        
+        
     </LinearLayout>
 
-    <LinearLayout
+   <!--  <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -63,7 +88,7 @@
         <include
             layout="@layout/time_with_geer"
             android:visibility="invisible" />
-    </LinearLayout>
+    </LinearLayout> -->
 
     <!-- 注 -->
 
@@ -110,7 +135,7 @@
             android:textSize="11dp" />
     </LinearLayout> -->
 
-    <View
+<!--     <View
         style="@style/dividerLine"
         android:layout_marginTop="18dp" />
 
@@ -159,6 +184,6 @@
             android:textColor="@color/white"
             android:textSize="16dp" >
         </Button>
-    </LinearLayout>
+    </LinearLayout> -->
 
 </LinearLayout>

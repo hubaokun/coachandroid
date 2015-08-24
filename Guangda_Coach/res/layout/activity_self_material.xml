@@ -5,24 +5,315 @@
     android:layout_height="match_parent"
     android:background="#f3f3f3"
     android:orientation="vertical" >
+	
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
     <include
         layout="@layout/layout_titlebar"
         android:background="@color/white" />
-
+    </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none" >
 
-        <LinearLayout
+       <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
-            <RelativeLayout
+            
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@color/white">
+            	<RelativeLayout android:layout_width="match_parent"
+            	    android:layout_height="wrap_content"
+            	    android:layout_marginTop="10dp"
+            	    android:layout_marginBottom="10dp">
+            	    <TextView android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:text="头像"
+            	        android:textColor="@color/text_black"
+            	        android:textSize="16sp"
+            	        android:layout_centerVertical="true"/>
+            	    
+            	    <LinearLayout android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:orientation="horizontal"
+            	        android:layout_alignParentRight="true"
+            	        android:layout_centerVertical="true"
+            	        android:gravity="center_vertical">
+            	        <net.grobas.view.PolygonImageView
+                    android:id="@+id/potrait"
+                    android:layout_width="66dp"
+                    android:layout_height="70dp"
+                    android:layout_alignTop="@+id/ll_part"
+                    android:layout_toLeftOf="@+id/ll_part"
+                    android:src="@drawable/portrait_test"
+                    app:poly_border="true"
+                    app:poly_border_color="@android:color/white"
+                    app:poly_border_width="1dp"
+                    app:poly_corner_radius="10"
+                    app:poly_rotation_angle="0"
+                    app:poly_shadow="true"
+                    app:poly_shadow_color="@color/divider_grey"
+                    app:poly_vertices="0" />
+            	        <ImageView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:src="@drawable/ic_go_gray"/>
+            	    </LinearLayout>
+            	</RelativeLayout>
+            	<View style="@style/dividerLine" />
+            	
+            	<RelativeLayout android:layout_width="match_parent"
+            	    android:layout_height="wrap_content"
+            	    android:layout_marginTop="10dp"
+                	android:layout_marginBottom="10dp"
+                	android:id="@+id/rl_name">
+            	    
+            	    <TextView android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:text="姓名"
+            	        android:textColor="@color/text_black"
+            	        android:textSize="16sp"
+            	        android:layout_centerVertical="true"/>
+            	    
+            	    <LinearLayout android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:orientation="horizontal"
+            	        android:layout_alignParentRight="true"
+            	        android:layout_centerVertical="true"
+            	        android:gravity="center_vertical">
+            	        <TextView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:text="请填写"
+            	            android:textColor="@color/text_grey"
+            	            android:textSize="14sp"/>
+            	        <ImageView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:src="@drawable/ic_go_gray"/>
+            	    </LinearLayout>
+            	    
+            	</RelativeLayout>
+            		<View style="@style/dividerLine" />
+            		
+            		<RelativeLayout android:layout_width="match_parent"
+            		    android:layout_height="wrap_content"
+            		    android:layout_marginTop="10dp"
+                		android:layout_marginBottom="10dp"
+                		android:id="@+id/rl_geny">
+            		 <TextView android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:text="性别"
+            	        android:textColor="@color/text_black"
+            	        android:textSize="16sp"
+            	        android:layout_centerVertical="true"/>
+            	    
+            	    <LinearLayout android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:orientation="horizontal"
+            	        android:layout_centerVertical="true"
+            	        android:layout_alignParentRight="true"
+            	        android:gravity="center_vertical">
+            	        <TextView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:text="请填写"
+            	            android:textColor="@color/text_grey"
+            	            android:textSize="14sp"/>
+            	        <ImageView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:src="@drawable/ic_go_gray"/>
+            	    </LinearLayout>
+            		</RelativeLayout>
+            </LinearLayout>
+            
+            <View style="@style/dividerLine" />
+            
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="完善认证信息"
+                    android:textColor="@color/text_red"
+                    android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(接单必填)"
+                    android:textColor="@color/text_grey"
+                    android:textSize="12sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+            
+            <View style="@style/dividerLine" />
+            
+            
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@color/white">
+                <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/rl_coach_pro">
+            	    <TextView android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:text="教练资格认证"
+            	        android:layout_centerVertical="true"/>
+            	    
+            	    <ImageView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:src="@drawable/ic_go_gray"
+            	            android:layout_centerVertical="true"
+            	            android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+                
+                <View style="@style/dividerLine" />
+                
+              <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/rl_coach_address">
+            	    <TextView android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:text="训练地址"
+            	        android:layout_centerVertical="true"/>
+            	    
+            	    <ImageView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:src="@drawable/ic_go_gray"
+            	            android:layout_centerVertical="true"
+            	            android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+            
+             <View style="@style/dividerLine" />
+             
+                         <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="其他信息"
+                    android:textColor="@color/text_red"
+                    android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(选填)"
+                    android:textColor="@color/text_grey"
+                    android:textSize="12sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+            
+             <View style="@style/dividerLine" />
+                         <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@color/white">
+                <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/rl_birthday">
+            	    <TextView android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:text="出生年月"
+            	        android:layout_centerVertical="true"/>
+            	    
+            	    <LinearLayout android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:orientation="horizontal"
+            	        android:layout_centerVertical="true"
+            	        android:layout_alignParentRight="true"
+            	        android:gravity="center_vertical">
+            	        <TextView 
+            	            android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:text="请填写"
+            	            android:textColor="@color/text_grey"
+            	            android:textSize="14sp"
+            	            android:id="@+id/tv_birthday"/>
+            	        <ImageView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:src="@drawable/ic_go_gray"/>
+            	    </LinearLayout>
+                </RelativeLayout>
+                
+                <View style="@style/dividerLine" />
+                
+                <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/rl_coach_year">
+            	    <TextView android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:text="驾培教龄"
+            	        android:layout_centerVertical="true"/>
+            	    
+            	    <LinearLayout android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:orientation="horizontal"
+            	        android:layout_centerVertical="true"
+            	        android:layout_alignParentRight="true"
+            	        android:gravity="center_vertical">
+            	        <TextView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:text="请填写"
+            	            android:textColor="@color/text_grey"
+            	            android:textSize="14sp"/>
+            	        <ImageView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:src="@drawable/ic_go_gray"/>
+            	    </LinearLayout>
+                </RelativeLayout>
+                <View style="@style/dividerLine" />
+                                <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/rl_about_self">
+            	    <TextView android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:text="个人评价"
+            	        android:layout_centerVertical="true"/>
+            	    
+            	    <LinearLayout android:layout_width="wrap_content"
+            	        android:layout_height="wrap_content"
+            	        android:orientation="horizontal"
+            	        android:layout_centerVertical="true"
+            	        android:layout_alignParentRight="true"
+            	        android:gravity="center_vertical">
+            	        <TextView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:text="请填写"
+            	            android:textColor="@color/text_grey"
+            	            android:textSize="14sp"/>
+            	        <ImageView android:layout_width="wrap_content"
+            	            android:layout_height="wrap_content"
+            	            android:src="@drawable/ic_go_gray"/>
+            	    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <View style="@style/dividerLine" />
+            
+            <!-- <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/ll_part"
@@ -40,7 +331,7 @@
                         android:textColor="@color/text_black"
                         android:textSize="13dp" />
 
-                    <!--
+                    
                          <TextView
                         android:id="@+id/phone_number"
                         android:layout_width="wrap_content"
@@ -48,7 +339,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="11dp"
                         android:textColor="@color/text_black"
-                        android:textSize="15dp" /> -->
+                        android:textSize="15dp" />
                     <TextView
                         android:id="@+id/total_rating"
                         android:layout_width="wrap_content"
@@ -73,7 +364,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="15dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal" >
@@ -93,7 +384,7 @@
                             android:textColor="@color/text_black"
                             android:textSize="18dp" />
 
-                        <!--
+                        
                              <TextView
                             android:id="@+id/tv_change_new_phone"
                             android:layout_width="wrap_content"
@@ -102,10 +393,10 @@
                             android:text="修改"
                             android:textColor="@color/text_green"
                             android:textSize="13sp" />
-                        -->
+                       
 
 
-                        <!--
+                        
                      <ImageView
                     android:id="@+id/pencil_phone_number"
                     android:layout_width="39dp"
@@ -114,29 +405,14 @@
                     android:paddingLeft="11dp"
                     android:paddingRight="11dp"
                     android:paddingTop="12dp"
-                    android:src="@drawable/pencile" />-->
+                    android:src="@drawable/pencile" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <net.grobas.view.PolygonImageView
-                    android:id="@+id/potrait"
-                    android:layout_width="66dp"
-                    android:layout_height="70dp"
-                    android:layout_alignTop="@+id/ll_part"
-                    android:layout_marginTop="32dp"
-                    android:layout_toLeftOf="@+id/ll_part"
-                    android:src="@drawable/portrait_test"
-                    app:poly_border="true"
-                    app:poly_border_color="@android:color/white"
-                    app:poly_border_width="1dp"
-                    app:poly_corner_radius="10"
-                    app:poly_rotation_angle="0"
-                    app:poly_shadow="true"
-                    app:poly_shadow_color="@color/divider_grey"
-                    app:poly_vertices="0" />
-            </RelativeLayout>
+                
+            </RelativeLayout> -->
 
-            <View
+           <!--  <View
                 style="@style/dividerLine"
                 android:layout_marginTop="28dp" />
 
@@ -238,7 +514,7 @@
                     android:paddingRight="11dp"
                     android:paddingTop="12dp"
                     android:src="@drawable/pencile" />
-            </LinearLayout>
+            </LinearLayout> -->
 
             <!--
             <View
@@ -297,7 +573,7 @@
                </LinearLayout>
             </RelativeLayout> -->
 
-            <View
+<!--             <View
                 style="@style/dividerLine"
                 android:layout_marginTop="10dp" />
 
@@ -544,7 +820,7 @@
 
             <View
                 style="@style/dividerLine"
-                android:visibility="gone" />
+                android:visibility="gone" /> -->
         </LinearLayout>
     </ScrollView>
 

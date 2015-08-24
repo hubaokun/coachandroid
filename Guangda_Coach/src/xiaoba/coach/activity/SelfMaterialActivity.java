@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,9 +41,10 @@ import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.ChangeAvatarResult;
 import xiaoba.coach.net.result.GetSchoolResult;
 import xiaoba.coach.utils.CommonUtils;
+import xiaoba.coach.views.BirthdayDialog;
 import xiaoba.coach.views.GenderDialog;
 import xiaoba.coach.views.SelectDialog;
-
+import xiaoba.coach.views.BirthdayDialog.OnComfirmClickListener;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -83,33 +85,49 @@ public class SelfMaterialActivity extends BaseActivity {
 	TextView mTitleRightTv;
 	@ViewById(R.id.title_back)
 	FrameLayout mBack;
-	@ViewById(R.id.account_info)
-	LinearLayout mAccount;
-	@ViewById(R.id.pro_quality)
-	LinearLayout mProQuality;
-	@ViewById(R.id.personal_info)
-	LinearLayout mPersonInfo;
-	@ViewById(R.id.modify_pass)
-	LinearLayout mModifyPass;
-	@ViewById(R.id.total_hours)
-	TextView mTotalHours;
-	@ViewById(R.id.total_rating)
-	TextView mTotalScore;
-	@ViewById(R.id.self_ratingBar)
-	RatingBar mRatingBar;
-	@ViewById(R.id.address_set)
-	LinearLayout mAddressSet;
-	@ViewById(R.id.gender_tv)
-	TextView mGenderTv;
-	@ViewById(R.id.pencil_sex)
-	ImageView mPencilSex;
-	@ViewById(R.id.enter_name)
-	EditText mName;
-	@ViewById(R.id.pencil_name)
-	ImageView mPencilName;
+	@ViewById(R.id.rl_name)
+	RelativeLayout rlName;
+	@ViewById(R.id.rl_geny)
+	RelativeLayout rlGeny;
+	@ViewById(R.id.rl_coach_pro)
+	RelativeLayout rlCoachPro;
+	@ViewById(R.id.rl_coach_address)
+	RelativeLayout rlCoachAdress;
+	@ViewById(R.id.rl_birthday)
+	RelativeLayout rlCoachBir;
+	@ViewById(R.id.rl_coach_year)
+	RelativeLayout rlCoachYear;
+	@ViewById(R.id.rl_about_self)
+	RelativeLayout rlAboutSelf;
+	@ViewById(R.id.tv_birthday)
+	TextView tvBirthday;
+//	@ViewById(R.id.account_info)
+//	LinearLayout mAccount;
+//	@ViewById(R.id.pro_quality)
+//	LinearLayout mProQuality;
+//	@ViewById(R.id.personal_info)
+//	LinearLayout mPersonInfo;
+//	@ViewById(R.id.modify_pass)
+//	LinearLayout mModifyPass;
+//	@ViewById(R.id.total_hours)
+//	TextView mTotalHours;
+//	@ViewById(R.id.total_rating)
+//	TextView mTotalScore;
+//	@ViewById(R.id.self_ratingBar)
+//	RatingBar mRatingBar;
+//	@ViewById(R.id.address_set)
+//	LinearLayout mAddressSet;
+//	@ViewById(R.id.gender_tv)
+//	TextView mGenderTv;
+//	@ViewById(R.id.pencil_sex)
+//	ImageView mPencilSex;
+//	@ViewById(R.id.enter_name)
+//	EditText mName;
+//	@ViewById(R.id.pencil_name)
+//	ImageView mPencilName;
 
-	@ViewById(R.id.enter_phone_number)
-	TextView mPhonNumber;
+//	@ViewById(R.id.enter_phone_number)
+//	TextView mPhonNumber;
 //	@ViewById(R.id.pencil_phone_number)
 //	ImageView mPencilPhonNumber;
 
@@ -119,8 +137,8 @@ public class SelfMaterialActivity extends BaseActivity {
 /*	@ViewById(R.id.tv_change_new_phone)
 	TextView tvChangeNewPhone;*/
 
-	@ViewById(R.id.user_address)
-	TextView mUserAddress;
+//	@ViewById(R.id.user_address)
+//	TextView mUserAddress;
 //	@ViewById(R.id.enter_school_name)
 //	TextView mSchoolName;
 
@@ -137,16 +155,18 @@ public class SelfMaterialActivity extends BaseActivity {
 	DisplayImageOptions options;
 	ImageSize mImageSize;
 	UserInfo info;
+	BirthdayDialog mBirthdayDialog;
 
 	@AfterViews
 	void init() {
 		mTitle.setText("个人信息");
 		mTitleBack.setImageResource(R.drawable.back_arrow);
 		mTitle.setTextColor(Color.parseColor("#2c2c2c"));
-		mTitleRightTv.setText("提交资料");
-		mTitleRightTv.setTextColor(Color.parseColor("#d2d2d2"));
-		mTitleRightTv.setClickable(false);
-		mTitleRightTv.setVisibility(View.VISIBLE);
+//		mTitleRightTv.setText("提交资料");
+//		mTitleRightTv.setTextColor(Color.parseColor("#d2d2d2"));
+//		mTitleRightTv.setClickable(false);
+//		mTitleRightTv.setVisibility(View.VISIBLE);
+		mBirthdayDialog = new BirthdayDialog(this);
 		initData();
 		addListener();
 	}
@@ -160,6 +180,77 @@ public class SelfMaterialActivity extends BaseActivity {
 				startActivity(intent);
 			}
 		});*/
+		
+		rlName.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(SelfMaterialActivity.this,ActivityChangeName.class));
+			}
+		});
+		
+		rlCoachYear.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(SelfMaterialActivity.this,ActivityCoachYear.class));
+			}
+		});
+		
+		rlAboutSelf.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(SelfMaterialActivity.this,ActivityCoachAboutSelf.class));
+			}
+		});
+		
+		rlCoachBir.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				mBirthdayDialog.show();
+			}
+		});
+		
+		mBirthdayDialog.setOnComfirmClickListener(new OnComfirmClickListener() {
+
+			@Override
+			public void onComfirmBtnClick(int year, int month, int day) {
+				/*
+				 * 判断日期
+				 */
+				Calendar today = Calendar.getInstance();
+				boolean deadTime = false;
+				if (year > today.get(Calendar.YEAR)) {
+					deadTime = true;
+				} else if (year == today.get(Calendar.YEAR)) {
+					if (month > today.get(Calendar.MONTH)) {
+						deadTime = true;
+					} else if (month == today.get(Calendar.MONTH) && day > today.get(Calendar.DAY_OF_MONTH)) {
+						deadTime = true;
+					}
+				}
+
+				if (deadTime) {
+					Toast.makeText(SelfMaterialActivity.this, "请选择今天以前的日期", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				/*
+				 * 显示修改后的日期
+				 */
+				String monthStr = month < 10 ? "0" + month : "" + month;
+				String dayStr = day < 10 ? "0" + day : "" + day;
+				tvBirthday.setTextColor(Color.parseColor("#252525"));
+				tvBirthday.setText(year + "-" + monthStr + "-" + dayStr);
+				hasDate = true;
+				setClickable();
+			}
+		});
 	}
 
 	void setClickable() {
@@ -172,11 +263,11 @@ public class SelfMaterialActivity extends BaseActivity {
 	private void initData() {
 		
 		info = CoachApplication.getInstance().getUserInfo();
-		if (info != null) {
-			mTotalHours.setText("累计培训学时" + info.getTotaltime() + "小时");
-			mTotalScore.setText("综合评分" + info.getScore() + "分");
-			mRatingBar.setRating(info.getScore());
-		}
+//		if (info != null) {
+//			mTotalHours.setText("累计培训学时" + info.getTotaltime() + "小时");
+//			mTotalScore.setText("综合评分" + info.getScore() + "分");
+//			mRatingBar.setRating(info.getScore());
+//		}
 
 		mGenderDialog = new GenderDialog(this);
 		mGenderDialog.setOnComfirmClickListener(new GenderDialog.OnComfirmClickListener() {
@@ -184,8 +275,8 @@ public class SelfMaterialActivity extends BaseActivity {
 			@Override
 			public void onComfirmBtnClick(String gender) {
 				mGenderDialog.dismiss();
-				mGenderTv.setText(gender);
-				mGenderTv.setTextColor(Color.parseColor("#252525"));
+//				mGenderTv.setText(gender);
+//				mGenderTv.setTextColor(Color.parseColor("#252525"));
 				hasGender = true;
 				setClickable();
 			}
@@ -227,57 +318,57 @@ public class SelfMaterialActivity extends BaseActivity {
 //			mSchoolName.setTextColor(getResources().getColor(R.color.text_black));
 //		}
 
-		if (info.getRealname() != null) {
-			mName.setText(info.getRealname());
-			mName.setSelection(info.getRealname().length());
-		}
+//		if (info.getRealname() != null) {
+//			mName.setText(info.getRealname());
+//			mName.setSelection(info.getRealname().length());
+//		}
 
-		if (info.getPhone() != null)
-
-			mPhonNumber.setText(info.getPhone().trim());
+//		if (info.getPhone() != null)
+//
+//			mPhonNumber.setText(info.getPhone().trim());
 
 
 //		if (info.getDrive_school() != null)
 //			mSchoolName.setText(info.getDrive_school());
-
-		if (info.getGender() != null && !info.getGender().equals("0")) {
-			mGenderTv.setTextColor(Color.parseColor("#2c2c2c"));
-			if (info.getGender().equals("1"))
-				mGenderTv.setText("男");
-			else {
-				mGenderTv.setText("女");
-			}
-		}
-
-		mName.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable arg0) {
-				if (info.getRealname() != null) {
-					if (!arg0.toString().equals(info.getRealname()))
-						mPencilName.setImageResource(R.drawable.pencil_color);
-					else {
-						mPencilName.setImageResource(R.drawable.pencile);
-					}
-				} else {
-					if (arg0.length() > 0)
-						mPencilName.setImageResource(R.drawable.pencil_color);
-					else {
-						mPencilName.setImageResource(R.drawable.pencile);
-					}
-				}
-			}
-		});
+//
+//		if (info.getGender() != null && !info.getGender().equals("0")) {
+//			mGenderTv.setTextColor(Color.parseColor("#2c2c2c"));
+//			if (info.getGender().equals("1"))
+//				mGenderTv.setText("男");
+//			else {
+//				mGenderTv.setText("女");
+//			}
+//		}
+//
+//		mName.addTextChangedListener(new TextWatcher() {
+//
+//			@Override
+//			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+//
+//			}
+//
+//			@Override
+//			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+//
+//			}
+//
+//			@Override
+//			public void afterTextChanged(Editable arg0) {
+//				if (info.getRealname() != null) {
+//					if (!arg0.toString().equals(info.getRealname()))
+//						mPencilName.setImageResource(R.drawable.pencil_color);
+//					else {
+//						mPencilName.setImageResource(R.drawable.pencile);
+//					}
+//				} else {
+//					if (arg0.length() > 0)
+//						mPencilName.setImageResource(R.drawable.pencil_color);
+//					else {
+//						mPencilName.setImageResource(R.drawable.pencile);
+//					}
+//				}
+//			}
+//		});
 
 //		mPhonNumber.addTextChangedListener(new TextWatcher() {
 //
@@ -335,66 +426,66 @@ public class SelfMaterialActivity extends BaseActivity {
 //			}
 //		});
 
-		mGenderTv.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-			}
-
-			@Override
-			public void afterTextChanged(Editable arg0) {
-				if (info.getGender() != null) {
-					String genderStr = "";
-					if (info.getGender().equals("1")) {
-						genderStr = "男";
-					} else if (info.getGender().equals("2")) {
-						genderStr = "女";
-					}
-					if (!arg0.toString().equals(genderStr))
-						mPencilSex.setImageResource(R.drawable.pencil_color);
-					else {
-						mPencilSex.setImageResource(R.drawable.pencile);
-					}
-				} else {
-					if (arg0.length() > 0)
-						mPencilSex.setImageResource(R.drawable.pencil_color);
-					else {
-						mPencilSex.setImageResource(R.drawable.pencile);
-					}
-				}
-			}
-		});
-		
-		if("".equals(mName.getText().toString()))
-		{
-			mPencilName.setVisibility(View.VISIBLE);
-		}else{
-			mPencilName.setVisibility(View.GONE);
-		}
-		
-		if ("男".equals(mGenderTv.getText().toString())||"女".equals(mGenderTv.getText().toString()))
-		{
-			mPencilSex.setVisibility(View.GONE);
-		}else{
-			mPencilSex.setVisibility(View.VISIBLE);
-		}
+//		mGenderTv.addTextChangedListener(new TextWatcher() {
+//
+//			@Override
+//			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+//			}
+//
+//			@Override
+//			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+//			}
+//
+//			@Override
+//			public void afterTextChanged(Editable arg0) {
+//				if (info.getGender() != null) {
+//					String genderStr = "";
+//					if (info.getGender().equals("1")) {
+//						genderStr = "男";
+//					} else if (info.getGender().equals("2")) {
+//						genderStr = "女";
+//					}
+//					if (!arg0.toString().equals(genderStr))
+//						mPencilSex.setImageResource(R.drawable.pencil_color);
+//					else {
+//						mPencilSex.setImageResource(R.drawable.pencile);
+//					}
+//				} else {
+//					if (arg0.length() > 0)
+//						mPencilSex.setImageResource(R.drawable.pencil_color);
+//					else {
+//						mPencilSex.setImageResource(R.drawable.pencile);
+//					}
+//				}
+//			}
+//		});
+//		
+//		if("".equals(mName.getText().toString()))
+//		{
+//			mPencilName.setVisibility(View.VISIBLE);
+//		}else{
+//			mPencilName.setVisibility(View.GONE);
+//		}
+//		
+//		if ("男".equals(mGenderTv.getText().toString())||"女".equals(mGenderTv.getText().toString()))
+//		{
+//			mPencilSex.setVisibility(View.GONE);
+//		}else{
+//			mPencilSex.setVisibility(View.VISIBLE);
+//		}
 	}
 
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if (!TextUtils.isEmpty(info.getDefaultAddress())) {
-			mUserAddress.setText(info.getDefaultAddress());
-			mUserAddress.setTextColor(Color.parseColor("#2c2c2c"));
-		} else {
-			mUserAddress.setText("未设置");
-			mUserAddress.setTextColor(Color.parseColor("#d2d2d2"));
-		}
+//		if (!TextUtils.isEmpty(info.getDefaultAddress())) {
+//			mUserAddress.setText(info.getDefaultAddress());
+//			mUserAddress.setTextColor(Color.parseColor("#2c2c2c"));
+//		} else {
+//			mUserAddress.setText("未设置");
+//			mUserAddress.setTextColor(Color.parseColor("#d2d2d2"));
+//		}
 	}
 
 	@Click(R.id.title_back)
@@ -412,27 +503,27 @@ public class SelfMaterialActivity extends BaseActivity {
 		finish();
 	}
 
-	@Click(R.id.account_info)
-	void goToAccountPage() {
-		startActivity(new Intent(SelfMaterialActivity.this, AccountInfoActivity_.class));
-	}
-
-	@Click(R.id.pro_quality)
+//	@Click(R.id.account_info)
+//	void goToAccountPage() {
+//		startActivity(new Intent(SelfMaterialActivity.this, AccountInfoActivity_.class));
+//	}
+//
+	@Click(R.id.rl_coach_pro)
 	void goToQualityPage() {
 		startActivity(new Intent(SelfMaterialActivity.this, ProQualityActivity_.class));
 	}
-
-	@Click(R.id.personal_info)
-	void goToPersonalPage() {
-		startActivity(new Intent(SelfMaterialActivity.this, PersonalInfoActivity_.class));
-	}
-
-	@Click(R.id.modify_pass)
-	void goToModifyPassPage() {
-		startActivity(new Intent(SelfMaterialActivity.this, ModifyPassActivity_.class));
-	}
-
-	@Click(R.id.address_set)
+//
+//	@Click(R.id.personal_info)
+//	void goToPersonalPage() {
+//		startActivity(new Intent(SelfMaterialActivity.this, PersonalInfoActivity_.class));
+//	}
+//
+//	@Click(R.id.modify_pass)
+//	void goToModifyPassPage() {
+//		startActivity(new Intent(SelfMaterialActivity.this, ModifyPassActivity_.class));
+//	}
+//
+	@Click(R.id.rl_coach_address)
 	void goToAddressList() {
 		startActivity(new Intent(SelfMaterialActivity.this, AddressSetActivity_.class));
 	}
@@ -454,22 +545,22 @@ public class SelfMaterialActivity extends BaseActivity {
 //		mSchoolName.requestFocus();
 //		setClickable();
 //	}
-
-	@Click(R.id.pencil_name)
-	void showName() {
-		mName.setFocusable(true);
-		mName.setFocusableInTouchMode(true);
-		mName.requestFocus();
-		setClickable();
-	}
-
-	@Click(R.id.enter_name)
-	void wuyan1() {
-		mName.setFocusable(true);
-		mName.setFocusableInTouchMode(true);
-		mName.requestFocus();
-		setClickable();
-	}
+//
+//	@Click(R.id.pencil_name)
+//	void showName() {
+//		mName.setFocusable(true);
+//		mName.setFocusableInTouchMode(true);
+//		mName.requestFocus();
+//		setClickable();
+//	}
+//
+//	@Click(R.id.enter_name)
+//	void wuyan1() {
+//		mName.setFocusable(true);
+//		mName.setFocusableInTouchMode(true);
+//		mName.requestFocus();
+//		setClickable();
+//	}
 
 
 //	@Click(R.id.pencil_phone_number)
@@ -490,12 +581,12 @@ public class SelfMaterialActivity extends BaseActivity {
 //	}
 
 
-	@Click(R.id.pencil_sex)
-	void showSelectSex() {
-		mGenderDialog.show();
-	}
-
-	@Click(R.id.gender_tv)
+//	@Click(R.id.pencil_sex)
+//	void showSelectSex() {
+//		mGenderDialog.show();
+//	}
+//
+	@Click(R.id.rl_geny)
 	void wuyan3() {
 		mGenderDialog.show();
 	}
@@ -507,11 +598,11 @@ public class SelfMaterialActivity extends BaseActivity {
 
 	@Click(R.id.title_right_text)
 	void uploadProfile() {
-		if (!mGenderTv.getText().toString().equals("男") && !mGenderTv.getText().toString().equals("女")) {
-			CommonUtils.showToast(SelfMaterialActivity.this.getApplicationContext(), "请填写性别");
-		} else {
-			new PerfectAccountInfoTask().execute();
-		}
+//		if (!mGenderTv.getText().toString().equals("男") && !mGenderTv.getText().toString().equals("女")) {
+//			CommonUtils.showToast(SelfMaterialActivity.this.getApplicationContext(), "请填写性别");
+//		} else {
+//			new PerfectAccountInfoTask().execute();
+//		}
 	}
 
 	private class PerfectAccountInfoTask extends AsyncTask<Void, Void, BaseResult> {
@@ -530,10 +621,10 @@ public class SelfMaterialActivity extends BaseActivity {
 			HashMap<String, Object> param = new BaseParam();
 			param.put("action", "PerfectAccountInfo");
 			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
-			if (mName.isFocusable()) {
-				name = mName.getText().toString();
-				param.put("realname", name);
-			}
+//			if (mName.isFocusable()) {
+//				name = mName.getText().toString();
+//				param.put("realname", name);
+//			}
 			if (info.getPhone() != null) {
 				phone = info.getPhone();
 				param.put("phone", phone);
@@ -542,13 +633,13 @@ public class SelfMaterialActivity extends BaseActivity {
 //				school = mSchoolName.getText().toString();
 //				param.put("drive_school", school);
 //			}
-			if (mGenderTv.getText().toString().equals("男")) {
-				param.put("gender", "1");
-				gender = "1";
-			} else if (mGenderTv.getText().toString().equals("女")) {
-				param.put("gender", "2");
-				gender = "2";
-			}
+//			if (mGenderTv.getText().toString().equals("男")) {
+//				param.put("gender", "1");
+//				gender = "1";
+//			} else if (mGenderTv.getText().toString().equals("女")) {
+//				param.put("gender", "2");
+//				gender = "2";
+//			}
 			return accessor.execute(Settings.USER_URL, param, BaseResult.class);
 		}
 

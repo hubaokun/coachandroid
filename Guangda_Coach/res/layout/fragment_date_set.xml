@@ -110,13 +110,54 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-
+ <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f2f2f2"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/rl_bottom"
+            >
+        
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_green_round"
+                android:text="编辑课程"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"/>
+         
+            <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_blue_round"
+                android:text="确认发布"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"/>
+            
+        </LinearLayout>
+        
+        </RelativeLayout>
         <com.daoshun.lib.listview.PullToRefreshScrollView
             android:id="@+id/dt_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#f3f3f3"
-            android:scrollbars="none" >
+            android:scrollbars="none"
+            android:layout_above="@id/rl_bottom"
+             >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -166,7 +207,7 @@
 
                         <!-- 上午 -->
 
-                        <LinearLayout
+<!--                         <LinearLayout
                             android:id="@+id/mor_show_part"
                             android:layout_width="match_parent"
                             android:layout_height="44dp"
@@ -205,19 +246,18 @@
                                 android:layout_height="15dp"
                                 android:layout_marginRight="16dp"
                                 android:src="@drawable/arrow_grey" />
-                        </LinearLayout>
+                        </LinearLayout> -->
                         <!-- 上午隐藏部分 -->
 
                         <include
                             android:id="@+id/mor_hide_part"
-                            layout="@layout/item_hide_part_mor"
-                            android:visibility="gone" />
+                            layout="@layout/item_hide_part_mor"/>
 
                         <View style="@style/dividerLine" />
 
                         <!-- 下午 -->
 
-                        <LinearLayout
+                        <!-- <LinearLayout
                             android:id="@+id/afternoon_show_part"
                             android:layout_width="match_parent"
                             android:layout_height="44dp"
@@ -256,20 +296,19 @@
                                 android:layout_height="15dp"
                                 android:layout_marginRight="16dp"
                                 android:src="@drawable/arrow_grey" />
-                        </LinearLayout>
+                        </LinearLayout> -->
 
                         <!-- 下午隐藏部分 -->
 
                         <include
                             android:id="@+id/afternoon_hide_part"
-                            layout="@layout/time_hide_part"
-                            android:visibility="gone" />
+                            layout="@layout/time_hide_part"/>
 
                         <View style="@style/dividerLine" />
 
                         <!-- 晚上 -->
 
-                        <LinearLayout
+                        <!-- <LinearLayout
                             android:id="@+id/night_show_part"
                             android:layout_width="match_parent"
                             android:layout_height="44dp"
@@ -308,19 +347,18 @@
                                 android:layout_height="15dp"
                                 android:layout_marginRight="16dp"
                                 android:src="@drawable/arrow_grey" />
-                        </LinearLayout>
+                        </LinearLayout> -->
 
                         <!-- 晚上隐藏部分 -->
 
                         <include
                             android:id="@+id/night_hide_part"
-                            layout="@layout/item_hide_part_night"
-                            android:visibility="gone" />
+                            layout="@layout/item_hide_part_night"/>
 
                         <View style="@style/dividerLine" />
                         
                          <!--  注 -->
-                        <LinearLayout
+                        <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -363,9 +401,9 @@
             android:text="未开课"
             android:textColor="@color/text_black"
             android:textSize="11dp" />
-    </LinearLayout>
+    </LinearLayout> -->
 
-                        <Button
+<!--                         <Button
                             android:id="@+id/close_class"
                             android:layout_width="140dp"
                             android:layout_height="40dp"
@@ -375,7 +413,7 @@
                             android:background="@drawable/selector_green_round"
                             android:text="发布课程"
                             android:textColor="@color/white"
-                            android:textSize="18dp" />
+                            android:textSize="18dp" /> -->
                     </LinearLayout>
 
                     <LinearLayout
@@ -464,6 +502,8 @@
                     android:src="@drawable/arrow_grey_down" />
             </RelativeLayout>
         </LinearLayout>
+        
+       
     </RelativeLayout>
 
 </LinearLayout>

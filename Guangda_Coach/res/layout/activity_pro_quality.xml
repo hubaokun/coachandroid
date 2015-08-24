@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:scrollbars="none" >
 
-        <LinearLayout
+      <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -412,12 +412,76 @@
                         <View
                 style="@style/dividerLine"
                 android:layout_marginTop="10dp" /> -->
+                            	<View style="@style/dividerLine" />
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+                
+                <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:id="@+id/rl_chose_city">
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="所在城市"
+                        android:textColor="@color/text_black"
+                        android:textSize="16sp"
+                        android:layout_centerVertical="true"/>
+                    
+                    <LinearLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center_vertical">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="未设置"
+                            android:id="@+id/tv_city"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_go_gray"/>
+                    </LinearLayout>
+                </RelativeLayout>
+                <View style="@style/dividerLine" />
               <RelativeLayout
                 android:id="@+id/rl_school"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-                
-                                <LinearLayout
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp" >
+                    
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="所属驾校"
+                        android:textColor="@color/text_black"
+                        android:textSize="16sp"
+                        android:layout_centerVertical="true"/>
+                    
+                    <LinearLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center_vertical">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="未设置"
+                            android:id="@+id/tv_school"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_go_gray"/>
+                    </LinearLayout>
+                  <!-- <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
@@ -429,7 +493,7 @@
                         android:layout_marginTop="21dp"
                         android:text="所属驾校"
                         android:textColor="@color/text_black"
-                        android:textSize="13dp" />
+                        android:textSize="16dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -474,9 +538,42 @@
                             android:paddingTop="12dp"
                             android:src="@drawable/pencile" />
                     </LinearLayout>
-                </LinearLayout> 
+                </LinearLayout>  -->
              </RelativeLayout> 
-
+             <View style="@style/dividerLine" />
+             
+             <RelativeLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:id="@+id/rl_teach_car">
+                 <TextView android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="准教车型"
+                     android:textColor="@color/text_black"
+                     android:textSize="16sp"
+                     android:layout_centerVertical="true"                     
+                     />
+                 
+                  <LinearLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center_vertical">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="未设置"
+                            android:id="@+id/tv_teach_car"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_go_gray"/>
+                    </LinearLayout>
+             </RelativeLayout>
+             </LinearLayout>
            <!-- <View
                 style="@style/dividerLine"
                 android:layout_marginTop="10dp" />
@@ -532,11 +629,7 @@
                 android:visibility="gone" />-->
            
 
-            <View
-                style="@style/dividerLine"
-                android:layout_marginTop="10dp" />
-
-            <TextView
+<!--             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="11dp"
@@ -584,7 +677,7 @@
                        android:textColor="@color/text_grey"
                        android:layout_marginLeft="20dp"/>
 
-            </LinearLayout>
+            </LinearLayout> -->
 
 <!--             <LinearLayout
                 android:layout_width="match_parent"
@@ -658,8 +751,7 @@
             </LinearLayout> -->
 
             <View
-                style="@style/dividerLine"
-                android:layout_marginTop="10dp" />
+                style="@style/dividerLine" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -668,7 +760,7 @@
                 android:layout_marginTop="21dp"
                 android:text="相关证件照片"
                 android:textColor="@color/text_black"
-                android:textSize="13dp" />
+                android:textSize="16dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

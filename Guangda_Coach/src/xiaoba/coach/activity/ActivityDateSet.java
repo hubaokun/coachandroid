@@ -1,4 +1,4 @@
-package xiaoba.coach.activity;
+/*package xiaoba.coach.activity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -62,7 +62,7 @@ public class ActivityDateSet extends BaseActivity {
 	LinearLayout mOnClassLayout;
 	LinearLayout mRestLayout;
 //	RelativeLayout mArrowUp;
-	/************* MORNING TIME *********/
+	*//************* MORNING TIME *********//*
 	private TextView mFiveTime;
 	private TextView mSixTime;
 	private TextView mSevenTime;
@@ -84,7 +84,7 @@ public class ActivityDateSet extends BaseActivity {
 	private TextView mNineSelect;
 	private TextView mTenSelect;
 	private TextView mElevenSelect;
-	/************* AFTERNOON TIME *********/
+	*//************* AFTERNOON TIME *********//*
 	private TextView mTwelveTime;
 	private TextView mThirteenTime;
 	private TextView mFourteenTime;
@@ -106,7 +106,7 @@ public class ActivityDateSet extends BaseActivity {
 	private TextView mSixteenSelect;
 	private TextView mSeventeenSelect;
 	private TextView mEighteenSelect;
-	/************* NIGHT TIME *****************/
+	*//************* NIGHT TIME *****************//*
 	private TextView mNineteenTime;
 	private TextView mTwentyTime;
 	private TextView mTwentyOneTime;
@@ -146,17 +146,17 @@ public class ActivityDateSet extends BaseActivity {
 	
 //	private boolean finishLoadingData; // 是否取数据中
 
-	/*
+	
 	 * 选中数组 false：选中 true：未选中
-	 */
+	 
 	private boolean[] selectArray = new boolean[19];
-	/*
+	
 	 * 状态数组 false:休息 true：开课
-	 */
+	 
 	private boolean[] stateArray = new boolean[19];
-	/*
+	
 	 * 预约数组 false:未预约 true:预约
-	 */
+	 
 	private boolean[] bookArray = new boolean[19];
 	private int Year,Month,Day;
 	private Bundle bundle;
@@ -252,9 +252,9 @@ public class ActivityDateSet extends BaseActivity {
 		if (scheduleResult != null && scheduleResult.getDatelist() != null) {
 			for (Schedule sc : scheduleResult.getDatelist()) {
 				if (!daySpan.containsKey(sc.getDate())) {
-					/*
+					
 					 * 如果当前hashmap没有保存这个日期的数据
-					 */
+					 
 					HashMap<String, Schedule> temp = getNewHourMap();
 					temp.put(sc.getHour() + "", sc);
 					daySpan.put(sc.getDate(), temp);
@@ -350,9 +350,9 @@ public class ActivityDateSet extends BaseActivity {
 			if (equalsDate(selectedDate.getTime(), date2)) {
 
 				if (schedule.getHour() == 0) {
-					/*
+					
 					 * 全局设置
-					 */
+					 
 					if (schedule.getState() == 0) {
 						// rest
 						mAllDaySetClose.setText("发布课程");
@@ -363,9 +363,9 @@ public class ActivityDateSet extends BaseActivity {
 					}
 
 				} else {
-					/*
+					
 					 * 单个小时设置
-					 */
+					 
 					switch (schedule.getHour()) {
 					case 5:
 						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFiveTime, mFivePrice, mFiveSelect, 0);
@@ -484,9 +484,9 @@ public class ActivityDateSet extends BaseActivity {
 			select.setText("选中");
 			selectArray[pos] = false;
 			bookArray[pos] = false;
-			/*
+			
 			 * select.setTextColor(getResources().getColor(R.color.white)); select.setBackgroundColor(Color.parseColor("#000000"));
-			 */
+			 
 		}
 	}
 	
@@ -520,9 +520,9 @@ public class ActivityDateSet extends BaseActivity {
 					mMorSelectAllImg.setSelected(false);
 //					mMorSelectAllTv.setText("全选");
 					if (equalsDate(calToday.getTime(), calSelecter.getTime())) {
-						/*
+						
 						 * 今天
-						 */
+						 
 						if (mDeadHour < 5 && !bookArray[0]) {
 							mFiveSelect.setVisibility(View.INVISIBLE);
 							selectArray[0] = true;
@@ -552,9 +552,9 @@ public class ActivityDateSet extends BaseActivity {
 							selectArray[6] = true;
 						}
 					} else {
-						/*
+						
 						 * 明天过后
-						 */
+						 
 						if (!bookArray[0]) {
 							mFiveSelect.setVisibility(View.INVISIBLE);
 							selectArray[0] = true;
@@ -586,9 +586,9 @@ public class ActivityDateSet extends BaseActivity {
 					}
 				} else {
 					if (equalsDate(calToday.getTime(), calSelecter.getTime())) {
-						/*
+						
 						 * 今天
-						 */
+						 
 						if (mDeadHour < 5 && !bookArray[0]) {
 							mFiveSelect.setVisibility(View.VISIBLE);
 							selectArray[0] = false;
@@ -674,9 +674,9 @@ public class ActivityDateSet extends BaseActivity {
 //					mAftSelectAllTv.setText("全选");
 
 					if (equalsDate(calToday.getTime(), calSelecter.getTime())) {
-						/*
+						
 						 * 今天
-						 */
+						 
 
 						if (mDeadHour < 12 && !bookArray[7]) {
 							mTwelveSelect.setVisibility(View.INVISIBLE);
@@ -738,9 +738,9 @@ public class ActivityDateSet extends BaseActivity {
 					}
 				} else {
 					if (equalsDate(calToday.getTime(), calSelecter.getTime())) {
-						/*
+						
 						 * 今天
-						 */
+						 
 
 						if (mDeadHour < 12 && !bookArray[7]) {
 							mTwelveSelect.setVisibility(View.VISIBLE);
@@ -930,9 +930,9 @@ public class ActivityDateSet extends BaseActivity {
 				}
 			}
 		});
-		/*
+		
 		 * stop class
-		 */
+		 
 		mAllDaySetClose.setOnClickListener(new OnSingleClickListener() {
 
 			@Override
@@ -2358,3 +2358,4 @@ public class ActivityDateSet extends BaseActivity {
 
 	}
 }
+*/

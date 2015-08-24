@@ -65,7 +65,7 @@ public class UserInfo {
 	private String token;
 	int cashtype;
 	private String invitecode;
-	
+	private String cityId;
 	
 	public int getCashtype() {
 		return cashtype;
@@ -650,5 +650,13 @@ public class UserInfo {
 
 	public void setLocationname(String locationname) {
 		this.locationname = locationname;
+	}
+
+	public String getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(String cityId) {
+		this.cityId = cityId;
 	}
 }
