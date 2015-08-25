@@ -249,9 +249,9 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			iv = LayoutInflater.from(activity).inflate(R.layout.item_date_picker, null);
 			iv.setLayoutParams(new AbsListView.LayoutParams((Settings.DISPLAY_WIDTH - 12) / 7, (Settings.DISPLAY_WIDTH - 12) / 7));
-			holder.yBall = (View) iv.findViewById(R.id.yellow_ball);
-			holder.rBall = (View) iv.findViewById(R.id.red_ball);
-			holder.bBall = (View) iv.findViewById(R.id.blue_ball);
+//			holder.yBall = (View) iv.findViewById(R.id.yellow_ball);
+//			holder.rBall = (View) iv.findViewById(R.id.red_ball);
+//			holder.bBall = (View) iv.findViewById(R.id.blue_ball);
 			// 今天的处理
 			holder.txtToDay = (TextView) iv.findViewById(R.id.calendar_status);
 			// 日期开始
@@ -319,7 +319,8 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 						/*
 						 * 若是有球显示,字为白色
 						 */
-						if (ballState.get(position).isShowY() || ballState.get(position).isShowR() || ballState.get(position).isShowB()) {
+						//ballState.get(position).isShowY() || ballState.get(position).isShowR() || ballState.get(position).isShowB()
+						if (ballState.get(position).isOpen()) {
 							holder.txtDay.setTextColor(resources.getColor(R.color.white));
 							holder.txtToDay.setText("已开课");
 							holder.txtToDay.setTextColor(resources.getColor(R.color.white));
@@ -418,9 +419,10 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 			Date mDate = mCarlandar.getTime();
 			selectedView.setBackgroundColor(Color.parseColor("#2b3733"));
 			view.setBackgroundColor(Color.parseColor("#ffffff"));
-			yBall = (View) selectedView.findViewById(R.id.yellow_ball);
-			rBall = (View) selectedView.findViewById(R.id.red_ball);
-			bBall = (View) selectedView.findViewById(R.id.blue_ball);
+			tvToday = (TextView)selectedView.findViewById(R.id.calendar_status);
+//			yBall = (View) selectedView.findViewById(R.id.yellow_ball);
+//			rBall = (View) selectedView.findViewById(R.id.red_ball);
+//			bBall = (View) selectedView.findViewById(R.id.blue_ball);
 //			if (mIsHanging)
 //			{
 //				int data = mDate.getDate();
@@ -433,7 +435,7 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 				changeColor((ViewGroup) selectedView, resources.getColor(R.color.text_green));
 			} else {
 				changeColor((ViewGroup) selectedView, resources.getColor(R.color.white));
-				if (yBall.getVisibility() == View.VISIBLE || rBall.getVisibility() == View.VISIBLE || bBall.getVisibility() == View.VISIBLE)
+				if ("已开课".equals(tvToday.getText().toString().trim()))
 				{
 					selectedView.setBackgroundColor(Color.parseColor("#2c4021"));
 				}
@@ -502,81 +504,82 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 		return Integer.parseInt(String.valueOf(between_days)) < CoachApplication.mApplication.getMaxTays();
 	}
 
-	public View yBall, rBall, bBall;
+//	public View yBall, rBall, bBall;
+	public TextView tvToday;
 	TextView status;
 
 	/*
 	 * 隐藏黄球
 	 */
-	public void hideYellowPoint() {
-		yBall = (View) selectedView.findViewById(R.id.yellow_ball);
-		rBall = (View) selectedView.findViewById(R.id.red_ball);
-		bBall = (View) selectedView.findViewById(R.id.blue_ball);
-		status = (TextView) selectedView.findViewById(R.id.calendar_status);
-		yBall.setVisibility(View.GONE);
-		if (status != null)
-			if (rBall.getVisibility() == View.GONE && bBall.getVisibility() == View.GONE)
-				if (equalsDate(calSelected.getTime(), calToday.getTime()))
-					status.setText("今日");
-				else {
-					status.setText("未开课");
-				}
-			else {
-				if (!equalsDate(calSelected.getTime(), calToday.getTime()))
-					status.setText("");
-				else
-					status.setText("今日");
-			}
-
-	}
+//	public void hideYellowPoint() {
+////		yBall = (View) selectedView.findViewById(R.id.yellow_ball);
+////		rBall = (View) selectedView.findViewById(R.id.red_ball);
+////		bBall = (View) selectedView.findViewById(R.id.blue_ball);
+//		status = (TextView) selectedView.findViewById(R.id.calendar_status);
+//		yBall.setVisibility(View.GONE);
+//		if (status != null)
+//			if (rBall.getVisibility() == View.GONE && bBall.getVisibility() == View.GONE)
+//				if (equalsDate(calSelected.getTime(), calToday.getTime()))
+//					status.setText("今日");
+//				else {
+//					status.setText("未开课");
+//				}
+//			else {
+//				if (!equalsDate(calSelected.getTime(), calToday.getTime()))
+//					status.setText("");
+//				else
+//					status.setText("今日");
+//			}
+//
+//	}
 
 	/*
 	 * 隐藏红球
 	 */
-	public void hideRedPoint() {
-		yBall = (View) selectedView.findViewById(R.id.yellow_ball);
-		rBall = (View) selectedView.findViewById(R.id.red_ball);
-		bBall = (View) selectedView.findViewById(R.id.blue_ball);
-		status = (TextView) selectedView.findViewById(R.id.calendar_status);
-		rBall.setVisibility(View.GONE);
-		if (status != null)
-			if (yBall.getVisibility() == View.GONE && bBall.getVisibility() == View.GONE)
-				if (equalsDate(calSelected.getTime(), calToday.getTime()))
-					status.setText("今日");
-				else {
-					status.setText("未开课");
-				}
-			else {
-				if (!equalsDate(calSelected.getTime(), calToday.getTime()))
-					status.setText("");
-				else
-					status.setText("今日");
-			}
-	}
+//	public void hideRedPoint() {
+////		yBall = (View) selectedView.findViewById(R.id.yellow_ball);
+////		rBall = (View) selectedView.findViewById(R.id.red_ball);
+////		bBall = (View) selectedView.findViewById(R.id.blue_ball);
+//		status = (TextView) selectedView.findViewById(R.id.calendar_status);
+//		rBall.setVisibility(View.GONE);
+//		if (status != null)
+//			if (yBall.getVisibility() == View.GONE && bBall.getVisibility() == View.GONE)
+//				if (equalsDate(calSelected.getTime(), calToday.getTime()))
+//					status.setText("今日");
+//				else {
+//					status.setText("未开课");
+//				}
+//			else {
+//				if (!equalsDate(calSelected.getTime(), calToday.getTime()))
+//					status.setText("");
+//				else
+//					status.setText("今日");
+//			}
+//	}
 
 	/*
 	 * 隐藏蓝球
 	 */
-	public void hideBluePoint() {
-		yBall = (View) selectedView.findViewById(R.id.yellow_ball);
-		rBall = (View) selectedView.findViewById(R.id.red_ball);
-		bBall = (View) selectedView.findViewById(R.id.blue_ball);
-		status = (TextView) selectedView.findViewById(R.id.calendar_status);
-		bBall.setVisibility(View.GONE);
-		if (status != null)
-			if (rBall.getVisibility() == View.GONE && yBall.getVisibility() == View.GONE)
-				if (equalsDate(calSelected.getTime(), calToday.getTime()))
-					status.setText("今日");
-				else {
-					status.setText("未开课");
-				}
-			else {
-				if (!equalsDate(calSelected.getTime(), calToday.getTime()))
-					status.setText("");
-				else
-					status.setText("今日");
-			}
-	}
+//	public void hideBluePoint() {
+////		yBall = (View) selectedView.findViewById(R.id.yellow_ball);
+////		rBall = (View) selectedView.findViewById(R.id.red_ball);
+////		bBall = (View) selectedView.findViewById(R.id.blue_ball);
+//		status = (TextView) selectedView.findViewById(R.id.calendar_status);
+//		bBall.setVisibility(View.GONE);
+//		if (status != null)
+//			if (rBall.getVisibility() == View.GONE && yBall.getVisibility() == View.GONE)
+//				if (equalsDate(calSelected.getTime(), calToday.getTime()))
+//					status.setText("今日");
+//				else {
+//					status.setText("未开课");
+//				}
+//			else {
+//				if (!equalsDate(calSelected.getTime(), calToday.getTime()))
+//					status.setText("");
+//				else
+//					status.setText("今日");
+//			}
+//	}
 
 	public NotifyDateSelect getmNotifyDateSelect() {
 		return mNotifyDateSelect;

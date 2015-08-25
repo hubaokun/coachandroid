@@ -17,6 +17,8 @@ import xiaoba.coach.interfaces.NotifyDateSelect;
 import xiaoba.coach.module.BaseParam;
 import xiaoba.coach.module.Schedule;
 import xiaoba.coach.net.result.BaseResult;
+import xiaoba.coach.net.result.GetDefaultScheduleResult;
+import xiaoba.coach.net.result.GetDefaultScheduleResult.DefaultSchedule;
 import xiaoba.coach.net.result.GetScheduleResult;
 import xiaoba.coach.net.result.SetDateTimeResult;
 import xiaoba.coach.net.result.SetDefaultResult;
@@ -35,6 +37,7 @@ import com.daoshun.lib.listview.PullToRefreshScrollView;
 import com.daoshun.lib.listview.PullToRefreshScrollView.OnSscrollListener;
 import com.daoshun.lib.view.OnSingleClickListener;
 import com.google.gson.Gson;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -82,9 +85,9 @@ public class DateSetFragment extends Fragment {
 //	LinearLayout mMorningBar; // 早上显示栏
 //	LinearLayout mAfternoonBar; // 下午显示栏
 //	LinearLayout mNightBar; // 晚上显示栏
-//	LinearLayout mMorningSSet; // 早上设置栏
-//	LinearLayout mAfternoonSet; // 下午设置栏
-//	LinearLayout mNightSet; // 晚上设置栏
+	LinearLayout mMorningSSet; // 早上设置栏
+	LinearLayout mAfternoonSet; // 下午设置栏
+	LinearLayout mNightSet; // 晚上设置栏
 //	RelativeLayout mMorSelectAll; // 早上时间全选
 //	RelativeLayout mAftSelectAll; // 下午时间全选
 //	RelativeLayout mNigSelectAll; // 晚上时间全选
@@ -129,6 +132,78 @@ public class DateSetFragment extends Fragment {
 //	private TextView mNineSelect;
 //	private TextView mTenSelect;
 //	private TextView mElevenSelect;
+	//5
+	private RelativeLayout rlFive;
+	private TextView tvFiveTime;
+	private TextView tvFiveObject;
+	private TextView tvFivePrice;
+	private ImageView imgFiveSelect;
+	private LinearLayout llFiveHasSet;
+	private TextView tvFiveNotSet;
+	private ImageView imgFiveHasBook;
+	//6
+	private RelativeLayout rlSix;
+	private TextView tvSixTime;
+	private TextView tvSixObject;
+	private TextView tvSixPrice;
+	private ImageView imgSixSelect;
+	private LinearLayout llSixHasSet;
+	private TextView tvSixNotSet;
+	private ImageView imgSixHasBook;
+	//7
+	private RelativeLayout rlSeven;
+	private TextView tvSevenTime;
+	private TextView tvSevenObject;
+	private TextView tvSevenPrice;
+	private ImageView imgSevenSelect;
+	private LinearLayout llSevenHasSet;
+	private TextView tvSevenNotSet;
+	private ImageView imgSevenHasBook;
+	//8
+	private RelativeLayout rlEight;
+	private TextView tvEightTime;
+	private TextView tvEightObject;
+	private TextView tvEightPrice;
+	private ImageView imgEightSelect;
+	private LinearLayout llEightHasSet;
+	private TextView tvEightNotSet;
+	private ImageView imgEightHasBook;
+	//9
+	private RelativeLayout rlNine;
+	private TextView tvNineTime;
+	private TextView tvNineObject;
+	private TextView tvNinePrice;
+	private ImageView imgNineSelect;
+	private LinearLayout llNineHasSet;
+	private TextView tvNineNotSet;
+	private ImageView imgNineHasBook;
+	//10
+	private RelativeLayout rlTen;
+	private TextView tvTenTime;
+	private TextView tvTenObject;
+	private TextView tvTenPrice;
+	private ImageView imgTenSelect;
+	private LinearLayout llTenHasSet;
+	private TextView tvTenNotSet;
+	private ImageView imgTenHasBook;
+	//11
+	private RelativeLayout rlEleven;
+	private TextView tvElevenTime;
+	private TextView tvElevenObject;
+	private TextView tvElevenPrice;
+	private ImageView imgElevenSelect;
+	private LinearLayout llElevenHasSet;
+	private TextView tvElevenNotSet;
+	private ImageView imgElevenHasBook;
+	//12
+	private RelativeLayout rlTwelve;
+	private TextView tvTwelveTime;
+	private TextView tvTwelveObject;
+	private TextView tvTwelvePrice;
+	private ImageView imgTwelveSelect;
+	private LinearLayout llTwelveHasSet;
+	private TextView tvTwelveNotSet;
+	private ImageView imgTwelveHasBook;
 	/************* AFTERNOON TIME *********/
 //	private TextView mTwelveTime;
 //	private TextView mThirteenTime;
@@ -151,6 +226,69 @@ public class DateSetFragment extends Fragment {
 //	private TextView mSixteenSelect;
 //	private TextView mSeventeenSelect;
 //	private TextView mEighteenSelect;
+	//13
+	private RelativeLayout rlThirteen;
+	private TextView tvThirteenTime;
+	private TextView tvThirteenObject;
+	private TextView tvThirteenPrice;
+	private ImageView imgThirteenSelect;
+	private LinearLayout llThirteenHasSet;
+	private TextView tvThirteenNotSet;
+	private ImageView imgThirteenHasBook;
+	//14
+	private RelativeLayout rlFourteen;
+	private TextView tvFourteenTime;
+	private TextView tvFourteenObject;
+	private TextView tvFourteenPrice;
+	private ImageView imgFourteenSelect;
+	private LinearLayout llFourteenHasSet;
+	private TextView tvFourteenNotSet;
+	private ImageView imgFourteenHasBook;
+	//15
+	private RelativeLayout rlFifteen;
+	private TextView tvFifteenTime;
+	private TextView tvFifteenObject;
+	private TextView tvFifteenPrice;
+	private ImageView imgFifteenSelect;
+	private LinearLayout llFifteenHasSet;
+	private TextView tvFifteenNotSet;
+	private ImageView imgFifteenHasBook;
+	//16
+	private RelativeLayout rlSixteen;
+	private TextView tvSixteenTime;
+	private TextView tvSixteenObject;
+	private TextView tvSixteenPrice;
+	private ImageView imgSixteenSelect;
+	private LinearLayout llSixteenHasSet;
+	private TextView tvSixteenNotSet;
+	private ImageView imgSixteenHasBook;
+	//17
+	private RelativeLayout rlSeventeen;
+	private TextView tvSeventeenTime;
+	private TextView tvSeventeenObject;
+	private TextView tvSeventeenPrice;
+	private ImageView imgSeventeenSelect;
+	private LinearLayout llSeventeenHasSet;
+	private TextView tvSeventeenNotSet;
+	private ImageView imgSeventeenHasBook;
+	//18
+	private RelativeLayout rlEighteen;
+	private TextView tvEighteenTime;
+	private TextView tvEighteenObject;
+	private TextView tvEighteenPrice;
+	private ImageView imgEighteenSelect;
+	private LinearLayout llEighteenHasSet;
+	private TextView tvEighteenNotSet;
+	private ImageView imgEighteenHasBook;
+	//19
+	private RelativeLayout rlNineteen;
+	private TextView tvNineteenTime;
+	private TextView tvNineteenObject;
+	private TextView tvNineteenPrice;
+	private ImageView imgNineteenSelect;
+	private LinearLayout llNineteenHasSet;
+	private TextView tvNineteenNotSet;
+	private ImageView imgNineteenHasBook;
 	/************* NIGHT TIME *****************/
 //	private TextView mNineteenTime;
 //	private TextView mTwentyTime;
@@ -167,6 +305,42 @@ public class DateSetFragment extends Fragment {
 //	private TextView mTwentyOneSelect;
 //	private TextView mTwentyTwoSelect;
 //	private TextView mTwentyThreeSelect;
+	//20
+	private RelativeLayout rlTwenty;
+	private TextView tvTwentyTime;
+	private TextView tvTwentyObject;
+	private TextView tvTwentyPrice;
+	private ImageView imgTwentySelect;
+	private LinearLayout llTwentyHasSet;
+	private TextView tvTwentyNotSet;
+	private ImageView imgTwentyHasBook;
+	//21
+	private RelativeLayout rlTwentyOne;
+	private TextView tvTwentyOneTime;
+	private TextView tvTwentyOneObject;
+	private TextView tvTwentyOnePrice;
+	private ImageView imgTwentyOneSelect;
+	private LinearLayout llTwentyOneHasSet;
+	private TextView tvTwentyOneNotSet;
+	private ImageView imgTwentyOneHasBook;
+	//22
+	private RelativeLayout rlTwentyTwo;
+	private TextView tvTwentyTwoTime;
+	private TextView tvTwentyTwoObject;
+	private TextView tvTwentyTwoPrice;
+	private ImageView imgTwentyTwoSelect;
+	private LinearLayout llTwentyTwoHasSet;
+	private TextView tvTwentyTwoNotSet;
+	private ImageView imgTwentyTwoHasBook;
+	//23
+	private RelativeLayout rlTwentyThree;
+	private TextView tvTwentyThreeTime;
+	private TextView tvTwentyThreeObject;
+	private TextView tvTwentyThreePrice;
+	private ImageView imgTwentyThreeSelect;
+	private LinearLayout llTwentyThreeHasSet;
+	private TextView tvTwentyThreeNotSet;
+	private ImageView imgTwentyThreeHasBook;
 	// gears
 //	private RelativeLayout mFiveGear;
 //	private RelativeLayout mSixGear;
@@ -242,12 +416,22 @@ public class DateSetFragment extends Fragment {
 	 * 预约数组 false:未预约 true:预约
 	 */
 	private boolean[] bookArray = new boolean[19];
+	
 
 	private RelativeLayout mHangingArrow;
 	private LinearLayout mHangingContent;
 
 	ViewPager mViewPager;
-
+	private RelativeLayout rlBottom;
+	private RelativeLayout rlCloseClass;
+	private LinearLayout llOpenClass;
+	private Button btnSetClass;
+	private Button btnConfirmOpen;
+	private Button btnCloseClass;
+	private ArrayList<Integer> chosedHour = new ArrayList<Integer>();
+	private boolean chosedIsRest;
+	private List<DefaultSchedule> defaultSchedule = new ArrayList<DefaultSchedule>();
+	private int SchedulePosition;
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -312,6 +496,12 @@ public class DateSetFragment extends Fragment {
 	// };
 
 	private void initView(View view) {
+		rlBottom = (RelativeLayout)view.findViewById(R.id.rl_bottom);
+		rlCloseClass = (RelativeLayout)view.findViewById(R.id.rl_colse_class);
+		llOpenClass = (LinearLayout)view.findViewById(R.id.ll_open_class);
+		btnSetClass = (Button)view.findViewById(R.id.btn_set_class);
+		btnConfirmOpen = (Button)view.findViewById(R.id.btn_confirm_open);
+		btnCloseClass = (Button)view.findViewById(R.id.btn_close_class);
 		mWeekColumn = (LinearLayout) view.findViewById(R.id.week_column);
 		mWeekColumn.setLayoutParams(new LinearLayout.LayoutParams(Settings.DISPLAY_WIDTH, Settings.DISPLAY_WIDTH / 7 / 2));
 		mScrollView = (PullToRefreshScrollView) view.findViewById(R.id.dt_scrollview);
@@ -337,9 +527,9 @@ public class DateSetFragment extends Fragment {
 //		mMorningBar = (LinearLayout) view.findViewById(R.id.mor_show_part);
 //		mAfternoonBar = (LinearLayout) view.findViewById(R.id.afternoon_show_part);
 //		mNightBar = (LinearLayout) view.findViewById(R.id.night_show_part);
-//		mMorningSSet = (LinearLayout) view.findViewById(R.id.mor_hide_part);
-//		mAfternoonSet = (LinearLayout) view.findViewById(R.id.afternoon_hide_part);
-//		mNightSet = (LinearLayout) view.findViewById(R.id.night_hide_part);
+		mMorningSSet = (LinearLayout) view.findViewById(R.id.mor_hide_part);
+		mAfternoonSet = (LinearLayout) view.findViewById(R.id.afternoon_hide_part);
+		mNightSet = (LinearLayout) view.findViewById(R.id.night_hide_part);
 //		mMorSelectAll = (RelativeLayout) mMorningSSet.findViewById(R.id.all_select_layout);
 //		mAftSelectAll = (RelativeLayout) mAfternoonSet.findViewById(R.id.all_select_layout);
 //		mNigSelectAll = (RelativeLayout) mNightSet.findViewById(R.id.all_select_layout);
@@ -371,6 +561,78 @@ public class DateSetFragment extends Fragment {
 		mOnClassLayout = (LinearLayout) view.findViewById(R.id.onclass_layout);
 		mRestLayout = (LinearLayout) view.findViewById(R.id.rest_layout);
 		// morning time
+		//5
+		rlFive = (RelativeLayout)mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.rl_time_set_object);
+		tvFiveTime = (TextView)mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tv_time);
+		tvFiveObject = (TextView)mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tv_object);
+		tvFivePrice = (TextView)mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tv_price);
+		imgFiveSelect = (ImageView)mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.img_select);
+		llFiveHasSet = (LinearLayout)mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.ll_has_set);
+		tvFiveNotSet = (TextView)mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tv_not_set);
+		imgFiveHasBook = (ImageView)mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.img_has_book);
+		//6
+		rlSix = (RelativeLayout)mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.rl_time_set_object);
+		tvSixTime = (TextView)mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tv_time);
+		tvSixObject = (TextView)mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tv_object);
+		tvSixPrice = (TextView)mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tv_price);
+		imgSixSelect = (ImageView)mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.img_select);
+		llSixHasSet = (LinearLayout)mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.ll_has_set);
+		tvSixNotSet = (TextView)mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.tv_not_set);
+		imgSixHasBook = (ImageView)mMorningSSet.findViewById(R.id.six_part).findViewById(R.id.img_has_book);
+		//7
+		rlSeven = (RelativeLayout)mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.rl_time_set_object);
+		tvSevenTime = (TextView)mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tv_time);
+		tvSevenObject = (TextView)mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tv_object);
+		tvSevenPrice = (TextView)mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tv_price);
+		imgSevenSelect = (ImageView)mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.img_select);
+		llSevenHasSet = (LinearLayout)mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.ll_has_set);
+		tvSevenNotSet = (TextView)mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.tv_not_set);
+		imgSevenHasBook = (ImageView)mMorningSSet.findViewById(R.id.seven_part).findViewById(R.id.img_has_book);
+		//8
+		rlEight = (RelativeLayout)mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.rl_time_set_object);
+		tvEightTime = (TextView)mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tv_time);
+		tvEightObject = (TextView)mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tv_object);
+		tvEightPrice = (TextView)mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tv_price);
+		imgEightSelect = (ImageView)mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.img_select);
+		llEightHasSet = (LinearLayout)mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.ll_has_set);
+		tvEightNotSet = (TextView)mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.tv_not_set);
+		imgEightHasBook = (ImageView)mMorningSSet.findViewById(R.id.eight_part).findViewById(R.id.img_has_book);
+		//9
+		rlNine = (RelativeLayout)mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.rl_time_set_object);
+		tvNineTime = (TextView)mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tv_time);
+		tvNineObject = (TextView)mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tv_object);
+		tvNinePrice = (TextView)mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tv_price);
+		imgNineSelect = (ImageView)mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.img_select);
+		llNineHasSet = (LinearLayout)mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.ll_has_set);
+		tvNineNotSet = (TextView)mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.tv_not_set);
+		imgNineHasBook = (ImageView)mMorningSSet.findViewById(R.id.nine_part).findViewById(R.id.img_has_book);
+		//10
+		rlTen = (RelativeLayout)mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.rl_time_set_object);
+		tvTenTime = (TextView)mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tv_time);
+		tvTenObject = (TextView)mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tv_object);
+		tvTenPrice = (TextView)mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tv_price);
+		imgTenSelect = (ImageView)mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.img_select);
+		llTenHasSet = (LinearLayout)mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.ll_has_set);
+		tvTenNotSet = (TextView)mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.tv_not_set);
+		imgTenHasBook = (ImageView)mMorningSSet.findViewById(R.id.ten_part).findViewById(R.id.img_has_book);
+		//11
+		rlEleven = (RelativeLayout)mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.rl_time_set_object);
+		tvElevenTime = (TextView)mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tv_time);
+		tvElevenObject = (TextView)mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tv_object);
+		tvElevenPrice = (TextView)mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tv_price);
+		imgElevenSelect = (ImageView)mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.img_select);
+		llElevenHasSet = (LinearLayout)mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.ll_has_set);
+		tvElevenNotSet = (TextView)mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tv_not_set);
+		imgElevenHasBook = (ImageView)mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.img_has_book);
+		//12
+		rlTwelve = (RelativeLayout)mMorningSSet.findViewById(R.id.tweleve_part).findViewById(R.id.rl_time_set_object);
+		tvTwelveTime = (TextView)mMorningSSet.findViewById(R.id.tweleve_part).findViewById(R.id.tv_time);
+		tvTwelveObject = (TextView)mMorningSSet.findViewById(R.id.tweleve_part).findViewById(R.id.tv_object);
+		tvTwelvePrice = (TextView)mMorningSSet.findViewById(R.id.tweleve_part).findViewById(R.id.tv_price);
+		imgTwelveSelect = (ImageView)mMorningSSet.findViewById(R.id.tweleve_part).findViewById(R.id.img_select);
+		llTwelveHasSet = (LinearLayout)mMorningSSet.findViewById(R.id.tweleve_part).findViewById(R.id.ll_has_set);
+		tvTwelveNotSet = (TextView)mMorningSSet.findViewById(R.id.tweleve_part).findViewById(R.id.tv_not_set);
+		imgTwelveHasBook = (ImageView)mMorningSSet.findViewById(R.id.tweleve_part).findViewById(R.id.img_has_book);
 //		mFiveTime = (TextView) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_time);
 //		mFivePrice = (TextView) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_price);
 //		mFiveSelect = (TextView) mMorningSSet.findViewById(R.id.five_part).findViewById(R.id.tg_select);
@@ -393,6 +655,70 @@ public class DateSetFragment extends Fragment {
 //		mElevenPrice = (TextView) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_price);
 //		mElevenSelect = (TextView) mMorningSSet.findViewById(R.id.eleven_part).findViewById(R.id.tg_select);
 		// afternoon time
+		
+		//13
+		rlThirteen = (RelativeLayout)mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.rl_time_set_object);
+		tvThirteenTime = (TextView)mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tv_time);
+		tvThirteenObject = (TextView)mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tv_object);
+		tvThirteenPrice = (TextView)mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tv_price);
+		imgThirteenSelect = (ImageView)mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.img_select);
+		llThirteenHasSet = (LinearLayout)mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.ll_has_set);
+		tvThirteenNotSet = (TextView)mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.tv_not_set);
+		imgThirteenHasBook = (ImageView)mAfternoonSet.findViewById(R.id.thirteen_part).findViewById(R.id.img_has_book);
+		//14
+		rlFourteen = (RelativeLayout)mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.rl_time_set_object);
+		tvFourteenTime = (TextView)mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tv_time);
+		tvFourteenObject = (TextView)mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tv_object);
+		tvFourteenPrice = (TextView)mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tv_price);
+		imgFourteenSelect = (ImageView)mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.img_select);
+		llFourteenHasSet = (LinearLayout)mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.ll_has_set);
+		tvFourteenNotSet = (TextView)mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.tv_not_set);
+		imgFourteenHasBook = (ImageView)mAfternoonSet.findViewById(R.id.fourteen_part).findViewById(R.id.img_has_book);
+		//15
+		rlFifteen = (RelativeLayout)mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.rl_time_set_object);
+		tvFifteenTime = (TextView)mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tv_time);
+		tvFifteenObject = (TextView)mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tv_object);
+		tvFifteenPrice = (TextView)mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tv_price);
+		imgFifteenSelect = (ImageView)mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.img_select);
+		llFifteenHasSet = (LinearLayout)mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.ll_has_set);
+		tvFifteenNotSet = (TextView)mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.tv_not_set);
+		imgFifteenHasBook = (ImageView)mAfternoonSet.findViewById(R.id.fifteen_part).findViewById(R.id.img_has_book);
+		//16
+		rlSixteen = (RelativeLayout)mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.rl_time_set_object);
+		tvSixteenTime = (TextView)mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tv_time);
+		tvSixteenObject = (TextView)mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tv_object);
+		tvSixteenPrice = (TextView)mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tv_price);
+		imgSixteenSelect = (ImageView)mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.img_select);
+		llSixteenHasSet = (LinearLayout)mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.ll_has_set);
+		tvSixteenNotSet = (TextView)mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.tv_not_set);
+		imgSixteenHasBook = (ImageView)mAfternoonSet.findViewById(R.id.sixteen_part).findViewById(R.id.img_has_book);
+		//17
+		rlSeventeen = (RelativeLayout)mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.rl_time_set_object);
+		tvSeventeenTime = (TextView)mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tv_time);
+		tvSeventeenObject = (TextView)mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tv_object);
+		tvSeventeenPrice = (TextView)mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tv_price);
+		imgSeventeenSelect = (ImageView)mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.img_select);
+		llSeventeenHasSet = (LinearLayout)mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.ll_has_set);
+		tvSeventeenNotSet = (TextView)mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.tv_not_set);
+		imgSeventeenHasBook = (ImageView)mAfternoonSet.findViewById(R.id.seventeen_part).findViewById(R.id.img_has_book);
+		//18
+		rlEighteen = (RelativeLayout)mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.rl_time_set_object);
+		tvEighteenTime = (TextView)mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tv_time);
+		tvEighteenObject = (TextView)mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tv_object);
+		tvEighteenPrice = (TextView)mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tv_price);
+		imgEighteenSelect = (ImageView)mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.img_select);
+		llEighteenHasSet = (LinearLayout)mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.ll_has_set);
+		tvEighteenNotSet = (TextView)mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tv_not_set);
+		imgEighteenHasBook = (ImageView)mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.img_has_book);
+		//19
+		rlNineteen = (RelativeLayout)mAfternoonSet.findViewById(R.id.nineteen_part).findViewById(R.id.rl_time_set_object);
+		tvNineteenTime = (TextView)mAfternoonSet.findViewById(R.id.nineteen_part).findViewById(R.id.tv_time);
+		tvNineteenObject = (TextView)mAfternoonSet.findViewById(R.id.nineteen_part).findViewById(R.id.tv_object);
+		tvNineteenPrice = (TextView)mAfternoonSet.findViewById(R.id.nineteen_part).findViewById(R.id.tv_price);
+		imgNineteenSelect = (ImageView)mAfternoonSet.findViewById(R.id.nineteen_part).findViewById(R.id.img_select);
+		llNineteenHasSet = (LinearLayout)mAfternoonSet.findViewById(R.id.nineteen_part).findViewById(R.id.ll_has_set);
+		tvNineteenNotSet = (TextView)mAfternoonSet.findViewById(R.id.nineteen_part).findViewById(R.id.tv_not_set);
+		imgNineteenHasBook = (ImageView)mAfternoonSet.findViewById(R.id.nineteen_part).findViewById(R.id.img_has_book);
 //		mTwelveTime = (TextView) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_time);
 //		mTwelvePrice = (TextView) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_price);
 //		mTwelveSelect = (TextView) mAfternoonSet.findViewById(R.id.twelve_part).findViewById(R.id.tg_select);
@@ -415,6 +741,42 @@ public class DateSetFragment extends Fragment {
 //		mEighteenPrice = (TextView) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_price);
 //		mEighteenSelect = (TextView) mAfternoonSet.findViewById(R.id.eighteen_part).findViewById(R.id.tg_select);
 		// night time
+		//20
+		rlTwenty = (RelativeLayout)mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.rl_time_set_object);
+		tvTwentyTime = (TextView)mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tv_time);
+		tvTwentyObject = (TextView)mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tv_object);
+		tvTwentyPrice = (TextView)mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tv_price);
+		imgTwentySelect = (ImageView)mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.img_select);
+		llTwentyHasSet = (LinearLayout)mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.ll_has_set);
+		tvTwentyNotSet = (TextView)mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tv_not_set);
+		imgTwentyHasBook = (ImageView)mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.img_has_book);
+		//21
+		rlTwentyOne = (RelativeLayout)mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.rl_time_set_object);
+		tvTwentyOneTime = (TextView)mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tv_time);
+		tvTwentyOneObject = (TextView)mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tv_object);
+		tvTwentyOnePrice = (TextView)mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tv_price);
+		imgTwentyOneSelect = (ImageView)mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.img_select);
+		llTwentyOneHasSet = (LinearLayout)mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.ll_has_set);
+		tvTwentyOneNotSet = (TextView)mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tv_not_set);
+		imgTwentyOneHasBook = (ImageView)mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.img_has_book);
+		//22
+		rlTwentyTwo = (RelativeLayout)mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.rl_time_set_object);
+		tvTwentyTwoTime = (TextView)mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tv_time);
+		tvTwentyTwoObject = (TextView)mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tv_object);
+		tvTwentyTwoPrice = (TextView)mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tv_price);
+		imgTwentyTwoSelect = (ImageView)mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.img_select);
+		llTwentyTwoHasSet = (LinearLayout)mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.ll_has_set);
+		tvTwentyTwoNotSet = (TextView)mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tv_not_set);
+		imgTwentyTwoHasBook = (ImageView)mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.img_has_book);
+		//23
+		rlTwentyThree = (RelativeLayout)mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.rl_time_set_object);
+		tvTwentyThreeTime = (TextView)mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tv_time);
+		tvTwentyThreeObject = (TextView)mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tv_object);
+		tvTwentyThreePrice = (TextView)mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tv_price);
+		imgTwentyThreeSelect = (ImageView)mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.img_select);
+		llTwentyThreeHasSet = (LinearLayout)mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.ll_has_set);
+		tvTwentyThreeNotSet = (TextView)mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tv_not_set);
+		imgTwentyThreeHasBook = (ImageView)mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.img_has_book);
 //		mNineteenTime = (TextView) mNightSet.findViewById(R.id.nineteen_part).findViewById(R.id.tg_time);
 //		mTwentyTime = (TextView) mNightSet.findViewById(R.id.twenty_part).findViewById(R.id.tg_time);
 //		mTwentyOneTime = (TextView) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_time);
@@ -454,6 +816,259 @@ public class DateSetFragment extends Fragment {
 		mHangingArrow = (RelativeLayout) view.findViewById(R.id.hanging_arrow_part);
 		mHangingContent = (LinearLayout) view.findViewById(R.id.hanging_content);
 		mArrowUp = (RelativeLayout) view.findViewById(R.id.arrow_part);
+	}
+	
+	private void setOneHour(int hour,int index)
+	{
+		if (!finishLoadingData) {
+		Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+		return;
+	}
+	
+	if (equalsDate(calToday.getTime(), calSelected.getTime()) && hour <= mDeadHour) {
+		Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+	} else {
+		if (bookArray[index]) {
+			Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		switch (hour) {
+		case 5:
+			if (imgFiveSelect.getVisibility() == View.VISIBLE)
+			{
+				imgFiveSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgFiveSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 6:
+			if (imgSixSelect.getVisibility() == View.VISIBLE)
+			{
+				imgSixSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgSixSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 7:
+			if (imgSevenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgSevenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgSevenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 8:
+			if (imgEightSelect.getVisibility() == View.VISIBLE)
+			{
+				imgEightSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgEightSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 9:
+			if (imgNineSelect.getVisibility() == View.VISIBLE)
+			{
+				imgNineSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgNineSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 10:
+			if (imgTenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgTenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgTenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 11:
+			if (imgElevenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgElevenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgElevenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 12:
+			if (imgTwelveSelect.getVisibility() == View.VISIBLE)
+			{
+				imgTwelveSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgTwelveSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 13:
+			if (imgThirteenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgThirteenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgThirteenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 14:
+			if (imgFourteenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgFourteenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgFourteenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 15:
+			if (imgFifteenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgFifteenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgFifteenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 16:
+			if (imgSixteenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgSixteenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgSixteenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 17:
+			if (imgSeventeenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgSeventeenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgSeventeenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 18:
+			if (imgEighteenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgEighteenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgEighteenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		case 19:
+			if (imgNineteenSelect.getVisibility() == View.VISIBLE)
+			{
+				imgNineteenSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgNineteenSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			
+			break;
+		case 20:
+			if (imgTwentySelect.getVisibility() == View.VISIBLE)
+			{
+				imgTwentySelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else
+			{
+				imgTwentySelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			
+			break;
+		case 21:
+			if (imgTwentyOneSelect.getVisibility() == View.VISIBLE)
+			{
+				imgTwentyOneSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgTwentyOneSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			
+			break;
+		case 22:
+			if (imgTwentyTwoSelect.getVisibility() == View.VISIBLE){
+				imgTwentyTwoSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgTwentyTwoSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			
+			break;
+		case 23:
+			if (imgTwentyThreeSelect.getVisibility() == View.VISIBLE)
+			{
+				imgTwentyThreeSelect.setVisibility(View.GONE);
+				int position = chosedHour.indexOf(hour);
+				chosedHour.remove(position);
+			}else{
+				imgTwentyThreeSelect.setVisibility(View.VISIBLE);
+				chosedHour.add(hour);
+			}
+			break;
+		default:
+			break;
+		}
+//		chosedHour.add(hour);
+		chosedIsRest = stateArray[index];
+		if (chosedHour.size()!=0)
+		{
+			rlBottom.setVisibility(View.VISIBLE);
+			if (chosedIsRest)
+			{
+				rlCloseClass.setVisibility(View.VISIBLE);
+				llOpenClass.setVisibility(View.GONE);
+				
+			}else{
+				llOpenClass.setVisibility(View.VISIBLE);
+				rlCloseClass.setVisibility(View.GONE);
+			}
+		}
+		else{
+			rlBottom.setVisibility(View.GONE);
+		}
+	}
 	}
 
 	private void addListeners() {
@@ -606,7 +1221,206 @@ public class DateSetFragment extends Fragment {
 				}
 			}
 		});
+		
+		btnSetClass.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putIntegerArrayListExtra("hour", chosedHour).putExtra("rest",chosedIsRest).putExtra("result", scheduleResult)
+						.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
 
+			}
+		});
+		
+		btnConfirmOpen.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				new ChangeAllDayScheduleTask("1").execute();
+			}
+		});
+		
+		btnCloseClass.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				new ChangeAllDayScheduleTask("2").execute();
+			}
+		});
+		
+		rlTwentyThree.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(23,18);
+			}
+		});
+		
+		rlTwentyTwo.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(22, 17);
+			}
+		});
+		
+		rlTwentyOne.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(21, 16);
+			}
+		});
+		
+		rlTwenty.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(20, 15);
+			}
+		});
+		
+		rlNineteen.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(19, 14);
+			}
+		});
+		
+		rlEighteen.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(18, 13);
+			}
+		});
+		
+		rlSeventeen.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(17, 12);
+			}
+		});
+		
+		rlSixteen.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(16, 11);
+			}
+		});
+		
+		rlFifteen.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(15, 10);
+			}
+		});
+		
+		rlFourteen.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(14, 9);
+			}
+		});
+		
+		rlThirteen.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(13, 8);
+			}
+		});
+		
+		rlTwelve.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(12, 7);
+			}
+		});
+		
+		rlEleven.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(11, 6);
+			}
+		});
+		
+		rlTen.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(10,5);
+			}
+		});
+		
+		rlNine.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(9,4);
+			}
+		});
+		
+		rlEight.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(8,3);
+			}
+		});
+		
+		rlSeven.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(7,2);
+			}
+		});
+		
+		rlSix.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(6,1);
+			}
+		});
+		
+		rlFive.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setOneHour(5,0);
+			}
+		});
 //		mMorSelectAll.setOnClickListener(new OnSingleClickListener() {
 //
 //			@Override
@@ -1508,7 +2322,6 @@ public class DateSetFragment extends Fragment {
 //				}
 //			}
 //		});
-//
 //		mFiveGear.setOnClickListener(new OnSingleClickListener() {
 //
 //			@Override
@@ -1919,7 +2732,7 @@ public class DateSetFragment extends Fragment {
 //		});
 
 //		mMorMultiSet.setOnClickListener(new OnSingleClickListener() {
-//
+
 //			@Override
 //			public void doOnClick(View v) {
 //				
@@ -2010,7 +2823,6 @@ public class DateSetFragment extends Fragment {
 //					} else {
 //						mor.append("0");
 //					}
-//
 //				}
 //
 //				if (!mor.toString().contains("1")) {
@@ -2283,25 +3095,25 @@ public class DateSetFragment extends Fragment {
 	}
 
 	private void setTimes() {
-//		mFiveTime.setText("05:00");
-//		mSixTime.setText("06:00");
-//		mSevenTime.setText("07:00");
-//		mEightTime.setText("08:00");
-//		mNineTime.setText("09:00");
-//		mTenTime.setText("10:00");
-//		mElevenTime.setText("11:00");
-//		mTwelveTime.setText("12:00");
-//		mThirteenTime.setText("13:00");
-//		mFourteenTime.setText("14:00");
-//		mFifteenTime.setText("15:00");
-//		mSixteenTime.setText("16:00");
-//		mSeventeenTime.setText("17:00");
-//		mEighteenTime.setText("18:00");
-//		mNineteenTime.setText("19:00");
-//		mTwentyTime.setText("20:00");
-//		mTwentyOneTime.setText("21:00");
-//		mTwentyTwoTime.setText("22:00");
-//		mTwentyThreeTime.setText("23:00");
+		tvFiveTime.setText("05:00");
+		tvSixTime.setText("06:00");
+		tvSevenTime.setText("07:00");
+		tvEightTime.setText("08:00");
+		tvNineTime.setText("09:00");
+		tvTenTime.setText("10:00");
+		tvElevenTime.setText("11:00");
+		tvTwelveTime.setText("12:00");
+		tvThirteenTime.setText("13:00");
+		tvFourteenTime.setText("14:00");
+		tvFifteenTime.setText("15:00");
+		tvSixteenTime.setText("16:00");
+		tvSeventeenTime.setText("17:00");
+		tvEighteenTime.setText("18:00");
+		tvNineteenTime.setText("19:00");
+		tvTwentyTime.setText("20:00");
+		tvTwentyOneTime.setText("21:00");
+		tvTwentyTwoTime.setText("22:00");
+		tvTwentyThreeTime.setText("23:00");
 //		// default rest time 12:00 & 18:00
 //		stateArray[7] = true;
 //		stateArray[13] = true;
@@ -2472,14 +3284,15 @@ public class DateSetFragment extends Fragment {
 				/*
 				 *跳转到时间段界面 
 				 */
-				
+				chosedHour.clear();
+				new GetDefaultScheduleTask(calendar).execute();
 //				Intent intent = new Intent(mActivity,ActivityDateSet.class);
 //				startActivity(intent);
 				
 				/*
 				 *在当前页面设置时间段
 				 */
-				checkUpdate(calendar);
+
 				/*
 				 * 当点击位置处于上次点击下方时，如果已经显示就隐藏
 				 */
@@ -2651,6 +3464,37 @@ public class DateSetFragment extends Fragment {
 	boolean isFirstReq = true;
 	int mDeadHour;
 
+	private class GetDefaultScheduleTask extends AsyncTask<Void, Void, GetDefaultScheduleResult>
+	{
+		private Calendar mCalendar;
+		public GetDefaultScheduleTask(Calendar calendar)
+		{
+			mCalendar = calendar;
+		}
+		
+		JSONAccessor accessor = new JSONAccessor(mActivity, JSONAccessor.METHOD_POST);
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+		}
+		@Override
+		protected GetDefaultScheduleResult doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			HashMap<String, Object> param = new BaseParam();
+			param.put("action", "GETDEFAULTSCHEDULE");
+			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
+			return accessor.execute(Settings.SCHEDULE_URL, param, GetDefaultScheduleResult.class);
+		}
+		@Override
+		protected void onPostExecute(GetDefaultScheduleResult result) {
+			super.onPostExecute(result);
+			defaultSchedule = result.getDefaultSchedule();
+			checkUpdate(mCalendar);
+		}
+	}
+	
+	
+	
 	private class GetScheduleTask extends AsyncTask<Void, Void, GetScheduleResult> {
 		JSONAccessor accessor = new JSONAccessor(mActivity, JSONAccessor.METHOD_POST);
 
@@ -2664,7 +3508,6 @@ public class DateSetFragment extends Fragment {
 			HashMap<String, Object> param = new BaseParam();
 			param.put("action", "GetSchedule");
 			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
-
 			return accessor.execute(Settings.SCHEDULE_URL, param, GetScheduleResult.class);
 		}
 
@@ -2715,7 +3558,7 @@ public class DateSetFragment extends Fragment {
 							gAdapterNextMonth.notifyDataSetChanged();
 							gSelectAdapter = gAdapterNextMonth;
 						}
-						// checkUpdate(DateSetFragment.calSelected);
+						 checkUpdate(calSelected);
 					}
 				}
 				/*
@@ -2838,14 +3681,21 @@ public class DateSetFragment extends Fragment {
 				} catch (Exception e) {
 				}
 
-				boolean isOpen = true;
+				boolean isOpen = false;
 				tempHour = daySpan.get(str);
 				dayPos = getStringPositionInAdapter(str);
 				for (String hourStr : tempHour.keySet()) {
 					tempsc = tempHour.get(hourStr);
-					if (hourStr.equals("0") && tempsc.getState() == 0) {
-						isOpen = false;
+					if (tempsc.getExpire() == 0)
+					{
+						if (tempsc.getIsrest() == 0)
+						{
+							isOpen = true;
+						}
 					}
+//					if (tempsc.getExpire()==1||tempsc.getIsrest() == 1) {
+//						
+//					}
 				}
 				if (isOpen)
 				{
@@ -2905,7 +3755,9 @@ public class DateSetFragment extends Fragment {
 		if (scheduleResult.getDatelist() == null)
 			return;
 		
-		for (Schedule schedule : scheduleResult.getDatelist()) {
+		for (int positon = 0;positon<scheduleResult.getDatelist().size();positon++) {
+
+			Schedule schedule = scheduleResult.getDatelist().get(positon);
 			Date date2;
 			try {
 				date2 = TimeUtil.StringToDate(schedule.getDate());
@@ -2914,7 +3766,7 @@ public class DateSetFragment extends Fragment {
 			}
 
 			if (equalsDate(selectedDate.getTime(), date2)) {
-
+				SchedulePosition = positon;
 				if (schedule.getHour() == 0) {
 					/*
 					 * 全局设置
@@ -2934,65 +3786,65 @@ public class DateSetFragment extends Fragment {
 					/*
 					 * 单个小时设置
 					 */
-//					switch (schedule.getHour()) {
-//					case 5:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFiveTime, mFivePrice, mFiveSelect, 0,schedule.getExpire());
-//						break;
-//					case 6:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixTime, mSixPrice, mSixSelect, 1,schedule.getExpire());
-//						break;
-//					case 7:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSevenTime, mSevenPrice, mSevenSelect, 2,schedule.getExpire());
-//						break;
-//					case 8:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEightTime, mEightPrice, mEightSelect, 3,schedule.getExpire());
-//						break;
-//					case 9:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineTime, mNinePrice, mNineSelect, 4,schedule.getExpire());
-//						break;
-//					case 10:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTenTime, mTenPrice, mTenSelect, 5,schedule.getExpire());
-//						break;
-//					case 11:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mElevenTime, mElevenPrice, mElevenSelect, 6,schedule.getExpire());
-//						break;
-//					case 12:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwelveTime, mTwelvePrice, mTwelveSelect, 7,schedule.getExpire());
-//						break;
-//					case 13:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mThirteenTime, mThirteenPrice, mThirteenSelect, 8,schedule.getExpire());
-//						break;
-//					case 14:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFourteenTime, mFourteenPrice, mFourteenSelect, 9,schedule.getExpire());
-//						break;
-//					case 15:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mFifteenTime, mFifteenPrice, mFifteenSelect, 10,schedule.getExpire());
-//						break;
-//					case 16:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSixteenTime, mSixteenPrice, mSixteenSelect, 11,schedule.getExpire());
-//						break;
-//					case 17:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mSeventeenTime, mSeventeenPrice, mSeventeenSelect, 12,schedule.getExpire());
-//						break;
-//					case 18:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mEighteenTime, mEighteenPrice, mEighteenSelect, 13,schedule.getExpire());
-//						break;
-//					case 19:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mNineteenTime, mNineteenPrice, mNineteenSelect, 14,schedule.getExpire());
-//						break;
-//					case 20:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTime, mTwentyPrice, mTwentySelect, 15,schedule.getExpire());
-//						break;
-//					case 21:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyOneTime, mTwentyOnePrice, mTwentyOneSelect, 16,schedule.getExpire());
-//						break;
-//					case 22:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyTwoTime, mTwentyTwoPrice, mTwentyTwoSelect, 17,schedule.getExpire());
-//						break;
-//					case 23:
-//						modifyOneHourState(schedule.getIsrest(), schedule.getPrice(), mTwentyThreeTime, mTwentyThreePrice, mTwentyThreeSelect, 18,schedule.getExpire());
-//						break;
-//					}
+					switch (schedule.getHour()) {
+					case 5:
+						modifyOneHourState(tvFiveTime, tvFivePrice, tvFiveObject,tvFiveNotSet,imgFiveSelect,imgFiveHasBook,llFiveHasSet,rlFive, 0,schedule);
+						break;
+					case 6:
+						modifyOneHourState(tvSixTime, tvSixPrice, tvSixObject,tvSixNotSet,imgSixSelect,imgSixHasBook,llSixHasSet,rlSix,1,schedule);
+						break;
+					case 7:
+						modifyOneHourState(tvSevenTime,tvSevenPrice,tvSevenObject,tvSevenNotSet,imgSevenSelect,imgSevenHasBook,llSevenHasSet,rlSeven,2,schedule);
+						break;
+					case 8:
+						modifyOneHourState(tvEightTime,tvEightPrice,tvEightObject,tvEightNotSet,imgEightSelect,imgEightHasBook,llEightHasSet,rlEight,3,schedule);
+						break;
+					case 9:
+						modifyOneHourState(tvNineTime,tvNinePrice,tvNineObject,tvNineNotSet,imgNineSelect,imgNineHasBook,llNineHasSet,rlNine, 4,schedule);
+						break;
+					case 10:
+						modifyOneHourState(tvTenTime,tvTenPrice,tvTenObject,tvTenNotSet,imgTenSelect,imgTenHasBook,llTenHasSet,rlTen,5,schedule);
+						break;
+					case 11:
+						modifyOneHourState(tvElevenTime,tvElevenPrice,tvElevenObject,tvElevenNotSet,imgElevenSelect,imgElevenHasBook,llElevenHasSet,rlEleven,6,schedule);
+						break;
+					case 12:
+						modifyOneHourState(tvTwelveTime,tvTwelvePrice,tvTwelveObject,tvTwelveNotSet,imgTwelveSelect,imgTwelveHasBook,llTwelveHasSet,rlTwelve,7,schedule);
+						break;
+					case 13:
+						modifyOneHourState(tvThirteenTime,tvThirteenPrice,tvThirteenObject,tvThirteenNotSet,imgThirteenSelect,imgThirteenHasBook,llThirteenHasSet,rlThirteen, 8,schedule);
+						break;
+					case 14:
+						modifyOneHourState(tvFourteenTime,tvFourteenPrice,tvFourteenObject,tvFourteenNotSet,imgFourteenSelect,imgFourteenHasBook,llFourteenHasSet,rlFourteen,9,schedule);
+						break;
+					case 15:
+						modifyOneHourState(tvFifteenTime,tvFifteenPrice,tvFifteenObject,tvFifteenNotSet,imgFifteenSelect,imgFifteenHasBook,llFifteenHasSet, rlFifteen,10,schedule);
+						break;
+					case 16:
+						modifyOneHourState(tvSixteenTime,tvSixteenPrice,tvSixteenObject,tvSixteenNotSet,imgSixteenSelect,imgSixteenHasBook,llSixteenHasSet, rlSixteen, 11,schedule);
+						break;
+					case 17:
+						modifyOneHourState(tvSeventeenTime,tvSeventeenPrice,tvSeventeenObject,tvSeventeenNotSet,imgSevenSelect,imgSeventeenHasBook,llSeventeenHasSet, rlSeventeen, 12,schedule);
+						break;
+					case 18:
+						modifyOneHourState(tvEighteenTime,tvEighteenPrice,tvEighteenObject,tvEighteenNotSet,imgEightSelect,imgEighteenHasBook,llEighteenHasSet, rlEighteen,13,schedule);
+						break;
+					case 19:
+						modifyOneHourState(tvNineteenTime,tvNineteenPrice,tvNineteenObject,tvNineteenNotSet,imgNineteenSelect,imgNineteenHasBook,llNineteenHasSet, rlNineteen, 14,schedule);
+						break;
+					case 20:
+						modifyOneHourState(tvTwentyTime,tvTwentyPrice,tvTwentyObject,tvTwentyNotSet,imgTwentySelect,imgTwentyHasBook,llTwentyHasSet, rlTwenty, 15,schedule);
+						break;
+					case 21:
+						modifyOneHourState(tvTwentyOneTime,tvTwentyOnePrice,tvTwentyOneObject,tvTwentyOneNotSet,imgTwentyOneSelect,imgTwentyOneHasBook,llTwentyOneHasSet, rlTwentyOne,16,schedule);
+						break;
+					case 22:
+						modifyOneHourState(tvTwentyTwoTime,tvTwentyTwoPrice,tvTwentyTwoObject,tvTwentyTwoNotSet,imgTwentyTwoSelect,imgTwentyTwoHasBook,llTwentyTwoHasSet, rlTwentyTwo,17,schedule);
+						break;
+					case 23:
+						modifyOneHourState(tvTwentyThreeTime,tvTwentyThreePrice,tvTwentyThreeObject,tvTwentyThreeNotSet,imgTwentyThreeSelect,imgTwentyThreeHasBook,llTwentyThreeHasSet, rlTwentyThree,18,schedule);
+						break;
+					}
 				}
 			}
 		}
@@ -3158,7 +4010,18 @@ public class DateSetFragment extends Fragment {
 	 */
 	Schedule schd;
 
-	private void modifyOneHourState(int isrest, String pricenum, TextView time, TextView price, TextView select, int pos,int expire) {
+	/**
+	 * @param time
+	 * @param price
+	 * @param subject
+	 * @param notSet
+	 * @param imgHasBook
+	 * @param llHasSet
+	 * @param rlBack
+	 * @param pos
+	 * @param schedule
+	 */
+	private void modifyOneHourState(TextView time, TextView price, TextView subject,TextView notSet,ImageView imgSelect,ImageView imgHasBook,LinearLayout llHasSet,RelativeLayout rlBack,int pos,Schedule schedule) {
 //		if (expire == 1)
 //		{
 //			time.setTextColor(Color.parseColor("#d2d2d2"));
@@ -3180,78 +4043,130 @@ public class DateSetFragment extends Fragment {
 //			}
 //		}
 //		
-		if (expire == 1)    //已过期
+		if (imgSelect.getVisibility() == View.VISIBLE)
 		{
-		if (isrest == 1) {
-			time.setTextColor(Color.parseColor("#d2d2d2"));
-			price.setTextColor(Color.parseColor("#d2d2d2"));
-			price.setText("未开课");
-			price.setBackgroundColor(Color.parseColor("#e5e5e5"));
-			stateArray[pos] = false;
-		} else {
-			time.setTextColor(Color.parseColor("#d2d2d2"));
-			price.setTextColor(Color.parseColor("#d2d2d2"));
-			price.setBackgroundColor(Color.parseColor("#e5e5e5"));
+			imgSelect.setVisibility(View.GONE);
+		}
+		if (schedule.getExpire() == 1)    //已过期
+		{
+			//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_passed));
+			rlBack.setBackgroundResource(R.drawable.date_set_passed);
+			llHasSet.setVisibility(View.INVISIBLE);
+			notSet.setVisibility(View.VISIBLE);
+			notSet.setTextColor(getResources().getColor(R.color.date_gray));
+			notSet.setText("已过期");
+			time.setTextColor(getResources().getColor(R.color.date_gray));
+			imgHasBook.setVisibility(View.GONE);
+			return;
+		}
+		
+		if (schedule.getIsrest() ==1)
+		{
+			//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_not_set));
+			rlBack.setBackgroundResource(R.drawable.date_set_not_set);
+			llHasSet.setVisibility(View.VISIBLE);
+			notSet.setVisibility(View.INVISIBLE);
+			String pricenum = schedule.getPrice();
 			if (pricenum != null)
-				price.setText("单价  " + (pricenum.contains(".") ? pricenum.substring(0, pricenum.indexOf(".")) : pricenum) + "元");
-			else {
-				price.setText("");
+			price.setText(pricenum.contains(".") ? pricenum.substring(0, pricenum.indexOf(".")) : pricenum);
+		else {
+			price.setText("");
 			}
-			stateArray[pos] = true;
-		}
+			price.setTextColor(getResources().getColor(R.color.date_back));
+			time.setTextColor(getResources().getColor(R.color.date_back));
+			subject.setText(schedule.getSubject());
+			subject.setTextColor(getResources().getColor(R.color.date_back));
+			imgHasBook.setVisibility(View.GONE);
+			stateArray[pos] = false;
+			if (defaultSchedule.size() !=0)
+			{
+				price.setText(defaultSchedule.get(pos).getPrice()+"");
+				subject.setText(defaultSchedule.get(pos).getSubject());
+				scheduleResult.getDatelist().get(SchedulePosition).setPrice(defaultSchedule.get(pos).getPrice()+"");
+				scheduleResult.getDatelist().get(SchedulePosition).setSubject(defaultSchedule.get(pos).getSubject());
+				scheduleResult.getDatelist().get(SchedulePosition).setAddressdetail(defaultSchedule.get(pos).getAddressdetail());
+			}
 		}else{
-			if (isrest == 1) {
-				time.setTextColor(Color.parseColor("#d2d2d2"));
-				price.setTextColor(Color.parseColor("#d2d2d2"));
-				price.setText("未开课");
-				price.setBackgroundColor(Color.parseColor("#e5e5e5"));
-				stateArray[pos] = false;
+			stateArray[pos] = true;
+			llHasSet.setVisibility(View.VISIBLE);
+			notSet.setVisibility(View.INVISIBLE);
+			time.setTextColor(getResources().getColor(R.color.white));
+			String pricenum = schedule.getPrice();
+			if (pricenum != null)
+			price.setText(pricenum.contains(".") ? pricenum.substring(0, pricenum.indexOf(".")) : pricenum);
+		else {
+			price.setText("");
+			}
+			subject.setText(schedule.getSubject());
+			if (daySpan.get(TimeUtil.calendarToString(calSelected)) != null)
+				schd = (Schedule) daySpan.get(TimeUtil.calendarToString(calSelected)).get(5 + pos + "");
+			if (daySpan != null && schd != null && schd.getHasbooked() == 1) {
+				//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_has_book));
+				rlBack.setBackgroundResource(R.drawable.date_set_has_book);
+				imgHasBook.setVisibility(View.VISIBLE);
+				price.setTextColor(getResources().getColor(R.color.date_orange));
+				subject.setTextColor(getResources().getColor(R.color.date_orange));
 			} else {
-				time.setTextColor(Color.parseColor("#20b478"));
-				price.setTextColor(Color.parseColor("#d2d2d2"));
-				price.setBackgroundColor(Color.parseColor("#20b478"));
-				if (pricenum != null)
-					price.setText("单价  " + (pricenum.contains(".") ? pricenum.substring(0, pricenum.indexOf(".")) : pricenum) + "元");
-				else {
-					price.setText("");
-				}
-				stateArray[pos] = true;
+				//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_not_chosed));
+				rlBack.setBackgroundResource(R.drawable.date_set_not_chosed);
+				imgHasBook.setVisibility(View.GONE);
+				price.setTextColor(getResources().getColor(R.color.date_back));
+				subject.setTextColor(getResources().getColor(R.color.date_back));
 			}
 		}
+//		else{
+//			if (isrest == 1) {
+//				time.setTextColor(Color.parseColor("#d2d2d2"));
+//				price.setTextColor(Color.parseColor("#d2d2d2"));
+//				price.setText("未开课");
+//				price.setBackgroundColor(Color.parseColor("#e5e5e5"));
+//				stateArray[pos] = false;
+//			} else {
+//				time.setTextColor(Color.parseColor("#20b478"));
+//				price.setTextColor(Color.parseColor("#d2d2d2"));
+//				price.setBackgroundColor(Color.parseColor("#20b478"));
+//				if (pricenum != null)
+//					price.setText("单价  " + (pricenum.contains(".") ? pricenum.substring(0, pricenum.indexOf(".")) : pricenum) + "元");
+//				else {
+//					price.setText("");
+//				}
+//				stateArray[pos] = true;
+//			}
+//		}
 
-		if (equalsDate(calToday.getTime(), calSelected.getTime()) && (pos + 5) <= mDeadHour) {
-			select.setVisibility(View.INVISIBLE);
-			selectArray[pos] = true;
-		} else {
-			if (select.getVisibility() == View.INVISIBLE) {
-				select.setVisibility(View.VISIBLE);
-				select.setBackgroundResource(R.color.text_black);
-			}
-			selectArray[pos] = false;
-		}
+//		if (equalsDate(calToday.getTime(), calSelected.getTime()) && (pos + 5) <= mDeadHour) {
+//			select.setVisibility(View.INVISIBLE);
+//			selectArray[pos] = true;
+//		} else {
+//			if (select.getVisibility() == View.INVISIBLE) {
+//				select.setVisibility(View.VISIBLE);
+//				select.setBackgroundResource(R.color.text_black);
+//			}
+//			selectArray[pos] = false;
+//		}
 
-		if (daySpan.get(TimeUtil.calendarToString(calSelected)) != null)
-			schd = (Schedule) daySpan.get(TimeUtil.calendarToString(calSelected)).get(5 + pos + "");
-		if (daySpan != null && schd != null && schd.getHasbooked() == 1) {
-			select.setText("已约");
-			selectArray[pos] = true;
-			bookArray[pos] = true;
-			if (select.getVisibility() == View.INVISIBLE) {
-				select.setVisibility(View.VISIBLE);
-				// if (equalsDate(calToday.getTime(), calSelected.getTime()))
-				// select.setBackgroundResource(R.color.text_grey);
-				// else {
-				// select.setBackgroundColor(Color.parseColor("#000000"));
-				// }
-			}
-		} else {
-			select.setText("选中");
-			selectArray[pos] = false;
-			bookArray[pos] = false;
-			/*
-			 * select.setTextColor(getResources().getColor(R.color.white)); select.setBackgroundColor(Color.parseColor("#000000"));
-			 */
-		}
+//		if (daySpan.get(TimeUtil.calendarToString(calSelected)) != null)
+//			schd = (Schedule) daySpan.get(TimeUtil.calendarToString(calSelected)).get(5 + pos + "");
+//		if (daySpan != null && schd != null && schd.getHasbooked() == 1) {
+//			select.setText("已约");
+//			selectArray[pos] = true;
+//			bookArray[pos] = true;
+//			if (select.getVisibility() == View.INVISIBLE) {
+//				select.setVisibility(View.VISIBLE);
+//				// if (equalsDate(calToday.getTime(), calSelected.getTime()))
+//				// select.setBackgroundResource(R.color.text_grey);
+//				// else {
+//				// select.setBackgroundColor(Color.parseColor("#000000"));
+//				// }
+//			}
+//		} else {
+//			select.setText("选中");
+//			selectArray[pos] = false;
+//			bookArray[pos] = false;
+//			/*
+//			 * select.setTextColor(getResources().getColor(R.color.white)); select.setBackgroundColor(Color.parseColor("#000000"));
+//			 */
+//		}
 	}
 
 	private Boolean equalsDate(Date date1, Date date2) {
@@ -3299,9 +4214,25 @@ public class DateSetFragment extends Fragment {
 					e.printStackTrace();
 				}
 				if (equalsDate(calSelected.getTime(), date2)) {
-					if (schedule.getHour() !=0)
+					if (type.equals("1"))
 					{
-						chosedScheduleArray.add(schedule);
+					for (int hour:chosedHour)
+					{
+					if (schedule.getHour() == hour)
+					{
+						schedule.setIsrest(0);
+					}
+					chosedScheduleArray.add(schedule);
+					}
+					}else{
+						for (int hour:chosedHour)
+						{
+						if (schedule.getHour() == hour)
+						{
+							schedule.setIsrest(1);
+							chosedScheduleArray.add(schedule);
+						}
+						}
 					}
 				}
 			}
@@ -3323,17 +4254,18 @@ public class DateSetFragment extends Fragment {
 
 			if (result != null) {
 				if (result.getCode() == 1) {
-//					if (type != null && type.equals("1")) {
+					rlBottom.setVisibility(View.GONE);
+					if (type != null && type.equals("1")) {
 //						isAllDayOpen = true;
 //						mAllDaySetClose.setText("当天停课");
 //						mAllDaySetClose.setBackgroundResource(R.drawable.shape_red_round);
-//						new ChangeClassStateTask(1, day).execute();
-//					} else {
+						new ChangeClassStateTask(1, day).execute();
+					} else {
 //						isAllDayOpen = false;
 //						mAllDaySetClose.setText("发布课程");
 //						mAllDaySetClose.setBackgroundResource(R.drawable.shape_green_round);
-//						new ChangeClassStateTask(0, day).execute();
-//					}
+						new ChangeClassStateTask(0, day).execute();
+					}
 				} else {
 					if (result.getCode() == 95) {
 						if (result.getMessage() != null)
@@ -3353,7 +4285,6 @@ public class DateSetFragment extends Fragment {
 				CommonUtils.showToast(mActivity.getApplicationContext(), mActivity.getString(R.string.net_error));
 			}
 		}
-
 	}
 
 	Resources resources;
@@ -3389,9 +4320,9 @@ public class DateSetFragment extends Fragment {
 			/*
 			 * get balls
 			 */
-			View yBall = (View) iv.findViewById(R.id.yellow_ball);
-			View rBall = (View) iv.findViewById(R.id.red_ball);
-			View bBall = (View) iv.findViewById(R.id.blue_ball);
+//			View yBall = (View) iv.findViewById(R.id.yellow_ball);
+//			View rBall = (View) iv.findViewById(R.id.red_ball);
+//			View bBall = (View) iv.findViewById(R.id.blue_ball);
 			// 背景铺色
 			
 			// 今天的处理
@@ -3402,9 +4333,9 @@ public class DateSetFragment extends Fragment {
 			txtDay.setText(String.valueOf(day));
 			iv.setTag(myDate);
 
-			yBall.setVisibility(View.GONE);
-			rBall.setVisibility(View.GONE);
-			bBall.setVisibility(View.GONE);
+//			yBall.setVisibility(View.GONE);
+//			rBall.setVisibility(View.GONE);
+//			bBall.setVisibility(View.GONE);
 
 			iMonthViewCurrentMonth = selectCalendar.get(Calendar.MONTH);// 得到当前日历显示的月
 			// 判断是否是当前月
@@ -3471,23 +4402,23 @@ public class DateSetFragment extends Fragment {
 							//iv.setOnClickListener(new dateClickListener(gAdapter, (Calendar) iv.getTag(), iv,false,0));
 
 							position = selectItemLine * 7 + i;
-							if (ballState.get(position).isShowY()) {
-								yBall.setVisibility(View.VISIBLE);
-							} else {
-							}
-							if (ballState.get(position).isShowR()) {
-								rBall.setVisibility(View.VISIBLE);
-							} else {
-							}
-							if (ballState.get(position).isShowB()) {
-								bBall.setVisibility(View.VISIBLE);
-							} else {
-							}
+//							if (ballState.get(position).isShowY()) {
+//								yBall.setVisibility(View.VISIBLE);
+//							} else {
+//							}
+//							if (ballState.get(position).isShowR()) {
+//								rBall.setVisibility(View.VISIBLE);
+//							} else {
+//							}
+//							if (ballState.get(position).isShowB()) {
+//								bBall.setVisibility(View.VISIBLE);
+//							} else {
+//							}
 
 							/*
 							 * 若是有球显示,字为白色
 							 */
-							if (ballState.get(position).isShowY() || ballState.get(position).isShowR() || ballState.get(position).isShowB()) {
+							if (ballState.get(position).isOpen()) {
 								txtDay.setTextColor(resources.getColor(R.color.white));
 								txtToDay.setText("已开课");
 								txtToDay.setTextColor(resources.getColor(R.color.white));
@@ -3542,9 +4473,9 @@ public class DateSetFragment extends Fragment {
 //		Date mDate = mCarlandar.getTime();
 		gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2b3733"));
 		view.setBackgroundColor(Color.parseColor("#ffffff"));
-		gSelectAdapter.yBall = (View) gSelectAdapter.selectedView.findViewById(R.id.yellow_ball);
-		gSelectAdapter.rBall = (View) gSelectAdapter.selectedView.findViewById(R.id.red_ball);
-		gSelectAdapter.bBall = (View) gSelectAdapter.selectedView.findViewById(R.id.blue_ball);
+//		gSelectAdapter.yBall = (View) gSelectAdapter.selectedView.findViewById(R.id.yellow_ball);
+//		gSelectAdapter.rBall = (View) gSelectAdapter.selectedView.findViewById(R.id.red_ball);
+//		gSelectAdapter.bBall = (View) gSelectAdapter.selectedView.findViewById(R.id.blue_ball);
 //		if (mIsHanging)
 //		{
 //			int data = mDate.getDate();
@@ -3557,7 +4488,7 @@ public class DateSetFragment extends Fragment {
 			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.text_green));
 		} else {
 			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.white));
-			if (gSelectAdapter.yBall.getVisibility() == View.VISIBLE || gSelectAdapter.rBall.getVisibility() == View.VISIBLE || gSelectAdapter.bBall.getVisibility() == View.VISIBLE)
+			if ("已开课".equals(gSelectAdapter.tvToday.getText().toString().trim()))
 			{
 				gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2c4021"));
 			}
@@ -3642,42 +4573,63 @@ public class DateSetFragment extends Fragment {
 
 		@Override
 		protected Void doInBackground(Void... arg0) {
+//			if (scheduleResult != null) {
+//				boolean hasHourZero = false;
+//				for (Schedule sc : scheduleResult.getDatelist()) {
+//					if (sc.getDate() != null && sc.getDate().equals(day) && sc.getHour() == 0) {
+//						hasHourZero = true;
+//						sc.setState(state);
+//					}
+//				}
+//				if (!hasHourZero) {
+//					Schedule sd = new Schedule();
+//					sd.setState(state);
+//					scheduleResult.getDatelist().add(sd);
+//				}
+//			}
+			
 			if (scheduleResult != null) {
 				boolean hasHourZero = false;
-				for (Schedule sc : scheduleResult.getDatelist()) {
-					if (sc.getDate() != null && sc.getDate().equals(day) && sc.getHour() == 0) {
-						hasHourZero = true;
-						sc.setState(state);
-					}
-				}
-				if (!hasHourZero) {
-					Schedule sd = new Schedule();
-					sd.setState(state);
-					scheduleResult.getDatelist().add(sd);
-				}
-			}
-
-			if (daySpan != null) {
-				for (String date : daySpan.keySet()) {
-					if (date.equals(day)) {
-						HashMap<String, Schedule> hm = daySpan.get(date);
-						boolean hasSetState = false;
-						for (String hour : hm.keySet()) {
-							if (hour.equals("0")) {
-								hm.get("0").setState(state);
-								hasSetState = true;
+				for (int i = 0;i<scheduleResult.getDatelist().size();i++) {
+					Schedule sc = scheduleResult.getDatelist().get(i);
+					if (sc.getDate() != null && sc.getDate().equals(day)) {
+						for (int hour:chosedHour)
+						{
+							if (sc.getHour()==hour)
+							{
+								if (state == 1)
+								{
+									scheduleResult.getDatelist().get(i).setIsrest(0);
+								}
+								else{
+									scheduleResult.getDatelist().get(i).setIsrest(1);
+								}
 							}
 						}
-
-						if (!hasSetState) {
-							Schedule sd = new Schedule();
-							sd.setState(state);
-							hm.put("0", sd);
-						}
 					}
 				}
-
 			}
+
+//			if (daySpan != null) {
+//				for (String date : daySpan.keySet()) {
+//					if (date.equals(day)) {
+//						HashMap<String, Schedule> hm = daySpan.get(date);
+//						boolean hasSetState = false;
+//						for (String hour : hm.keySet()) {
+//							if (hour.equals("0")) {
+//								hm.get("0").setState(state);
+//								hasSetState = true;
+//							}
+//						}
+//
+//						if (!hasSetState) {
+//							Schedule sd = new Schedule();
+//							sd.setState(state);
+//							hm.put("0", sd);
+//						}
+//					}
+//				}
+//			}
 
 			return null;
 		}
@@ -3793,25 +4745,25 @@ public class DateSetFragment extends Fragment {
 		if (requestCode == 2001 && data != null) {
 			try {
 				// Update THE DateList reserved
-				updateLocalDateList(((SetDateTimeResult) data.getSerializableExtra("list")).getDatelist(), data.getStringExtra("day"));
+				updateLocalDateList(( (ArrayList<Schedule>)data.getSerializableExtra("list")), data.getStringExtra("day"));
 			} catch (Exception e) {
 				Log.e(TAG, "convert serializable error");
 			}
 		}
 	}
 
-	private void updateLocalDateList(List<Schedule> datelist, String day) {
+	private void updateLocalDateList(ArrayList<Schedule> datelist, String day) {
 		if (datelist != null && datelist.size() > 0) {
 			new UpdateScheduleTask(datelist, day).execute();
 		}
 	}
 
 	public class UpdateScheduleTask extends AsyncTask<Void, Void, Void> {
-		private List<Schedule> datelist;
+		private ArrayList<Schedule> datelist;
 		boolean hasSc;
 		String day;
 
-		public UpdateScheduleTask(List<Schedule> datelist, String day) {
+		public UpdateScheduleTask(ArrayList<Schedule> datelist, String day) {
 			this.datelist = datelist;
 			this.day = day;
 		}

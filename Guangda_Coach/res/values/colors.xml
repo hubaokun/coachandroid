@@ -51,5 +51,8 @@
     <color name="back_green">#22c064</color>
     <color name="gray_bar">#aaaaaa</color>
     <color name="green_bar">#50cb8c</color>
+    <color name="date_gray">#b9b9b9</color>
+    <color name="date_back">#444444</color>
+    <color name="date_orange">#9e5506</color>
 
 </resources>

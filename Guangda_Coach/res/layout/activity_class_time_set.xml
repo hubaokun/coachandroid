@@ -45,7 +45,7 @@
                     android:textColor="@color/text_green" />
             </LinearLayout>
 
-            <LinearLayout
+<!--             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
@@ -78,7 +78,7 @@
                 android:text="@string/classset_open_tip"
                 android:textColor="@color/text_grey"
                 android:textSize="12dp" />
-
+ -->
             <View
                 style="@style/dividerLine"
                 android:layout_marginTop="17dp" />
