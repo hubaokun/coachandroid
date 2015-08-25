@@ -432,6 +432,8 @@ public class DateSetFragment extends Fragment {
 	private boolean chosedIsRest;
 	private List<DefaultSchedule> defaultSchedule = new ArrayList<DefaultSchedule>();
 	private int SchedulePosition;
+	private int IsChosed = 0;
+	private boolean ISClickCalender = false;
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -812,7 +814,6 @@ public class DateSetFragment extends Fragment {
 //		mTwentyOneGear = (RelativeLayout) mNightSet.findViewById(R.id.twentyone_part).findViewById(R.id.tg_geer);
 //		mTwentyTwoGear = (RelativeLayout) mNightSet.findViewById(R.id.twentytwo_part).findViewById(R.id.tg_geer);
 //		mTwentyThreeGear = (RelativeLayout) mNightSet.findViewById(R.id.twentythree_part).findViewById(R.id.tg_geer);
-
 		mHangingArrow = (RelativeLayout) view.findViewById(R.id.hanging_arrow_part);
 		mHangingContent = (LinearLayout) view.findViewById(R.id.hanging_content);
 		mArrowUp = (RelativeLayout) view.findViewById(R.id.arrow_part);
@@ -832,7 +833,24 @@ public class DateSetFragment extends Fragment {
 			Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		int ischosed = 0;
+		if (stateArray[index])
+		{
+			ischosed = 1;
+		}else{
+			ischosed = 2;
+		}
 		
+		if (IsChosed != ischosed)
+		{
+			if (IsChosed == 0)
+			{
+				IsChosed = ischosed;
+			}else{
+				Toast.makeText(mActivity, "未开课和已开课不能同时选择",0).show();
+				return;
+			}
+		}
 		switch (hour) {
 		case 5:
 			if (imgFiveSelect.getVisibility() == View.VISIBLE)
@@ -1067,6 +1085,7 @@ public class DateSetFragment extends Fragment {
 		}
 		else{
 			rlBottom.setVisibility(View.GONE);
+			IsChosed = 0;
 		}
 	}
 	}
@@ -1239,6 +1258,7 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				new ChangeAllDayScheduleTask("1").execute();
+				
 			}
 		});
 		
@@ -3183,7 +3203,7 @@ public class DateSetFragment extends Fragment {
 		});
 
 		setSelectLine(getSelectLine(calSelected));
-		new RefreshBallStateTask().execute();
+		new RefreshBallStateTask(true).execute();
 	}
 
 	// 当月
@@ -3218,7 +3238,7 @@ public class DateSetFragment extends Fragment {
 			}
 		});
 		setSelectLine(getSelectLine(calSelected));
-		new RefreshBallStateTask().execute();
+		new RefreshBallStateTask(true).execute();
 	}
 
 	AnimationListener animationListener = new AnimationListener() {
@@ -3452,7 +3472,7 @@ public class DateSetFragment extends Fragment {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			new RefreshBallStateTask().execute();
+			new RefreshBallStateTask(false).execute();
 		}
 	}
 
@@ -3489,7 +3509,7 @@ public class DateSetFragment extends Fragment {
 		protected void onPostExecute(GetDefaultScheduleResult result) {
 			super.onPostExecute(result);
 			defaultSchedule = result.getDefaultSchedule();
-			checkUpdate(mCalendar);
+			checkUpdate(mCalendar,true);
 		}
 	}
 	
@@ -3558,7 +3578,7 @@ public class DateSetFragment extends Fragment {
 							gAdapterNextMonth.notifyDataSetChanged();
 							gSelectAdapter = gAdapterNextMonth;
 						}
-						 checkUpdate(calSelected);
+						 checkUpdate(calSelected,false);
 					}
 				}
 				/*
@@ -3658,7 +3678,13 @@ public class DateSetFragment extends Fragment {
 		HashMap<String, Schedule> tempHour;
 		Schedule tempsc;
 		int dayPos;
-
+		boolean IsClickCalender;
+		
+		public RefreshBallStateTask(boolean isClickCalender) {
+			// TODO Auto-generated constructor stub
+			IsClickCalender = isClickCalender;
+		}
+		
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			/*
@@ -3735,7 +3761,7 @@ public class DateSetFragment extends Fragment {
 				gSelectAdapter = gAdapterNextMonth;
 			}
 			initialHangingContent(calSelected, calToday);
-			checkUpdate(calSelected);
+			checkUpdate(calSelected,IsClickCalender);
 			
 			finishLoadingData = true;
 		}
@@ -3749,7 +3775,8 @@ public class DateSetFragment extends Fragment {
 	/*
 	 * 修改日历下部分内容(注意与上面日历分开)
 	 */
-	public void checkUpdate(Calendar selectedDate) {
+	public void checkUpdate(Calendar selectedDate,boolean isClickCalender) {
+		ISClickCalender = isClickCalender;
 		if (scheduleResult == null)
 			return;
 		if (scheduleResult.getDatelist() == null)
@@ -3848,7 +3875,6 @@ public class DateSetFragment extends Fragment {
 				}
 			}
 		}
-
 		//checkDayTime();
 		//checkSelect();
 	}
@@ -4043,10 +4069,23 @@ public class DateSetFragment extends Fragment {
 //			}
 //		}
 //		
+		if (ISClickCalender)
+		{
 		if (imgSelect.getVisibility() == View.VISIBLE)
 		{
 			imgSelect.setVisibility(View.GONE);
 		}
+		}
+//		else{
+//			if (chosedHour.equals(schedule.getHour()))
+//			{
+//				if (imgSelect.getVisibility() == View.VISIBLE)
+//				{
+//					imgSelect.setVisibility(View.GONE);
+//				}
+//			}
+//		}
+
 		if (schedule.getExpire() == 1)    //已过期
 		{
 			//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_passed));
@@ -4078,6 +4117,8 @@ public class DateSetFragment extends Fragment {
 			subject.setTextColor(getResources().getColor(R.color.date_back));
 			imgHasBook.setVisibility(View.GONE);
 			stateArray[pos] = false;
+			if (ISClickCalender)
+			{
 			if (defaultSchedule.size() !=0)
 			{
 				price.setText(defaultSchedule.get(pos).getPrice()+"");
@@ -4085,6 +4126,7 @@ public class DateSetFragment extends Fragment {
 				scheduleResult.getDatelist().get(SchedulePosition).setPrice(defaultSchedule.get(pos).getPrice()+"");
 				scheduleResult.getDatelist().get(SchedulePosition).setSubject(defaultSchedule.get(pos).getSubject());
 				scheduleResult.getDatelist().get(SchedulePosition).setAddressdetail(defaultSchedule.get(pos).getAddressdetail());
+			}
 			}
 		}else{
 			stateArray[pos] = true;
@@ -4102,11 +4144,17 @@ public class DateSetFragment extends Fragment {
 				schd = (Schedule) daySpan.get(TimeUtil.calendarToString(calSelected)).get(5 + pos + "");
 			if (daySpan != null && schd != null && schd.getHasbooked() == 1) {
 				//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_has_book));
+				bookArray[pos] = true;
 				rlBack.setBackgroundResource(R.drawable.date_set_has_book);
 				imgHasBook.setVisibility(View.VISIBLE);
+				if (schedule.getBookedername()!=null)
+				{
+					price.setText(schedule.getBookedername());
+				}
 				price.setTextColor(getResources().getColor(R.color.date_orange));
 				subject.setTextColor(getResources().getColor(R.color.date_orange));
 			} else {
+				bookArray[pos] = false;
 				//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_not_chosed));
 				rlBack.setBackgroundResource(R.drawable.date_set_not_chosed);
 				imgHasBook.setVisibility(View.GONE);
@@ -4254,7 +4302,10 @@ public class DateSetFragment extends Fragment {
 
 			if (result != null) {
 				if (result.getCode() == 1) {
+					chosedHour.clear();
+					IsChosed = 0;
 					rlBottom.setVisibility(View.GONE);
+
 					if (type != null && type.equals("1")) {
 //						isAllDayOpen = true;
 //						mAllDaySetClose.setText("当天停课");
@@ -4320,9 +4371,9 @@ public class DateSetFragment extends Fragment {
 			/*
 			 * get balls
 			 */
-//			View yBall = (View) iv.findViewById(R.id.yellow_ball);
-//			View rBall = (View) iv.findViewById(R.id.red_ball);
-//			View bBall = (View) iv.findViewById(R.id.blue_ball);
+			View yBall = (View) iv.findViewById(R.id.yellow_ball);
+			View rBall = (View) iv.findViewById(R.id.red_ball);
+			View bBall = (View) iv.findViewById(R.id.blue_ball);
 			// 背景铺色
 			
 			// 今天的处理
@@ -4333,9 +4384,9 @@ public class DateSetFragment extends Fragment {
 			txtDay.setText(String.valueOf(day));
 			iv.setTag(myDate);
 
-//			yBall.setVisibility(View.GONE);
-//			rBall.setVisibility(View.GONE);
-//			bBall.setVisibility(View.GONE);
+			yBall.setVisibility(View.GONE);
+			rBall.setVisibility(View.GONE);
+			bBall.setVisibility(View.GONE);
 
 			iMonthViewCurrentMonth = selectCalendar.get(Calendar.MONTH);// 得到当前日历显示的月
 			// 判断是否是当前月
@@ -4402,18 +4453,18 @@ public class DateSetFragment extends Fragment {
 							//iv.setOnClickListener(new dateClickListener(gAdapter, (Calendar) iv.getTag(), iv,false,0));
 
 							position = selectItemLine * 7 + i;
-//							if (ballState.get(position).isShowY()) {
-//								yBall.setVisibility(View.VISIBLE);
-//							} else {
-//							}
-//							if (ballState.get(position).isShowR()) {
-//								rBall.setVisibility(View.VISIBLE);
-//							} else {
-//							}
-//							if (ballState.get(position).isShowB()) {
-//								bBall.setVisibility(View.VISIBLE);
-//							} else {
-//							}
+							if (ballState.get(position).isShowY()) {
+								yBall.setVisibility(View.VISIBLE);
+							} else {
+							}
+							if (ballState.get(position).isShowR()) {
+								rBall.setVisibility(View.VISIBLE);
+							} else {
+							}
+							if (ballState.get(position).isShowB()) {
+								bBall.setVisibility(View.VISIBLE);
+							} else {
+							}
 
 							/*
 							 * 若是有球显示,字为白色
@@ -4473,9 +4524,9 @@ public class DateSetFragment extends Fragment {
 //		Date mDate = mCarlandar.getTime();
 		gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2b3733"));
 		view.setBackgroundColor(Color.parseColor("#ffffff"));
-//		gSelectAdapter.yBall = (View) gSelectAdapter.selectedView.findViewById(R.id.yellow_ball);
-//		gSelectAdapter.rBall = (View) gSelectAdapter.selectedView.findViewById(R.id.red_ball);
-//		gSelectAdapter.bBall = (View) gSelectAdapter.selectedView.findViewById(R.id.blue_ball);
+		gSelectAdapter.yBall = (View) gSelectAdapter.selectedView.findViewById(R.id.yellow_ball);
+		gSelectAdapter.rBall = (View) gSelectAdapter.selectedView.findViewById(R.id.red_ball);
+		gSelectAdapter.bBall = (View) gSelectAdapter.selectedView.findViewById(R.id.blue_ball);
 //		if (mIsHanging)
 //		{
 //			int data = mDate.getDate();
@@ -4488,7 +4539,7 @@ public class DateSetFragment extends Fragment {
 			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.text_green));
 		} else {
 			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.white));
-			if ("已开课".equals(gSelectAdapter.tvToday.getText().toString().trim()))
+			if (gSelectAdapter.yBall.getVisibility() == View.VISIBLE || gSelectAdapter.rBall.getVisibility() == View.VISIBLE || gSelectAdapter.bBall.getVisibility() == View.VISIBLE)
 			{
 				gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2c4021"));
 			}
@@ -4637,7 +4688,7 @@ public class DateSetFragment extends Fragment {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			new RefreshBallStateTask().execute();
+			new RefreshBallStateTask(true).execute();
 		}
 
 	}

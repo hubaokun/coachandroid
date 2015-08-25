@@ -20,6 +20,7 @@ import xiaoba.coach.module.Schedule;
 import xiaoba.coach.net.result.AddressResult.AddressInfo;
 import xiaoba.coach.net.result.GetAllSubjectResult;
 import xiaoba.coach.net.result.AddressResult;
+import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.GetScheduleByDateResult;
 import xiaoba.coach.net.result.GetScheduleResult;
 import xiaoba.coach.net.result.SetDateTimeResult;
@@ -523,7 +524,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 					if (TextUtils.isEmpty(mPriceEt.getText())) {
 						Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请输入单价", Toast.LENGTH_SHORT).show();
 					} else {
-						//new SetDateTimeTask().execute();
+						new SetDateTimeTask().execute();
 						//...\
 						
 					}
@@ -549,11 +550,9 @@ public class ClassTimeSetActivity extends BaseActivity {
 		if (TextUtils.isEmpty(mPriceEt.getText())) {
 			Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请输入单价", Toast.LENGTH_SHORT).show();
 		} else {
-			//new SetDateTimeTask().execute();
+			new SetDateTimeTask().execute();
 			//....
-			
-			
-			setDateTime();
+			//setDateTime();
 		}
 	}
 	
@@ -672,17 +671,59 @@ public class ClassTimeSetActivity extends BaseActivity {
 	/*
 	 * 
 	 */
-	private class SetDateTimeTask extends AsyncTask<Void, Void, SetDateTimeResult> {
+	private class SetDateTimeTask extends AsyncTask<Void, Void, BaseResult> {
 		JSONAccessor accessor = new JSONAccessor(ClassTimeSetActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
-
 		@Override
-		protected void onPostExecute(SetDateTimeResult result) {
+		protected void onPostExecute(BaseResult result) {
 			super.onPostExecute(result);
 			if (mLoadingDialog != null && mLoadingDialog.isShowing())
 				mLoadingDialog.dismiss();
 			if (result != null) {
 				if (result.getCode() == 1) {
-					setResult(0, new Intent().putExtra("list", result).putExtra("day", day));
+					for (int hour:Hour)
+					{
+//						HourJson hj = new HourJson();
+//						hj.setHour(hour + "");
+//						Schedule temp = null;
+						if (list != null) {
+							for (int i=0;i<list.size();i++) {
+								Schedule schedule = list.get(i);
+								if (schedule.getDate() != null && schedule.getDate().equals(day)) {
+									if (schedule.getHour() == hour) {
+										//temp = schedule;
+										if (mPriceEt.getText().length() > 0)
+										{
+											String price = mPriceEt.getText().toString().trim();
+											list.get(i).setPrice(price);
+										}
+
+										if (addressDetail !=null) {
+											list.get(i).setAddressid(addressId);
+											list.get(i).setAddressdetail(addressDetail);
+										}
+										if (subjectDetail != null) {
+											list.get(i).setSubjectid(subjectId);
+											list.get(i).setSubject(subjectDetail);
+										}
+										break;
+									}
+								}
+							}
+						}
+					}
+					
+					for (int i=0;i<dayList.size();i++)
+					{
+						for (Schedule scheudle:list)
+						{
+							if (dayList.get(i).getHour() == scheudle.getHour())
+							{
+								dayList.set(i, scheudle);
+								break;
+							}
+						}
+					}
+					setResult(0, new Intent().putExtra("list", dayList).putExtra("day", day));
 					CommonUtils.showToast(ClassTimeSetActivity.this.getApplicationContext(), "设置成功");
 					ClassTimeSetActivity.this.finish();
 				} else {
@@ -705,14 +746,14 @@ public class ClassTimeSetActivity extends BaseActivity {
 		}
 
 		@Override
-		protected SetDateTimeResult doInBackground(Void... arg0) {
+		protected BaseResult doInBackground(Void... arg0) {
 			accessor.enableJsonLog(true);
 			HashMap<String, Object> param = new BaseParam();
 			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
 			param.put("action", "SetDateTime");
 			param.put("day", day);
 			param.put("setjson", new Gson().toJson(getJsonObject()));
-			return accessor.execute(Settings.SCHEDULE_URL, param, SetDateTimeResult.class);
+			return accessor.execute(Settings.SCHEDULE_URL, param, BaseResult.class);
 		}
 
 	}
@@ -734,7 +775,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 					}
 				}
 			}
-			//setHj(temp, hj);
+			setHj(temp, hj);
 			hjlist.add(hj);
 		}
 		
@@ -824,50 +865,50 @@ public class ClassTimeSetActivity extends BaseActivity {
 		return hjlist;
 	}
 
-//	private void setHj(Schedule temp, HourJson hj) {
-//		if (temp != null) {
-//			hj.setCancelstate(temp.getCancelstate() + "");
-//		} else {
-//			hj.setCancelstate("1");
-//		}
-//
-//		if (mPriceEt.getText().length() > 0)
-//			hj.setPrice(mPriceEt.getText().toString());
-//		else {
-//			if (temp != null) {
-//				hj.setPrice(temp.getPrice());
-//			}
-//		}
-//
-//		if (addressId != null) {
-//			hj.setAddressid(addressId + "");
-//		} else {
-//			if (temp != null) {
-//				hj.setAddressid(temp.getAddressid() + "");
-//			}
-//		}
-//		if (subjectId != null) {
-//			hj.setSubjectid(subjectId);
-//		} else {
-//			if (temp != null) {
-//				hj.setSubjectid(temp.getSubjectid() + "");
-//			}
-//		}
-//
-//		/*
-//		 * 1:rest 0:open
-//		 */
-//		if (isRest)
-//			hj.setIsrest("1");
-//		else {
-//			hj.setIsrest("0");
-//		}
-//		if (temp != null)
-//			hj.setState(temp.getState() + "");
-//		else {
-//			hj.setState("0");
-//		}
-//	}
+	private void setHj(Schedule temp, HourJson hj) {
+		if (temp != null) {
+			hj.setCancelstate(temp.getCancelstate() + "");
+		} else {
+			hj.setCancelstate("1");
+		}
+
+		if (mPriceEt.getText().length() > 0)
+			hj.setPrice(mPriceEt.getText().toString());
+		else {
+			if (temp != null) {
+				hj.setPrice(temp.getPrice());
+			}
+		}
+
+		if (addressId != 0) {
+			hj.setAddressid(addressId + "");
+		} else {
+			if (temp != null) {
+				hj.setAddressid(temp.getAddressid() + "");
+			}
+		}
+		if (subjectId != 0) {
+			hj.setSubjectid(subjectId+"");
+		} else {
+			if (temp != null) {
+				hj.setSubjectid(temp.getSubjectid() + "");
+			}
+		}
+
+		/*
+		 * 1:rest 0:open
+		 */
+		if (isRest)
+			hj.setIsrest("1");
+		else {
+			hj.setIsrest("0");
+		}
+		if (temp != null)
+			hj.setState(temp.getState() + "");
+		else {
+			hj.setState("0");
+		}
+	}
 
 	/*
 	 * 获取上传数据，转成json

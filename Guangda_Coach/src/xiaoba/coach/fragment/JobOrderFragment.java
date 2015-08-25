@@ -276,7 +276,10 @@ public class JobOrderFragment extends Fragment {
 					if (result.getTasklist() != null && result.getTasklist().size() == 0) {
 						// show no data page
 						mNoData.setVisibility(View.VISIBLE);
-					} else if (result.getTasklist() != null && result.getTasklist().size() > 0) {
+						list.clear();
+						mAdapter.initDataSet();
+						mAdapter.notifyDataSetChanged();
+					} else if (result.getTasklist() != null && result.getTasklist().size() >= 0) {
 						if (mNoData.getVisibility() == View.VISIBLE)
 							mNoData.setVisibility(View.INVISIBLE);
 						if (mPage == 0)

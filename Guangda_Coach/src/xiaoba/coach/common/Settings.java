@@ -54,8 +54,8 @@ public class Settings {
 	public static final String PICTURE_TEMP_EXTENSION = ".tmp";
 	//public static final String BASE_URL = "http://192.168.1.144:8080/guangda";
 	//public static final String BASE_URL = "http://192.168.1.116:8080/";
-	//public static final String BASE_URL = "http://120.25.236.228:8080/dadmin";
-	public static final String BASE_URL = "http://192.168.1.129:8080/xiaoba";
+	public static final String BASE_URL = "http://120.25.236.228:8080/dadmin";
+	//public static final String BASE_URL = "http://192.168.1.129:8080/xiaoba";
 	//public static final String BASE_URL = "http://192.168.1.23:8089/guangda";
 	//public static final String BASE_URL = "http://192.168.1.119:8080/xb";
 	//public static final String BASE_URL = "http://www.xiaobakaiche.com/dadmin"; 

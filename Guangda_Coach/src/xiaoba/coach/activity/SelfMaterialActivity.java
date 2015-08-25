@@ -101,6 +101,14 @@ public class SelfMaterialActivity extends BaseActivity {
 	RelativeLayout rlAboutSelf;
 	@ViewById(R.id.tv_birthday)
 	TextView tvBirthday;
+	@ViewById(R.id.tv_name)
+	TextView tvName;
+	@ViewById(R.id.tv_geny)
+	TextView tvGeny;
+	@ViewById(R.id.tv_teach_year)
+	TextView tvTeachYear;
+	@ViewById(R.id.tv_about_self)
+	TextView tvAboutSelf;
 //	@ViewById(R.id.account_info)
 //	LinearLayout mAccount;
 //	@ViewById(R.id.pro_quality)
@@ -259,6 +267,32 @@ public class SelfMaterialActivity extends BaseActivity {
 			mTitleRightTv.setClickable(true);
 		}
 	}
+	
+	private void setInfo()
+	{
+		info = CoachApplication.getInstance().getUserInfo();
+		if (info.getRealname() != null) {
+		tvName.setText(info.getRealname());
+	}
+		if (info.getGender()!=null)
+		{
+			if ("1".equals(info.getGender()))
+			{
+				tvGeny.setText("男");
+			}else{
+				tvGeny.setText("女");
+			}
+
+		}
+		
+		if (info.getYears() != null) {
+			tvTeachYear.setText(info.getYears());
+		}
+		
+		if (info.getSelfeval() != null) {
+			tvAboutSelf.setText(info.getSelfeval());
+		}
+	}
 
 	private void initData() {
 		
@@ -275,7 +309,8 @@ public class SelfMaterialActivity extends BaseActivity {
 			@Override
 			public void onComfirmBtnClick(String gender) {
 				mGenderDialog.dismiss();
-//				mGenderTv.setText(gender);
+				tvGeny.setText(gender);
+				new PerfectAccountInfoTask().execute();
 //				mGenderTv.setTextColor(Color.parseColor("#252525"));
 				hasGender = true;
 				setClickable();
@@ -311,6 +346,11 @@ public class SelfMaterialActivity extends BaseActivity {
 
 			}
 		});
+		
+		if (info.getBirthday()!=null)
+		{
+			tvBirthday.setText(info.getBirthday());
+		}
 		
 //		if (info.getDrive_school() !=null)
 //		{
@@ -479,6 +519,7 @@ public class SelfMaterialActivity extends BaseActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		setInfo();
 //		if (!TextUtils.isEmpty(info.getDefaultAddress())) {
 //			mUserAddress.setText(info.getDefaultAddress());
 //			mUserAddress.setTextColor(Color.parseColor("#2c2c2c"));
@@ -625,21 +666,21 @@ public class SelfMaterialActivity extends BaseActivity {
 //				name = mName.getText().toString();
 //				param.put("realname", name);
 //			}
-			if (info.getPhone() != null) {
-				phone = info.getPhone();
-				param.put("phone", phone);
-			}
+//			if (info.getPhone() != null) {
+//				phone = info.getPhone();
+//				param.put("phone", phone);
+//			}
 //			if (mSchoolName.isFocusable()) {
 //				school = mSchoolName.getText().toString();
 //				param.put("drive_school", school);
 //			}
-//			if (mGenderTv.getText().toString().equals("男")) {
-//				param.put("gender", "1");
-//				gender = "1";
-//			} else if (mGenderTv.getText().toString().equals("女")) {
-//				param.put("gender", "2");
-//				gender = "2";
-//			}
+			if (tvGeny.getText().toString().equals("男")) {
+				param.put("gender", "1");
+				gender = "1";
+			} else if (tvGeny.getText().toString().equals("女")) {
+				param.put("gender", "2");
+				gender = "2";
+			}
 			return accessor.execute(Settings.USER_URL, param, BaseResult.class);
 		}
 
@@ -651,12 +692,12 @@ public class SelfMaterialActivity extends BaseActivity {
 					// registe ok
 					CommonUtils.showToast(SelfMaterialActivity.this.getApplicationContext(), "提交资料成功");
 					UserInfo info = new UserInfo();
-					if (name != null)
-						info.saveRealName(name, SelfMaterialActivity.this.getApplicationContext());
-					if (phone != null)
-						info.savePhone(phone, SelfMaterialActivity.this.getApplicationContext());
-					if (school != null)
-						info.saveDriveSchool(school, SelfMaterialActivity.this.getApplicationContext());
+//					if (name != null)
+//						info.saveRealName(name, SelfMaterialActivity.this.getApplicationContext());
+//					if (phone != null)
+//						info.savePhone(phone, SelfMaterialActivity.this.getApplicationContext());
+//					if (school != null)
+//						info.saveDriveSchool(school, SelfMaterialActivity.this.getApplicationContext());
 					if (gender != null)
 						info.saveGender(gender, SelfMaterialActivity.this.getApplicationContext());
 				} else {

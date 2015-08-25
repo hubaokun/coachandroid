@@ -20,6 +20,7 @@ public class Schedule implements Serializable {
 	String addressdetail;
 	int hasbooked;
 	private int expire;
+	private String bookedername;
 
 	public String getDate() {
 		return date;
@@ -115,6 +116,14 @@ public class Schedule implements Serializable {
 
 	public void setExpire(int expire) {
 		this.expire = expire;
+	}
+
+	public String getBookedername() {
+		return bookedername;
+	}
+
+	public void setBookedername(String bookedername) {
+		this.bookedername = bookedername;
 	}
 
 }
