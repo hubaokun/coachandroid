@@ -65,7 +65,7 @@ public class UserInfo {
 	private String token;
 	int cashtype;
 	private String invitecode;
-	private String cityId;
+	private String cityid;
 	
 	public int getCashtype() {
 		return cashtype;
@@ -587,6 +587,14 @@ public class UserInfo {
 		editor.commit();
 		CoachApplication.getInstance().getUserInfo().setAvatarurl(avatarurl);
 	}
+	
+	public void saveCityId(String cityid,Context mContext)
+	{
+		Editor editor = mContext.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).edit();
+		editor.putString("cityid", cityid);
+		editor.commit();
+		CoachApplication.getInstance().getUserInfo().setRealname(cityid);
+	}
 
 	public void saveRealName(String value, Context mContext) {
 		Editor editor = mContext.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).edit();
@@ -652,11 +660,11 @@ public class UserInfo {
 		this.locationname = locationname;
 	}
 
-	public String getCityId() {
-		return cityId;
+	public String getCityid() {
+		return cityid;
 	}
 
-	public void setCityId(String cityId) {
-		this.cityId = cityId;
+	public void setCityid(String cityid) {
+		this.cityid = cityid;
 	}
 }

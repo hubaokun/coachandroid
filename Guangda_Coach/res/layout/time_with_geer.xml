@@ -81,9 +81,9 @@
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/date_set_has_book"
-        android:layout_margin="5dp"
         android:layout_centerInParent="true"
-        android:id="@+id/rl_time_set_object">
+        android:id="@+id/rl_time_set_object"
+        android:layout_margin="3dp">
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/book_class"
@@ -94,19 +94,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_centerInParent="true"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="18dp">
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp">
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12:00"
                 android:textColor="@color/white"
-                android:textSize="13sp"
+                android:textSize="17dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/tv_time"/>
             
             <RelativeLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <LinearLayout android:layout_width="wrap_content"
+                <LinearLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="visible"
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:text="科目二"
                 android:textColor="#9e5506"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:layout_gravity="center_horizontal"
                 android:singleLine="true"
                 android:id="@+id/tv_object"/>
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:text="100"
                 android:textColor="#9e5506"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/tv_price"
                 android:singleLine="true"/>
@@ -132,7 +132,7 @@
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="未设置"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:layout_centerInParent="true"
                     android:visibility="invisible"
                     android:id="@+id/tv_not_set"/>

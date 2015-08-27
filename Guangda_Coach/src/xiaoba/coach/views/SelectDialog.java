@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 public class SelectDialog extends BaseDialog {
 
-	private WheelView mYearWheel;
+	public WheelView mYearWheel;
 	DialogConfirmListener mConfirmListener;
 	String[] content;
 	DateNumericAdapter mAdapter;
@@ -71,11 +71,12 @@ public class SelectDialog extends BaseDialog {
 	
 	
 
-	public void setAdapter() {
+	public void setAdapter(int index) {
 		// 设置监听器
 		mAdapter = new DateNumericAdapter(mContext, content, 0);
 		WheelChangedListener wheelChangedListener = new WheelChangedListener();
 		mYearWheel.setViewAdapter(mAdapter);
+		mYearWheel.setCurrentItem(index);
 		// 设置中间位置的显示当前年
 		mYearWheel.addChangingListener(wheelChangedListener);
 

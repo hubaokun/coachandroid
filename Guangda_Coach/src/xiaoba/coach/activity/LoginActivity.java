@@ -265,6 +265,8 @@ public class LoginActivity extends BaseActivity {
 			param.put("action", "Login");
 			param.put("loginid", phone.trim());
 			param.put("password",passWord.trim());
+			param.put("version", mApplication.getVersion());
+			param.put("ostype", "2");
 			return accessor.execute(Settings.USER_URL, param, RegisteResult.class);
 		}
 

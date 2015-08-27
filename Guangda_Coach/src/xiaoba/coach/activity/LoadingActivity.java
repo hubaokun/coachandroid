@@ -29,6 +29,7 @@ import xiaoba.coach.R;
 import xiaoba.coach.common.Settings;
 import xiaoba.coach.module.BaseParam;
 import xiaoba.coach.net.result.GetAdvertisementResult;
+import xiaoba.coach.net.result.GetAdvertisementWindowResult;
 import xiaoba.coach.net.result.RegisteResult;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.utils.DataBaseUtil;
@@ -169,6 +170,8 @@ public class LoadingActivity extends BaseActivity {
 			param.put("action", "Login");
 			param.put("loginid", phone.trim());
 			param.put("password", passWord.trim());
+			param.put("version", mApplication.getVersion());
+			param.put("ostype", "2");
 			return accessor.execute(Settings.USER_URL, param, RegisteResult.class);
 		}
 
@@ -212,15 +215,20 @@ public class LoadingActivity extends BaseActivity {
 		}
 	}
 	
-	private class GetAdvertisement extends AsyncTask<Void, Void, GetAdvertisementResult> {
+	private class GetAdvertisement extends AsyncTask<Void, Void, GetAdvertisementWindowResult> {
 		JSONAccessor accessor = new JSONAccessor(LoadingActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
 
 		@Override
-		protected GetAdvertisementResult doInBackground(Void... params) {
+		protected GetAdvertisementWindowResult doInBackground(Void... params) {
 			// TODO Auto-generated method stub
 			HashMap<String, Object> param = new BaseParam();
-			param.put("action", "CHECKCONFIG");
-			return accessor.execute(Settings.SYSTEM_URL, param, GetAdvertisementResult.class);
+			param.put("action", "GETADVERTISEMENT");
+			param.put("coachid", mApplication.getUserInfo().getCoachid());
+			param.put("type", "1"); // 1: coach 2 student
+			param.put("model", "2"); //1:ios 2 android
+			param.put("width",Settings.DISPLAY_WIDTH+"");
+			param.put("height",Settings.DISPLAY_HEIGHT+"");
+			return accessor.execute(Settings.ADVER_URL, param, GetAdvertisementWindowResult.class);
 		}
 		
 		@Override
@@ -229,17 +237,17 @@ public class LoadingActivity extends BaseActivity {
 		}
 
 		@Override
-		protected void onPostExecute(final GetAdvertisementResult result) {
+		protected void onPostExecute(final GetAdvertisementWindowResult result) {
 			super.onPostExecute(result);
 
 			if (result != null) {
 				if (result.getCode() == 1) {
-					if (result.getConfig().getAdvertisement_flag() == 1)
+					if ("1".equals(result.getC_flash_flag()))
 					{
 						imgAdver.setVisibility(View.VISIBLE);
 //						showAdver.setImage(result.getConfig().getAdvertisement_url());
 						   try {
-				               new ImageLoadSaveTask(LoadingActivity.this, imgAdver).execute(result.getConfig().getAdvertisement_url());
+				               new ImageLoadSaveTask(LoadingActivity.this, imgAdver).execute(result.getC_img_android_flash());
 				           } catch (Exception e) {
 				               e.printStackTrace();
 				           }

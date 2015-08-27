@@ -434,6 +434,8 @@ public class DateSetFragment extends Fragment {
 	private int SchedulePosition;
 	private int IsChosed = 0;
 	private boolean ISClickCalender = false;
+	private boolean ISCleanChosedHour = false;
+	private boolean isNotSet = false;
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -819,38 +821,8 @@ public class DateSetFragment extends Fragment {
 		mArrowUp = (RelativeLayout) view.findViewById(R.id.arrow_part);
 	}
 	
-	private void setOneHour(int hour,int index)
+	private void setOneHourView(int hour)
 	{
-		if (!finishLoadingData) {
-		Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
-		return;
-	}
-	
-	if (equalsDate(calToday.getTime(), calSelected.getTime()) && hour <= mDeadHour) {
-		Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
-	} else {
-		if (bookArray[index]) {
-			Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
-			return;
-		}
-		int ischosed = 0;
-		if (stateArray[index])
-		{
-			ischosed = 1;
-		}else{
-			ischosed = 2;
-		}
-		
-		if (IsChosed != ischosed)
-		{
-			if (IsChosed == 0)
-			{
-				IsChosed = ischosed;
-			}else{
-				Toast.makeText(mActivity, "未开课和已开课不能同时选择",0).show();
-				return;
-			}
-		}
 		switch (hour) {
 		case 5:
 			if (imgFiveSelect.getVisibility() == View.VISIBLE)
@@ -1068,6 +1040,57 @@ public class DateSetFragment extends Fragment {
 		default:
 			break;
 		}
+	}
+	
+	
+	
+	private void setOneHour(int hour,int index)
+	{
+		if (!finishLoadingData) {
+		Toast.makeText(mActivity, "加载数据中，请稍后再试", Toast.LENGTH_SHORT).show();
+		return;
+	}
+	if (isNotSet)
+	{
+		goToDefault();
+	}else
+	{
+	
+	if (equalsDate(calToday.getTime(), calSelected.getTime()) && hour <= mDeadHour) {
+		Toast.makeText(mActivity, "当前时间不能设置", Toast.LENGTH_SHORT).show();
+	} else {
+		if (bookArray[index]) {
+			Toast.makeText(mActivity, "当前时段已约，不能修改", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		int ischosed = 0;
+		if (stateArray[index])
+		{
+			ischosed = 1;
+		}else{
+			ischosed = 2;
+		}
+		
+		if (IsChosed != ischosed)
+		{
+			if (IsChosed == 0)
+			{
+				IsChosed = ischosed;
+			}else{
+				if (chosedHour.size()>1)
+				{
+					Toast.makeText(mActivity, "未开课和已开课不能同时选择",0).show();
+					return;
+				}else{
+					for (int h:chosedHour)
+					{
+						setOneHourView(h);
+					}
+					IsChosed = ischosed;
+				}
+			}
+		}
+		setOneHourView(hour);
 //		chosedHour.add(hour);
 		chosedIsRest = stateArray[index];
 		if (chosedHour.size()!=0)
@@ -1087,6 +1110,7 @@ public class DateSetFragment extends Fragment {
 			rlBottom.setVisibility(View.GONE);
 			IsChosed = 0;
 		}
+	}
 	}
 	}
 
@@ -3108,6 +3132,7 @@ public class DateSetFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
+//		new GetScheduleTask().execute();
 		// if (!isFirstReq && mLoadingDialog != null) {
 		// mLoadingDialog.show();
 		// }
@@ -3203,7 +3228,7 @@ public class DateSetFragment extends Fragment {
 		});
 
 		setSelectLine(getSelectLine(calSelected));
-		new RefreshBallStateTask(true).execute();
+		new RefreshBallStateTask(true,true).execute();
 	}
 
 	// 当月
@@ -3238,7 +3263,7 @@ public class DateSetFragment extends Fragment {
 			}
 		});
 		setSelectLine(getSelectLine(calSelected));
-		new RefreshBallStateTask(true).execute();
+		new RefreshBallStateTask(true,true).execute();
 	}
 
 	AnimationListener animationListener = new AnimationListener() {
@@ -3304,7 +3329,8 @@ public class DateSetFragment extends Fragment {
 				/*
 				 *跳转到时间段界面 
 				 */
-				chosedHour.clear();
+//				chosedHour.clear();
+//				IsChosed = 0;
 				new GetDefaultScheduleTask(calendar).execute();
 //				Intent intent = new Intent(mActivity,ActivityDateSet.class);
 //				startActivity(intent);
@@ -3472,7 +3498,7 @@ public class DateSetFragment extends Fragment {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			new RefreshBallStateTask(false).execute();
+			new RefreshBallStateTask(false,false).execute();
 		}
 	}
 
@@ -3509,7 +3535,7 @@ public class DateSetFragment extends Fragment {
 		protected void onPostExecute(GetDefaultScheduleResult result) {
 			super.onPostExecute(result);
 			defaultSchedule = result.getDefaultSchedule();
-			checkUpdate(mCalendar,true);
+			checkUpdate(mCalendar,true,true);
 		}
 	}
 	
@@ -3578,7 +3604,7 @@ public class DateSetFragment extends Fragment {
 							gAdapterNextMonth.notifyDataSetChanged();
 							gSelectAdapter = gAdapterNextMonth;
 						}
-						 checkUpdate(calSelected,false);
+						 //checkUpdate(calSelected,false,false);
 					}
 				}
 				/*
@@ -3589,11 +3615,14 @@ public class DateSetFragment extends Fragment {
 				/*
 				 * reform data
 				 */
-				new ReformTask().execute();
-
+				isNotSet = false;
 				if (result.getCode() == 5) {
 					goToDefault();
+					isNotSet = true;
+					NotSet();
 				}
+				new ReformTask().execute();
+
 				if (result.getCode() == 95) {
 
 					if (result.getMessage() != null)
@@ -3679,10 +3708,12 @@ public class DateSetFragment extends Fragment {
 		Schedule tempsc;
 		int dayPos;
 		boolean IsClickCalender;
+		boolean IsCleanChosedHour;
 		
-		public RefreshBallStateTask(boolean isClickCalender) {
+		public RefreshBallStateTask(boolean isClickCalender,boolean isCleanChosedHour) {
 			// TODO Auto-generated constructor stub
 			IsClickCalender = isClickCalender;
+			IsCleanChosedHour = isCleanChosedHour;
 		}
 		
 		@Override
@@ -3761,7 +3792,7 @@ public class DateSetFragment extends Fragment {
 				gSelectAdapter = gAdapterNextMonth;
 			}
 			initialHangingContent(calSelected, calToday);
-			checkUpdate(calSelected,IsClickCalender);
+			checkUpdate(calSelected,IsClickCalender,IsCleanChosedHour);
 			
 			finishLoadingData = true;
 		}
@@ -3775,8 +3806,14 @@ public class DateSetFragment extends Fragment {
 	/*
 	 * 修改日历下部分内容(注意与上面日历分开)
 	 */
-	public void checkUpdate(Calendar selectedDate,boolean isClickCalender) {
+	public void checkUpdate(Calendar selectedDate,boolean isClickCalender,boolean isCleanChosedHour) {
 		ISClickCalender = isClickCalender;
+		ISCleanChosedHour = isCleanChosedHour;
+		if (ISCleanChosedHour)
+		{
+			chosedHour.clear();
+			IsChosed = 0;
+		}
 		if (scheduleResult == null)
 			return;
 		if (scheduleResult.getDatelist() == null)
@@ -3851,10 +3888,10 @@ public class DateSetFragment extends Fragment {
 						modifyOneHourState(tvSixteenTime,tvSixteenPrice,tvSixteenObject,tvSixteenNotSet,imgSixteenSelect,imgSixteenHasBook,llSixteenHasSet, rlSixteen, 11,schedule);
 						break;
 					case 17:
-						modifyOneHourState(tvSeventeenTime,tvSeventeenPrice,tvSeventeenObject,tvSeventeenNotSet,imgSevenSelect,imgSeventeenHasBook,llSeventeenHasSet, rlSeventeen, 12,schedule);
+						modifyOneHourState(tvSeventeenTime,tvSeventeenPrice,tvSeventeenObject,tvSeventeenNotSet,imgSeventeenSelect,imgSeventeenHasBook,llSeventeenHasSet, rlSeventeen, 12,schedule);
 						break;
 					case 18:
-						modifyOneHourState(tvEighteenTime,tvEighteenPrice,tvEighteenObject,tvEighteenNotSet,imgEightSelect,imgEighteenHasBook,llEighteenHasSet, rlEighteen,13,schedule);
+						modifyOneHourState(tvEighteenTime,tvEighteenPrice,tvEighteenObject,tvEighteenNotSet,imgEighteenSelect,imgEighteenHasBook,llEighteenHasSet, rlEighteen,13,schedule);
 						break;
 					case 19:
 						modifyOneHourState(tvNineteenTime,tvNineteenPrice,tvNineteenObject,tvNineteenNotSet,imgNineteenSelect,imgNineteenHasBook,llNineteenHasSet, rlNineteen, 14,schedule);
@@ -4035,6 +4072,30 @@ public class DateSetFragment extends Fragment {
 	 * set one hour's state rest or not 0:not rest
 	 */
 	Schedule schd;
+	
+	
+	private void NotSet()
+	{
+		modifyOneHourState(tvFiveTime, tvFivePrice, tvFiveObject,tvFiveNotSet,imgFiveSelect,imgFiveHasBook,llFiveHasSet,rlFive, 0,null);
+		modifyOneHourState(tvSixTime, tvSixPrice, tvSixObject,tvSixNotSet,imgSixSelect,imgSixHasBook,llSixHasSet,rlSix,1,null);
+		modifyOneHourState(tvSevenTime,tvSevenPrice,tvSevenObject,tvSevenNotSet,imgSevenSelect,imgSevenHasBook,llSevenHasSet,rlSeven,2,null);
+		modifyOneHourState(tvEightTime,tvEightPrice,tvEightObject,tvEightNotSet,imgEightSelect,imgEightHasBook,llEightHasSet,rlEight,3,null);
+		modifyOneHourState(tvNineTime,tvNinePrice,tvNineObject,tvNineNotSet,imgNineSelect,imgNineHasBook,llNineHasSet,rlNine, 4,null);
+		modifyOneHourState(tvTenTime,tvTenPrice,tvTenObject,tvTenNotSet,imgTenSelect,imgTenHasBook,llTenHasSet,rlTen,5,null);
+		modifyOneHourState(tvElevenTime,tvElevenPrice,tvElevenObject,tvElevenNotSet,imgElevenSelect,imgElevenHasBook,llElevenHasSet,rlEleven,6,null);
+		modifyOneHourState(tvTwelveTime,tvTwelvePrice,tvTwelveObject,tvTwelveNotSet,imgTwelveSelect,imgTwelveHasBook,llTwelveHasSet,rlTwelve,7,null);
+		modifyOneHourState(tvThirteenTime,tvThirteenPrice,tvThirteenObject,tvThirteenNotSet,imgThirteenSelect,imgThirteenHasBook,llThirteenHasSet,rlThirteen, 8,null);
+		modifyOneHourState(tvFourteenTime,tvFourteenPrice,tvFourteenObject,tvFourteenNotSet,imgFourteenSelect,imgFourteenHasBook,llFourteenHasSet,rlFourteen,9,null);
+		modifyOneHourState(tvFifteenTime,tvFifteenPrice,tvFifteenObject,tvFifteenNotSet,imgFifteenSelect,imgFifteenHasBook,llFifteenHasSet, rlFifteen,10,null);
+		modifyOneHourState(tvSixteenTime,tvSixteenPrice,tvSixteenObject,tvSixteenNotSet,imgSixteenSelect,imgSixteenHasBook,llSixteenHasSet, rlSixteen, 11,null);
+		modifyOneHourState(tvSeventeenTime,tvSeventeenPrice,tvSeventeenObject,tvSeventeenNotSet,imgSeventeenSelect,imgSeventeenHasBook,llSeventeenHasSet, rlSeventeen, 12,null);
+		modifyOneHourState(tvEighteenTime,tvEighteenPrice,tvEighteenObject,tvEighteenNotSet,imgEighteenSelect,imgEighteenHasBook,llEighteenHasSet, rlEighteen,13,null);
+		modifyOneHourState(tvNineteenTime,tvNineteenPrice,tvNineteenObject,tvNineteenNotSet,imgNineteenSelect,imgNineteenHasBook,llNineteenHasSet, rlNineteen, 14,null);
+		modifyOneHourState(tvTwentyTime,tvTwentyPrice,tvTwentyObject,tvTwentyNotSet,imgTwentySelect,imgTwentyHasBook,llTwentyHasSet, rlTwenty, 15,null);
+		modifyOneHourState(tvTwentyOneTime,tvTwentyOnePrice,tvTwentyOneObject,tvTwentyOneNotSet,imgTwentyOneSelect,imgTwentyOneHasBook,llTwentyOneHasSet, rlTwentyOne,16,null);
+		modifyOneHourState(tvTwentyTwoTime,tvTwentyTwoPrice,tvTwentyTwoObject,tvTwentyTwoNotSet,imgTwentyTwoSelect,imgTwentyTwoHasBook,llTwentyTwoHasSet, rlTwentyTwo,17,null);
+		modifyOneHourState(tvTwentyThreeTime,tvTwentyThreePrice,tvTwentyThreeObject,tvTwentyThreeNotSet,imgTwentyThreeSelect,imgTwentyThreeHasBook,llTwentyThreeHasSet, rlTwentyThree,18,null);
+	}
 
 	/**
 	 * @param time
@@ -4069,7 +4130,7 @@ public class DateSetFragment extends Fragment {
 //			}
 //		}
 //		
-		if (ISClickCalender)
+		if (ISCleanChosedHour)
 		{
 		if (imgSelect.getVisibility() == View.VISIBLE)
 		{
@@ -4085,7 +4146,15 @@ public class DateSetFragment extends Fragment {
 //				}
 //			}
 //		}
-
+		if (isNotSet||schedule == null)
+		{
+			rlBack.setBackgroundResource(R.drawable.date_set_not_set);
+			llHasSet.setVisibility(View.INVISIBLE);
+			notSet.setVisibility(View.VISIBLE);
+			imgHasBook.setVisibility(View.GONE);
+			notSet.setText("未设置");
+		}else
+		{
 		if (schedule.getExpire() == 1)    //已过期
 		{
 			//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_passed));
@@ -4117,6 +4186,7 @@ public class DateSetFragment extends Fragment {
 			subject.setTextColor(getResources().getColor(R.color.date_back));
 			imgHasBook.setVisibility(View.GONE);
 			stateArray[pos] = false;
+			bookArray[pos] = false;
 			if (ISClickCalender)
 			{
 			if (defaultSchedule.size() !=0)
@@ -4158,9 +4228,10 @@ public class DateSetFragment extends Fragment {
 				//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_not_chosed));
 				rlBack.setBackgroundResource(R.drawable.date_set_not_chosed);
 				imgHasBook.setVisibility(View.GONE);
-				price.setTextColor(getResources().getColor(R.color.date_back));
-				subject.setTextColor(getResources().getColor(R.color.date_back));
+				price.setTextColor(getResources().getColor(R.color.date_green));
+				subject.setTextColor(getResources().getColor(R.color.date_green));
 			}
+		}
 		}
 //		else{
 //			if (isrest == 1) {
@@ -4305,7 +4376,6 @@ public class DateSetFragment extends Fragment {
 					chosedHour.clear();
 					IsChosed = 0;
 					rlBottom.setVisibility(View.GONE);
-
 					if (type != null && type.equals("1")) {
 //						isAllDayOpen = true;
 //						mAllDaySetClose.setText("当天停课");
@@ -4317,6 +4387,7 @@ public class DateSetFragment extends Fragment {
 //						mAllDaySetClose.setBackgroundResource(R.drawable.shape_green_round);
 						new ChangeClassStateTask(0, day).execute();
 					}
+					CommonUtils.showToast(mActivity.getApplicationContext(), "设置成功");
 				} else {
 					if (result.getCode() == 95) {
 						if (result.getMessage() != null)
@@ -4324,14 +4395,11 @@ public class DateSetFragment extends Fragment {
 						CommonUtils.gotoLogin(mActivity);
 					} else {
 						if (result.getMessage() != null)
-							if (defaultSel)
-								CommonUtils.showToast(mActivity.getApplicationContext(), result.getMessage());
-							else {
-								CommonUtils.showToast(mActivity.getApplicationContext(), "设置成功");
-							}
+						{
+							CommonUtils.showToast(mActivity.getApplicationContext(), result.getMessage());
+						}
 					}
 				}
-
 			} else {
 				CommonUtils.showToast(mActivity.getApplicationContext(), mActivity.getString(R.string.net_error));
 			}
@@ -4484,7 +4552,6 @@ public class DateSetFragment extends Fragment {
 							iv.setBackgroundColor(Color.parseColor("#222222"));
 							iv.setClickable(false);
 						}
-
 					}
 				}
 			} else {
@@ -4688,7 +4755,7 @@ public class DateSetFragment extends Fragment {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			new RefreshBallStateTask(true).execute();
+			new RefreshBallStateTask(false,true).execute();
 		}
 
 	}

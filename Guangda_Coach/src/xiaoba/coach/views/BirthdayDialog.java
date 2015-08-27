@@ -21,9 +21,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class BirthdayDialog extends BaseDialog {
-	private WheelView mYearWheel, mMonthWheel, mDayWheel;
+	public WheelView mYearWheel, mMonthWheel, mDayWheel;
 	private OnComfirmClickListener mOnComfirmClickListener;
 	private int NewValue;
+	public int yIndex,mIndex,dIndex;
 	
 	public BirthdayDialog(Context context) {
 		super(context, R.style.dialog);
@@ -72,20 +73,20 @@ public class BirthdayDialog extends BaseDialog {
 		// 设置显示1916-2114(显示近200年)
 		mYearWheel.setViewAdapter(new DateNumericAdapter(mContext, curYear - 99, curYear+99, 99));
 		// 设置中间位置的显示当前年
-		mYearWheel.setCurrentItem(99);
+		//mYearWheel.setCurrentItem(0);
 		mYearWheel.addChangingListener(wheelChangedListener);
 		// 设置月份
 		final int curMonth = calendar.get(Calendar.MONTH);
 		mMonthWheel.setViewAdapter(new DateNumericAdapter(mContext, 1, 12, curMonth));
 		// 设置中间位置的显示当前月
-		mMonthWheel.setCurrentItem(curMonth);
+		//mMonthWheel.setCurrentItem(curMonth);
 		mMonthWheel.addChangingListener(wheelChangedListener);
 		
 		// 设置日
 		int maxDays = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 		mDayWheel.setViewAdapter(new DateNumericAdapter(mContext, 1, maxDays, calendar.get(Calendar.DAY_OF_MONTH) - 1));
 		// 设置中间位置的显示当前日
-		mDayWheel.setCurrentItem(calendar.get(Calendar.DAY_OF_MONTH) - 1);
+		//mDayWheel.setCurrentItem(calendar.get(Calendar.DAY_OF_MONTH) - 1);
 
 		findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {
 			@Override

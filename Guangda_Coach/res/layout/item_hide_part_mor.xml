@@ -17,7 +17,11 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="4dp" />
+        
 
         <include
             android:id="@+id/six_part"
@@ -25,7 +29,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             layout="@layout/time_with_geer"
-            android:layout_margin="8dp"  />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"  />
         
                 <include 
              android:id="@+id/seven_part"
@@ -33,7 +40,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" 
-            android:layout_margin="8dp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"  />
 
         <include
             android:id="@+id/eight_part"
@@ -41,7 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             layout="@layout/time_with_geer"
-            android:layout_margin="8dp"  />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="8dp"  />
 
     </LinearLayout>
 
@@ -76,7 +89,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="4dp" />
         
 
 
@@ -86,7 +102,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" 
-            android:layout_margin="8dp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"  />
         
         <include 
              android:id="@+id/eleven_part"
@@ -94,7 +113,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"  />
 
 
 
@@ -104,7 +126,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" 
-            android:layout_margin="8dp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="8dp" />
     </LinearLayout>
 
     <!-- <LinearLayout

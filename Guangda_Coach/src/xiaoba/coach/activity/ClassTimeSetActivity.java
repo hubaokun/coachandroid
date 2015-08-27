@@ -32,6 +32,7 @@ import xiaoba.coach.views.PriceDialog.OnComfirmClickListener;
 import xiaoba.coach.views.SelectDialog;
 import xiaoba.coach.views.WheelCityDialog;
 
+import com.baidu.mapapi.map.Text;
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.util.DensityUtils;
 import com.daoshun.lib.view.OnSingleClickListener;
@@ -121,14 +122,10 @@ public class ClassTimeSetActivity extends BaseActivity {
 		mTitleRightTv.setTextColor(getResources().getColor(R.color.text_grey));
 		mTitleRightTv.setClickable(false);
 		mTitleBack.setImageResource(R.drawable.back_arrow);
-
 		textLength = (Settings.DISPLAY_WIDTH - DensityUtils.dp2px(ClassTimeSetActivity.this, 12)) / getTextViewLength(mHours, "00:00、");
 		pricerDialog = new PriceDialog(ClassTimeSetActivity.this);
-
 		addListeners();
-
 		getIntentData();
-
 		new prepareTask().execute();
 		new GetAllSubjectTask().execute();
 		new GetAllAddressTask().execute();
@@ -139,7 +136,20 @@ public class ClassTimeSetActivity extends BaseActivity {
 				if (locContent != null && locContent.length > 0) {
 					setRightClick();
 					dialog = new SelectDialog(ClassTimeSetActivity.this, locContent);
-					dialog.setAdapter();
+					String address = mContentTv.getText().toString().trim();
+					int index = 0;
+					if (!TextUtils.isEmpty(address))
+					{
+						for (int i=0;i<locContent.length;i++)
+						{
+							if (address.contains(locContent[i]))
+							{
+								index = i;
+								break;
+							}
+						}
+					}
+					dialog.setAdapter(index);
 					dialog.setmConfirmListener(new DialogConfirmListener() {
 
 						@Override
@@ -464,19 +474,45 @@ public class ClassTimeSetActivity extends BaseActivity {
 //		} else if (single != 0) {
 //			mHours.setText(single + ":00");
 //		}
-		StringBuilder hourbuilder = new StringBuilder();
-		for (int hour:Hour)
-		{
-			hourbuilder.append(hour+":00");
-		}
-		mHours.setText(hourbuilder.toString());
+//		StringBuilder hourbuilder = new StringBuilder();
+//		for (int hour:Hour)
+//		{
+//			hourbuilder.append(hour+":00,");
+//		}
+		mHours.setText(getHourStr());
 	}
 
-//	StringBuilder getHourStr(String data, int startIndex) {
-//		int count = 0;
-//		boolean first = true;
-//		StringBuilder sb = new StringBuilder();
-//		String hour = "";
+	//String data, int startIndex
+	StringBuilder getHourStr() {
+		int count = 0;
+		boolean first = true;
+		StringBuilder sb = new StringBuilder();
+		String hour = "";
+		for (int hour1:Hour)
+		{
+			if (hour1<10)
+			{
+				hour = "0"+hour1;
+			}else{
+				hour = ""+hour1;
+			}
+			if (count <= textLength) {
+				if (first) {
+					sb.append(hour + ":00");
+					count++;
+					first = false;
+					continue;
+				}
+				if (count % textLength == 0) {
+					sb.append("\n" + hour + ":00、");
+					count = 0;
+					first = true;
+					continue;
+				}
+				sb.append("、 " + hour + ":00");
+				count++;
+			}
+		}
 //		for (int i = 0; i < data.length(); i++) {
 //			if (data.charAt(i) == 49 && count <= textLength) {
 //				if (i + startIndex < 10) {
@@ -500,8 +536,8 @@ public class ClassTimeSetActivity extends BaseActivity {
 //				count++;
 //			}
 //		}
-//		return sb;
-//	}
+		return sb;
+	}
 
 	public int getTextViewLength(TextView textView, String text) {
 		TextPaint paint = textView.getPaint();
@@ -613,6 +649,20 @@ public class ClassTimeSetActivity extends BaseActivity {
 		if (content != null && content.length > 0) {
 			setRightClick();
 			dialog = new SelectDialog(this, content);
+			String subject = mContentTv.getText().toString().trim();
+			int index = 0;
+			if (!TextUtils.isEmpty(subject))
+			{
+				for (int i=0;i<content.length;i++)
+				{
+					if (subject.contains(content[i]))
+					{
+						index = i;
+						break;
+					}
+				}
+			}
+//			dialog.mYearWheel.setCurrentItem(index);
 			dialog.setmConfirmListener(new DialogConfirmListener() {
 
 				@Override
@@ -637,7 +687,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 					dialog.dismiss();
 				}
 			});
-			dialog.setAdapter();
+			dialog.setAdapter(index);
 			dialog.show();
 		} else {
 			CommonUtils.showToast(ClassTimeSetActivity.this, "暂未取得课程内容");

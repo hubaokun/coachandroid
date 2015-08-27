@@ -27,6 +27,7 @@ public class PerfectCoachInfoReq {
 	String driveschool;
 	String driveschoolid;
 	String token;
+	private String cityid;
 	
 	
 	public String getToken() {
@@ -172,6 +173,12 @@ public class PerfectCoachInfoReq {
 	}
 	public void setCardpic7(File cardpic7) {
 		this.cardpic7 = cardpic7;
+	}
+	public String getCityid() {
+		return cityid;
+	}
+	public void setCityid(String cityid) {
+		this.cityid = cityid;
 	}
 	
 	

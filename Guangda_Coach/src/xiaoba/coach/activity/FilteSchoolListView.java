@@ -28,12 +28,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import xiaoba.coach.CoachApplication;
 import xiaoba.coach.R;
 import xiaoba.coach.activity.ActivityMyCoinsList.HolderView;
 import xiaoba.coach.common.Settings;
 import xiaoba.coach.interfaces.DialogConfirmListener;
 import xiaoba.coach.module.BaseParam;
 import xiaoba.coach.module.School;
+import xiaoba.coach.module.UserInfo;
 import xiaoba.coach.net.result.GetSchoolResult;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.views.SelectDialog;
@@ -46,10 +48,14 @@ public class FilteSchoolListView extends BaseActivity {
 	private List<String> newSchool = new ArrayList<String>();
 	private EditText etSchool;
 	private SchoolAdapter schoolAda;
+	UserInfo info;
+	private String cityid;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.filte_school_list);
+		info = CoachApplication.getInstance().getUserInfo();
+		cityid = info.getCityid();
 	    findView();
 	    tvTitle.setText("所属驾校");
 	    tvTitle.setTextColor(getResources().getColor(R.color.text_black));
@@ -105,6 +111,7 @@ public class FilteSchoolListView extends BaseActivity {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
 				String choseSchool = newSchool.get(position);
+				info.setDriveschool(choseSchool);
 				Intent intent = new Intent();
 				intent.putExtra("school", choseSchool);
 				setResult(1000, intent);
@@ -133,6 +140,7 @@ public class FilteSchoolListView extends BaseActivity {
 		protected GetSchoolResult doInBackground(Void... params) {
 			HashMap<String, Object> param = new BaseParam();
 			param.put("action", "GetAllSchool");
+			param.put("cityid", cityid);
 			return accessor.execute(Settings.CMY_URL, param, GetSchoolResult.class);
 		}
 
@@ -145,7 +153,6 @@ public class FilteSchoolListView extends BaseActivity {
 					for (int i = 0; i < result.getSchoollist().size(); i++) {
 						getSchool.add(result.getSchoollist().get(i).getName().toString());
 					}
-					getSchool.add("其他");
 					newSchool.addAll(getSchool);
 					schoolAda.notifyDataSetChanged();
 				} else {

@@ -53,7 +53,7 @@
                     android:layout_height="70dp"
                     android:layout_alignTop="@+id/ll_part"
                     android:layout_toLeftOf="@+id/ll_part"
-                    android:src="@drawable/portrait_test"
+                    android:src="@drawable/ic_head_gray"
                     app:poly_border="true"
                     app:poly_border_color="@android:color/white"
                     app:poly_border_width="1dp"
@@ -64,7 +64,8 @@
                     app:poly_vertices="0" />
             	        <ImageView android:layout_width="wrap_content"
             	            android:layout_height="wrap_content"
-            	            android:src="@drawable/ic_go_gray"/>
+            	            android:src="@drawable/ic_go_gray"
+            	            android:layout_marginLeft="10dp"/>
             	    </LinearLayout>
             	</RelativeLayout>
             	<View style="@style/dividerLine" />
@@ -96,7 +97,8 @@
             	            android:id="@+id/tv_name"/>
             	        <ImageView android:layout_width="wrap_content"
             	            android:layout_height="wrap_content"
-            	            android:src="@drawable/ic_go_gray"/>
+            	            android:src="@drawable/ic_go_gray"
+            	            android:layout_marginLeft="10dp"/>
             	    </LinearLayout>
             	    
             	</RelativeLayout>
@@ -129,7 +131,8 @@
             	            android:id="@+id/tv_geny"/>
             	        <ImageView android:layout_width="wrap_content"
             	            android:layout_height="wrap_content"
-            	            android:src="@drawable/ic_go_gray"/>
+            	            android:src="@drawable/ic_go_gray"
+            	            android:layout_marginLeft="10dp"/>
             	    </LinearLayout>
             		</RelativeLayout>
             </LinearLayout>
@@ -177,7 +180,8 @@
             	            android:layout_height="wrap_content"
             	            android:src="@drawable/ic_go_gray"
             	            android:layout_centerVertical="true"
-            	            android:layout_alignParentRight="true"/>
+            	            android:layout_alignParentRight="true"
+            	            android:layout_marginLeft="10dp"/>
                 </RelativeLayout>
                 
                 <View style="@style/dividerLine" />
@@ -196,7 +200,8 @@
             	            android:layout_height="wrap_content"
             	            android:src="@drawable/ic_go_gray"
             	            android:layout_centerVertical="true"
-            	            android:layout_alignParentRight="true"/>
+            	            android:layout_alignParentRight="true"
+            	            android:layout_marginLeft="10dp"/>
                 </RelativeLayout>
             </LinearLayout>
             
@@ -252,7 +257,8 @@
             	            android:id="@+id/tv_birthday"/>
             	        <ImageView android:layout_width="wrap_content"
             	            android:layout_height="wrap_content"
-            	            android:src="@drawable/ic_go_gray"/>
+            	            android:src="@drawable/ic_go_gray"
+            	            android:layout_marginLeft="10dp"/>
             	    </LinearLayout>
                 </RelativeLayout>
                 
@@ -282,7 +288,9 @@
             	            android:id="@+id/tv_teach_year"/>
             	        <ImageView android:layout_width="wrap_content"
             	            android:layout_height="wrap_content"
-            	            android:src="@drawable/ic_go_gray"/>
+            	            android:src="@drawable/ic_go_gray"
+            	            android:layout_marginLeft="10dp"/>
+            	        
             	    </LinearLayout>
                 </RelativeLayout>
                 <View style="@style/dividerLine" />
@@ -310,7 +318,8 @@
             	            android:id="@+id/tv_about_self"/>
             	        <ImageView android:layout_width="wrap_content"
             	            android:layout_height="wrap_content"
-            	            android:src="@drawable/ic_go_gray"/>
+            	            android:src="@drawable/ic_go_gray"
+            	            android:layout_marginLeft="10dp"/>
             	    </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>

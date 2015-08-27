@@ -2,12 +2,15 @@ package xiaoba.coach.views;
 
 import java.util.ArrayList;
 
-import db.DBManager;
 
+import db.DBManager;
+import xiaoba.coach.CoachApplication;
 import xiaoba.coach.R;
+import xiaoba.coach.module.UserInfo;
 import xiaoba.coach.net.result.Area;
 import xiaoba.coach.net.result.City;
 import xiaoba.coach.net.result.Province;
+import xiaoba.coach.utils.ArrayUtils;
 import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
@@ -16,11 +19,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import java.util.Arrays;
 
 /**
  * 城市选择对话框
@@ -33,13 +38,16 @@ public class WheelCityDialog extends BaseDialog {
 	private OnComfirmClickListener mOnComfirmClickListener;
 	private boolean scrolling;
     private ArrayList<City> citylist;
-    private ArrayList<Province> provincelist;
+    public ArrayList<Province> provincelist;
     private ArrayList<Area> zoneList;
-    private DBManager mgr;
+    public DBManager mgr;
     private String[] ArrayProvince,ArrayCity,ArrayZone;
+    private UserInfo info;
+    public String provinceName,cityName,zoneName;
 
 	public WheelCityDialog(Context context) {
 		super(context, R.style.dialog);
+		info = CoachApplication.getInstance().getUserInfo();
 	}
 
 	public WheelCityDialog(Context context, int theme) {
@@ -55,7 +63,7 @@ public class WheelCityDialog extends BaseDialog {
 	protected void setWindowParam() {
 		setWindowParams(-1, -2, Gravity.BOTTOM);
 		setOnDismissListener(onDismissListener);
-		setOnShowListener(onShowListener);
+//		setOnShowListener(onShowListener);
 
 	}
 
@@ -190,7 +198,7 @@ public class WheelCityDialog extends BaseDialog {
 		void onComfirmBtnClick(String province, String city,String zone,String provinceid,String cityid,String zoneid);
 	}
 	
-	private void getProvince()
+	public void getProvince()
     {
         ArrayProvince = new String[provincelist.size()];
         for (int i =0;i<provincelist.size();i++)
@@ -199,19 +207,31 @@ public class WheelCityDialog extends BaseDialog {
         }
     }
 	
-	private void setUpData()
-    {
+	public void setUpData()
+	{
+		int index = 0;
+		if (!TextUtils.isEmpty(provinceName))
+		{
+			for (int i = 0;i<ArrayProvince.length;i++)
+			{
+				if (provinceName.contains(ArrayProvince[i]))
+				{
+					index = i;
+					break;
+				}
+			}
+		}
 		CountryAdapter adapter = new CountryAdapter(mContext, ArrayProvince);
 		mProvinceWheel.setViewAdapter(adapter);
-		mProvinceWheel.setCurrentItem(0);
+		mProvinceWheel.setCurrentItem(index);
         getCity();
         //getZone();
     }
 	
 	private void getCity()
     {
-        int index = mProvinceWheel.getCurrentItem();
-        String provinceid = provincelist.get(index).provinceId;
+        int position = mProvinceWheel.getCurrentItem();
+        String provinceid = provincelist.get(position).provinceId;
         citylist = (ArrayList<City>) mgr.queryCity(provinceid);
 
         ArrayCity = new String[citylist.size()];
@@ -223,7 +243,19 @@ public class WheelCityDialog extends BaseDialog {
         }
         CountryAdapter adapter = new CountryAdapter(mContext, ArrayCity);
         mCityWheel.setViewAdapter(adapter);
-        mCityWheel.setCurrentItem(0);
+        int index = 0;
+        if (!TextUtils.isEmpty(cityName))
+        {
+			for (int i = 0;i<ArrayCity.length;i++)
+			{
+				if (ArrayCity[i].contains(cityName))
+				{
+					index = i;
+					break;
+				}
+			}
+        }
+        mCityWheel.setCurrentItem(index);
         }else{
             CountryAdapter adapter = new CountryAdapter(mContext, ArrayCity);
             mCityWheel.setViewAdapter(adapter);
@@ -235,8 +267,8 @@ public class WheelCityDialog extends BaseDialog {
     {
 		if (citylist.size()>0)
 		{
-        int index = mCityWheel.getCurrentItem();
-        String cityid = citylist.get(index).cityid;
+        int position = mCityWheel.getCurrentItem();
+        String cityid = citylist.get(position).cityid;
         zoneList = (ArrayList<Area>) mgr.queryArea(cityid);
         ArrayZone = new String[zoneList.size()];
         if (zoneList.size()>0)
@@ -247,7 +279,19 @@ public class WheelCityDialog extends BaseDialog {
         }
         CountryAdapter adapter = new CountryAdapter(mContext, ArrayZone);
         mZoneWheel.setViewAdapter(adapter);
-        mZoneWheel.setCurrentItem(0);
+        int index = 0;
+        if (!TextUtils.isEmpty(zoneName))
+        {
+			for (int i = 0;i<ArrayZone.length;i++)
+			{
+				if (ArrayZone[i].contains(zoneName))
+				{
+					index = i;
+					break;
+				}
+			}
+        }
+        mZoneWheel.setCurrentItem(index);
         }else{
             CountryAdapter adapter = new CountryAdapter(mContext, ArrayZone);
             mZoneWheel.setViewAdapter(adapter);
@@ -268,16 +312,17 @@ public class WheelCityDialog extends BaseDialog {
 		}
 	};
 	
-	private OnShowListener onShowListener = new OnShowListener() {
-		
-		@Override
-		public void onShow(DialogInterface dialog) {
-			// TODO Auto-generated method stub
-			mgr = new DBManager(mContext);
-			provincelist = (ArrayList<Province>) mgr.queryProvince();
-			getProvince();
-			setUpData();
-		}
-	};
-
+//	private OnShowListener onShowListener = new OnShowListener() {
+//		
+//		@Override
+//		public void onShow(DialogInterface dialog) {
+//			// TODO Auto-generated method stub
+//			mgr = new DBManager(mContext);
+//			provincelist = (ArrayList<Province>) mgr.queryProvince();
+//			
+//			getProvince();
+//			setUpData();
+//		}
+//	};
+	
 }

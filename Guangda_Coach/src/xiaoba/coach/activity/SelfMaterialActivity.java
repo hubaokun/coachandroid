@@ -40,6 +40,7 @@ import xiaoba.coach.net.request.ChangeAvatarReq;
 import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.ChangeAvatarResult;
 import xiaoba.coach.net.result.GetSchoolResult;
+import xiaoba.coach.net.result.MyMyEvaluationResult;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.views.BirthdayDialog;
 import xiaoba.coach.views.GenderDialog;
@@ -47,6 +48,8 @@ import xiaoba.coach.views.SelectDialog;
 import xiaoba.coach.views.BirthdayDialog.OnComfirmClickListener;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -164,7 +167,7 @@ public class SelfMaterialActivity extends BaseActivity {
 	ImageSize mImageSize;
 	UserInfo info;
 	BirthdayDialog mBirthdayDialog;
-
+	private String birthday;
 	@AfterViews
 	void init() {
 		mTitle.setText("个人信息");
@@ -175,6 +178,25 @@ public class SelfMaterialActivity extends BaseActivity {
 //		mTitleRightTv.setClickable(false);
 //		mTitleRightTv.setVisibility(View.VISIBLE);
 		mBirthdayDialog = new BirthdayDialog(this);
+		mBirthdayDialog.setOnShowListener(new OnShowListener() {
+			
+			@Override
+			public void onShow(DialogInterface dialog) {
+				// TODO Auto-generated method stub
+				String birthday = tvBirthday.getText().toString().trim();
+				if (!TextUtils.isEmpty(birthday))
+				{
+					String[] bir = birthday.split("-");
+					int year = Integer.parseInt(bir[0]);
+					int month = Integer.parseInt(bir[1]);
+					int day = Integer.parseInt(bir[2]);
+					int yIndex = year - 1916;
+					mBirthdayDialog.mYearWheel.setCurrentItem(yIndex);
+					mBirthdayDialog.mMonthWheel.setCurrentItem(month-1);
+					mBirthdayDialog.mDayWheel.setCurrentItem(day-1);
+				}
+			}
+		});
 		initData();
 		addListener();
 	}
@@ -253,8 +275,10 @@ public class SelfMaterialActivity extends BaseActivity {
 				 */
 				String monthStr = month < 10 ? "0" + month : "" + month;
 				String dayStr = day < 10 ? "0" + day : "" + day;
-				tvBirthday.setTextColor(Color.parseColor("#252525"));
-				tvBirthday.setText(year + "-" + monthStr + "-" + dayStr);
+//				tvBirthday.setTextColor(Color.parseColor("#252525"));
+				birthday = year + "-" + monthStr + "-" + dayStr;
+				tvBirthday.setText(birthday);
+				new PerfectCoachInfoTask().execute();
 				hasDate = true;
 				setClickable();
 			}
@@ -646,6 +670,57 @@ public class SelfMaterialActivity extends BaseActivity {
 //		}
 	}
 
+	private class PerfectCoachInfoTask extends AsyncTask<Void, Void, BaseResult> {
+		JSONAccessor accessor = new JSONAccessor(SelfMaterialActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
+
+		@Override
+		protected void onPostExecute(BaseResult result) {
+			super.onPostExecute(result);
+			accessor.enableJsonLog(true);
+			if (mLoadingDialog != null && mLoadingDialog.isShowing())
+				mLoadingDialog.dismiss();
+			if (result != null) {
+				if (result.getCode() == 1) {
+					/*
+					 * 保存本地信息
+					 */
+					UserInfo info = CoachApplication.getInstance().getUserInfo();
+					info.setBirthday(birthday);
+					info.saveUserInfo(info, SelfMaterialActivity.this);
+					//
+					CommonUtils.showToast(SelfMaterialActivity.this.getApplicationContext(), "修改个人资料成功");
+				} else {
+					if (result.getMessage() != null)
+						CommonUtils.showToast(SelfMaterialActivity.this.getApplicationContext(), result.getMessage());
+					if (result.getCode() == 95) {
+						CommonUtils.gotoLogin(SelfMaterialActivity.this);
+					}
+				}
+			} else {
+				CommonUtils.showToast(SelfMaterialActivity.this.getApplicationContext(), getString(R.string.net_error));
+			}
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			if (mLoadingDialog != null)
+				mLoadingDialog.show();
+		}
+
+		@Override
+		protected BaseResult doInBackground(Void... arg0) {
+			HashMap<String, Object> param = new BaseParam();
+			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
+			param.put("action", "PerfectPersonInfo");
+			// if (mSchoolName.isFocusable())
+			// param.put("driveschool", mSchoolName.getText().toString());
+			param.put("birthday", birthday);
+			return accessor.execute(Settings.USER_URL, param, BaseResult.class);
+		}
+	}
+
+	
 	private class PerfectAccountInfoTask extends AsyncTask<Void, Void, BaseResult> {
 		JSONAccessor accessor = new JSONAccessor(SelfMaterialActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
 		String name, school, gender, phone;

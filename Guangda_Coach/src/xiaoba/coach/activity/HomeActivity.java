@@ -495,7 +495,10 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 			HashMap<String, Object> param = new BaseParam();
 			param.put("action", "GETADVERTISEMENT");
 			param.put("coachid", mApplication.getUserInfo().getCoachid());
-			param.put("type", "1"); // 1: coach to student
+			param.put("type", "1"); // 1: coach 2 student
+			param.put("model", "2"); //1:ios 2 android
+			param.put("width",Settings.DISPLAY_WIDTH+"");
+			param.put("height",Settings.DISPLAY_HEIGHT+"");
 			return accessor.execute(Settings.ADVER_URL, param, GetAdvertisementWindowResult.class);
 		}
 
@@ -506,10 +509,10 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 				mLoadingDialog.dismiss();
 			if (result != null) {
 				if (result.getCode() == 1) {
-					if (result.getCurldisplay() == 1)
+					if ("1".equals(result.getC_flag()))
 					{
 						showAdvDialog.show();
-						showAdvDialog.setImageAdvertisement(result.getC_img());
+						showAdvDialog.setImageAdvertisement(result.getC_img_android());
 						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
 							
 							@Override
@@ -537,12 +540,10 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 							}
 						});
 					}
-					else if (result.getCurldisplay() == 2){
-						
+					else if ("2".equals(result.getC_flag())){
 						showAdvDialog.show();
-						showAdvDialog.setImageAdvertisement(result.getC_img());
+						showAdvDialog.setImageAdvertisement(result.getC_img_android());
 						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
-							
 							@Override
 							public void onClick(View v) {
 								// TODO Auto-generated method stub

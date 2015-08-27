@@ -17,6 +17,8 @@ import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.Looper;
@@ -404,4 +406,16 @@ public class CoachApplication extends Application {
             super.onPostExecute(result);
         }
     }
+    
+    public String getVersion() {
+    	try {
+    	       PackageManager manager = this.getPackageManager();
+    	       PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+    	       String version = info.versionName;
+    	       return version;
+    	   } catch (Exception e) {
+    	       e.printStackTrace();
+    	       return "";
+    	     }
+    	 }
 }

@@ -53,7 +53,7 @@ class AboutUsActivity extends BaseActivity {
 	void init() {
 		mTitle.setText("关于我们");
 		mTitleBack.setImageResource(R.drawable.back_arrow);
-		mTitle.setTextColor(Color.parseColor("#ffffff"));
+		mTitle.setTextColor(getResources().getColor(R.color.text_black));
 		// mTitleLayout.setBackgroundColor(Color.parseColor("#ffffff"));
 		PackageManager packageManager = getPackageManager();
 		// getPackageName()是你当前类的包名，0代表是获取版本信息

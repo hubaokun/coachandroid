@@ -512,7 +512,7 @@
             android:id="@+id/potrait"
             android:layout_width="78dp"
             android:layout_height="84dp"
-            android:src="@drawable/mine_portrait"
+            android:src="@drawable/ic_head"
             app:poly_border="true"
             app:poly_border_color="@android:color/white"
             app:poly_border_width="1dp"

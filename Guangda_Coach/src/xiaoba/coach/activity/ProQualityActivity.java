@@ -31,6 +31,7 @@ import xiaoba.coach.net.result.GetCoachState;
 import xiaoba.coach.net.result.GetSchoolResult;
 import xiaoba.coach.net.result.GetTeachCarModelResult.TeachCar;
 import xiaoba.coach.net.result.PerfectCoachInfoResult;
+import xiaoba.coach.net.result.Province;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.utils.DialogUtil;
 import xiaoba.coach.views.SelectDialog;
@@ -38,6 +39,8 @@ import xiaoba.coach.views.WheelCityDialog;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -61,6 +64,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import db.DBManager;
 
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.util.FileUtils;
@@ -177,6 +181,8 @@ public class ProQualityActivity extends BaseActivity {
 	TextView tvSchool;
 	@ViewById(R.id.rl_teach_car)
 	RelativeLayout rlTeachCar;
+	@ViewById(R.id.tv_teach_car)
+	TextView tvTeachCar;
 	// @ViewById(R.id.ll_cartype)
 	// LinearLayout mCartypeLayout;
 	// @ViewById(R.id.pencil_drivecard)
@@ -301,16 +307,42 @@ public class ProQualityActivity extends BaseActivity {
 
 			@Override
 			public void onComfirmBtnClick(String province, String city,String zone,String provinceid,String cityid,String zoneid) {
-				tvCity.setText(province + " " + city+"	"+zone);
+				UserInfo info = CoachApplication.getInstance().getUserInfo();
+				String locationname = province + "-" + city+"-"+zone;
+				tvCity.setText(locationname);
+				info.setLocationname(locationname);
 				//tvCity.setTextColor(Color.parseColor("#252525"));
 				//hasCity = true;
 				provinceId = provinceid;
 				cityId = cityid;
-				info.setCityId(cityId);
+				info.setCityid(cityId);
 				zoneId = zoneid;
+				info.saveUserInfo(info,ProQualityActivity.this);
 				setClickable();
 			}
 		});
+		
+		mWheelCityDialog.setOnShowListener(new OnShowListener() {
+			
+			@Override
+			public void onShow(DialogInterface dialog) {
+				// TODO Auto-generated method stub
+				mWheelCityDialog.mgr = new DBManager(ProQualityActivity.this);
+				mWheelCityDialog.provincelist = (ArrayList<Province>) mWheelCityDialog.mgr.queryProvince();
+				if (!TextUtils.isEmpty(tvCity.getText().toString().trim()))
+				{
+					String locationName = tvCity.getText().toString().trim();
+					String[] location = locationName.split("-");
+					mWheelCityDialog.provinceName = location[0];
+					mWheelCityDialog.cityName = location[1];
+					mWheelCityDialog.zoneName = location[2];
+				}
+				
+				mWheelCityDialog.getProvince();
+				mWheelCityDialog.setUpData();
+			}
+		});
+		
 		new PerfectAccountInfoTask().execute();
 
 		/*
@@ -332,7 +364,7 @@ public class ProQualityActivity extends BaseActivity {
 			// mDelDriveCard.setClickable(false);
 			// mDelCarFront.setClickable(false);
 			// mDelCarBack.setClickable(false);
-			// showStateDialog(info.getState());
+			 showStateDialog(info.getState());
 			//imgSchoolName.setVisibility(View.GONE);
 			// mDelCarBack.setVisibility(View.GONE);
 			// mDelCarFront.setVisibility(View.GONE);
@@ -540,7 +572,19 @@ public class ProQualityActivity extends BaseActivity {
 			tvCoachState.setText("教练资格认证后，学员才能预约您学车!");
 			// mId.setSelection(info.getId_cardnum().length());
 		}
-
+		
+		if (!TextUtils.isEmpty(info.getLocationname()))
+		{
+			tvCity.setText(info.getLocationname());
+		}else{
+			tvCity.setText("未设置");
+		}
+		if (!TextUtils.isEmpty(info.getDriveschool()))
+		{
+			tvSchool.setText(info.getDriveschool());
+		}else{
+			tvSchool.setText("未设置 ");
+		}
 		// if (!TextUtils.isEmpty(info.getId_cardnum())) {
 		// mId.setText(info.getId_cardnum());
 		// }
@@ -587,23 +631,27 @@ public class ProQualityActivity extends BaseActivity {
 			 * = new TextView(ProQualityActivity.this); tv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DensityUtils.dp2px(ProQualityActivity.this, 30)));
 			 * tv.setText(info.getModellist().get(i).getModelname()); tv.setTextSize(18); mCartypeLayout.addView(tv); } }
 			 */
-//			for (CarType cartype:info.getModellist())
-//			{
-//				switch (cartype.getModelid()) {
-//				case 17:
-//					cbC1.setChecked(true);
-//					break;
-//				case 18:
-//					cbC2.setChecked(true);
-//					break;
-//				default:
-//					break;
-//				}
-//			}
+			String teachcar = "";
+			for (CarType cartype:info.getModellist())
+			{
+				switch (cartype.getModelid()) {
+				case 17:
+					teachcar = "C1";
+					break;
+				case 18:
+					teachcar = teachcar+"  C2";
+					break;
+				default:
+					break;
+				}
+				tvTeachCar.setText(teachcar);
+			}
 				
 			selectmodels.add(info.getModellist().get(0).getModelname());
 			// mCarType1.setTextColor(getResources().getColor(R.color.text_black));
 			// mCarType1.setText(info.getModellist().get(0).getModelname());
+		}else{
+			tvTeachCar.setText("未设置");
 		}
 		DisplayImageOptions options;
 		ImageSize mImageSize;
@@ -797,10 +845,10 @@ public class ProQualityActivity extends BaseActivity {
 	@Click(R.id.title_right_text)
 	void submit() {
 
-//		if ("请输入所属驾校名称".equals(mSchoolName.getText().toString())) {
-//			Toast.makeText(mApplication, "请完善所属驾校", Toast.LENGTH_SHORT).show();
-//			return;
-//		}
+		if ("未设置".equals(tvCity.getText().toString())) {
+			Toast.makeText(mApplication, "请完善所属驾校", Toast.LENGTH_SHORT).show();
+			return;
+		}
 //
 //		if (isOtherSchool) {
 //			if ("".equals(mDriveSchoolEt.getText().toString())) {
@@ -809,11 +857,17 @@ public class ProQualityActivity extends BaseActivity {
 //			}
 //		}
 		
-//		if (!cbC1.isChecked()&&!cbC2.isChecked())
-//		{
-//			Toast.makeText(mApplication, "请选择教学用车型号", Toast.LENGTH_SHORT).show();
-//			return;
-//		}
+		if ("未设置".equals(tvTeachCar.getText().toString()))
+		{
+			Toast.makeText(mApplication, "请选择教学用车型号", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		if ("未设置".equals(tvCity.getText().toString()))
+		{
+			Toast.makeText(mApplication, "请完善所在城市", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		
 //		if (info.getCoach_cardpicurl()==null||"".equals(info.getCoach_cardpicurl()))
 //		{
@@ -901,13 +955,21 @@ public class ProQualityActivity extends BaseActivity {
 	@Click(R.id.rl_chose_city)
 	void choseCity()
 	{
-		mWheelCityDialog.show();
+		if ("1".equals(info.getState()) || "2".equals(info.getState())) {
+			showStateDialog(info.getState());
+		}else{
+			mWheelCityDialog.show();
+		}
 	}
 	
 	@Click(R.id.rl_teach_car)
 	void choseCar()
 	{
-		startActivity(new Intent(ProQualityActivity.this,ActivityChoseCar.class));
+		if ("1".equals(info.getState()) || "2".equals(info.getState())) {
+			showStateDialog(info.getState());
+		}else{
+			startActivity(new Intent(ProQualityActivity.this,ActivityChoseCar.class));
+		}
 	}
 
 	// @Click(R.id.pencil_id)
@@ -1491,7 +1553,7 @@ public class ProQualityActivity extends BaseActivity {
 			setClickable();
 //			if (schoolDialog != null)
 //				schoolDialog.show();
-			if (!TextUtils.isEmpty(info.getCityId()))
+			if (!TextUtils.isEmpty(info.getCityid()))
 			{
 			Intent intent = new Intent(ProQualityActivity.this,FilteSchoolListView.class);
 			startActivityForResult(intent, 1000);
@@ -1520,6 +1582,10 @@ public class ProQualityActivity extends BaseActivity {
 			param.setAction("PerfectCoachInfo");
 			param.setCoachid(CoachApplication.getInstance().getUserInfo().getCoachid() + "");
 			param.setToken(CoachApplication.getInstance().getUserInfo().getToken());
+			String cityid = info.getCityid();
+			param.setCityid(cityid);
+			String school = tvSchool.getText().toString();
+			param.setDriveschool(school);
 			// if (mId.isFocusable())
 			// param.setIdnum(mId.getText().toString());
 			// if (mCoachId.isFocusable())
@@ -1642,6 +1708,8 @@ public class ProQualityActivity extends BaseActivity {
 						info.setCar_cardpicburl(result.getCradpic6url());
 					if (result.getCradpic7url() != null)
 						info.setRealpicurl(result.getCradpic7url());
+					if (!TextUtils.isEmpty(tvSchool.getText()))
+						info.setDriveschool(tvSchool.getText().toString());
 //					if (isOtherSchool) {
 //						if (!TextUtils.isEmpty(mDriveSchoolEt.getText()))
 //							info.setDriveschool(mDriveSchoolEt.getText().toString());
@@ -1665,7 +1733,7 @@ public class ProQualityActivity extends BaseActivity {
 //						}
 //						info.setModellist(temp);
 //					}
-					List<CarType> temp = new ArrayList<CarType>();
+//					List<CarType> temp = new ArrayList<CarType>();
 //					if (cbC1.isChecked())
 //					{
 //						CarType type = new CarType();
@@ -1678,7 +1746,7 @@ public class ProQualityActivity extends BaseActivity {
 //						type.setModelid(18);
 //						temp.add(type);
 //					}
-					info.setModellist(temp);
+//					info.setModellist(temp);
 					info.saveUserInfo(info, ProQualityActivity.this);
 					//
 					CommonUtils.showToast(ProQualityActivity.this.getApplicationContext(), "提交成功");
@@ -1905,102 +1973,102 @@ public class ProQualityActivity extends BaseActivity {
 	List<School> schoollist;
 	boolean isOtherSchool;
 
-	private class GetAllSchool extends AsyncTask<Void, Void, GetSchoolResult> {
-		JSONAccessor accessor = new JSONAccessor(ProQualityActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST_MULTIPART);
-
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-		}
-
-		@Override
-		protected GetSchoolResult doInBackground(Void... params) {
-			HashMap<String, Object> param = new BaseParam();
-			param.put("action", "GetAllSchool");
-			return accessor.execute(Settings.CMY_URL, param, GetSchoolResult.class);
-		}
-
-		@Override
-		protected void onPostExecute(GetSchoolResult result) {
-			super.onPostExecute(result);
-
-			if (result != null) {
-				if (result.getCode() == 1) {
-					for (int i = 0; i < result.getSchoollist().size(); i++) {
-						getSchool.add(result.getSchoollist().get(i).getName().toString());
-					}
-					int length = getSchool.size();
-					String[] school = new String[length + 1];
-					// school = (String[])getSchool.toArray();
-					for (int i = 0; i < length; i++) {
-						school[i] = getSchool.get(i);
-					}
-					school[length] = "其他";
-
-					schoollist = result.getSchoollist();
-					School other = new School();
-					other.setName("其他");
-					schoollist.add(other);
-					schoolDialog = new SelectDialog(ProQualityActivity.this, school);
-					schoolDialog.setAdapter();
-					schoolDialog.setmConfirmListener(new DialogConfirmListener() {
-
-						@Override
-						public void doConfirm(String str) {
-							// if (str != null) {
-							// if (!selectmodels.contains(str)) {
-							// selectmodels.add(str);
-							// TextView tv = new TextView(ProQualityActivity.this);
-							// tv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DensityUtils.dp2px(ProQualityActivity.this, 30)));
-							// tv.setText(str);
-							// mCartypeLayout.addView(tv);
-							// }
-							// }
-//							if (str != null && str.equals("其他")) {
-//								isOtherSchool = true;
-//								mDriveSchoolEt.setVisibility(View.VISIBLE);
-//								mSchoolName.setVisibility(View.INVISIBLE);
-//								mDriveSchoolEt.requestFocus();
-//								InputMethodManager imm = (InputMethodManager) ProQualityActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-//								imm.showSoftInputFromInputMethod(mDriveSchoolEt.getWindowToken(), 0);
-//								schoolDialog.dismiss();
-//								return;
-//							} else {
-//								isOtherSchool = false;
-//								mDriveSchoolEt.setVisibility(View.INVISIBLE);
-//								mSchoolName.setVisibility(View.VISIBLE);
-//							}
-//							if (schoollist != null) {
-//								for (School ss : schoollist)
-//									if (ss.getName() != null && ss.getName().equals(str))
-//										driveSchoolId = ss.getSchoolid() + "";
-//							}
-//							if (mSchoolName.getVisibility() == View.INVISIBLE) {
-//								mDriveSchoolEt.setVisibility(View.INVISIBLE);
-//								mSchoolName.setVisibility(View.VISIBLE);
-//							}
-//							mSchoolName.setText(str);
-//							mSchoolName.setTextColor(getResources().getColor(R.color.text_black));
-							//schoolDialog.dismiss();
-						}
-
-						@Override
-						public void doCancel() {
-							schoolDialog.dismiss();
-						}
-					});
-				} else {
-					if (result.getMessage() != null)
-						CommonUtils.showToast(ProQualityActivity.this, result.getMessage());
-					if (result.getCode() == 95) {
-						CommonUtils.gotoLogin(ProQualityActivity.this);
-					}
-				}
-			} else {
-				CommonUtils.showToast(ProQualityActivity.this, getString(R.string.net_error));
-			}
-		}
-	}
+//	private class GetAllSchool extends AsyncTask<Void, Void, GetSchoolResult> {
+//		JSONAccessor accessor = new JSONAccessor(ProQualityActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST_MULTIPART);
+//
+//		@Override
+//		protected void onPreExecute() {
+//			super.onPreExecute();
+//		}
+//
+//		@Override
+//		protected GetSchoolResult doInBackground(Void... params) {
+//			HashMap<String, Object> param = new BaseParam();
+//			param.put("action", "GetAllSchool");
+//			return accessor.execute(Settings.CMY_URL, param, GetSchoolResult.class);
+//		}
+//
+//		@Override
+//		protected void onPostExecute(GetSchoolResult result) {
+//			super.onPostExecute(result);
+//
+//			if (result != null) {
+//				if (result.getCode() == 1) {
+//					for (int i = 0; i < result.getSchoollist().size(); i++) {
+//						getSchool.add(result.getSchoollist().get(i).getName().toString());
+//					}
+//					int length = getSchool.size();
+//					String[] school = new String[length + 1];
+//					// school = (String[])getSchool.toArray();
+//					for (int i = 0; i < length; i++) {
+//						school[i] = getSchool.get(i);
+//					}
+//					school[length] = "其他";
+//
+//					schoollist = result.getSchoollist();
+//					School other = new School();
+//					other.setName("其他");
+//					schoollist.add(other);
+//					schoolDialog = new SelectDialog(ProQualityActivity.this, school);
+//					schoolDialog.setAdapter();
+//					schoolDialog.setmConfirmListener(new DialogConfirmListener() {
+//
+//						@Override
+//						public void doConfirm(String str) {
+//							// if (str != null) {
+//							// if (!selectmodels.contains(str)) {
+//							// selectmodels.add(str);
+//							// TextView tv = new TextView(ProQualityActivity.this);
+//							// tv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DensityUtils.dp2px(ProQualityActivity.this, 30)));
+//							// tv.setText(str);
+//							// mCartypeLayout.addView(tv);
+//							// }
+//							// }
+////							if (str != null && str.equals("其他")) {
+////								isOtherSchool = true;
+////								mDriveSchoolEt.setVisibility(View.VISIBLE);
+////								mSchoolName.setVisibility(View.INVISIBLE);
+////								mDriveSchoolEt.requestFocus();
+////								InputMethodManager imm = (InputMethodManager) ProQualityActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+////								imm.showSoftInputFromInputMethod(mDriveSchoolEt.getWindowToken(), 0);
+////								schoolDialog.dismiss();
+////								return;
+////							} else {
+////								isOtherSchool = false;
+////								mDriveSchoolEt.setVisibility(View.INVISIBLE);
+////								mSchoolName.setVisibility(View.VISIBLE);
+////							}
+////							if (schoollist != null) {
+////								for (School ss : schoollist)
+////									if (ss.getName() != null && ss.getName().equals(str))
+////										driveSchoolId = ss.getSchoolid() + "";
+////							}
+////							if (mSchoolName.getVisibility() == View.INVISIBLE) {
+////								mDriveSchoolEt.setVisibility(View.INVISIBLE);
+////								mSchoolName.setVisibility(View.VISIBLE);
+////							}
+////							mSchoolName.setText(str);
+////							mSchoolName.setTextColor(getResources().getColor(R.color.text_black));
+//							//schoolDialog.dismiss();
+//						}
+//
+//						@Override
+//						public void doCancel() {
+//							schoolDialog.dismiss();
+//						}
+//					});
+//				} else {
+//					if (result.getMessage() != null)
+//						CommonUtils.showToast(ProQualityActivity.this, result.getMessage());
+//					if (result.getCode() == 95) {
+//						CommonUtils.gotoLogin(ProQualityActivity.this);
+//					}
+//				}
+//			} else {
+//				CommonUtils.showToast(ProQualityActivity.this, getString(R.string.net_error));
+//			}
+//		}
+//	}
 
 	private class PerfectAccountInfoTask extends AsyncTask<Void, Void, GetCoachState> {
 		JSONAccessor accessor = new JSONAccessor(ProQualityActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
@@ -2015,7 +2083,6 @@ public class ProQualityActivity extends BaseActivity {
 					info.setState(String.valueOf(result.getCoachinfo().getState()));
 					setListeners();
 					addListeners();
-					setLocalInfo();
 				} else {
 					if (result.getMessage() != null)
 						CommonUtils.showToast(ProQualityActivity.this.getApplicationContext(), result.getMessage());
@@ -2103,5 +2170,16 @@ public class ProQualityActivity extends BaseActivity {
 		}
 		return file;
 	}
-
+	@Override
+	protected void onResume() {
+		super.onResume();
+		setLocalInfo();
+//		if (!TextUtils.isEmpty(info.getDefaultAddress())) {
+//			mUserAddress.setText(info.getDefaultAddress());
+//			mUserAddress.setTextColor(Color.parseColor("#2c2c2c"));
+//		} else {
+//			mUserAddress.setText("未设置");
+//			mUserAddress.setTextColor(Color.parseColor("#d2d2d2"));
+//		}
+	}
 }
