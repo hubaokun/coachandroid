@@ -9,27 +9,19 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:background="@drawable/shape_white_small_round" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_get_cash_gradient" >
-
-            <ImageView
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="165dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/dialog_bg_round" />
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/red_part"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingBottom="20dp" >
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -37,86 +29,159 @@
 
                     <ImageView
                         android:id="@+id/get_cash_cancel"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:padding="9dp"
-                        android:src="@drawable/comment_cancel" />
-
-                    <TextView
-                        android:visibility="invisible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="12dp"
+                        android:src="@drawable/ic_close_diaog" />
+                    
+                    <LinearLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="18dp">
+                        <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:text="申请提现"
-                        android:textColor="@color/white"
-                        android:textSize="14dp" />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:gravity="center_horizontal"
-                    android:text="可提现余额是"
-                    android:textColor="#d7f0f6"
-                    android:textSize="18dp" />
-                
-                <TextView
+                        android:text="账户余额"
+                        android:textColor="@color/text_light_dark"
+                        android:textSize="15dp" />
+                                        <TextView
                     android:id="@+id/yue_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="26dp"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="29dp" />
+                    android:text="30"
+                    android:textColor="@color/text_light_red"
+                    android:textSize="30dp" 
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginRight="9dp"/>
+                     <TextView android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="元"
+                         android:textColor="@color/text_light_dark"
+                         android:textSize="17dp"/>
+                    </LinearLayout>
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                </RelativeLayout>
+                
+                <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#81c6e0"/>
+                
+                
+                <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:gravity="center" >
+                    android:background="@drawable/shape_gray_half_round">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/ll_not_enough_money"
+                        android:visibility="gone">
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="13dp">
+                            <ImageView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_tips"
+                                android:layout_marginTop="4dp"/>
+                            
+                            <TextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#aeaeae"
+                                android:textSize="13dp"
+                                android:text="@string/not_enough_money"
+                                android:layout_marginLeft="7dp"/>
+                        </LinearLayout>
+                        
+                        <ImageView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/im_byebye"
+                            android:layout_marginTop="27dp"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingBottom="14dp"/>
+                    </LinearLayout>
+                    
+                   <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/ll_get_money">
+                         <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginRight="13dp"
+                            android:layout_marginBottom="20dp"
+                            >
+                            <ImageView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_tips"
+                                android:layout_marginTop="4dp"/>
+                            
+                            <TextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#aeaeae"
+                                android:textSize="13dp"
+                                android:text="@string/get_money"
+                                android:layout_marginLeft="7dp"/>
+                        </LinearLayout>
+                        
+                         
+                         <RelativeLayout android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:background="@drawable/shape_gray_zhijiao"
+                             android:padding="13dp">
+                             
+                             <LinearLayout android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:orientation="horizontal">
+                             <TextView android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="金额"
+                                 android:textSize="17dp"
+                                 android:textColor="@color/text_light_dark"
+                                 android:layout_gravity="center_vertical"/>
+                             
+                             <EditText android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:layout_marginLeft="14dp"
+                                 android:textSize="14dp"
+                                 android:hint="请输入提现金额"
+                                 android:id="@+id/get_cash_edit"
+                                 android:background="@null"
+                                 android:textColorHint="#cdcdcd"
+                                 android:textColor="@color/text_light_dark"
+                                 android:layout_gravity="center_vertical"/>
+                             </LinearLayout>
+                             
+                             <ImageView android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:src="@drawable/ic_close_hover"
+                                 android:layout_alignParentRight="true"
+                                 android:layout_centerVertical="true"
+                                 android:id="@+id/img_clenr_money"
+                                 android:visibility="gone"/>
+                         </RelativeLayout>
+                         
+                         <Button android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:padding="12dp"
+                             android:text="确认提交"
+                             android:textColor="#cdcdcd"
+                             android:background="@drawable/shape_gray_round"
+                             android:layout_marginTop="17dp"
+                             android:layout_marginLeft="12dp"
+                             android:layout_marginRight="12dp"
+                             android:layout_marginBottom="34dp"
+                             android:id="@+id/get_cash_btn"/>
+                         
+                    </LinearLayout>
+                </RelativeLayout>
 
-                    <EditText
-                        android:id="@+id/get_cash_edit"
-                        android:layout_width="0dp"
-                        android:layout_weight="1.0"
-                        android:layout_height="37dp"
-                        android:background="@color/white"
-                        android:paddingLeft="5dp"
-                        android:singleLine="true"
-                        android:hint="提现金额不小于50元" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="bottom"
-                        android:text="元"
-                        android:textColor="#b2d8d3"
-                        android:textSize="14dp" />
-                </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#252525"
-            android:paddingBottom="13dp"
-            android:paddingTop="10dp" >
-
-            <Button
-                android:id="@+id/get_cash_btn"
-                android:layout_width="140dp"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/shape_green_round"
-                android:text="提交申请"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
         </RelativeLayout>
     </LinearLayout>
 

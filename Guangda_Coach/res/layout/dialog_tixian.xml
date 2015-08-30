@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="240dp"
-    android:layout_height="153dp"
-    android:background="@color/text_green"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_small_round"
     android:orientation="vertical" >
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/dialog_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
-
+        
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        
         <ImageView
             android:id="@+id/recharge_cancel"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:padding="9dp"
-            android:src="@drawable/comment_cancel" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_diaog"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="12dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
             android:text="提交成功"
-            android:textColor="@color/white"
-            android:textSize="24dp" />
+            android:textColor="#4acbdb"
+            android:textSize="24dp"
+            android:paddingTop="17dp"
+            android:paddingBottom="17dp" />
+        
+        </RelativeLayout>
+        
+                <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#81c6e0"/>
 
         <TextView
             android:id="@+id/money_tip"
@@ -41,7 +47,7 @@
             android:layout_marginTop="17dp"
             android:lineSpacingExtra="4dp"
             android:text="您申请的185.0元金额已提交成功，请等待审核，我们会在3个工作日内联系您！"
-            android:textColor="@color/white"
+            android:textColor="@color/text_light_dark"
             android:textSize="13dp" />
     </LinearLayout>
 

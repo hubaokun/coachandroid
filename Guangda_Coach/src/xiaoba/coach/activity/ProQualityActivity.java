@@ -314,9 +314,11 @@ public class ProQualityActivity extends BaseActivity {
 				//tvCity.setTextColor(Color.parseColor("#252525"));
 				//hasCity = true;
 				provinceId = provinceid;
+				info.setProvinceid(provinceId);
 				cityId = cityid;
 				info.setCityid(cityId);
 				zoneId = zoneid;
+				info.setAreaid(zoneId);
 				info.saveUserInfo(info,ProQualityActivity.this);
 				setClickable();
 			}
@@ -1583,7 +1585,11 @@ public class ProQualityActivity extends BaseActivity {
 			param.setCoachid(CoachApplication.getInstance().getUserInfo().getCoachid() + "");
 			param.setToken(CoachApplication.getInstance().getUserInfo().getToken());
 			String cityid = info.getCityid();
+			String provinceid = info.getProvinceid();
+			String areaid = info.getAreaid();
 			param.setCityid(cityid);
+			param.setProvinceid(provinceid);
+			param.setAreaid(areaid);
 			String school = tvSchool.getText().toString();
 			param.setDriveschool(school);
 			// if (mId.isFocusable())

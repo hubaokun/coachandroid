@@ -197,6 +197,13 @@
 	<string name="share_tip2_two">元到账户余额。</string>
 	<string name="scan_text">将二维码放入框内, 即可获取邀请码</string>
 	
-	<string name="ticket_coin_relus">①  学车完成后需双方互相评价，小巴券/小巴币才会结算到您的账户；\n② 若学员超过3天未评价，小巴券/小巴币将自动结算到您的账户。</string>
+	<string name="ticket_coin_relus_one">学员确认学车完成后，双方完成互评，小巴券/小巴币会结算到您的账户。</string>
+	<string name="ticket_coin_relus_two">学员超过3天未评价，小巴券/小巴币将自动结算到您的账户。</string>
+	<string name="not_agree_cancel">您未同意学员取消订单申请，请等待客服处理</string>
+	<string name="not_enough_money">您的账户余额低于50元，去赚够更多的钱再来吧~</string>
+	<string name="get_money">单次提现金额需≥50元</string>
+	<string name="coin_rules_one">教练发行的小巴币不能兑换现金，仅生成兑换记录；</string>
+	<string name="coin_rules_two">驾校发行的小巴币，兑换后直接到该驾校去领现金；</string>
+	<string name="coin_rules_three">小巴平台发行的小巴币，兑换后1-2个工作日发放到您的账户余额。</string>
 	
 </resources>

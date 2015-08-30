@@ -87,7 +87,6 @@ public class HistoryOrderActivity extends BaseActivity {
 		mBackImg.setImageResource(R.drawable.back_arrow);
 		mTitle.setText(getString(R.string.history_order));
 		mTitle.setTextColor(Color.parseColor("#2c2c2c"));
-
 		mListView.setAdapter(mAdapter);
 	}
 
@@ -225,7 +224,6 @@ public class HistoryOrderActivity extends BaseActivity {
 			RelativeLayout hidePart = (RelativeLayout) convertView.findViewById(R.id.hide_content);
 			ImageView arrow = (ImageView) convertView.findViewById(R.id.jo_item_arrow);
 			mainPart.setOnClickListener(new ShowHideListener(hidePart, arrow, position));
-
 			TextView location = (TextView) convertView.findViewById(R.id.loc_detail);
 			TextView orderDate = (TextView) convertView.findViewById(R.id.order_date);
 			TextView startTime = (TextView) convertView.findViewById(R.id.start_time);
@@ -249,6 +247,7 @@ public class HistoryOrderActivity extends BaseActivity {
 			ImageView imgPayType = (ImageView)convertView.findViewById(R.id.img_paytype);
 			HistoryTaskInfo info = list.get(position); // item data
 			LinearLayout stuHidePart = (LinearLayout) convertView.findViewById(R.id.stu_hide_part);
+			TextView tvNotAgree = (TextView)convertView.findViewById(R.id.tv_not_agree);
 			
 
 			/*
@@ -269,6 +268,22 @@ public class HistoryOrderActivity extends BaseActivity {
 			/*
 			 * student's score
 			 */
+			
+			if (info.getDisagree() == 1)  //不同意取消
+			{
+				mainPart.setBackgroundColor(getResources().getColor(R.color.job_back_yellow));
+				coachComment.setVisibility(View.GONE);
+				stuHidePart.setVisibility(View.GONE);
+				btn.setVisibility(View.GONE);
+				tvNotAgree.setVisibility(View.VISIBLE);
+			}else{
+				mainPart.setBackgroundColor(getResources().getColor(R.color.white));
+				coachComment.setVisibility(View.VISIBLE);
+				stuHidePart.setVisibility(View.VISIBLE);
+				tvNotAgree.setVisibility(View.GONE);
+				btn.setVisibility(View.VISIBLE);
+			}
+			
 			if (info.getStudentscore() != null) {
 				stuComTitle.setText(HistoryOrderActivity.this.getString(R.string.student_comment));
 				stuComContent.setVisibility(View.VISIBLE);
@@ -297,7 +312,10 @@ public class HistoryOrderActivity extends BaseActivity {
 				coachComment.setOnClickListener(new CcListener(info.getCoachscore()));
 			} else {
 				coachComment.setVisibility(View.INVISIBLE);
-				btn.setVisibility(View.VISIBLE);
+				if(info.getDisagree() == 0)
+				{
+					btn.setVisibility(View.VISIBLE);
+				}
 
 				btn.setOnClickListener(new CommentListener(position));
 			}

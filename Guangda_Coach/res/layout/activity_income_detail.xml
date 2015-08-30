@@ -5,9 +5,165 @@
     android:background="#ffffff"
     android:orientation="vertical" >
 
-    <include layout="@layout/layout_titlebar" />
+<!--      <include layout="@layout/layout_titlebar" />  -->
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#5493f7">
+        
+        
 
-    <LinearLayout
+    
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="29dp"
+        >
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:src="@drawable/ic_back"
+           android:layout_alignParentLeft="true"
+           android:paddingLeft="10dp"
+           android:id="@+id/img_back"
+           android:layout_centerVertical="true"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="余额"
+            android:textSize="17dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"/>
+        
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="账户管理"
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/tv_right"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:text="0"
+            android:id="@+id/tv_total_money"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元"
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:layout_marginLeft="3dp"/>
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+        
+        <RelativeLayout android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp">
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true"
+            >
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:id="@+id/tv_free_money"
+                android:layout_gravity="center_horizontal"
+                android:text="0"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可提现（元）"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp">
+            
+
+                <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true"
+            >
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:id="@+id/tv_frozen_money"
+                android:layout_gravity="center_horizontal"
+                android:text="0"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已冻结（元）"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+                </RelativeLayout>
+    </LinearLayout>
+    
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="18dp">
+        
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_transport_round"
+            >
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="充值"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:layout_gravity="center"
+                android:paddingLeft="38dp"
+                android:paddingRight="35dp"
+                android:gravity="center"
+                android:id="@+id/recharge_instant"/>
+            
+            <View android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"/>
+            
+                        <TextView android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="提现"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:layout_gravity="center"
+                android:paddingRight="38dp"
+                android:paddingLeft="35dp"
+                android:gravity="center"
+                android:id="@+id/get_cash"/>
+            
+        </LinearLayout>
+        
+    </RelativeLayout>
+    
+    </LinearLayout>
+
+<!--     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="97dp"
         android:background="#252525"
@@ -30,7 +186,27 @@
             android:text=""
             android:textColor="#cecece"
             android:textSize="13dp" />
-    </LinearLayout>
+    </LinearLayout> -->
+    
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="12dp">
+        <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#aaaaaa"
+            android:layout_centerVertical="true"/>
+        
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="账户管理"
+            android:textColor="#aaaaaa"
+            android:textSize="14dp"
+            android:layout_centerInParent="true"
+            android:background="@color/white"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"/>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,7 +223,7 @@
             android:dividerHeight="0.5dp"
             android:listSelector="#00000000" />
 
-        <LinearLayout
+<!--         <LinearLayout
             android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +254,7 @@
                 android:text="申请提现"
                 android:textColor="@color/white"
                 android:textSize="18dp" />
-        </LinearLayout>
+        </LinearLayout> -->
     </RelativeLayout>
 
 </LinearLayout>

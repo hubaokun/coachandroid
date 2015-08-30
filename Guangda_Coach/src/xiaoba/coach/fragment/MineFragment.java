@@ -225,22 +225,22 @@ public class MineFragment extends Fragment {
 			}
 		});
 
-		llMyMoney.setOnClickListener(new OnSingleClickListener() {
-
-			@Override
-			public void doOnClick(View v) {
-				String account = CoachApplication.getInstance().getUserInfo().getAlipay_account();
-				if (account != null && !account.equals(""))
-					startActivityForResult(new Intent(mActivity, GetCashActivity_.class).putExtra("balance", mBalance), 11);
-				else {
-					Intent intent = new Intent (mActivity,AccountArrangeActivity.class);
-					startActivity(intent);
-					Toast.makeText(mActivity, "请先去添加支付宝账号", Toast.LENGTH_SHORT).show();
-					
-				}
-
-			}
-		});
+//		llMyMoney.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				String account = CoachApplication.getInstance().getUserInfo().getAlipay_account();
+//				if (account != null && !account.equals(""))
+//					startActivityForResult(new Intent(mActivity, GetCashActivity_.class).putExtra("balance", mBalance), 11);
+//				else {
+//					Intent intent = new Intent (mActivity,AccountArrangeActivity.class);
+//					startActivity(intent);
+//					Toast.makeText(mActivity, "请先去添加支付宝账号", Toast.LENGTH_SHORT).show();
+//					
+//				}
+//
+//			}
+//		});
 
 		rlXiaoBaTicket.setOnClickListener(new OnSingleClickListener() {
 

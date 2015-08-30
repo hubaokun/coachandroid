@@ -257,6 +257,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp" >
+                
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/not_agree_cancel"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:id="@+id/tv_not_agree"/>
 
                 <Button
                     android:id="@+id/jo_stubtn"
@@ -267,7 +275,9 @@
                     android:text="@string/to_comment_stu"
                     android:textColor="@android:color/white"
                     android:textSize="18dp" />
-
+                
+                
+                
                 <LinearLayout
                     android:id="@+id/coach_comment"
                     android:layout_width="wrap_content"

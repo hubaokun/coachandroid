@@ -17,6 +17,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,24 +40,30 @@ import xiaoba.coach.utils.CommonUtils;
 
 @EActivity(R.layout.activity_income_detail)
 public class IncomeDetailActivity extends BaseActivity {
-	@ViewById(R.id.title)
-	TextView mTitle;
-	@ViewById(R.id.title_back_img)
-	ImageView mTitleBack;
-	@ViewById(R.id.title_right_text)
-	TextView mTitleRightTv;
-	@ViewById(R.id.title_back)
-	FrameLayout mBack;
+//	@ViewById(R.id.title)
+//	TextView mTitle;
+//	@ViewById(R.id.title_back_img)
+//	ImageView mTitleBack;
+//	@ViewById(R.id.title_right_text)
+//	TextView mTitleRightTv;
+//	@ViewById(R.id.title_back)
+//	FrameLayout mBack;
+	@ViewById(R.id.img_back)
+	ImageView imgBack;
+	@ViewById(R.id.tv_right)
+	TextView tvRight;
 	@ViewById(R.id.income_detail_list)
 	ListView mListView;
-	@ViewById(R.id.income_detail_left)
-	TextView mLeft;
-	@ViewById(R.id.income_detail_froze)
-	TextView mFroze;
+	@ViewById(R.id.tv_total_money)
+	TextView tvTotal;
+	@ViewById(R.id.tv_free_money)
+	TextView tvFree;
+	@ViewById(R.id.tv_frozen_money)
+	TextView tvFrozen;
 	@ViewById(R.id.recharge_instant)
-	Button mRecharge;
+	TextView mRecharge;
 	@ViewById(R.id.get_cash)
-	Button mGetCash;
+	TextView mGetCash;
 
 	IncomeDetailAdapter mAdapter = new IncomeDetailAdapter();
 	List<RecordInfo> list = new ArrayList<GetIncomeDetailResult.RecordInfo>();
@@ -64,24 +71,16 @@ public class IncomeDetailActivity extends BaseActivity {
 
 	@AfterViews
 	void init() {
-		mTitle.setText("收支详细");
-		mTitleBack.setImageResource(R.drawable.back_arrow);
-		mTitle.setTextColor(Color.parseColor("#2c2c2c"));
-		mTitleRightTv.setText("账户管理");
-		mTitleRightTv.setTextColor(Color.parseColor("#2c2c2c"));
-		// mTitleRightTv.setTextColor(Color.parseColor("#d2d2d2"));
-		// mTitleRightTv.setClickable(false);
-		mTitleRightTv.setVisibility(View.VISIBLE);
 
 		mListView.setAdapter(mAdapter);
 	}
 
-	@Click(R.id.title_back)
+	@Click(R.id.img_back)
 	void goback() {
 		finish();
 	}
 
-	@Click(R.id.title_right_text)
+	@Click(R.id.tv_right)
 	void addAccount() {
 		startActivity(new Intent(IncomeDetailActivity.this, AccountArrangeActivity.class));
 	}
@@ -121,13 +120,17 @@ public class IncomeDetailActivity extends BaseActivity {
 						{
 							mBalance = 0;
 						}
-						mLeft.setText("余额：" + (int) result.getBalance() + "元");
+						tvTotal.setText((int) result.getBalance()+"");
 						int left = (int) (result.getBalance() - result.getGmoney());
 						if (left > 0)
-							mFroze.setText("(可提现金额：" + (int) (result.getBalance() - result.getGmoney()) + "元/冻结金额：" + (int) result.getFmoney() + "元)");
+						{
+							tvFree.setText(left+"");
+						}
 						else
-							mFroze.setText("(可提现金额：0元/冻结金额：" + (int) result.getFmoney() + "元)");
-
+						{
+							tvFree.setText("0");
+						}
+						tvFrozen.setText((int)result.getFmoney()+"");
 					}
 				} else {
 					if (result.getMessage() != null)
@@ -195,7 +198,7 @@ public class IncomeDetailActivity extends BaseActivity {
 
 			switch (info.getType()) {
 			case 1:
-				holder.title.setText("支付");
+				holder.title.setText("收入");
 				int out1 = (int)info.getAmount_out1(); // 平台
 				int out2 = (int)info.getAmount_out1(); // 驾校
 				int total = money + out1 + out2; // 总额
@@ -220,10 +223,10 @@ public class IncomeDetailActivity extends BaseActivity {
 
 				float amoumt = info.getAmount() - info.getAmount_out1() - info.getAmount_out2();
 				if (amoumt >= 0) {
-					holder.number.setText("+ " + money);
+					holder.number.setText("+ " + money+"元");
 					holder.number.setTextColor(Color.parseColor("#20b478"));
 				} else {
-					holder.number.setText("- " + money);
+					holder.number.setText("- " + money+"元");
 					holder.number.setTextColor(Color.parseColor("#e0483d"));
 				}
 				break;
@@ -281,6 +284,19 @@ public class IncomeDetailActivity extends BaseActivity {
 					holder.number.setTextColor(Color.parseColor("#e0483d"));
 				}
 				break;
+			case 6:
+				holder.title.setText("提现失败");
+				if (holder.tip.getVisibility() == View.VISIBLE)
+				{
+					holder.tip.setVisibility(View.GONE);
+				}
+				if (info.getAmount() >= 0) {
+					holder.number.setText("+ " + money +"元");
+					holder.number.setTextColor(Color.parseColor("#20b478"));
+				} else {
+					holder.number.setText("- " + money +"元");
+					holder.number.setTextColor(Color.parseColor("#e0483d"));
+				}
 			default:
 				break;
 			}

@@ -55,5 +55,7 @@
     <color name="date_back">#444444</color>
     <color name="date_green">#167f53</color>
     <color name="date_orange">#9e5506</color>
+    <color name="text_light_dark">#666666</color>
+    <color name="text_light_red">#fc5656</color>
 
 </resources>

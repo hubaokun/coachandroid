@@ -17,12 +17,13 @@ import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.views.LoadingDialog;
 
 import com.daoshun.lib.communication.http.JSONAccessor;
-
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.NumberKeyListener;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,12 +36,15 @@ public class RechargeActivity extends BaseActivity {
 	EditText mInput;
 	@ViewById(R.id.recharge_btn)
 	Button mSubmit;
+	@ViewById(R.id.img_clenr_money)
+	ImageView imgClearn;
 
 	@AfterViews
 	void init() {
 		addListeners();
 	}
 
+	@SuppressLint("NewApi")
 	private void addListeners() {
 		mInput.setKeyListener(new NumberKeyListener() {
 
@@ -68,6 +72,19 @@ public class RechargeActivity extends BaseActivity {
 
 			@Override
 			public void afterTextChanged(Editable s) {
+				
+				if (s.length()>0)
+				{
+					imgClearn.setVisibility(View.VISIBLE);
+					mSubmit.setBackground(getResources().getDrawable(R.drawable.selector_yellow_round));
+					mSubmit.setClickable(true);
+					mSubmit.setTextColor(getResources().getColor(R.color.white));
+				}else{
+					imgClearn.setVisibility(View.GONE);
+					mSubmit.setBackground(getResources().getDrawable(R.drawable.shape_gray_round));
+					mSubmit.setClickable(false);
+					mSubmit.setTextColor(0xffcdcdcd);
+				}
 				if (s.toString().equals("0") && s.length() == 1)
 					mInput.setText("");
 			}

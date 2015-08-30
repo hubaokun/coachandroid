@@ -28,6 +28,8 @@ public class PerfectCoachInfoReq {
 	String driveschoolid;
 	String token;
 	private String cityid;
+	private String provinceid;
+	private String areaid;
 	
 	
 	public String getToken() {
@@ -179,6 +181,18 @@ public class PerfectCoachInfoReq {
 	}
 	public void setCityid(String cityid) {
 		this.cityid = cityid;
+	}
+	public String getProvinceid() {
+		return provinceid;
+	}
+	public void setProvinceid(String provinceid) {
+		this.provinceid = provinceid;
+	}
+	public String getAreaid() {
+		return areaid;
+	}
+	public void setAreaid(String areaid) {
+		this.areaid = areaid;
 	}
 	
 	

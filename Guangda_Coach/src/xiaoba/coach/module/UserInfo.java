@@ -66,6 +66,8 @@ public class UserInfo {
 	int cashtype;
 	private String invitecode;
 	private String cityid;
+	private String provinceid;
+	private String areaid;
 	
 	public int getCashtype() {
 		return cashtype;
@@ -666,5 +668,21 @@ public class UserInfo {
 
 	public void setCityid(String cityid) {
 		this.cityid = cityid;
+	}
+
+	public String getProvinceid() {
+		return provinceid;
+	}
+
+	public void setProvinceid(String provinceid) {
+		this.provinceid = provinceid;
+	}
+
+	public String getAreaid() {
+		return areaid;
+	}
+
+	public void setAreaid(String areaid) {
+		this.areaid = areaid;
 	}
 }

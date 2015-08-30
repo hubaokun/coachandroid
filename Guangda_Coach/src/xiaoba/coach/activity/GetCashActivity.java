@@ -13,9 +13,13 @@ import xiaoba.coach.common.Settings;
 import xiaoba.coach.module.BaseParam;
 import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.GetIncomeDetailResult;
+import xiaoba.coach.net.result.GetMyStudentResult.myStudent;
 import xiaoba.coach.utils.CommonUtils;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.AsyncTask;
+import android.provider.CalendarContract.Colors;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -28,6 +32,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daoshun.lib.communication.http.JSONAccessor;
+import com.daoshun.lib.view.OnSingleClickListener;
 
 @EActivity(R.layout.activity_get_cash)
 public class GetCashActivity extends BaseActivity {
@@ -42,6 +47,12 @@ public class GetCashActivity extends BaseActivity {
 	LinearLayout mRedPart;
 	@ViewById(R.id.yue_amount)
 	TextView mYueAmouont;
+	@ViewById(R.id.img_clenr_money)
+	ImageView imgClearn;
+	@ViewById(R.id.ll_not_enough_money)
+	LinearLayout llNotEnoughMoney;
+	@ViewById(R.id.ll_get_money)
+	LinearLayout llGetMoney;
 
 	float mBalance;
 	float mPro;
@@ -60,12 +71,16 @@ public class GetCashActivity extends BaseActivity {
 		mPro = getIntent().getFloatExtra("pro", 0f);
 		if ((int) mBalance == 0) {
 			//new GetMyBalanceInfoTask().execute();
+			llNotEnoughMoney.setVisibility(View.VISIBLE);
+			llGetMoney.setVisibility(View.GONE);
 		} else {
-			
+			llNotEnoughMoney.setVisibility(View.GONE);
+			llGetMoney.setVisibility(View.VISIBLE);
 		}
-		mYueAmouont.setText((int) mBalance + "元");
+		mYueAmouont.setText((int) mBalance+"");
 	}
 
+	@SuppressLint("NewApi")
 	private void addListeners() {
 		mInput.setKeyListener(new NumberKeyListener() {
 
@@ -93,8 +108,40 @@ public class GetCashActivity extends BaseActivity {
 
 			@Override
 			public void afterTextChanged(Editable s) {
+				
+
+				if (s.length()>0)
+				{
+					imgClearn.setVisibility(View.VISIBLE);
+					int money = Integer.parseInt(s.toString());
+					if (money>=50)
+					{
+					mSubmit.setBackground(getResources().getDrawable(R.drawable.selector_yellow_round));
+					mSubmit.setClickable(true);
+					mSubmit.setTextColor(getResources().getColor(R.color.white));
+					}else{
+						mSubmit.setBackground(getResources().getDrawable(R.drawable.shape_gray_round));
+						mSubmit.setClickable(false);
+						mSubmit.setTextColor(0xffcdcdcd);
+					}
+				}else{
+					imgClearn.setVisibility(View.GONE);
+					mSubmit.setBackground(getResources().getDrawable(R.drawable.shape_gray_round));
+					mSubmit.setClickable(false);
+					mSubmit.setTextColor(0xffcdcdcd);
+				}
+				
 				if (s.toString().equals("0") && s.length() == 1)
 					mInput.setText("");
+			}
+		});
+		
+		imgClearn.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				mInput.setText("");
 			}
 		});
 

@@ -22,6 +22,7 @@ import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.getMyCoinsListResult;
 import xiaoba.coach.net.result.getMyCoinsListResult.CoinList;
 import xiaoba.coach.utils.CommonUtils;
+import xiaoba.coach.views.CoinRulesDialog;
 import xiaoba.coach.views.DuiHuanShowDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -58,6 +59,7 @@ public class ActivityMyCoin extends BaseActivity {
 	private List<CoinList> getMycoinList = new ArrayList<CoinList>();
 	private MyCoinAdapter myCoinAda;
 	int mPageNum;
+	private CoinRulesDialog coinRulesDialog;
 	
 	 @Override
 	    protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class ActivityMyCoin extends BaseActivity {
 	        setContentView(R.layout.activity_my_coin);
 	        context = this;
 	        duiHuanDialog = new DuiHuanShowDialog(context);
+	        coinRulesDialog = new CoinRulesDialog(context);
 	        getData();
 	        initView();
 	        initData();
@@ -160,15 +163,14 @@ public class ActivityMyCoin extends BaseActivity {
 //				}
 			}
 		});
-//		tvRight.setOnClickListener(new OnSingleClickListener() {
-//			
-//			@Override
-//			public void doOnClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intent = new Intent (context,ActivityMyCoinsList.class);
-//				startActivity(intent);
-//			}
-//		});
+		tvRight.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				coinRulesDialog.show();
+			}
+		});
 		
 		imgBack.setOnClickListener(new OnSingleClickListener() {
 			

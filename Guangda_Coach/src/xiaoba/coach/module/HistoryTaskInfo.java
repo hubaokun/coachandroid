@@ -3,7 +3,7 @@ package xiaoba.coach.module;
 public class HistoryTaskInfo extends TaskInfo {
 	Studentscore studentscore;
 	Coachscore coachscore;
-
+	private int disagree;
 	public Studentscore getStudentscore() {
 		return studentscore;
 	}
@@ -18,6 +18,14 @@ public class HistoryTaskInfo extends TaskInfo {
 
 	public void setCoachscore(Coachscore coachscore) {
 		this.coachscore = coachscore;
+	}
+
+	public int getDisagree() {
+		return disagree;
+	}
+
+	public void setDisagree(int disagree) {
+		this.disagree = disagree;
 	}
 
 	public class Studentscore {

@@ -3035,7 +3035,6 @@ public class DateSetFragment extends Fragment {
 		setDefaultDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 		// WindowManager.LayoutParams params =
 		// setDialog.getWindow().getAttributes();
-
 		Button confirm = (Button) setDefaultDialog.findViewById(R.id.confirm);
 		Button cancel = (Button) setDefaultDialog.findViewById(R.id.cancel);
 		select = (ImageView) setDefaultDialog.findViewById(R.id.default_select);
