@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+    
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+    <include
+        layout="@layout/layout_titlebar"
+        android:background="@color/white" />
+    </RelativeLayout>
+    
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RelativeLayout android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/rl_c1">
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/chose_c1_normal"
+                android:id="@+id/rl_chose_c1_normal">
+                
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C1手动挡"
+                    android:textColor="@color/text_grey"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_horizontal"/>
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_c1car"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/chose_car_select"
+                android:id="@+id/rl_chose_c1_select"
+                android:visibility="gone">
+                
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C1手动挡"
+                    android:textColor="@color/text_green"
+                    android:textSize="16sp"
+                    android:layout_gravity="center_horizontal"/>
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_selected_c1car"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"/>
+                </LinearLayout>
+                
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_select_car"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </RelativeLayout>
+                <RelativeLayout android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:id="@+id/rl_c2">
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/chose_c1_normal"
+                android:id="@+id/rl_chose_c2_normal">
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+                
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="C2自动挡"
+                        android:textColor="@color/text_grey"
+                        android:textSize="16sp"
+                        android:layout_gravity="center_horizontal"/>
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_c2car"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+                        <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/chose_car_select"
+                android:id="@+id/rl_chose_c2_select"
+                android:visibility="gone">
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+                
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="C2自动挡"
+                        android:textColor="@color/text_green"
+                        android:textSize="16sp"
+                        android:layout_gravity="center_horizontal"/>
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_selected_c2car"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"/>
+                </LinearLayout>
+                             <ImageView
+                  android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_select_car"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="（可多选）"
+        android:textColor="@color/text_grey"
+        android:textSize="13sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>
