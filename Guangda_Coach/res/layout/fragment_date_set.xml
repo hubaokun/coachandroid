@@ -118,13 +118,56 @@
             android:layout_alignParentBottom="true"
             android:id="@+id/rl_bottom"
             android:visibility="gone">
-        
+            
+              <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:id="@+id/ll_open_class"
+            	  android:paddingTop="10dp"
+            	  android:paddingBottom="10dp">
+                  
+                  
+                   <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_marginBottom="10dp"
+                      android:id="@+id/ll_check">
+                  <RelativeLayout 
+                      android:layout_width="16dp"
+                      android:layout_height="16dp"
+                      android:background="@drawable/round_reangle"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center_vertical"
+                      android:id="@+id/rl_check">
+                      
+                      <ImageView
+                          android:layout_width="15dp"
+                          android:layout_height="10dp"
+                          android:src="@drawable/check"
+                          android:visibility="invisible"
+                          android:id="@+id/img_check"
+                          android:layout_centerInParent="true"/>
+                  </RelativeLayout>
+                  
+                  <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="全选"
+                      android:textSize="14dp"
+                      android:textColor="#444444"
+                      android:layout_gravity="center_vertical"
+                      android:layout_marginLeft="5dp"/>
+                  <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="(未开课)"
+                      android:textColor="#444444"
+                      android:textSize="12dp"
+                      android:layout_gravity="center_vertical"
+                      android:layout_marginLeft="5dp"/>
+        </LinearLayout> 
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/ll_open_class"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+            android:orientation="horizontal">
+
             <Button android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -150,23 +193,71 @@
                 android:id="@+id/btn_confirm_open"/>
             
         </LinearLayout>
+      </LinearLayout>
+                      
         
                 <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rl_colse_class">
+              <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:id="@+id/ll_opend"
+            	  android:paddingTop="10dp"
+            	  android:paddingBottom="10dp">
+                  
+                  
+                   <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_marginBottom="10dp"
+                      android:id="@+id/ll_opened_check">
+                  <RelativeLayout 
+                      android:layout_width="16dp"
+                      android:layout_height="16dp"
+                      android:background="@drawable/round_reangle"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center_vertical"
+                      android:id="@+id/rl_opened_check">
+                      
+                      <ImageView
+                          android:layout_width="15dp"
+                          android:layout_height="10dp"
+                          android:src="@drawable/check"
+                          android:visibility="invisible"
+                          android:id="@+id/img_open_check"
+                          android:layout_centerInParent="true"/>
+                  </RelativeLayout>
+                  
+                  <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="全选"
+                      android:textSize="14dp"
+                      android:textColor="#444444"
+                      android:layout_gravity="center_vertical"
+                      android:layout_marginLeft="5dp"/>
+                  <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="(已开课)"
+                      android:textColor="#444444"
+                      android:textSize="12dp"
+                      android:layout_gravity="center_vertical"
+                      android:layout_marginLeft="5dp"/>
+        </LinearLayout> 
+            
             <Button android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="停课"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                  android:padding="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/shape_red_round"
                 android:id="@+id/btn_close_class"/>
+            </LinearLayout>
         </RelativeLayout>
         
         </RelativeLayout>
@@ -178,7 +269,8 @@
             android:layout_height="match_parent"
             android:background="#f3f3f3"
             android:scrollbars="none"
-            android:layout_above="@id/rl_bottom">
+            android:layout_above="@id/rl_bottom"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"

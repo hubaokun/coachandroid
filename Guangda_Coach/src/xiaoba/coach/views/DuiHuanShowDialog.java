@@ -16,7 +16,7 @@ public class DuiHuanShowDialog extends BaseDialog {
 	private TextView tvId;
 	private TextView tvFrom;
 	private TextView tvCount;
-	private TextView tvMoney;
+//	private TextView tvMoney;
 	private TextView tvTime;
 
 	public DuiHuanShowDialog(Context context) {
@@ -38,7 +38,7 @@ public class DuiHuanShowDialog extends BaseDialog {
 		tvName.setText(Name);
 		tvFrom.setText(From);
 		tvCount.setText(Count);
-		tvMoney.setText(Money);
+//		tvMoney.setText(Money);
 		tvTime.setText(Time);
 		show();
 	}
@@ -56,7 +56,7 @@ public class DuiHuanShowDialog extends BaseDialog {
 		tvName = (TextView)findViewById(R.id.tv_duihuan_name);
 		tvFrom = (TextView)findViewById(R.id.tv_duihuan_from);
 		tvCount = (TextView)findViewById(R.id.tv_duihuan_count);
-		tvMoney = (TextView)findViewById(R.id.tv_zhesuan_money);
+//		tvMoney = (TextView)findViewById(R.id.tv_zhesuan_money);
 		tvTime = (TextView)findViewById(R.id.tv_shenqing_time);
 		imgClose = (ImageView)findViewById(R.id.img_close);
 		

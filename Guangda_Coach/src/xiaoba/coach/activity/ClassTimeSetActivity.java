@@ -51,6 +51,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,6 +76,8 @@ public class ClassTimeSetActivity extends BaseActivity {
 	ImageView mModifLoc; // 修改教学地点
 	@ViewById(R.id.classset_hours)
 	TextView mHours; // 修改的时间
+	@ViewById (R.id.ll_modify_loca)
+	LinearLayout llChangeLoca;
 /*	@ViewById(R.id.btn_isrest)
 	ImageView mIsRest;*/
 /*	@ViewById(R.id.open_close_tip)
@@ -130,7 +133,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 		new GetAllSubjectTask().execute();
 		new GetAllAddressTask().execute();
 
-		mModifLoc.setOnClickListener(new OnSingleClickListener() {
+		llChangeLoca.setOnClickListener(new OnSingleClickListener() {
 			@Override
 			public void doOnClick(View v) {
 				if (locContent != null && locContent.length > 0) {
@@ -496,6 +499,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 			}else{
 				hour = ""+hour1;
 			}
+			
 			if (count <= textLength) {
 				if (first) {
 					sb.append(hour + ":00");
@@ -503,13 +507,13 @@ public class ClassTimeSetActivity extends BaseActivity {
 					first = false;
 					continue;
 				}
-				if (count % textLength == 0) {
+				if (count==textLength-1) {
 					sb.append("\n" + hour + ":00、");
 					count = 0;
 					first = true;
 					continue;
 				}
-				sb.append("、 " + hour + ":00");
+				sb.append("、" + hour + ":00");
 				count++;
 			}
 		}
@@ -644,7 +648,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 
 	SelectDialog dialog;
 
-	@Click(R.id.modify_classset_content)
+	@Click(R.id.ll_modify_content)
 	void showContent() {
 		if (content != null && content.length > 0) {
 			setRightClick();
@@ -694,7 +698,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 		}
 	}
 
-	@Click(R.id.modify_classset_price)
+	@Click(R.id.ll_chang_price)
 	void inputPrice() {
 
 		pricerDialog.show();

@@ -331,7 +331,7 @@ public class ProQualityActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				mWheelCityDialog.mgr = new DBManager(ProQualityActivity.this);
 				mWheelCityDialog.provincelist = (ArrayList<Province>) mWheelCityDialog.mgr.queryProvince();
-				if (!TextUtils.isEmpty(tvCity.getText().toString().trim()))
+				if (!"未设置".equals(tvCity.getText().toString().trim()))
 				{
 					String locationName = tvCity.getText().toString().trim();
 					String[] location = locationName.split("-");

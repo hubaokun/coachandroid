@@ -203,7 +203,7 @@
 	<string name="not_enough_money">您的账户余额低于50元，去赚够更多的钱再来吧~</string>
 	<string name="get_money">单次提现金额需≥50元</string>
 	<string name="coin_rules_one">教练发行的小巴币不能兑换现金，仅生成兑换记录；</string>
-	<string name="coin_rules_two">驾校发行的小巴币，兑换后直接到该驾校去领现金；</string>
-	<string name="coin_rules_three">小巴平台发行的小巴币，兑换后1-2个工作日发放到您的账户余额。</string>
+	<string name="coin_rules_two">驾校发行的小巴币，兑换后请咨询驾校；</string>
+	<string name="coin_rules_three">小巴平台发行的小巴币，兑换后3个工作日发放到您的账户余额。</string>
 	
 </resources>

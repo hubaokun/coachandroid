@@ -52,8 +52,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -436,6 +440,14 @@ public class DateSetFragment extends Fragment {
 	private boolean ISClickCalender = false;
 	private boolean ISCleanChosedHour = false;
 	private boolean isNotSet = false;
+	private ImageView imgChoseAll;
+	private RelativeLayout rlCheck;
+	private LinearLayout llCheck;
+	private RelativeLayout rlOpenedCheck;
+	private LinearLayout llOpenedCheck;
+	private ImageView imgOpenedCheck;
+	private List<Schedule> chosedSchedule = new ArrayList<Schedule>();
+	private boolean isFullDown = false;
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -447,7 +459,7 @@ public class DateSetFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_date_set, container, false);
 		mLoadingDialog = new LoadingDialog(mActivity, true);
 		resources = this.getResources();
-
+//		mGestureDetector =  new GestureDetector(mActivity,new MyOnGestureListener());
 		initView(view);
 		addListeners();
 		initData();
@@ -819,6 +831,12 @@ public class DateSetFragment extends Fragment {
 		mHangingArrow = (RelativeLayout) view.findViewById(R.id.hanging_arrow_part);
 		mHangingContent = (LinearLayout) view.findViewById(R.id.hanging_content);
 		mArrowUp = (RelativeLayout) view.findViewById(R.id.arrow_part);
+		imgChoseAll = (ImageView)view.findViewById(R.id.img_check);
+		//rlCheck = (RelativeLayout)view.findViewById(R.id.rl_check);
+		llCheck = (LinearLayout)view.findViewById(R.id.ll_check);
+		llOpenedCheck = (LinearLayout)view.findViewById(R.id.ll_opened_check);
+		imgOpenedCheck = (ImageView)view.findViewById(R.id.img_open_check);
+		rlOpenedCheck = (RelativeLayout)view.findViewById(R.id.rl_opened_check);
 	}
 	
 	private void setOneHourView(int hour)
@@ -830,6 +848,8 @@ public class DateSetFragment extends Fragment {
 				imgFiveSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgFiveSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -841,6 +861,8 @@ public class DateSetFragment extends Fragment {
 				imgSixSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgSixSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -852,6 +874,8 @@ public class DateSetFragment extends Fragment {
 				imgSevenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgSevenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -863,6 +887,8 @@ public class DateSetFragment extends Fragment {
 				imgEightSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgEightSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -874,6 +900,8 @@ public class DateSetFragment extends Fragment {
 				imgNineSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgNineSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -885,6 +913,8 @@ public class DateSetFragment extends Fragment {
 				imgTenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgTenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -896,6 +926,8 @@ public class DateSetFragment extends Fragment {
 				imgElevenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgElevenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -907,6 +939,8 @@ public class DateSetFragment extends Fragment {
 				imgTwelveSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgTwelveSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -918,6 +952,8 @@ public class DateSetFragment extends Fragment {
 				imgThirteenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgThirteenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -929,6 +965,8 @@ public class DateSetFragment extends Fragment {
 				imgFourteenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgFourteenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -940,6 +978,8 @@ public class DateSetFragment extends Fragment {
 				imgFifteenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgFifteenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -951,6 +991,8 @@ public class DateSetFragment extends Fragment {
 				imgSixteenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgSixteenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -962,6 +1004,8 @@ public class DateSetFragment extends Fragment {
 				imgSeventeenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgSeventeenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -973,6 +1017,8 @@ public class DateSetFragment extends Fragment {
 				imgEighteenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgEighteenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -984,6 +1030,8 @@ public class DateSetFragment extends Fragment {
 				imgNineteenSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgNineteenSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -996,6 +1044,8 @@ public class DateSetFragment extends Fragment {
 				imgTwentySelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else
 			{
 				imgTwentySelect.setVisibility(View.VISIBLE);
@@ -1009,6 +1059,8 @@ public class DateSetFragment extends Fragment {
 				imgTwentyOneSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgTwentyOneSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -1020,6 +1072,8 @@ public class DateSetFragment extends Fragment {
 				imgTwentyTwoSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgTwentyTwoSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -1032,6 +1086,8 @@ public class DateSetFragment extends Fragment {
 				imgTwentyThreeSelect.setVisibility(View.GONE);
 				int position = chosedHour.indexOf(hour);
 				chosedHour.remove(position);
+				imgChoseAll.setVisibility(View.GONE);
+				imgOpenedCheck.setVisibility(View.GONE);
 			}else{
 				imgTwentyThreeSelect.setVisibility(View.VISIBLE);
 				chosedHour.add(hour);
@@ -1090,6 +1146,22 @@ public class DateSetFragment extends Fragment {
 				}
 			}
 		}
+		
+		if (!isFullDown)
+		{
+		mScrollView.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+			}
+		},500);
+		}
+		
+		if (!isFullDown){
+			isFullDown = true;
+		}
 		setOneHourView(hour);
 //		chosedHour.add(hour);
 		chosedIsRest = stateArray[index];
@@ -1108,7 +1180,10 @@ public class DateSetFragment extends Fragment {
 		}
 		else{
 			rlBottom.setVisibility(View.GONE);
+			imgChoseAll.setVisibility(View.GONE);
+			imgOpenedCheck.setVisibility(View.GONE);
 			IsChosed = 0;
+			isFullDown = false;
 		}
 	}
 	}
@@ -1118,6 +1193,78 @@ public class DateSetFragment extends Fragment {
 		/*
 		 * click title bar triangle left
 		 */
+		llCheck.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+
+				if (imgChoseAll.getVisibility() == View.VISIBLE)
+				{
+					imgChoseAll.setVisibility(View.GONE);
+					rlBottom.setVisibility(View.GONE);
+					for (Schedule schedule:chosedSchedule)
+					{
+						if (schedule.getIsrest() == 1&& schedule.getExpire() !=1)
+						{
+							if (chosedHour.contains(schedule.getHour()))
+							{
+								setOneHourView(schedule.getHour());
+							}
+						}
+					}
+				}else{
+					imgChoseAll.setVisibility(View.VISIBLE);
+					for (Schedule schedule:chosedSchedule)
+					{
+						if (schedule.getIsrest() == 1&& schedule.getExpire() !=1)
+						{
+							if (!chosedHour.contains(schedule.getHour()))
+							{
+								setOneHourView(schedule.getHour());
+							}
+						}
+					}
+				}
+			}
+		});
+		
+		llOpenedCheck.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				if (imgOpenedCheck.getVisibility() == View.VISIBLE)
+				{
+					imgOpenedCheck.setVisibility(View.GONE);
+					rlBottom.setVisibility(View.GONE);
+					for (Schedule schedule:chosedSchedule)
+					{
+						if (schedule.getIsrest() == 0&& schedule.getExpire() !=1)
+						{
+							if (chosedHour.contains(schedule.getHour()))
+							{
+								setOneHourView(schedule.getHour());
+							}
+						}
+					}
+				}else{
+					imgOpenedCheck.setVisibility(View.VISIBLE);
+					for (Schedule schedule:chosedSchedule)
+					{
+						if (schedule.getIsrest() == 0&& schedule.getExpire() !=1)
+						{
+							if (!chosedHour.contains(schedule.getHour()))
+							{
+								setOneHourView(schedule.getHour());
+							}
+						}
+					}
+				}
+			}
+		});
+		
+		
 		mToLastMonth.setOnClickListener(new OnSingleClickListener() {
 
 			@Override
@@ -1256,6 +1403,7 @@ public class DateSetFragment extends Fragment {
 //					gCurrnetMonthView.setLayoutParams(param);
 					mHangingContent.setVisibility(View.INVISIBLE);
 					gSelectAdapter.notifyDataSetChanged();
+					isFullDown = false;
 				}
 				if (scrollY > (Settings.DISPLAY_WIDTH - 12) / 7 * (lineNum - 1)) {
 					mHangingArrow.setVisibility(View.VISIBLE);
@@ -1295,14 +1443,18 @@ public class DateSetFragment extends Fragment {
 			}
 		});
 		
+		
 		rlTwentyThree.setOnClickListener(new OnSingleClickListener() {
 			
 			@Override
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(23,18);
+				
+				//mScrollView.setMode(Mode.PULL_FROM_END);
 			}
 		});
+		
 		
 		rlTwentyTwo.setOnClickListener(new OnSingleClickListener() {
 			
@@ -1310,6 +1462,19 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(22, 17);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
+				
+				//mScrollView.setMode(Mode.PULL_FROM_END);
 			}
 		});
 		
@@ -1319,8 +1484,21 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(21, 16);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
+				//mScrollView.setMode(Mode.PULL_FROM_END);
 			}
 		});
+		
 		
 		rlTwenty.setOnClickListener(new OnSingleClickListener() {
 			
@@ -1328,6 +1506,18 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(20, 15);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
+				//mScrollView.setMode(Mode.PULL_FROM_END);
 			}
 		});
 		
@@ -1337,6 +1527,18 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(19, 14);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
+				//mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
 			}
 		});
 		
@@ -1346,6 +1548,18 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(18, 13);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//						}
+//				},500);
+//				}
+				//mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
 			}
 		});
 		
@@ -1355,6 +1569,18 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(17, 12);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
+				//mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
 			}
 		});
 		
@@ -1364,6 +1590,17 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(16, 11);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
 			}
 		});
 		
@@ -1373,6 +1610,17 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(15, 10);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
 			}
 		});
 		
@@ -1382,6 +1630,14 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(14, 9);
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				}, 500);
 			}
 		});
 		
@@ -1391,6 +1647,14 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(13, 8);
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				}, 500);
 			}
 		});
 		
@@ -1400,6 +1664,14 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(12, 7);
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				}, 500);
 			}
 		});
 		
@@ -1409,6 +1681,17 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(11, 6);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
 			}
 		});
 		
@@ -1418,6 +1701,17 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(10,5);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
 			}
 		});
 		
@@ -1427,6 +1721,17 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(9,4);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
 			}
 		});
 		
@@ -1436,6 +1741,17 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(8,3);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
 			}
 		});
 		
@@ -1445,6 +1761,17 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(7,2);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
 			}
 		});
 		
@@ -1454,6 +1781,17 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(6,1);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
 			}
 		});
 		
@@ -1463,6 +1801,17 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(5,0);
+//				if (!isFullDown)
+//				{
+//				mScrollView.postDelayed(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+//					}
+//				},500);
+//				}
 			}
 		});
 //		mMorSelectAll.setOnClickListener(new OnSingleClickListener() {
@@ -2939,6 +3288,7 @@ public class DateSetFragment extends Fragment {
 					@Override
 					public void run() {
 						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_UP);
+						isFullDown = false;
 					}
 				});
 			}
@@ -2952,6 +3302,7 @@ public class DateSetFragment extends Fragment {
 					@Override
 					public void run() {
 						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
+						isFullDown = false;
 					}
 				});
 			}
@@ -3228,6 +3579,7 @@ public class DateSetFragment extends Fragment {
 
 		setSelectLine(getSelectLine(calSelected));
 		new RefreshBallStateTask(true,true).execute();
+		new GetDefaultScheduleTask(calSelected).execute();
 	}
 
 	// 当月
@@ -3263,6 +3615,7 @@ public class DateSetFragment extends Fragment {
 		});
 		setSelectLine(getSelectLine(calSelected));
 		new RefreshBallStateTask(true,true).execute();
+		new GetDefaultScheduleTask(calSelected).execute();
 	}
 
 	AnimationListener animationListener = new AnimationListener() {
@@ -3515,6 +3868,16 @@ public class DateSetFragment extends Fragment {
 		public GetDefaultScheduleTask(Calendar calendar)
 		{
 			mCalendar = calendar;
+//			if (chosedHour.size() == 0)
+//			{
+//				rlBottom.setVisibility(View.GONE);
+//			}
+			chosedHour.clear();
+			IsChosed = 0;
+			isFullDown = false;
+			rlBottom.setVisibility(View.GONE);
+			imgChoseAll.setVisibility(View.GONE);
+			imgOpenedCheck.setVisibility(View.GONE);
 		}
 		
 		JSONAccessor accessor = new JSONAccessor(mActivity, JSONAccessor.METHOD_POST);
@@ -3808,6 +4171,7 @@ public class DateSetFragment extends Fragment {
 	public void checkUpdate(Calendar selectedDate,boolean isClickCalender,boolean isCleanChosedHour) {
 		ISClickCalender = isClickCalender;
 		ISCleanChosedHour = isCleanChosedHour;
+		chosedSchedule.clear();
 		if (ISCleanChosedHour)
 		{
 			chosedHour.clear();
@@ -3830,6 +4194,7 @@ public class DateSetFragment extends Fragment {
 
 			if (equalsDate(selectedDate.getTime(), date2)) {
 				SchedulePosition = positon;
+				chosedSchedule.add(schedule);
 				if (schedule.getHour() == 0) {
 					/*
 					 * 全局设置
@@ -4167,7 +4532,7 @@ public class DateSetFragment extends Fragment {
 			return;
 		}
 		
-		if (schedule.getIsrest() ==1)
+		if (schedule.getIsrest() ==1)  //未开课
 		{
 			//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_not_set));
 			rlBack.setBackgroundResource(R.drawable.date_set_not_set);
@@ -4190,11 +4555,18 @@ public class DateSetFragment extends Fragment {
 			{
 			if (defaultSchedule.size() !=0)
 			{
-				price.setText(defaultSchedule.get(pos).getPrice()+"");
-				subject.setText(defaultSchedule.get(pos).getSubject());
-				scheduleResult.getDatelist().get(SchedulePosition).setPrice(defaultSchedule.get(pos).getPrice()+"");
-				scheduleResult.getDatelist().get(SchedulePosition).setSubject(defaultSchedule.get(pos).getSubject());
-				scheduleResult.getDatelist().get(SchedulePosition).setAddressdetail(defaultSchedule.get(pos).getAddressdetail());
+				for(int i=0;i<defaultSchedule.size();i++)
+				{
+					if (defaultSchedule.get(i).getHour() == pos+5)
+					{
+					price.setText(defaultSchedule.get(i).getPrice()+"");
+					subject.setText(defaultSchedule.get(i).getSubject());
+					scheduleResult.getDatelist().get(SchedulePosition).setPrice(defaultSchedule.get(i).getPrice()+"");
+					scheduleResult.getDatelist().get(SchedulePosition).setSubject(defaultSchedule.get(i).getSubject());
+					scheduleResult.getDatelist().get(SchedulePosition).setAddressdetail(defaultSchedule.get(i).getAddressdetail());
+					break;
+					}
+				}
 			}
 			}
 		}else{
@@ -4340,8 +4712,8 @@ public class DateSetFragment extends Fragment {
 					{
 						schedule.setIsrest(0);
 					}
-					chosedScheduleArray.add(schedule);
 					}
+					chosedScheduleArray.add(schedule);
 					}else{
 						for (int hour:chosedHour)
 						{
@@ -4374,7 +4746,10 @@ public class DateSetFragment extends Fragment {
 				if (result.getCode() == 1) {
 					chosedHour.clear();
 					IsChosed = 0;
+					isFullDown = false;
 					rlBottom.setVisibility(View.GONE);
+					imgChoseAll.setVisibility(View.GONE);
+					imgOpenedCheck.setVisibility(View.GONE);
 					if (type != null && type.equals("1")) {
 //						isAllDayOpen = true;
 //						mAllDaySetClose.setText("当天停课");
@@ -4912,5 +5287,95 @@ public class DateSetFragment extends Fragment {
 		}
 
 	}
+	
+	
+/*	 private String getActionName(int action) {
+	        String name = "";
+	        switch (action) {
+	            case MotionEvent.ACTION_DOWN: {
+	                name = "ACTION_DOWN";
+	                break;
+	            }
+	            case MotionEvent.ACTION_MOVE: {
+	                name = "ACTION_MOVE";
+	                break;
+	            }
+	            case MotionEvent.ACTION_UP: {
+	                name = "ACTION_UP";
+	                break;
+	            }
+	            default:
+	            break;
+	        }
+	        return name;
+	    }
 
+	    class MyOnGestureListener extends SimpleOnGestureListener {
+	        @Override
+	        public boolean onSingleTapUp(MotionEvent e) {
+	            Log.i(getClass().getName(), "onSingleTapUp-----" + getActionName(e.getAction()));
+	            Toast.makeText(mActivity, getClass().getName().toString()+"-----"+"onSingleTapUp-----" + getActionName(e.getAction()),0).show();
+	            return false;
+	        }
+
+	        @Override
+	        public void onLongPress(MotionEvent e) {
+	            Log.i(getClass().getName(), "onLongPress-----" + getActionName(e.getAction()));
+	            Toast.makeText(mActivity, getClass().getName().toString()+"-----"+"onLongPress-----" + getActionName(e.getAction()),0).show();
+	        }
+
+	        @Override
+	        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+	            Log.i(getClass().getName(),
+	                    "onScroll-----" + getActionName(e2.getAction()) + ",(" + e1.getX() + "," + e1.getY() + ") ,("
+	                            + e2.getX() + "," + e2.getY() + ")");
+	            Toast.makeText(mActivity, getClass().getName().toString()+"-----"+"onScroll-----" + getActionName(e2.getAction()) + ",(" + e1.getX() + "," + e1.getY() + ") ,("
+                        + e2.getX() + "," + e2.getY() + ")",0).show();
+	            return false;
+	        }
+
+	        @Override
+	        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+	            Log.i(getClass().getName(),
+	                    "onFling-----" + getActionName(e2.getAction()) + ",(" + e1.getX() + "," + e1.getY() + ") ,("
+	                            + e2.getX() + "," + e2.getY() + ")");
+	            Toast.makeText(mActivity, getClass().getName().toString()+"-----"+"onFling-----" + getActionName(e2.getAction()) + ",(" + e1.getX() + "," + e1.getY() + ") ,("
+                        + e2.getX() + "," + e2.getY() + ")",0).show();
+	            return false;
+	        }
+
+	        @Override
+	        public void onShowPress(MotionEvent e) {
+	            Log.i(getClass().getName(), "onShowPress-----" + getActionName(e.getAction()));
+	            Toast.makeText(mActivity, getClass().getName().toString()+"-----"+"onShowPress-----" + getActionName(e.getAction()),0).show();
+	        }
+
+	        @Override
+	        public boolean onDown(MotionEvent e) {
+	            Log.i(getClass().getName(), "onDown-----" + getActionName(e.getAction()));
+	            Toast.makeText(mActivity, getClass().getName().toString()+"-----"+"onDown-----" + getActionName(e.getAction()),0).show();
+	            return false;
+	        }
+
+	        @Override
+	        public boolean onDoubleTap(MotionEvent e) {
+	            Log.i(getClass().getName(), "onDoubleTap-----" + getActionName(e.getAction()));
+	            Toast.makeText(mActivity, getClass().getName().toString()+"-----"+"onDoubleTap-----" + getActionName(e.getAction()),0).show();
+	            return false;
+	        }
+
+	        @Override
+	        public boolean onDoubleTapEvent(MotionEvent e) {
+	            Log.i(getClass().getName(), "onDoubleTapEvent-----" + getActionName(e.getAction()));
+	            Toast.makeText(mActivity, getClass().getName().toString()+"-----"+"onDoubleTapEvent-----" + getActionName(e.getAction()),0).show();
+	            return false;
+	        }
+
+	        @Override
+	        public boolean onSingleTapConfirmed(MotionEvent e) {
+	            Log.i(getClass().getName(), "onSingleTapConfirmed-----" + getActionName(e.getAction()));
+	            Toast.makeText(mActivity, getClass().getName().toString()+"-----"+"onSingleTapConfirmed-----" + getActionName(e.getAction()),0).show();
+	            return false;
+	        }
+	    }*/
 }

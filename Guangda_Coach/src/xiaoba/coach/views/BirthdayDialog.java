@@ -71,22 +71,22 @@ public class BirthdayDialog extends BaseDialog {
 		// 设置年
 		final int curYear = calendar.get(Calendar.YEAR);
 		// 设置显示1916-2114(显示近200年)
-		mYearWheel.setViewAdapter(new DateNumericAdapter(mContext, curYear - 99, curYear+99, 99));
+		mYearWheel.setViewAdapter(new DateNumericAdapter(mContext, curYear - 99, curYear+0, 99));
 		// 设置中间位置的显示当前年
-		//mYearWheel.setCurrentItem(0);
+		mYearWheel.setCurrentItem(99);
 		mYearWheel.addChangingListener(wheelChangedListener);
 		// 设置月份
 		final int curMonth = calendar.get(Calendar.MONTH);
 		mMonthWheel.setViewAdapter(new DateNumericAdapter(mContext, 1, 12, curMonth));
 		// 设置中间位置的显示当前月
-		//mMonthWheel.setCurrentItem(curMonth);
+		mMonthWheel.setCurrentItem(curMonth);
 		mMonthWheel.addChangingListener(wheelChangedListener);
 		
 		// 设置日
 		int maxDays = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 		mDayWheel.setViewAdapter(new DateNumericAdapter(mContext, 1, maxDays, calendar.get(Calendar.DAY_OF_MONTH) - 1));
 		// 设置中间位置的显示当前日
-		//mDayWheel.setCurrentItem(calendar.get(Calendar.DAY_OF_MONTH) - 1);
+		mDayWheel.setCurrentItem(calendar.get(Calendar.DAY_OF_MONTH) - 1);
 
 		findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {
 			@Override

@@ -230,8 +230,10 @@ public class IncomeDetailActivity extends BaseActivity {
 					holder.number.setTextColor(Color.parseColor("#e0483d"));
 				}
 				break;
-
+				
+				
 			case 2:
+			case 7:
 				holder.title.setText("提现");
 				if (holder.tip.getVisibility() == View.VISIBLE)
 					holder.tip.setVisibility(View.GONE);

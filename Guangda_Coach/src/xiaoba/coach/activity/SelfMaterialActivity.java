@@ -183,7 +183,7 @@ public class SelfMaterialActivity extends BaseActivity {
 			@Override
 			public void onShow(DialogInterface dialog) {
 				// TODO Auto-generated method stub
-				String birthday = tvBirthday.getText().toString().trim();
+				String birthday = info.getBirthday();
 				if (!TextUtils.isEmpty(birthday))
 				{
 					String[] bir = birthday.split("-");
@@ -656,7 +656,7 @@ public class SelfMaterialActivity extends BaseActivity {
 		mGenderDialog.show();
 	}
 
-	@Click(R.id.potrait)
+	@Click(R.id.rl_change_avater)
 	void uploadPortrait() {
 		showMyDialog();
 	}

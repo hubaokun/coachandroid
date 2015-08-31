@@ -9,29 +9,36 @@
         android:background="@color/white">
     
    <include layout="@layout/layout_titlebar" 
-        android:background="@color/white"/>
+        android:background="@color/white"
+       />
    </RelativeLayout>
    
    <LinearLayout android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="vertical"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="10dp"
-       android:layout_marginRight="10dp"
-       android:layout_marginBottom="20dp">
+       android:paddingTop="20dp"
+       android:paddingLeft="10dp"
+       android:paddingRight="10dp"
+       android:paddingBottom="20dp"
+       android:background="@color/white">
    
+       <RelativeLayout android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           >
+       
    <LinearLayout android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:orientation="horizontal">
-       <TextView android:layout_width="wrap_content"
+       android:orientation="horizontal"
+       android:layout_centerVertical="true">
+<!--        <TextView android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="可兑换"
            android:textColor="@color/text_black"
-           android:textSize="16sp"/>
+           android:textSize="16sp"/> -->
        <TextView android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:id="@+id/tv_coach_name"
-           android:textColor="@color/text_red"
+           android:textColor="@color/text_black"
            android:textSize="16sp"/>
        <TextView android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -40,16 +47,140 @@
            android:textSize="16sp"/>
        <TextView android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:id="@+id/tv_coin_count"
+           android:id="@+id/tv_coach_coin"
            android:textColor="@color/text_red"
-           android:textSize="16sp"/>
+           android:textSize="16sp"
+           android:text="0"/>
        <TextView android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="个"
            android:textColor="@color/text_black"
            android:textSize="16sp"/>
-  		 </LinearLayout>
+  		 </LinearLayout>        
+  	<Button android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="兑换"
+       android:textColor="@color/white"
+       android:paddingLeft="10dp"
+       android:paddingRight="10dp"
+       android:paddingTop="5dp"
+       android:paddingBottom="5dp"
+       android:layout_alignParentRight="true"
+       android:id="@+id/btn_coach_coin"
+       android:background="@drawable/shape_grey_round"/>
+  		 </RelativeLayout>
   		 
+       <View style="@style/dividerLine" 
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="10dp"/>
+       
+              <RelativeLayout android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           >
+       
+   <LinearLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_centerVertical="true">
+<!--        <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="可兑换"
+           android:textColor="@color/text_black"
+           android:textSize="16sp"/> -->
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tv_school_name"
+           android:text="驾校"
+           android:textColor="@color/text_black"
+           android:textSize="16sp"/>
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="小巴币："
+           android:textColor="@color/text_black"
+           android:textSize="16sp"/>
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tv_school_coin"
+           android:textColor="@color/text_red"
+           android:textSize="16sp"
+           android:text="0"/>
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="个"
+           android:textColor="@color/text_black"
+           android:textSize="16sp"/>
+  		 </LinearLayout>        
+  	<Button android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="兑换"
+       android:textColor="@color/white"
+       android:paddingLeft="10dp"
+       android:paddingRight="10dp"
+       android:paddingTop="5dp"
+       android:paddingBottom="5dp"
+       android:layout_alignParentRight="true"
+       android:id="@+id/btn_school_coin"
+       android:background="@drawable/shape_grey_round"/>
+  		 </RelativeLayout>
+  		 
+                     <View style="@style/dividerLine" 
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="10dp"/>
+                     
+       <RelativeLayout android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           >
+       
+   <LinearLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_centerVertical="true">
+<!--        <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="可兑换"
+           android:textColor="@color/text_black"
+           android:textSize="16sp"/> -->
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tv_pintai_name"
+           android:text="平台"
+           android:textColor="@color/text_black"
+           android:textSize="16sp"/>
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="小巴币："
+           android:textColor="@color/text_black"
+           android:textSize="16sp"/>
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tv_pintai_coin"
+           android:textColor="@color/text_red"
+           android:textSize="16sp"
+           android:text="0"/>
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="个"
+           android:textColor="@color/text_black"
+           android:textSize="16sp"/>
+  		 </LinearLayout>        
+  	<Button android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="兑换"
+       android:textColor="@color/white"
+       android:paddingLeft="10dp"
+       android:paddingRight="10dp"
+       android:paddingTop="5dp"
+       android:paddingBottom="5dp"
+       android:layout_alignParentRight="true"
+       android:id="@+id/btn_pintai_coin"
+       android:background="@drawable/shape_grey_round"/>
+  		 </RelativeLayout>
+  		 
+         <View style="@style/dividerLine" 
+           android:layout_marginTop="10dp"/>
+         
+
+         
 <!--    <EditText android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_marginTop="20dp"
@@ -60,15 +191,27 @@
        android:inputType="number"
        android:textColor="@color/text_black"/> -->
    
-   <Button android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="立即兑换"
-       android:textColor="@color/white"
-       android:padding="10dp"
-       android:id="@+id/btn_sour_pay"
-       android:background="@drawable/shape_grey_round"
-       android:layout_marginTop="20dp"/>
+
     </LinearLayout>
+    
+            <RelativeLayout android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@color/white">
+         <View style="@style/dividerLine" 
+             android:layout_centerVertical="true"/>
+             <TextView android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="兑换记录"
+    android:textSize="15dp"
+    android:textColor="@color/text_black"
+     android:layout_centerInParent="true"
+     android:paddingLeft="10dp"
+     android:paddingRight="10dp"
+     android:layout_marginBottom="10dp"
+     android:background="@color/white"
+     />
+
+         </RelativeLayout>
     
        <com.daoshun.lib.listview.PullToRefreshListView 
         android:layout_width="match_parent"
