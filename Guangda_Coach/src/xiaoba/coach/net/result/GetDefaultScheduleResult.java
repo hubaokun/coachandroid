@@ -10,6 +10,7 @@ public class GetDefaultScheduleResult extends BaseResult{
 		private String addressdetail;
 		private String subject;
 		private int hour;
+		private int isrest;
 		public String getSubject() {
 			return subject;
 		}
@@ -33,6 +34,12 @@ public class GetDefaultScheduleResult extends BaseResult{
 		}
 		public void setHour(int hour) {
 			this.hour = hour;
+		}
+		public int getIsrest() {
+			return isrest;
+		}
+		public void setIsrest(int isrest) {
+			this.isrest = isrest;
 		}
 	}
 	public List<DefaultSchedule> getDefaultSchedule() {

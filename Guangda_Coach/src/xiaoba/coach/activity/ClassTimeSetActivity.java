@@ -132,6 +132,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 		new prepareTask().execute();
 		new GetAllSubjectTask().execute();
 		new GetAllAddressTask().execute();
+		mApplication.setSaveSet(false);
 
 		llChangeLoca.setOnClickListener(new OnSingleClickListener() {
 			@Override
@@ -734,6 +735,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 				mLoadingDialog.dismiss();
 			if (result != null) {
 				if (result.getCode() == 1) {
+					mApplication.setSaveSet(true);
 					for (int hour:Hour)
 					{
 //						HourJson hj = new HourJson();

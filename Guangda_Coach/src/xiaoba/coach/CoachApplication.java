@@ -71,6 +71,8 @@ public class CoachApplication extends Application {
     
     private int maxTays;
     
+    private boolean isSaveSet;
+    
 
     @Override
     public void onCreate() {
@@ -418,4 +420,12 @@ public class CoachApplication extends Application {
     	       return "";
     	     }
     	 }
+
+	public boolean isSaveSet() {
+		return isSaveSet;
+	}
+
+	public void setSaveSet(boolean isSaveSet) {
+		this.isSaveSet = isSaveSet;
+	}
 }

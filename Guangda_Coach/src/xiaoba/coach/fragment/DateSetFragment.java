@@ -51,6 +51,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -447,7 +448,11 @@ public class DateSetFragment extends Fragment {
 	private LinearLayout llOpenedCheck;
 	private ImageView imgOpenedCheck;
 	private List<Schedule> chosedSchedule = new ArrayList<Schedule>();
-	private boolean isFullDown = false;
+	private boolean isHasOpen = false;
+	private RelativeLayout rlPullTest;
+	private RelativeLayout rlInputPullTest;
+	private boolean isFirst = true;
+//	private boolean isFullDown = false;
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -463,9 +468,7 @@ public class DateSetFragment extends Fragment {
 		initView(view);
 		addListeners();
 		initData();
-
 		mScrollView.setRefreshing();
-
 		return view;
 	}
 
@@ -837,6 +840,8 @@ public class DateSetFragment extends Fragment {
 		llOpenedCheck = (LinearLayout)view.findViewById(R.id.ll_opened_check);
 		imgOpenedCheck = (ImageView)view.findViewById(R.id.img_open_check);
 		rlOpenedCheck = (RelativeLayout)view.findViewById(R.id.rl_opened_check);
+		rlPullTest = (RelativeLayout)view.findViewById(R.id.rl_pull_test);
+		rlInputPullTest = (RelativeLayout)view.findViewById(R.id.rl_input_pull_test);
 	}
 	
 	private void setOneHourView(int hour)
@@ -1147,7 +1152,11 @@ public class DateSetFragment extends Fragment {
 			}
 		}
 		
-		if (!isFullDown)
+		setOneHourView(hour);
+		
+		if (rlBottom.getVisibility()!=View.VISIBLE)
+		{
+		if (mScrollView.isPullEnd())
 		{
 		mScrollView.postDelayed(new Runnable() {
 			
@@ -1158,21 +1167,31 @@ public class DateSetFragment extends Fragment {
 			}
 		},500);
 		}
-		
-		if (!isFullDown){
-			isFullDown = true;
 		}
-		setOneHourView(hour);
 //		chosedHour.add(hour);
 		chosedIsRest = stateArray[index];
 		if (chosedHour.size()!=0)
 		{
 			rlBottom.setVisibility(View.VISIBLE);
+			rlInputPullTest.setVisibility(View.VISIBLE);
+//			float x = mScrollView.getX();
+//			float y = mScrollView.getScaleY(); 
+//			
+//			System.out.println("click"+"X = "+x+"Y = "+y);
+//			Toast.makeText(mActivity, "click"+"X = "+x+"Y = "+y, 0).show();
+//			final int rlbottomHeight = rlBottom.getHeight();
+//			RelativeLayout.LayoutParams linearParams =  (RelativeLayout.LayoutParams)rlInputPullTest.getLayoutParams();  
+//	        linearParams.height = rlbottomHeight;  
+//			rlInputPullTest.setLayoutParams(linearParams);  
+//			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams
+//					 
+//					(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//					lp.set(0, 0, 0, 20);
+//					mScrollView.setLayoutParams(lp);
 			if (chosedIsRest)
 			{
 				rlCloseClass.setVisibility(View.VISIBLE);
 				llOpenClass.setVisibility(View.GONE);
-				
 			}else{
 				llOpenClass.setVisibility(View.VISIBLE);
 				rlCloseClass.setVisibility(View.GONE);
@@ -1180,10 +1199,10 @@ public class DateSetFragment extends Fragment {
 		}
 		else{
 			rlBottom.setVisibility(View.GONE);
+			rlInputPullTest.setVisibility(View.GONE);
 			imgChoseAll.setVisibility(View.GONE);
 			imgOpenedCheck.setVisibility(View.GONE);
 			IsChosed = 0;
-			isFullDown = false;
 		}
 	}
 	}
@@ -1203,6 +1222,7 @@ public class DateSetFragment extends Fragment {
 				{
 					imgChoseAll.setVisibility(View.GONE);
 					rlBottom.setVisibility(View.GONE);
+					rlInputPullTest.setVisibility(View.GONE);
 					for (Schedule schedule:chosedSchedule)
 					{
 						if (schedule.getIsrest() == 1&& schedule.getExpire() !=1)
@@ -1238,9 +1258,10 @@ public class DateSetFragment extends Fragment {
 				{
 					imgOpenedCheck.setVisibility(View.GONE);
 					rlBottom.setVisibility(View.GONE);
+					rlInputPullTest.setVisibility(View.GONE);
 					for (Schedule schedule:chosedSchedule)
 					{
-						if (schedule.getIsrest() == 0&& schedule.getExpire() !=1)
+						if (schedule.getIsrest() == 0&& schedule.getExpire() !=1&&schedule.getHasbooked() != 1)
 						{
 							if (chosedHour.contains(schedule.getHour()))
 							{
@@ -1252,7 +1273,7 @@ public class DateSetFragment extends Fragment {
 					imgOpenedCheck.setVisibility(View.VISIBLE);
 					for (Schedule schedule:chosedSchedule)
 					{
-						if (schedule.getIsrest() == 0&& schedule.getExpire() !=1)
+						if (schedule.getIsrest() == 0&& schedule.getExpire() !=1 && schedule.getHasbooked() != 1)
 						{
 							if (!chosedHour.contains(schedule.getHour()))
 							{
@@ -1384,7 +1405,7 @@ public class DateSetFragment extends Fragment {
 
 			@Override
 			public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
-
+				
 			}
 		});
 
@@ -1403,13 +1424,24 @@ public class DateSetFragment extends Fragment {
 //					gCurrnetMonthView.setLayoutParams(param);
 					mHangingContent.setVisibility(View.INVISIBLE);
 					gSelectAdapter.notifyDataSetChanged();
-					isFullDown = false;
 				}
 				if (scrollY > (Settings.DISPLAY_WIDTH - 12) / 7 * (lineNum - 1)) {
 					mHangingArrow.setVisibility(View.VISIBLE);
 				} else {
 					mHangingArrow.setVisibility(View.INVISIBLE);
 				}
+				
+//				if (mScrollView.isPullEnd())
+//				{
+//					Toast.makeText(mActivity,"----滑动到底部----", 0).show();
+//				}
+				
+//				Toast.makeText(mActivity, "scrollY = "+scrollY+"-----"+"Height = "+Settings.DISPLAY_HEIGHT, 0).show();
+//				
+//				if (scrollY==Settings.DISPLAY_HEIGHT)
+//				{
+//					Toast.makeText(mActivity,"----滑动到底部----", 0).show();
+//				}
 			}
 		});
 		
@@ -1450,7 +1482,6 @@ public class DateSetFragment extends Fragment {
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
 				setOneHour(23,18);
-				
 				//mScrollView.setMode(Mode.PULL_FROM_END);
 			}
 		});
@@ -1740,7 +1771,7 @@ public class DateSetFragment extends Fragment {
 			@Override
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
-				setOneHour(8,3);
+				setOneHour(8,3);;
 //				if (!isFullDown)
 //				{
 //				mScrollView.postDelayed(new Runnable() {
@@ -3284,12 +3315,11 @@ public class DateSetFragment extends Fragment {
 
 			@Override
 			public void doOnClick(View v) {
-				handler.post(new Runnable() {
+				mScrollView.post(new Runnable() {
 					@Override
 					public void run() {
 						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_UP);
-						isFullDown = false;
-					}
+				   }
 				});
 			}
 		});
@@ -3298,11 +3328,11 @@ public class DateSetFragment extends Fragment {
 
 			@Override
 			public void doOnClick(View v) {
-				handler.post(new Runnable() {
+				mScrollView.post(new Runnable() {
 					@Override
 					public void run() {
 						mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_DOWN);
-						isFullDown = false;
+						
 					}
 				});
 			}
@@ -3570,12 +3600,12 @@ public class DateSetFragment extends Fragment {
 		calSelected = calToday;
 		gAdapter.setSelectedDate(calSelected);
 		gSelectAdapter = gAdapter;
-		handler.post(new Runnable() {
-			@Override
-			public void run() {
-				mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_UP);
-			}
-		});
+//		handler.post(new Runnable() {
+//			@Override
+//			public void run() {
+//				mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_UP);
+//			}
+//		});
 
 		setSelectLine(getSelectLine(calSelected));
 		new RefreshBallStateTask(true,true).execute();
@@ -3607,12 +3637,12 @@ public class DateSetFragment extends Fragment {
 		calSelected = calStartDate;
 		gAdapterNextMonth.setSelectedDate(calSelected);
 		gSelectAdapter = gAdapterNextMonth;
-		handler.post(new Runnable() {
-			@Override
-			public void run() {
-				mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_UP);
-			}
-		});
+//		handler.post(new Runnable() {
+//			@Override
+//			public void run() {
+//				mScrollView.getRefreshableView().fullScroll(ScrollView.FOCUS_UP);
+//			}
+//		});
 		setSelectLine(getSelectLine(calSelected));
 		new RefreshBallStateTask(true,true).execute();
 		new GetDefaultScheduleTask(calSelected).execute();
@@ -3686,7 +3716,14 @@ public class DateSetFragment extends Fragment {
 				new GetDefaultScheduleTask(calendar).execute();
 //				Intent intent = new Intent(mActivity,ActivityDateSet.class);
 //				startActivity(intent);
-				
+			
+//				float x = mScrollView.getX();
+//				float y = mScrollView.getScaleY(); 
+//				
+//				
+//				System.out.println("normal"+"X = "+x+"Y = "+y);
+//				
+//				Toast.makeText(mActivity, "normal"+"X = "+x+"Y = "+y, 0).show();
 				/*
 				 *在当前页面设置时间段
 				 */
@@ -3874,8 +3911,8 @@ public class DateSetFragment extends Fragment {
 //			}
 			chosedHour.clear();
 			IsChosed = 0;
-			isFullDown = false;
 			rlBottom.setVisibility(View.GONE);
+			rlInputPullTest.setVisibility(View.GONE);
 			imgChoseAll.setVisibility(View.GONE);
 			imgOpenedCheck.setVisibility(View.GONE);
 		}
@@ -3884,6 +3921,7 @@ public class DateSetFragment extends Fragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
+			mLoadingDialog.show();
 		}
 		@Override
 		protected GetDefaultScheduleResult doInBackground(Void... params) {
@@ -3896,6 +3934,10 @@ public class DateSetFragment extends Fragment {
 		@Override
 		protected void onPostExecute(GetDefaultScheduleResult result) {
 			super.onPostExecute(result);
+			if (mLoadingDialog.isShowing())
+			{
+				mLoadingDialog.dismiss();
+			}
 			defaultSchedule = result.getDefaultSchedule();
 			checkUpdate(mCalendar,true,true);
 		}
@@ -3936,7 +3978,7 @@ public class DateSetFragment extends Fragment {
 					/*
 					 * set today's calenday
 					 */
-					
+					isFirst = true;
 					CoachApplication.mApplication.setMaxTays(result.getMaxdays());
 					Calendar temp = null;
 					if (result.getToday() != null) {
@@ -3968,6 +4010,7 @@ public class DateSetFragment extends Fragment {
 						}
 						 //checkUpdate(calSelected,false,false);
 					}
+					
 				}
 				/*
 				 * 刷新当前选择日期位置上方行数
@@ -4154,9 +4197,19 @@ public class DateSetFragment extends Fragment {
 				gSelectAdapter = gAdapterNextMonth;
 			}
 			initialHangingContent(calSelected, calToday);
-			checkUpdate(calSelected,IsClickCalender,IsCleanChosedHour);
+			if (isFirst == false)
+			{
+				checkUpdate(calSelected,IsClickCalender,IsCleanChosedHour);
+			}
 			
 			finishLoadingData = true;
+			
+			if (isFirst == true)
+			{
+				new GetDefaultScheduleTask(calSelected).execute();
+			}
+			
+			isFirst = false;
 		}
 
 		@Override
@@ -4181,6 +4234,22 @@ public class DateSetFragment extends Fragment {
 			return;
 		if (scheduleResult.getDatelist() == null)
 			return;
+		
+		for (Schedule sche : scheduleResult.getDatelist()) {
+			Date date2;
+			try {
+				date2 = TimeUtil.StringToDate(sche.getDate());
+			} catch (Exception e) {
+				return;
+			}
+			if (equalsDate(selectedDate.getTime(), date2)) {
+				if (sche.getIsrest()==0)  //有开课
+				{
+					isHasOpen = true;
+					break;
+				}
+			}
+		}
 		
 		for (int positon = 0;positon<scheduleResult.getDatelist().size();positon++) {
 
@@ -4276,6 +4345,14 @@ public class DateSetFragment extends Fragment {
 				}
 			}
 		}
+		
+		if (mActivity.mApplication.isSaveSet())
+		{
+			mActivity.mApplication.setSaveSet(false);
+			new ChangeAllDayScheduleTask("1").execute();
+			//Toast.makeText(mActivity, "----自动发布----", 0).show();
+		}
+		isHasOpen = false;
 		//checkDayTime();
 		//checkSelect();
 	}
@@ -4564,6 +4641,13 @@ public class DateSetFragment extends Fragment {
 					scheduleResult.getDatelist().get(SchedulePosition).setPrice(defaultSchedule.get(i).getPrice()+"");
 					scheduleResult.getDatelist().get(SchedulePosition).setSubject(defaultSchedule.get(i).getSubject());
 					scheduleResult.getDatelist().get(SchedulePosition).setAddressdetail(defaultSchedule.get(i).getAddressdetail());
+					if (isHasOpen == false)
+					{
+						if (defaultSchedule.get(i).getIsrest()==0)
+						{
+							setOneHour(pos+5,pos);
+						}
+					}
 					break;
 					}
 				}
@@ -4687,7 +4771,6 @@ public class DateSetFragment extends Fragment {
 			super.onPreExecute();
 			if (mLoadingDialog != null)
 				mLoadingDialog.show();
-
 		}
 
 		@Override
@@ -4746,8 +4829,8 @@ public class DateSetFragment extends Fragment {
 				if (result.getCode() == 1) {
 					chosedHour.clear();
 					IsChosed = 0;
-					isFullDown = false;
 					rlBottom.setVisibility(View.GONE);
+					rlInputPullTest.setVisibility(View.GONE);
 					imgChoseAll.setVisibility(View.GONE);
 					imgOpenedCheck.setVisibility(View.GONE);
 					if (type != null && type.equals("1")) {
@@ -4931,7 +5014,7 @@ public class DateSetFragment extends Fragment {
 			} else {
 				txtDay.setVisibility(View.INVISIBLE);
 				txtToDay.setVisibility(View.INVISIBLE);
-				iv.setBackgroundColor(Color.parseColor("#2b3733"));
+				iv.setBackgroundColor(Color.parseColor("#222222"));
 			}
 
 			// 设置背景颜色
