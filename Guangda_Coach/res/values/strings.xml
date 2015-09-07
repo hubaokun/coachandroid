@@ -163,7 +163,7 @@
 	<string name="no_car_pic">请拍摄驾照或学员证</string>
 	
 	<!-- 小巴券 -->
-	<string name="xiaoba_ticket">兑换小巴券</string>
+	<string name="xiaoba_ticket">我的小巴券</string>
 	<string name="hour">张</string>
 	<string name="cash">兑换</string>
 	<string name="my_coupon">我的小巴券</string>

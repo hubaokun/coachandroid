@@ -17,7 +17,8 @@
             android:layout_marginTop="10dp"
             app:poly_shadow="true"
             app:poly_shadow_color="@color/divider_grey"
-            app:poly_vertices="0" />
+            app:poly_vertices="0"
+            android:src="@drawable/portrait_test" />
             
       <LinearLayout android:layout_width="match_parent"
           android:layout_height="wrap_content"

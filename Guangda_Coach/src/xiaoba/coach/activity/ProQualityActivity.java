@@ -553,25 +553,25 @@ public class ProQualityActivity extends BaseActivity {
 		if (info.getState() != null) {
 			if ("2".equals(info.getState().toString())) {
 				mTitleRightTv.setVisibility(View.GONE);
-				tvCoachState.setText("您已经通过教练资格认证");
+				tvCoachState.setText("【资格审核通过】您已经通过教练资格认证");
 			}
 
 			if ("1".equals(info.getState().toString())) {
 				mTitleRightTv.setVisibility(View.GONE);
-				tvCoachState.setText("教练资格资料提交成功，正在审核中");
+				tvCoachState.setText("【资格审核已提交】教练资格资料提交成功，正在审核中");
 			}
 
 			if ("3".equals(info.getState().toString())) {
 				mTitleRightTv.setVisibility(View.VISIBLE);
-				tvCoachState.setText("教练资格认证未通过，请完善并确认信息，重新提交认证");
+				tvCoachState.setText("【未通过资格审核】教练资格认证未通过，请完善并确认信息，重新提交认证");
 			}
 
 			if ("0".equals(info.getState().toString())) {
-				tvCoachState.setText("教练资格认证后，学员才能预约您学车!");
+				tvCoachState.setText("【未提交资格审核】教练资格认证后，学员才能预约您学车!");
 			}
 			// Toast.makeText(mApplication, info.getState().toString(), 0).show();
 		} else {
-			tvCoachState.setText("教练资格认证后，学员才能预约您学车!");
+			tvCoachState.setText("【未提交资格审核】教练资格认证后，学员才能预约您学车!");
 			// mId.setSelection(info.getId_cardnum().length());
 		}
 		

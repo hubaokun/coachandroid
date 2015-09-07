@@ -94,8 +94,12 @@ public class SelfMaterialActivity extends BaseActivity {
 	RelativeLayout rlGeny;
 	@ViewById(R.id.rl_coach_pro)
 	RelativeLayout rlCoachPro;
+	@ViewById(R.id.tv_coach_pro)
+	TextView tvCoachPro;
 	@ViewById(R.id.rl_coach_address)
 	RelativeLayout rlCoachAdress;
+	@ViewById(R.id.tv_coach_add)
+	TextView tvCoachAdd;
 	@ViewById(R.id.rl_birthday)
 	RelativeLayout rlCoachBir;
 	@ViewById(R.id.rl_coach_year)
@@ -297,7 +301,7 @@ public class SelfMaterialActivity extends BaseActivity {
 		info = CoachApplication.getInstance().getUserInfo();
 		if (info.getRealname() != null) {
 		tvName.setText(info.getRealname());
-	}
+		}
 		if (info.getGender()!=null)
 		{
 			if ("1".equals(info.getGender()))
@@ -315,6 +319,32 @@ public class SelfMaterialActivity extends BaseActivity {
 		
 		if (info.getSelfeval() != null) {
 			tvAboutSelf.setText(info.getSelfeval());
+		}
+		
+		if (!TextUtils.isEmpty(info.getDefaultAddress()))
+		{
+			tvCoachAdd.setText(info.getDefaultAddress());
+		}
+		
+		if (!TextUtils.isEmpty(info.getState()))
+		{
+			if ("2".equals(info.getState().toString())) {
+				tvCoachPro.setText("资格审核通过");
+			}
+
+			if ("1".equals(info.getState().toString())) {
+				tvCoachPro.setText("资格审核已提交");
+			}
+
+			if ("3".equals(info.getState().toString())) {
+				tvCoachPro.setText("未通过资格审核");
+			}
+
+			if ("0".equals(info.getState().toString())) {
+				tvCoachPro.setText("未提交资格审核");
+			}
+		}else{
+			tvCoachPro.setText("未提交资格审核");
 		}
 	}
 

@@ -211,7 +211,7 @@ public class ComplaintFragment extends Fragment {
 			} else {
 				holder = (HolderView) convertView.getTag();
 			}
-			imageLoader.DisplayImage(complaintArray.get(position).getStudentavatar(), holder.imgStudentAvater);
+			//imageLoader.DisplayImage(complaintArray.get(position).getStudentavatar(), holder.imgStudentAvater);
 			List<ContentList> mContentList = complaintArray.get(position).getContentlist();
 			if (holder.llContent != null) {
 				holder.llContent.removeAllViews();
@@ -240,20 +240,20 @@ public class ComplaintFragment extends Fragment {
 				holder.tvComplaintTime.setText(Html.fromHtml("<font color=\"#252525\">" + startTime + "~" + endTime + "</font>"));
 			}
 			hasSolution = 0;
-			holder.imgStudentAvater.setTag(position);
-			holder.imgStudentAvater.setOnClickListener(new OnSingleClickListener() {
-
-				@Override
-				public void doOnClick(View v) {
-					int Position = Integer.valueOf(v.getTag().toString());
-					String avaterUrl = complaintArray.get(Position).getStudentavatar();
-					String name = complaintArray.get(Position).getName();
-					String phone = complaintArray.get(Position).getPhone();
-					String number = complaintArray.get(Position).getStudentcardnum();
-					float rank = complaintArray.get(Position).getScore();
-					studentDetail.setShowDialog(phone, name, number, avaterUrl, rank);
-				}
-			});
+//			holder.imgStudentAvater.setTag(position);
+//			holder.imgStudentAvater.setOnClickListener(new OnSingleClickListener() {
+//
+//				@Override
+//				public void doOnClick(View v) {
+//					int Position = Integer.valueOf(v.getTag().toString());
+//					String avaterUrl = complaintArray.get(Position).getStudentavatar();
+//					String name = complaintArray.get(Position).getName();
+//					String phone = complaintArray.get(Position).getPhone();
+//					String number = complaintArray.get(Position).getStudentcardnum();
+//					float rank = complaintArray.get(Position).getScore();
+//					studentDetail.setShowDialog(phone, name, number, avaterUrl, rank);
+//				}
+//			});
 			return convertView;
 		}
 	}

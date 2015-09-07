@@ -4,10 +4,9 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
-
 import org.androidannotations.api.view.OnViewChangedNotifier;
-
 import xiaoba.coach.R;
+import xiaoba.coach.activity.LoadingActivity;
 import xiaoba.coach.utils.ImageLoadSaveTask;
 import xiaoba.coach.utils.ImageLoader;
 import android.content.Context;
@@ -20,30 +19,30 @@ import android.widget.ImageView;
 
 public class ShowAdvertisementDialog extends BaseDialog {
 	public ImageView imgAdvertisement;
-	private ImageLoader imgloader;
+//	private ImageLoader imgloader;
 	private ImageView imgClose;
 
 	public ShowAdvertisementDialog(Context context) {
 		super(context,R.style.dialog);
-		imgloader = new ImageLoader(context, R.drawable.im_advertisement);
+//		imgloader = new ImageLoader(context, R.drawable.im_advertisement);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public ShowAdvertisementDialog(Context context, int theme) {
 		super(context, theme);
 		mContext = context;
-		imgloader = new ImageLoader(context, R.drawable.im_advertisement);
+//		imgloader = new ImageLoader(context, R.drawable.im_advertisement);
 	}
 
 	public ShowAdvertisementDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
 		super(context, cancelable, cancelListener);
 		mContext = context;
-		imgloader = new ImageLoader(context, R.drawable.im_advertisement);
+//		imgloader = new ImageLoader(context, R.drawable.im_advertisement);
 	}
 	
 	public void setImageAdvertisement(String url)
 	{
-		imgloader.DisplayImage(url, imgAdvertisement);
+		new ImageLoadSaveTask(mContext, imgAdvertisement).execute(url);
 	}
 	
 	@Override
@@ -71,7 +70,7 @@ public class ShowAdvertisementDialog extends BaseDialog {
 	protected void setWindowParam() {
 		// TODO Auto-generated method stub
 		setWindowParams(-1, -2, Gravity.CENTER);
-		setCanceledOnTouchOutside(false);
+		setCanceledOnTouchOutside(true);
 	}
 	
 //	public void setImage(String imgurl,String advertisemetnUrl)

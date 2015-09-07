@@ -500,10 +500,8 @@ public class DateSetFragment extends Fragment {
 		public Object instantiateItem(View view, int position) // 实例化Item
 		{
 			((ViewPager) view).addView(viewLists.get(position), 0);
-
 			return viewLists.get(position);
 		}
-
 	}
 
 	// private static Handler handler = new Handler(){

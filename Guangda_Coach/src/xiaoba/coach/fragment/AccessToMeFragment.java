@@ -194,7 +194,7 @@ public class AccessToMeFragment extends Fragment {
             }else {
                 holder = (HolderView)convertView.getTag();
             }
-			imageLoader.DisplayImage(EvaluationArray.get(position).getStudentavatar(),holder.imgStudentAvater);
+			//imageLoader.DisplayImage(EvaluationArray.get(position).getStudentavatar(),holder.imgStudentAvater);
 			if (!"".equals(EvaluationArray.get(position).getContent()))
 			{
 				holder.tvAccessContent.setVisibility(View.VISIBLE);
@@ -207,20 +207,20 @@ public class AccessToMeFragment extends Fragment {
 			String startTime = EvaluationArray.get(position).getStarttime();
 			String endTime = EvaluationArray.get(position).getEndtime().split(" ")[1];
 			holder.tvTime.setText(startTime+"~"+endTime);
-			holder.imgStudentAvater.setTag(position);
-			holder.imgStudentAvater.setOnClickListener(new OnSingleClickListener() {
-				
-				@Override
-				public void doOnClick(View v) {
-					int Position = Integer.valueOf(v.getTag().toString());
-					String avaterUrl = EvaluationArray.get(Position).getStudentavatar();
-					String name = EvaluationArray.get(Position).getName();
-					String phone = EvaluationArray.get(Position).getPhone();
-					String number = EvaluationArray.get(Position).getStudentcardnum();
-					float rank = EvaluationArray.get(Position).getScore();
-					mActivity.studentDetail.setShowDialog(phone, name, number, avaterUrl, rank);
-				}
-			});
+//			holder.imgStudentAvater.setTag(position);
+//			holder.imgStudentAvater.setOnClickListener(new OnSingleClickListener() {
+//				
+//				@Override
+//				public void doOnClick(View v) {
+//					int Position = Integer.valueOf(v.getTag().toString());
+//					String avaterUrl = EvaluationArray.get(Position).getStudentavatar();
+//					String name = EvaluationArray.get(Position).getName();
+//					String phone = EvaluationArray.get(Position).getPhone();
+//					String number = EvaluationArray.get(Position).getStudentcardnum();
+//					float rank = EvaluationArray.get(Position).getScore();
+//					mActivity.studentDetail.setShowDialog(phone, name, number, avaterUrl, rank);
+//				}
+//			});
 			return convertView;
 		}
 	}

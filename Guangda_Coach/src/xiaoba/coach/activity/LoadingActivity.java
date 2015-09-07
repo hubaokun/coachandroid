@@ -78,7 +78,7 @@ public class LoadingActivity extends BaseActivity {
         
         if (dbExistFirst)
         {
-            if (mApplication.mUserInfo.getIsFirst(mContext))   //判断是否是首次进入应用，如果是则更新原来的数据库
+            if (mApplication.getIsFirst(mContext))   //判断是否是首次进入应用，如果是则更新原来的数据库
             {
             	try {
     				util.deleteDataBase(mContext);
@@ -96,7 +96,7 @@ public class LoadingActivity extends BaseActivity {
         } else {// 不存在就把raw里的数据库写入手机
             try {
                 util.copyDataBase();
-                mApplication.mUserInfo.saveIsFirst(mContext);
+                mApplication.saveIsFirst(mContext);
             } catch (IOException e) {
                 throw new Error("Error copying database");
             }

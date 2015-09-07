@@ -319,7 +319,8 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="6dp"
-            android:paddingTop="9dp" >
+            android:paddingTop="9dp"
+            android:visibility="gone" >
 
             <TextView
                 android:id="@+id/stu_comment_title"

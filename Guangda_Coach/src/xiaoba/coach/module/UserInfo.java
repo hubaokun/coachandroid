@@ -626,17 +626,7 @@ public class UserInfo {
 		CoachApplication.getInstance().getUserInfo().setDriveschool(value);
 	}
 	
-	public void saveIsFirst(Context mContext)
-	{
-		Editor editor = mContext.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).edit();
-		editor.putBoolean("isfirst",false);
-		editor.commit();
-	}
-	
-	public boolean getIsFirst(Context mContext)
-	{
-		return mContext.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).getBoolean("isfirst",true);
-	}
+
 
 	public String getTeachcarmodel() {
 		return teachcarmodel;

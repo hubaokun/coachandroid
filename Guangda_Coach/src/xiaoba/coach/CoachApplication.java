@@ -17,6 +17,7 @@ import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -72,6 +73,8 @@ public class CoachApplication extends Application {
     private int maxTays;
     
     private boolean isSaveSet;
+    
+	private static final String SP_NAME = "ApplicationInfo";
     
 
     @Override
@@ -181,6 +184,18 @@ public class CoachApplication extends Application {
         getPosition();
 
     }
+    
+	public boolean getIsFirst(Context mContext)
+	{
+		return mContext.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).getBoolean("isfirst",true);
+	}
+	
+	public void saveIsFirst(Context mContext)
+	{
+		Editor editor = mContext.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).edit();
+		editor.putBoolean("isfirst",false);
+		editor.commit();
+	}
 
     public void getPosition() {
         locationClient = new LocationClient(getApplicationContext());

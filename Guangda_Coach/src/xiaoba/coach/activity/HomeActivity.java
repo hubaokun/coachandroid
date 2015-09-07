@@ -518,6 +518,7 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 							@Override
 							public void onClick(View v) {
 								// TODO Auto-generated method stub
+								showAdvDialog.dismiss();
 								String url = "";
 								String code = "c"+mApplication.mUserInfo.getInvitecode().toLowerCase();
 								String name = "";
@@ -546,6 +547,7 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View v) {
+								showAdvDialog.dismiss();
 								// TODO Auto-generated method stub
 								startActivity(new Intent(HomeActivity.this,ActivityShare.class));
 							}

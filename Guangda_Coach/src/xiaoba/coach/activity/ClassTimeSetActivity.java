@@ -121,7 +121,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 	void init() {
 		mTitle.setText(getString(R.string.class_time_set));
 		mTitle.setTextColor(getResources().getColor(R.color.text_black));
-		mTitleRightTv.setText(getString(R.string.save));
+		mTitleRightTv.setText("保存并发布");
 		mTitleRightTv.setTextColor(getResources().getColor(R.color.text_grey));
 		mTitleRightTv.setClickable(false);
 		mTitleBack.setImageResource(R.drawable.back_arrow);

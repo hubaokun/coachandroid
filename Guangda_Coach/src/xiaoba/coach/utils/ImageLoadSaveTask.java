@@ -41,7 +41,7 @@ public class ImageLoadSaveTask extends AsyncTask<String,Integer,Bitmap> {
     protected void onPostExecute(Bitmap result) {//后台任务执行完之后被调用，在ui线程执行
         if (result == null)
         {
-//            avatar.setImageResource(R。drawable.p);
+            avatar.setImageResource(R.drawable.im_advertisement);
         }else {
             avatar.setImageBitmap(result);
             //saveMyBitmap(avatarPath,result);
