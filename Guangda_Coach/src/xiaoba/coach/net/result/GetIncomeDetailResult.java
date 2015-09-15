@@ -4,8 +4,8 @@ import java.util.List;
 
 public class GetIncomeDetailResult extends BaseResult {
 	float balance;
-	float fmoney;
-	float gmoney;
+	float fmoney;  //冻结金
+	float gmoney;  
 	
 	List<RecordInfo>recordlist;
 	

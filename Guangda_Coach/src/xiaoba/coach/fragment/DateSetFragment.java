@@ -4894,9 +4894,9 @@ public class DateSetFragment extends Fragment {
 			/*
 			 * get balls
 			 */
-			View yBall = (View) iv.findViewById(R.id.yellow_ball);
-			View rBall = (View) iv.findViewById(R.id.red_ball);
-			View bBall = (View) iv.findViewById(R.id.blue_ball);
+//			View yBall = (View) iv.findViewById(R.id.yellow_ball);
+//			View rBall = (View) iv.findViewById(R.id.red_ball);
+//			View bBall = (View) iv.findViewById(R.id.blue_ball);
 			// 背景铺色
 			
 			// 今天的处理
@@ -4907,9 +4907,9 @@ public class DateSetFragment extends Fragment {
 			txtDay.setText(String.valueOf(day));
 			iv.setTag(myDate);
 
-			yBall.setVisibility(View.GONE);
-			rBall.setVisibility(View.GONE);
-			bBall.setVisibility(View.GONE);
+//			yBall.setVisibility(View.GONE);
+//			rBall.setVisibility(View.GONE);
+//			bBall.setVisibility(View.GONE);
 
 			iMonthViewCurrentMonth = selectCalendar.get(Calendar.MONTH);// 得到当前日历显示的月
 			// 判断是否是当前月
@@ -4976,18 +4976,18 @@ public class DateSetFragment extends Fragment {
 							//iv.setOnClickListener(new dateClickListener(gAdapter, (Calendar) iv.getTag(), iv,false,0));
 
 							position = selectItemLine * 7 + i;
-							if (ballState.get(position).isShowY()) {
-								yBall.setVisibility(View.VISIBLE);
-							} else {
-							}
-							if (ballState.get(position).isShowR()) {
-								rBall.setVisibility(View.VISIBLE);
-							} else {
-							}
-							if (ballState.get(position).isShowB()) {
-								bBall.setVisibility(View.VISIBLE);
-							} else {
-							}
+//							if (ballState.get(position).isShowY()) {
+//								yBall.setVisibility(View.VISIBLE);
+//							} else {
+//							}
+//							if (ballState.get(position).isShowR()) {
+//								rBall.setVisibility(View.VISIBLE);
+//							} else {
+//							}
+//							if (ballState.get(position).isShowB()) {
+//								bBall.setVisibility(View.VISIBLE);
+//							} else {
+//							}
 
 							/*
 							 * 若是有球显示,字为白色
@@ -5046,9 +5046,10 @@ public class DateSetFragment extends Fragment {
 //		Date mDate = mCarlandar.getTime();
 		gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2b3733"));
 		view.setBackgroundColor(Color.parseColor("#ffffff"));
-		gSelectAdapter.yBall = (View) gSelectAdapter.selectedView.findViewById(R.id.yellow_ball);
-		gSelectAdapter.rBall = (View) gSelectAdapter.selectedView.findViewById(R.id.red_ball);
-		gSelectAdapter.bBall = (View) gSelectAdapter.selectedView.findViewById(R.id.blue_ball);
+//		gSelectAdapter.yBall = (View) gSelectAdapter.selectedView.findViewById(R.id.yellow_ball);
+//		gSelectAdapter.rBall = (View) gSelectAdapter.selectedView.findViewById(R.id.red_ball);
+//		gSelectAdapter.bBall = (View) gSelectAdapter.selectedView.findViewById(R.id.blue_ball);
+		gSelectAdapter.tvToday = (TextView)gSelectAdapter.selectedView.findViewById(R.id.calendar_status);
 //		if (mIsHanging)
 //		{
 //			int data = mDate.getDate();
@@ -5061,7 +5062,7 @@ public class DateSetFragment extends Fragment {
 			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.text_green));
 		} else {
 			gSelectAdapter.changeColor((ViewGroup) gSelectAdapter.selectedView, resources.getColor(R.color.white));
-			if (gSelectAdapter.yBall.getVisibility() == View.VISIBLE || gSelectAdapter.rBall.getVisibility() == View.VISIBLE || gSelectAdapter.bBall.getVisibility() == View.VISIBLE)
+			if (gSelectAdapter.tvToday.getText().toString().trim().equals("已开课"))
 			{
 				gSelectAdapter.selectedView.setBackgroundColor(Color.parseColor("#2c4021"));
 			}

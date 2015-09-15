@@ -312,13 +312,23 @@ public class MineFragment extends Fragment {
 		/*
 		 * 余额
 		 */
-		mYueLayout.setOnClickListener(new OnSingleClickListener() {
+		
+		llMyMoney.setOnClickListener(new OnSingleClickListener() {
 
 			@Override
 			public void doOnClick(View v) {
 				startActivity(new Intent(mActivity, IncomeDetailActivity_.class));
 			}
 		});
+		
+		
+//		mYueLayout.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				startActivity(new Intent(mActivity, IncomeDetailActivity_.class));
+//			}
+//		});
 
 		/*
 		 * 滚动监听

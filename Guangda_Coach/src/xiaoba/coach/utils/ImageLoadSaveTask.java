@@ -21,6 +21,7 @@ public class ImageLoadSaveTask extends AsyncTask<String,Integer,Bitmap> {
     private ImageView avatar;
     private Context mcontext;
    // private String avatarPath;
+    private static OnImageLoad mOnImageLoad;
     public ImageLoadSaveTask(Context context, ImageView img) {
         this.avatar = img;
         this.mcontext = context;
@@ -46,7 +47,20 @@ public class ImageLoadSaveTask extends AsyncTask<String,Integer,Bitmap> {
             avatar.setImageBitmap(result);
             //saveMyBitmap(avatarPath,result);
         }
+        if (mOnImageLoad != null) {
+        	mOnImageLoad.showCancle(true);
+		}
     }
+    
+    public static void setImageShowListener(OnImageLoad l){
+    	mOnImageLoad=l;
+    }
+    
+    public interface OnImageLoad{
+    	void showCancle(Boolean image);
+    }
+    
+    
     public void saveMyBitmap(String path, Bitmap mBitmap) {
         File f = new File(path);
         try {

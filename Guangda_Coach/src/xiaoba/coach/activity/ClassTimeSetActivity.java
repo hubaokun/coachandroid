@@ -113,7 +113,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 	int addressId;
 	
 	private Dialog mDialog = null;
-	private PriceDialog pricerDialog;
+//	private PriceDialog pricerDialog;
 	private ArrayList<Integer> Hour = new ArrayList<Integer>();
 	private String addressDetail;
 	private String subjectDetail;
@@ -126,14 +126,13 @@ public class ClassTimeSetActivity extends BaseActivity {
 		mTitleRightTv.setClickable(false);
 		mTitleBack.setImageResource(R.drawable.back_arrow);
 		textLength = (Settings.DISPLAY_WIDTH - DensityUtils.dp2px(ClassTimeSetActivity.this, 12)) / getTextViewLength(mHours, "00:00、");
-		pricerDialog = new PriceDialog(ClassTimeSetActivity.this);
+//		pricerDialog = new PriceDialog(ClassTimeSetActivity.this);
 		addListeners();
 		getIntentData();
 		new prepareTask().execute();
 		new GetAllSubjectTask().execute();
 		new GetAllAddressTask().execute();
 		mApplication.setSaveSet(false);
-
 		llChangeLoca.setOnClickListener(new OnSingleClickListener() {
 			@Override
 			public void doOnClick(View v) {
@@ -377,22 +376,22 @@ public class ClassTimeSetActivity extends BaseActivity {
 	String lastPrice;
 
 	private void addListeners() {
-		pricerDialog.setOnComfirmClickListener(new OnComfirmClickListener() {
-
-			@Override
-			public void onComfirmBtnClick(String hundred, String tends,
-					String single) {
-				// TODO Auto-generated method stub
-				//Toast.makeText(ClassTimeSetActivity.this, hundred+"  "+tends+"  "+single,Toast.LENGTH_SHORT).show();
-				if (!"0".equals(hundred))
-				{
-					mPriceEt.setText(hundred+tends+single);
-				}else{
-					mPriceEt.setText(tends+single);
-				}
-				pricerDialog.dismiss();
-			}
-		});
+//		pricerDialog.setOnComfirmClickListener(new OnComfirmClickListener() {
+//
+//			@Override
+//			public void onComfirmBtnClick(String hundred, String tends,
+//					String single) {
+//				// TODO Auto-generated method stub
+//				//Toast.makeText(ClassTimeSetActivity.this, hundred+"  "+tends+"  "+single,Toast.LENGTH_SHORT).show();
+//				if (!"0".equals(hundred))
+//				{
+//					mPriceEt.setText(hundred+tends+single);
+//				}else{
+//					mPriceEt.setText(tends+single);
+//				}
+//				pricerDialog.dismiss();
+//			}
+//		});
 		// 输入控制
 //		mPriceEt.setKeyListener(new NumberKeyListener() {
 //
@@ -699,14 +698,14 @@ public class ClassTimeSetActivity extends BaseActivity {
 		}
 	}
 
-	@Click(R.id.ll_chang_price)
-	void inputPrice() {
-
-		pricerDialog.show();
-		setRightClick();
-//		mPriceEt.setFocusable(true);
-//		mPriceEt.requestFocus();
-	}
+//	@Click(R.id.ll_chang_price)
+//	void inputPrice() {
+//
+//		pricerDialog.show();
+//		setRightClick();
+////		mPriceEt.setFocusable(true);
+////		mPriceEt.requestFocus();
+//	}
 
 	@Click(R.id.btn_isrest)
 	void switchBtnState() {

@@ -39,7 +39,6 @@ public class ImageLoader {
 	public void DisplayImage(String url, ImageView imageView) {
 		imageViews.put(imageView, url);
 		// 先从内存缓存中查找
-
 		Bitmap bitmap = memoryCache.get(url);
 		if (bitmap != null)
 			imageView.setImageBitmap(bitmap);
@@ -90,7 +89,6 @@ public class ImageLoader {
 			BitmapFactory.Options o = new BitmapFactory.Options();
 			o.inJustDecodeBounds = true;
 			BitmapFactory.decodeStream(new FileInputStream(f), null, o);
-
 			// Find the correct scale value. It should be the power of 2.
 			final int REQUIRED_SIZE = 70;
 			int width_tmp = o.outWidth, height_tmp = o.outHeight;
@@ -116,7 +114,6 @@ public class ImageLoader {
 	private class PhotoToLoad {
 		public String url;
 		public ImageView imageView;
-
 		public PhotoToLoad(String u, ImageView i) {
 			url = u;
 			imageView = i;
@@ -125,7 +122,6 @@ public class ImageLoader {
 
 	class PhotosLoader implements Runnable {
 		PhotoToLoad photoToLoad;
-
 		PhotosLoader(PhotoToLoad photoToLoad) {
 			this.photoToLoad = photoToLoad;
 		}
@@ -147,7 +143,7 @@ public class ImageLoader {
 
 	/**
 	 * 防止图片错位
-	 * 
+	 *  
 	 * @param photoToLoad
 	 * @return
 	 */

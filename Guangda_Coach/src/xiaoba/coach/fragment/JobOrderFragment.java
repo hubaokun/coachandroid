@@ -905,7 +905,6 @@ public class JobOrderFragment extends Fragment {
 			public void doOnClick(View v) {
 				getPosition();
 				if (info.getState() == 3) {
-
 					DialogUtil dUtil = new DialogUtil(new DialogConfirmListener() {
 
 						@Override

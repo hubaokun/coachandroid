@@ -38,7 +38,8 @@
                 android:singleLine="true"
                 android:textColor="@android:color/white"
                 android:textColorHint="#adadad"
-                android:textSize="18dp" />
+                android:textSize="18dp" 
+                android:maxLength="11"/>
 
             <View
                 android:layout_width="match_parent"

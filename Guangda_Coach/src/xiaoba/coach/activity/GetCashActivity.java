@@ -55,7 +55,7 @@ public class GetCashActivity extends BaseActivity {
 	LinearLayout llGetMoney;
 
 	float mBalance;
-	float mPro;
+//	float mPro;
 
 	@AfterViews
 	void init() {
@@ -68,7 +68,7 @@ public class GetCashActivity extends BaseActivity {
 		// mRedPart.getLayoutParams().width = contentHeight * 480 / 350;
 
 		mBalance = getIntent().getFloatExtra("balance", 0f);
-		mPro = getIntent().getFloatExtra("pro", 0f);
+//		mPro = getIntent().getFloatExtra("pro", 0f);
 		if ((int) mBalance == 0) {
 			//new GetMyBalanceInfoTask().execute();
 			llNotEnoughMoney.setVisibility(View.VISIBLE);
@@ -77,7 +77,7 @@ public class GetCashActivity extends BaseActivity {
 			llNotEnoughMoney.setVisibility(View.GONE);
 			llGetMoney.setVisibility(View.VISIBLE);
 		}
-		mYueAmouont.setText((int) mBalance+"");
+		mYueAmouont.setText(mBalance+"");
 	}
 
 	@SuppressLint("NewApi")
@@ -162,8 +162,8 @@ public class GetCashActivity extends BaseActivity {
 		if (mInput.getText().length() > 0) {
 			if (cashnum>=50)
 			{
-			if (cashnum + mPro <= mBalance) {
-				new GetCashTask().execute();
+			if (cashnum <= mBalance) {
+				new GetCashTask(cashnum).execute();
 			} else {
 				CommonUtils.showToast(GetCashActivity.this.getApplicationContext(), "您的可提现余额不足，请重新输入");
 			}
@@ -178,15 +178,19 @@ public class GetCashActivity extends BaseActivity {
 
 	private class GetCashTask extends AsyncTask<Void, Void, BaseResult> {
 		JSONAccessor accessor = new JSONAccessor(GetCashActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
+		private int remainMoney;
+		 public GetCashTask(int RemainMoney) {
+			// TODO Auto-generated constructor stub
+			 this.remainMoney = RemainMoney;
+		}
 
 		@Override
 		protected BaseResult doInBackground(Void... arg0) {
 			accessor.enableJsonLog(true);
 			HashMap<String, Object> param = new BaseParam();
 			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
-			param.put("count", mInput.getText().toString());
+			param.put("count", remainMoney+"");
 			param.put("action", "ApplyCash");
-
 			return accessor.execute(Settings.CMY_URL, param, BaseResult.class);
 		}
 

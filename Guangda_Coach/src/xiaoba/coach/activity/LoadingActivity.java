@@ -49,7 +49,6 @@ public class LoadingActivity extends BaseActivity {
 		mContext = this;
 		// 初始化个推sdk
 		PushManager.getInstance().initialize(this.getApplicationContext()); // 初始化个推sdk
-
 //		PackageManager packageManager = getPackageManager();
 		// getPackageName()是你当前类的包名，0代表是获取版本信息
 //		PackageInfo packInfo = null;
@@ -60,7 +59,7 @@ public class LoadingActivity extends BaseActivity {
 //		}
 //		 if (packInfo != null)
 //		 version.setText("版本" + packInfo.versionName);
-		//version.setText("版本");
+//		 version.setText("版本");
 		 boolean hasSDCard = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
 	        if(hasSDCard){
 	            copyDataBaseToPhone();

@@ -67,7 +67,7 @@ public class IncomeDetailActivity extends BaseActivity {
 
 	IncomeDetailAdapter mAdapter = new IncomeDetailAdapter();
 	List<RecordInfo> list = new ArrayList<GetIncomeDetailResult.RecordInfo>();
-	float mBalance;
+	float mBalance;  //可用余额
 
 	@AfterViews
 	void init() {
@@ -114,14 +114,13 @@ public class IncomeDetailActivity extends BaseActivity {
 					if (result.getRecordlist() != null) {
 						list = result.getRecordlist();
 						mAdapter.notifyDataSetChanged();
-
 						mBalance = result.getBalance() - result.getGmoney();
 						if (mBalance<0)
 						{
 							mBalance = 0;
 						}
-						tvTotal.setText((int) result.getBalance()+"");
-						int left = (int) (result.getBalance() - result.getGmoney());
+						tvTotal.setText(result.getBalance()+"");
+						float left = (result.getBalance() - result.getGmoney());
 						if (left > 0)
 						{
 							tvFree.setText(left+"");
@@ -130,7 +129,7 @@ public class IncomeDetailActivity extends BaseActivity {
 						{
 							tvFree.setText("0");
 						}
-						tvFrozen.setText((int)result.getFmoney()+"");
+						tvFrozen.setText(result.getFmoney()+"");
 					}
 				} else {
 					if (result.getMessage() != null)
@@ -199,13 +198,13 @@ public class IncomeDetailActivity extends BaseActivity {
 			switch (info.getType()) {
 			case 1:
 				holder.title.setText("收入");
-				int out1 = (int)info.getAmount_out1(); // 平台
-				int out2 = (int)info.getAmount_out1(); // 驾校
-				int total = money + out1 + out2; // 总额
+				float out1 = info.getAmount_out1(); // 平台
+				float out2 = info.getAmount_out1(); // 驾校
+				float total = money + out1 + out2; // 总额
 				
-				if ((int) info.getAmount_out1() != 0) {
+				if (info.getAmount_out1() != 0) {
 					
-					if ((int) info.getAmount_out2() == 0) {
+					if ( info.getAmount_out2() == 0) {
 						holder.tip.setText("(课程总额" + total + "元，其中" + out1 + "元广大平台抽成)");
 						holder.tip.setVisibility(View.VISIBLE);
 					} else {
@@ -362,7 +361,6 @@ public class IncomeDetailActivity extends BaseActivity {
 				setDialog.dismiss();
 			}
 		});
-
 		tip.setText("您申请的" + money + "元金额已提交成功，请等待审核，我们会在3个工作日内联系您！");
 	}
 

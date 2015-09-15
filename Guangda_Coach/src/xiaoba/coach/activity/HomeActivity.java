@@ -20,6 +20,7 @@ import xiaoba.coach.common.Settings;
 import xiaoba.coach.fragment.DateSetFragment;
 import xiaoba.coach.fragment.JobOrderFragment;
 import xiaoba.coach.fragment.MineFragment;
+import xiaoba.coach.fragment.JobOrderFragment.MyLocationListenner;
 import xiaoba.coach.module.BaseParam;
 import xiaoba.coach.module.Coachscore;
 import xiaoba.coach.net.result.AddressResult;
@@ -27,9 +28,15 @@ import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.GetAdvertisementResult;
 import xiaoba.coach.net.result.GetAdvertisementWindowResult;
 import xiaoba.coach.utils.CommonUtils;
+import xiaoba.coach.utils.ImageLoadSaveTask;
+import xiaoba.coach.utils.ImageLoadSaveTask.OnImageLoad;
 import xiaoba.coach.views.LoadingDialog;
 import xiaoba.coach.views.ShowAdvertisementDialog;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.util.DensityUtils;
 import com.daoshun.lib.view.OnSingleClickListener;
@@ -46,11 +53,13 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -61,6 +70,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends FragmentActivity implements OnTouchListener {
@@ -96,6 +106,9 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 	IntentFilter filter;
 	private Context mContext;
 	private ShowAdvertisementDialog showAdvDialog;
+	private LocationClient locationClient;
+	private MyLocationListenner myListener;
+	private String locaCity ;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -106,7 +119,6 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		filter.addAction("xiaoba.newmsg");
 		filter.addCategory(Intent.CATEGORY_DEFAULT);
 		showAdvDialog = new ShowAdvertisementDialog(mContext);
-
 //		showAdver = new ShowAdvertisementDialog(mContext);
 	}
 
@@ -135,6 +147,7 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		getPosition();
 		new GetAdvertisement().execute();
 //		new GetAllAddressTask().execute();
 	}
@@ -144,6 +157,55 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		super.onDestroy();
 		if (receiver != null) {
 			receiver = null;
+		}
+	}
+	
+	public void getPosition() {
+		locationClient = new LocationClient(this);
+		myListener = new MyLocationListenner();
+		locationClient.registerLocationListener(myListener);
+		if (locationClient != null) {
+			setLocationOption();
+			locationClient.start();
+			locationClient.requestLocation();
+		} else {
+			Log.d("TAG", "locClient is null or not started");
+		}
+	}
+	
+	private void setLocationOption() {
+		LocationClientOption option = new LocationClientOption();
+		option.setOpenGps(true); // 打开gps
+		option.setCoorType("bd09ll"); // 设置坐标类型
+		option.setScanSpan(2000); // 设置定位模式，小于1秒则一次定位;大于等于1秒则定时定位
+		option.setIsNeedAddress(true);
+		locationClient.setLocOption(option);
+	}
+	
+	public class MyLocationListenner implements BDLocationListener {
+		@Override
+		public void onReceiveLocation(BDLocation location) {
+			if (locationClient != null)
+				locationClient.stop();
+			if (location == null)
+				return;
+			locaCity = location.getCity();
+			if (locaCity.contains("市"))
+			{
+				locaCity = locaCity.replace("市", "");
+			}
+			Toast.makeText(mContext, locaCity, 0).show();
+			stopLocClient();
+		}
+
+		public void onReceivePoi(BDLocation poiLocation) {
+		}
+	}
+	
+	private void stopLocClient() {
+		if (locationClient != null && locationClient.isStarted()) {
+			locationClient.stop();
+			locationClient = null;
 		}
 	}
 
@@ -390,13 +452,10 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 						CommonUtils.gotoLogin(HomeActivity.this);
 					}
 				}
-
 			} else {
 				CommonUtils.showToast(HomeActivity.this.getApplicationContext(), getString(R.string.net_error));
 			}
-
 		}
-
 	}
 
 	@Override
@@ -511,10 +570,19 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 				if (result.getCode() == 1) {
 					if ("1".equals(result.getC_flag()))
 					{
-						showAdvDialog.show();
+
+						//showAdvDialog.setImage(result.getC_img_android());
 						showAdvDialog.setImageAdvertisement(result.getC_img_android());
-						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
+						ImageLoadSaveTask.setImageShowListener(new OnImageLoad() {
 							
+							@Override
+							public void showCancle(Boolean image) {
+								// TODO Auto-generated method stub
+								showAdvDialog.show();
+							}
+						});
+
+						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View v) {
 								// TODO Auto-generated method stub
@@ -542,8 +610,16 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 						});
 					}
 					else if ("2".equals(result.getC_flag())){
-						showAdvDialog.show();
+
 						showAdvDialog.setImageAdvertisement(result.getC_img_android());
+						ImageLoadSaveTask.setImageShowListener(new OnImageLoad() {
+							
+							@Override
+							public void showCancle(Boolean image) {
+								// TODO Auto-generated method stub
+								showAdvDialog.show();
+							}
+						});
 						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View v) {
@@ -560,7 +636,6 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 						CommonUtils.gotoLogin(HomeActivity.this);
 					}
 				}
-
 			} else {
 				CommonUtils.showToast(HomeActivity.this.getApplicationContext(), getString(R.string.net_error));
 			}
