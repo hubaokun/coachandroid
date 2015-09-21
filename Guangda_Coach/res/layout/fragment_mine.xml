@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#21b478" >
+    android:background="@color/white" >
 
     <View
         android:id="@+id/mine_bg"
@@ -33,6 +33,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="170dp" />
+            
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,8 +41,153 @@
                 android:background="@color/white"
                 android:orientation="vertical"
                	>
+            	
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#f7f7f7"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+                    
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:id="@+id/ll_my_money" 
+                        android:layout_gravity="center">
+                        
+                       <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2000"
+                            android:id="@+id/tv_my_money"
+                            android:textStyle="bold"
+                            android:textColor="#ff9600"
+                            android:textSize="20dp"/>
 
-                <LinearLayout
+                           
+                        <LinearLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="6dp">
+                        
+                       <TextView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="余额"
+                           android:textColor="#666666"
+                           android:textSize="10dp"/> 
+                        
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="（元）"
+                            android:textColor="#666666"
+                            android:textSize="10dp"/>
+                        
+<!--                         <ImageView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_go_gray"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center_vertical"/> -->
+                    </LinearLayout>
+                    </LinearLayout>
+                    
+                         <View
+       						android:layout_width="1dp"
+        					android:layout_height="match_parent"
+        					android:background="#e5e5e5" />
+                    
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:id="@+id/rl_xiaoba_coin">
+                         <TextView
+                            android:id="@+id/tv_coin_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textStyle="bold"
+                            android:textColor="#ff9600"
+                            android:textSize="20dp" />
+
+                        <LinearLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="6dp">
+                            
+             			<TextView 
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="小巴币"
+                           android:textColor="#666666"
+                           android:textSize="10dp"/> 
+                        
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="（个）"
+                            android:textColor="#666666"
+                            android:textSize="10dp"/>
+                        
+<!--                         <ImageView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_go_gray"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center_vertical"/> -->
+                    </LinearLayout>
+                    
+                    </LinearLayout>
+                    
+                         <View
+       						android:layout_width="1dp"
+        					android:layout_height="match_parent"
+        					android:background="#e5e5e5" />
+                    
+                <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:id="@+id/rl_xiaoba_ticket">
+                        <TextView
+                           	android:id="@+id/tv_coupon_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textStyle="bold"
+                            android:textColor="#ff9600"
+                            android:textSize="20dp" />
+                           
+                        <LinearLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="6dp">
+                        
+                    	<TextView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="小巴券"
+                           android:textColor="#666666"
+                           android:textSize="10dp"/> 
+                        
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="（张）"
+                            android:textColor="#666666"
+                            android:textSize="10sp"/>
+                        
+<!--                         <ImageView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_go_gray"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center_vertical"/> -->
+                    </LinearLayout>
+                    
+                    </LinearLayout>
+                    
+                </LinearLayout>
+                  <View style="@style/dividerLine" />
+                	
+                <!-- <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -50,7 +196,7 @@
                     android:paddingLeft="17dp"
                     android:paddingRight="15dp"
                     android:paddingTop="15dp"
-                    android:id="@+id/ll_my_money" >
+                    >
 
                     <LinearLayout
                         android:id="@+id/mine_yue_layout"
@@ -65,11 +211,10 @@
                             android:gravity="center_vertical"
                             android:orientation="horizontal" >
 
-<!--                             <ImageView
+                            <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/left_money" /> -->
-
+                                android:src="@drawable/left_money" />
                             <TextView
                                 android:id="@+id/mine_yue"
                                 android:layout_width="wrap_content"
@@ -79,14 +224,14 @@
                                 android:textSize="19dp" />
                         </LinearLayout>
 
- <!--                        <TextView
+                        <TextView
                             android:id="@+id/mine_gmoney"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text=" (1025.0元保证金 / 2000.0元冻结金)"
                             android:textColor="@color/text_black"
-                            android:textSize="12dp" /> -->
+                            android:textSize="12dp" />
                     </LinearLayout>
                     
                     <LinearLayout android:layout_width="wrap_content"
@@ -96,7 +241,6 @@
                         <TextView android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2000"
-                            android:id="@+id/tv_my_money"
                             android:textColor="@color/text_red"
                             android:textSize="20sp"/>
                         
@@ -113,7 +257,7 @@
                             android:layout_gravity="center_vertical"/>
                     </LinearLayout>
 
-<!--                     <Button
+                    <Button
                         android:id="@+id/mine_apply_btn"
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
@@ -122,7 +266,7 @@
                         android:lineSpacingExtra="3dp"
                         android:text="申请\n提现"
                         android:textColor="@color/white"
-                        android:textSize="14dp" /> -->
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <View style="@style/dividerLine" />
@@ -132,7 +276,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="17dp"
                     android:paddingRight="15dp"
-                    android:id="@+id/rl_xiaoba_ticket">
+                    >
                     
                     <LinearLayout android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -140,7 +284,6 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true">
                          <TextView
-                            android:id="@+id/tv_coupon_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
@@ -162,7 +305,7 @@
                         
                     </LinearLayout>
                     
-<!--                     <Button
+                    <Button
                         android:id="@+id/btn_pay_cash"
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
@@ -172,7 +315,7 @@
                         android:padding="5dp"
                         android:text="查看"
                         android:textColor="@color/white"
-                        android:textSize="14sp"/> -->
+                        android:textSize="14sp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -203,7 +346,7 @@
                                 android:layout_marginTop="-4dp"/>
                         </RelativeLayout>
 
-<!--                         <LinearLayout android:layout_width="wrap_content"
+                        <LinearLayout android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView android:layout_width="wrap_content"
@@ -215,7 +358,7 @@
                                 android:text="："
                                 android:textColor="@color/text_black"
                                 android:textSize="19dp" />
-                        </LinearLayout> -->
+                        </LinearLayout>
 
 
                     </LinearLayout>
@@ -228,7 +371,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="17dp"
                     android:layout_marginRight="15dp"
-                    android:id="@+id/rl_xiaoba_coin">
+                    >
                     
                    <LinearLayout android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
@@ -236,7 +379,6 @@
                        android:layout_alignParentRight="true"
                         android:layout_centerVertical="true">
                         <TextView
-                            android:id="@+id/tv_coin_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
@@ -257,7 +399,7 @@
                             android:layout_gravity="center_vertical"/>
                    </LinearLayout>
 
-<!--                     <Button
+                    <Button
                         android:id="@+id/btn_pay_coin"
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
@@ -267,7 +409,7 @@
                         android:padding="5dp"
                         android:text="@string/cash"
                         android:textColor="@color/white"
-                        android:textSize="14sp" /> -->
+                        android:textSize="14sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -277,7 +419,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical" >
                         
-                        <RelativeLayout android:layout_width="wrap_content"
+                         <RelativeLayout android:layout_width="wrap_content"
                             android:layout_height="60dp"
                             android:layout_gravity="center_vertical"
                             android:gravity="center_vertical">
@@ -296,14 +438,13 @@
                                 android:layout_toRightOf="@id/tv_xiaoba_coin"
                                 android:layout_marginTop="-4dp"
                                 android:id="@+id/img_ticket_coin_2"/>
-                        
                         </RelativeLayout>
 
                        
                     </LinearLayout>
                 </RelativeLayout>
 
-                <View style="@style/dividerLine" />
+                <View style="@style/dividerLine" /> -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -318,8 +459,39 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical" >
-
+                        
                         <LinearLayout
+                            android:id="@+id/recharge_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:layout_width="52dp"
+                                android:layout_height="29dp"
+                                android:src="@drawable/recharge" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="钱包"
+                                android:textColor="@color/text_black"
+                                android:textSize="17dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="我的钱包"
+                                android:textColor="#a3abbc"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                        
+                  <View style="@style/dividerLine" />
+                        
+                      <LinearLayout
                             android:id="@+id/tousu_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -348,6 +520,8 @@
                                 android:textColor="#a3abbc"
                                 android:textSize="12dp" />
                         </LinearLayout>
+                        
+
 
                         <View style="@style/dividerLine" />
 
@@ -400,7 +574,10 @@
                                 android:visibility="invisible" >
                             </TextView> -->
                         </RelativeLayout>
-                    </LinearLayout>
+
+                    		
+
+                    </LinearLayout>	
 
                     <View
                         android:layout_width="0.5dp"
@@ -411,8 +588,39 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical" >
+                                                
+                         <LinearLayout
+                            android:id="@+id/ll_coupon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical" >
 
-                        <LinearLayout
+                            <ImageView
+                                android:layout_width="37dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/ic_coupon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="小巴券"
+                                android:textColor="@color/text_black"
+                                android:textSize="17dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="查看和发放小巴券"
+                                android:textColor="#a3abbc"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                        
+                   <View style="@style/dividerLine" />
+                        
+                      <LinearLayout
                             android:id="@+id/evaluate_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -456,25 +664,27 @@
                             </LinearLayout>
                         </LinearLayout>
 
+
+
                         <View style="@style/dividerLine" />
 
-                        <LinearLayout
-                            android:id="@+id/recharge_layout"
+						<LinearLayout
+                            android:id="@+id/ll_service"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="vertical" >
 
                             <ImageView
-                                android:layout_width="52dp"
-                                android:layout_height="29dp"
-                                android:src="@drawable/recharge" />
+                                android:layout_width="37dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/ic_service" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
-                                android:text="钱包"
+                                android:text="在线客服"
                                 android:textColor="@color/text_black"
                                 android:textSize="17dp" />
 
@@ -482,10 +692,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:text="我的钱包"
+                                android:text="在线联系小巴客服"
                                 android:textColor="#a3abbc"
                                 android:textSize="12dp" />
                         </LinearLayout>
+                        
+
+                    
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

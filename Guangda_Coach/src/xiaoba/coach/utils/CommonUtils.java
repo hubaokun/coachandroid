@@ -281,13 +281,17 @@ public class CommonUtils {
 			default:
 				break;
 			}
-
+			try
+			{
 			Bitmap bitmap = BitmapFactory.decodeFile(dst.getPath(), opts);
 			if (rotate > 0) {
 				bitmap = BitmapUtils.rotateBitmap(bitmap, rotate);
 			}
-
 			return bitmap;
+			}catch(OutOfMemoryError e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return null;
 	}

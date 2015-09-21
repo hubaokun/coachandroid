@@ -5,25 +5,23 @@
     android:orientation="vertical"
     >
     
-    <RelativeLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+   <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/rl_advertisement">
-        
-        <ImageView
-            android:id="@+id/img_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/img_advertisement"
-            android:src="@drawable/ic_close"
-            />
-        
+
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/img_advertisement"
-            android:layout_marginTop="45dp"
-            android:layout_centerHorizontal="true"
+           	android:layout_centerInParent="true"
             android:src="@drawable/im_advertisement"
             android:visibility="invisible"/>
+        <ImageView
+            android:id="@+id/img_close"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignRight="@id/img_advertisement"
+            android:layout_alignTop="@id/img_advertisement"
+            />
     </RelativeLayout>
 
 </LinearLayout>

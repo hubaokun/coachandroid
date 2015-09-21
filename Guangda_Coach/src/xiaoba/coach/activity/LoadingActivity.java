@@ -264,7 +264,7 @@ public class LoadingActivity extends BaseActivity {
 								}
 						     }
 						 };
-						timer.schedule(task, 1000 * 3); //5秒后
+						timer.schedule(task, 1000 * 5); //5秒后
 					}else{
 						imgAdver.setVisibility(View.GONE);
 				    	if (mApplication.getUserInfo().getPhone() != null && !mApplication.getUserInfo().getPhone().equals("")) {

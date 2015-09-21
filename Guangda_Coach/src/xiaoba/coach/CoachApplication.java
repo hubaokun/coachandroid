@@ -39,6 +39,8 @@ import com.baidu.mapapi.SDKInitializer;
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.util.DensityUtils;
 import com.daoshun.lib.view.OnSingleClickListener;
+import com.easemob.chat.EMChat;
+import com.easemob.helpdeskdemo.DemoHXSDKHelper;
 import com.igexin.sdk.PushManager;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -75,6 +77,9 @@ public class CoachApplication extends Application {
     private boolean isSaveSet;
     
 	private static final String SP_NAME = "ApplicationInfo";
+	
+	public static String currentUserNick = "";
+	public static DemoHXSDKHelper hxSDKHelper = new DemoHXSDKHelper();
     
 
     @Override
@@ -128,6 +133,16 @@ public class CoachApplication extends Application {
 
             }
         });
+        
+        EMChat.getInstance().init(getApplicationContext());
+		 
+		/**
+		 * debugMode == true 鏃朵负鎵撳紑锛宻dk 浼氬湪log閲岃緭鍏ヨ皟璇曚俊鎭�
+		 * @param debugMode
+		 * 鍦ㄥ仛浠ｇ爜娣锋穯鐨勬椂鍊欓渶瑕佽缃垚false
+		 */
+		EMChat.getInstance().setDebugMode(true);//鍦ㄥ仛鎵撳寘娣锋穯鏃讹紝瑕佸叧闂璬ebug妯″紡锛屽鏋滄湭琚叧闂紝鍒欎細鍑虹幇绋嬪簭鏃犳硶杩愯闂
+		hxSDKHelper.onInit(getApplicationContext());
         init();
     }
 

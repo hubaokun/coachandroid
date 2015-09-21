@@ -25,6 +25,7 @@ import xiaoba.coach.net.result.GetScheduleByDateResult;
 import xiaoba.coach.net.result.GetScheduleResult;
 import xiaoba.coach.net.result.SetDateTimeResult;
 import xiaoba.coach.net.result.GetAllSubjectResult.SubjectInfo;
+import xiaoba.coach.net.result.GetMaxPriceResult;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.utils.DialogUtil;
 import xiaoba.coach.views.PriceDialog;
@@ -94,6 +95,8 @@ public class ClassTimeSetActivity extends BaseActivity {
 	TextView mContentTv;
 	@ViewById(R.id.classset_price_et)
 	TextView mPriceEt;
+	@ViewById(R.id.tv_max_price)
+	TextView tvMaxPrice;
 
 //	String mor, aft, nig;
 	int /*single,*/ textLength/* 一个小时占据的宽度 */;
@@ -103,6 +106,8 @@ public class ClassTimeSetActivity extends BaseActivity {
 	String[] content; // 上车地点数组
 	String[] locContent; // 教学课程数据
 	GetScheduleResult result;
+	private int minPrice;
+	private int maxPrice;
 	/*
 	 * 课程id
 	 */
@@ -132,6 +137,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 		new prepareTask().execute();
 		new GetAllSubjectTask().execute();
 		new GetAllAddressTask().execute();
+		new getMaxPrice().execute();
 		mApplication.setSaveSet(false);
 		llChangeLoca.setOnClickListener(new OnSingleClickListener() {
 			@Override
@@ -180,39 +186,38 @@ public class ClassTimeSetActivity extends BaseActivity {
 				} else {
 					CommonUtils.showToast(ClassTimeSetActivity.this, "暂未取得上车地点");
 				}
-
 			}
 		});
 
-//		mPriceEt.addTextChangedListener(new TextWatcher() {
-//
-//			@Override
-//			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-//			}
-//
-//			@Override
-//			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-//			}
-//
-//			@Override
-//			public void afterTextChanged(Editable arg0) {
-//				if (lastPrice != null) {
-//					if (mPriceEt.getText().toString() != null && !mPriceEt.getText().toString().equals(lastPrice)) {
-//						mModifyPrice.setImageResource(R.drawable.pencil_color);
-//						setRightClick();
-//					} else {
-//						mModifyPrice.setImageResource(R.drawable.pencile);
-//					}
-//				} else {
-//					if (mPriceEt.getText().length() > 0) {
-//						mModifyPrice.setImageResource(R.drawable.pencil_color);
-//						setRightClick();
-//					} else {
-//						mModifyPrice.setImageResource(R.drawable.pencile);
-//					}
-//				}
-//			}
-//		});
+		mPriceEt.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+			}
+
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				if (lastPrice != null) {
+					if (mPriceEt.getText().toString() != null && !mPriceEt.getText().toString().equals(lastPrice)) {
+						mModifyPrice.setImageResource(R.drawable.pencil_color);
+						setRightClick();
+					} else {
+						mModifyPrice.setImageResource(R.drawable.pencile);
+					}
+				} else {
+					if (mPriceEt.getText().length() > 0) {
+						mModifyPrice.setImageResource(R.drawable.pencil_color);
+						setRightClick();
+					} else {
+						mModifyPrice.setImageResource(R.drawable.pencile);
+					}
+				}
+			}
+		});
 	}
 
 	private class prepareTask extends AsyncTask<Void, Void, Void> {
@@ -564,9 +569,13 @@ public class ClassTimeSetActivity extends BaseActivity {
 					if (TextUtils.isEmpty(mPriceEt.getText())) {
 						Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请输入单价", Toast.LENGTH_SHORT).show();
 					} else {
-						new SetDateTimeTask().execute();
-						//...\
-						
+						int price = Integer.parseInt(mPriceEt.getText().toString());
+						if (price>=minPrice&&price<=maxPrice)
+						{
+							new SetDateTimeTask().execute();
+						}else{
+							Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请将价格设置在价格区间内", Toast.LENGTH_SHORT).show();
+						}
 					}
 				}
 			}
@@ -808,6 +817,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 			param.put("action", "SetDateTime");
 			param.put("day", day);
 			param.put("setjson", new Gson().toJson(getJsonObject()));
+			param.put("cityid",CoachApplication.getInstance().getUserInfo().getCityid());
 			return accessor.execute(Settings.SCHEDULE_URL, param, BaseResult.class);
 		}
 
@@ -1256,6 +1266,49 @@ public class ClassTimeSetActivity extends BaseActivity {
 							locContent[i] = result.getAddresslist().get(i).getDetail();
 						}
 					}
+				} else {
+					if (result.getCode() == 95) {
+						CommonUtils.gotoLogin(ClassTimeSetActivity.this);
+
+						if (result.getMessage() != null)
+							CommonUtils.showToast(ClassTimeSetActivity.this.getApplicationContext(), result.getMessage());
+					}
+					// if (result.getMessage() != null)
+					// CommonUtils.showToast(ClassTimeSetActivity.this.getApplicationContext(), result.getMessage());
+				}
+			} else {
+			}
+		}
+	}
+	
+	private class getMaxPrice extends AsyncTask<Void, Void, GetMaxPriceResult> {
+		JSONAccessor accessor = new JSONAccessor(ClassTimeSetActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
+
+		@Override
+		protected GetMaxPriceResult doInBackground(Void... arg0) {
+			HashMap<String, Object> param = new BaseParam();
+			param.put("action", "getAutoPosition");
+			param.put("cityid", CoachApplication.getInstance().getUserInfo().getCityid());
+			return accessor.execute(Settings.LOCATION_URL, param, GetMaxPriceResult.class);
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			if (mLoadingDialog != null)
+				mLoadingDialog.show();
+		}
+
+		@Override
+		protected void onPostExecute(GetMaxPriceResult result) {
+			super.onPostExecute(result);
+			if (mLoadingDialog != null && mLoadingDialog.isShowing())
+				mLoadingDialog.dismiss();
+			if (result != null) {
+				if (result.getCode() == 1) {
+					minPrice = result.getMinprice();
+					maxPrice = result.getMaxprice();
+					tvMaxPrice.setText("价格区间："+minPrice+"~"+maxPrice+")");
 				} else {
 					if (result.getCode() == 95) {
 						CommonUtils.gotoLogin(ClassTimeSetActivity.this);

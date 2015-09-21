@@ -82,16 +82,29 @@
             <View
                 style="@style/dividerLine"
                 android:layout_marginTop="17dp" />
+            
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="21dp">
 
             <TextView
                 android:id="@+id/classset_price_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="21dp"
                 android:text="@string/classset_price"
                 android:textColor="@color/text_black"
                 android:textSize="13dp" />
+            
+             <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_black"
+                android:textSize="13dp"
+                android:id="@+id/tv_max_price"
+                android:layout_marginLeft="5dp"/>
+            
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

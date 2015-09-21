@@ -12,6 +12,8 @@ import xiaoba.coach.activity.AddressSetActivity;
 import xiaoba.coach.activity.AddressSetActivity_;
 import xiaoba.coach.activity.ClassTimeSetActivity_;
 import xiaoba.coach.activity.HomeActivity;
+import xiaoba.coach.activity.ProQualityActivity;
+import xiaoba.coach.activity.ProQualityActivity_;
 import xiaoba.coach.common.Settings;
 import xiaoba.coach.interfaces.NotifyDateSelect;
 import xiaoba.coach.module.BaseParam;
@@ -25,6 +27,7 @@ import xiaoba.coach.net.result.SetDefaultResult;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.utils.NumberHelper;
 import xiaoba.coach.utils.TimeUtil;
+import xiaoba.coach.views.BaseDialog;
 import xiaoba.coach.views.CalendarGridView;
 import xiaoba.coach.views.CalendarGridViewAdapter;
 import xiaoba.coach.views.CalendarGridViewAdapter.BallState;
@@ -42,7 +45,9 @@ import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -51,9 +56,11 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -1205,6 +1212,51 @@ public class DateSetFragment extends Fragment {
 	}
 	}
 	}
+	
+	private class setCityDialog extends BaseDialog {
+
+		public setCityDialog(Context context) {
+			super(context, R.style.dialog);
+		}
+
+		public setCityDialog(Context context, int theme) {
+			super(context, R.style.dialog);
+		}
+
+		public setCityDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+			super(context, cancelable, cancelListener);
+		}
+
+		@Override
+		protected int getLayoutId() {
+			return R.layout.show_set_city_dialog;
+		}
+
+		@Override
+		protected void findViews() {
+			findViewById(R.id.tv_clear).setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					startActivity(new Intent(mActivity,ProQualityActivity_.class));
+					dismiss();
+				}
+			});
+			findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					dismiss();
+				}
+			});
+		}
+
+		@Override
+		protected void setWindowParam() {
+			setWindowParams(-1, -2, Gravity.CENTER);
+		}
+
+	}
 
 	private void addListeners() {
 		/*
@@ -1448,9 +1500,13 @@ public class DateSetFragment extends Fragment {
 			@Override
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
+				if (TextUtils.isEmpty(CoachApplication.getInstance().getUserInfo().getCityid()))
+				{
+					new setCityDialog(mActivity).show();
+				}else{
 				mActivity.startActivityForResult(new Intent(mActivity, ClassTimeSetActivity_.class).putIntegerArrayListExtra("hour", chosedHour).putExtra("rest",chosedIsRest).putExtra("result", scheduleResult)
 						.putExtra("day", TimeUtil.calendarToString(calSelected)), 2001);
-
+				}
 			}
 		});
 		

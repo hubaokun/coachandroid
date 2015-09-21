@@ -46,10 +46,10 @@ public class ImageLoadSaveTask extends AsyncTask<String,Integer,Bitmap> {
         }else {
             avatar.setImageBitmap(result);
             //saveMyBitmap(avatarPath,result);
+            if (mOnImageLoad != null) {
+            	mOnImageLoad.showCancle(true);
+    		}
         }
-        if (mOnImageLoad != null) {
-        	mOnImageLoad.showCancle(true);
-		}
     }
     
     public static void setImageShowListener(OnImageLoad l){

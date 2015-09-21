@@ -68,6 +68,7 @@ public class UserInfo {
 	private String cityid;
 	private String provinceid;
 	private String areaid;
+	private int couponlimit;  //0没有权限，1有权限 
 	
 	public int getCashtype() {
 		return cashtype;
@@ -674,5 +675,13 @@ public class UserInfo {
 
 	public void setAreaid(String areaid) {
 		this.areaid = areaid;
+	}
+
+	public int getCouponlimit() {
+		return couponlimit;
+	}
+
+	public void setCouponlimit(int couponlimit) {
+		this.couponlimit = couponlimit;
 	}
 }

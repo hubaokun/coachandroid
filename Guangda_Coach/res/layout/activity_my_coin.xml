@@ -35,9 +35,16 @@
            android:text="可兑换"
            android:textColor="@color/text_black"
            android:textSize="16sp"/> -->
+           <LinearLayout android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+           <LinearLayout android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+           
        <TextView android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:id="@+id/tv_coach_name"
+           android:text="教练"
            android:textColor="@color/text_black"
            android:textSize="16sp"/>
        <TextView android:layout_width="wrap_content"
@@ -45,6 +52,13 @@
            android:text="小巴币："
            android:textColor="@color/text_black"
            android:textSize="16sp"/>
+       </LinearLayout>
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="@color/text_grey"
+           android:textSize="12sp"
+           android:id="@+id/tv_coach_name"/>
+       </LinearLayout>
        <TextView android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:id="@+id/tv_coach_coin"

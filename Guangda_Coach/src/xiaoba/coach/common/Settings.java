@@ -87,4 +87,6 @@ public class Settings {
 	public static final String SHARE = BASE_SHARE + "/share.jsp?";
 	
 	public static final String ADVER_URL = BASE_URL+"/adver";
+	
+	public static final String LOCATION_URL = BASE_URL + "/location";
 }

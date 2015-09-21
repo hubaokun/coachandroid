@@ -129,7 +129,7 @@
 	<string name="set_time_status">是否开课</string>
 	<string name="classset_close_tip">休息状态，以上时间点屏蔽任何学生选课！</string>
 	<string name="classset_open_tip">开课状态，若关闭，以上时间点屏蔽任何\n学生选课！</string>
-	<string name="classset_price">时间单价 (元/小时)</string>
+	<string name="classset_price">课时单价 (元/小时</string>
 	<string name="classset_loc">选择上车地点</string>
 	<string name="classset_teach_content">教学内容</string>
 	

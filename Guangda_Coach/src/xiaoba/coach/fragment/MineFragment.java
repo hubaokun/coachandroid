@@ -8,7 +8,10 @@ import xiaoba.coach.activity.AccessActivity;
 import xiaoba.coach.activity.AccountArrangeActivity;
 import xiaoba.coach.activity.ActivityGetAllCoupon;
 import xiaoba.coach.activity.ActivityMyCoin;
+import xiaoba.coach.activity.ActivityMyPackage;
 import xiaoba.coach.activity.ActivityMyStudent;
+import xiaoba.coach.activity.ActivityMyTickets;
+import xiaoba.coach.activity.ActivitySendCoupon;
 import xiaoba.coach.activity.ActivityShare;
 import xiaoba.coach.activity.GetCashActivity_;
 import xiaoba.coach.activity.HomeActivity;
@@ -94,16 +97,19 @@ public class MineFragment extends Fragment {
 //	private Button btnPayCoins;
 	private String coinnum = "0";
 	private TextView tv_coin_value;
-	private ImageView imgTicketCoin1;
-	private ImageView imgTicketCoin2;
+//	private ImageView imgTicketCoin1;
+//	private ImageView imgTicketCoin2;
 	private TicketCoinRelusDialog ticketcoinDialog;
 	private TextView tvPhone;
 	private TextView tvTime;
 	private TextView tvMyMoney;
 	private LinearLayout llMyMoney;
-	private RelativeLayout rlXiaoBaTicket;
-	private RelativeLayout rlXiaoBaCoin;
-
+	private LinearLayout rlXiaoBaTicket;
+	private LinearLayout rlXiaoBaCoin;
+	private LinearLayout llCoupon;
+	private LinearLayout llService;
+	private String ticketNum = "0";
+	private CoachApplication id;
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -123,6 +129,7 @@ public class MineFragment extends Fragment {
 	}
 
 	private void initView(View view) {
+		id = (CoachApplication)getActivity().getApplication();
 		rlInfo = (RelativeLayout)view.findViewById(R.id.rl_info);
 		mHourTv = (TextView) view.findViewById(R.id.tv_coupon_value);
 		mRatingBar = (RatingBar) view.findViewById(R.id.mine_ratingBar);
@@ -132,6 +139,8 @@ public class MineFragment extends Fragment {
 		mEvaluateLayout = (LinearLayout) view.findViewById(R.id.evaluate_layout);
 		mRechargeLayout = (LinearLayout) view.findViewById(R.id.recharge_layout);
 		mNoticeLayout = (RelativeLayout) view.findViewById(R.id.notice_layout);
+		llCoupon = (LinearLayout)view.findViewById(R.id.ll_coupon);
+		llService = (LinearLayout)view.findViewById(R.id.ll_service);
 		rlShare = (RelativeLayout)view.findViewById(R.id.share_layout);
 		mPortrait = (ImageView) view.findViewById(R.id.potrait);
 		mSet = (ImageView) view.findViewById(R.id.mine_set);
@@ -145,7 +154,7 @@ public class MineFragment extends Fragment {
 		mEvaluateCount = (TextView) view.findViewById(R.id.evaluation_msg_count);
 		mNoticeCount = (TextView) view.findViewById(R.id.notice_msg_count);
 //		mUnreadCount = (TextView) view.findViewById(R.id.notice_unread_msg_count);
-		mYueLayout = (LinearLayout) view.findViewById(R.id.mine_yue_layout);
+//		mYueLayout = (LinearLayout) view.findViewById(R.id.mine_yue_layout);
 //		mApply = (Button) view.findViewById(R.id.mine_apply_btn);
 //		btnPayCash = (Button) view.findViewById(R.id.btn_pay_cash);
 		tvStudentCount = (TextView) view.findViewById(R.id.tv_student_count);
@@ -155,18 +164,20 @@ public class MineFragment extends Fragment {
 		mEvaluateLayout.setLayoutParams(params);
 		rlShare.setLayoutParams(params);
 		mRechargeLayout.setLayoutParams(params);
+		llCoupon.setLayoutParams(params);
+		llService.setLayoutParams(params);
 //		int bgHeight = Settings.DISPLAY_WIDTH * 345 / 640;
 //		bg.setLayoutParams(new RelativeLayout.LayoutParams(Settings.DISPLAY_WIDTH, bgHeight));
 //		btnPayCoins = (Button)view.findViewById(R.id.btn_pay_coin);
 		tv_coin_value=(TextView)view.findViewById(R.id.tv_coin_value);
-		imgTicketCoin1 = (ImageView)view.findViewById(R.id.img_ticket_coin_1);
-		imgTicketCoin2 = (ImageView)view.findViewById(R.id.img_ticket_coin_2);
+//		imgTicketCoin1 = (ImageView)view.findViewById(R.id.img_ticket_coin_1);
+//		imgTicketCoin2 = (ImageView)view.findViewById(R.id.img_ticket_coin_2);
 		tvPhone = (TextView)view.findViewById(R.id.tv_phone);
 		tvTime = (TextView)view.findViewById(R.id.tv_time);
 		tvMyMoney = (TextView)view.findViewById(R.id.tv_my_money);
 		llMyMoney = (LinearLayout)view.findViewById(R.id.ll_my_money);
-		rlXiaoBaTicket = (RelativeLayout)view.findViewById(R.id.rl_xiaoba_ticket);
-		rlXiaoBaCoin = (RelativeLayout)view.findViewById(R.id.rl_xiaoba_coin);
+		rlXiaoBaTicket = (LinearLayout)view.findViewById(R.id.rl_xiaoba_ticket);
+		rlXiaoBaCoin = (LinearLayout)view.findViewById(R.id.rl_xiaoba_coin);
 	}
 
 	private void addListeners() {
@@ -306,7 +317,9 @@ public class MineFragment extends Fragment {
 
 			@Override
 			public void doOnClick(View v) {
-				startActivity(new Intent(mActivity, IncomeDetailActivity_.class));
+				Intent intent = new Intent(mActivity,ActivityMyPackage.class);
+				intent.putExtra("coupon", coinnum);
+				startActivity(intent);
 			}
 		});
 		/*
@@ -355,21 +368,50 @@ public class MineFragment extends Fragment {
 			}
 		});
 		
-		imgTicketCoin1.setOnClickListener(new View.OnClickListener() {
+//		imgTicketCoin1.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				ticketcoinDialog.show();
+//			}
+//		});
+//		
+//		imgTicketCoin2.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				ticketcoinDialog.show();
+//			}
+//		});
+		
+		llCoupon.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ticketcoinDialog.show();
+				Intent intent = new Intent(mActivity,ActivityMyTickets.class);
+				intent.putExtra("ticket", ticketNum);
+				startActivity(intent);
 			}
 		});
 		
-		imgTicketCoin2.setOnClickListener(new View.OnClickListener() {
+		//环信客服
+		llService.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ticketcoinDialog.show();
+				Intent intent = new Intent (mActivity,com.easemob.helpdeskdemo.activity.LoginActivity.class);
+				 System.out.println("____________鐐瑰嚮鎴戜簡__________________"+id.mUserInfo.getPhone()+CoachApplication.mUserInfo.getAvatarurl());
+				intent.putExtra("phone", id.mUserInfo.getPhone());
+				if(CoachApplication.mUserInfo.getAvatarurl()!=null){
+					intent.putExtra("iv", CoachApplication.mUserInfo.getAvatarurl());
+				}else {
+					intent.putExtra("iv", "");
+				}
+				startActivity(intent);
 			}
 		});
 	}
@@ -527,6 +569,7 @@ public class MineFragment extends Fragment {
 					result.setGmoney("" + 0);
 				if (result.getCouponhour() > 0) {
 					mHourTv.setText(result.getCouponhour() + "");
+					ticketNum = result.getCouponhour()+"";
 				}
 				if (!result.getMoney().equals(userInfo.getMoney()) || !result.getFmoney().equals(userInfo.getFmoney()) || !result.getGmoney().equals(userInfo.getGmoney())
 						|| result.getCouponhour() != userInfo.getCouponhour()) {
@@ -538,7 +581,7 @@ public class MineFragment extends Fragment {
 					setMoney();
 				}
 				if(result.getCoinnum()>=0){
-					tv_coin_value.setText(String.valueOf(result.getCoinnum()));
+					tv_coin_value.setText(result.getCoinnum()+"");
 					coinnum=String.valueOf(result.getCoinnum());
 				}
 			} else {

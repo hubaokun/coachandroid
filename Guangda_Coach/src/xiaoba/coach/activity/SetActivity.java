@@ -1,6 +1,8 @@
 package xiaoba.coach.activity;
 
 
+import java.io.File;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -8,17 +10,23 @@ import org.androidannotations.annotations.ViewById;
 
 import xiaoba.coach.CoachApplication;
 import xiaoba.coach.R;
-
+import xiaoba.coach.common.Settings;
+import xiaoba.coach.utils.FileUtilLj;
+import xiaoba.coach.views.BaseDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @EActivity(R.layout.activity_set)
 public class SetActivity extends BaseActivity {
@@ -42,7 +50,10 @@ public class SetActivity extends BaseActivity {
 	RelativeLayout mTitleLayout;
 	@ViewById(R.id.rules_coach)
 	LinearLayout llRules;
-
+	@ViewById(R.id.ll_clear)
+	LinearLayout llClear;
+	@ViewById(R.id.tv_clear)
+	TextView tvClear;
 	boolean isReceiveNotice;
 
 	@AfterViews
@@ -51,6 +62,7 @@ public class SetActivity extends BaseActivity {
 		mTitleBack.setImageResource(R.drawable.back_arrow);
 		mTitle.setTextColor(Color.parseColor("#2c2c2c"));
 		mTitleLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+		tvClear.setText(getFileSize());
 	}
 
 	@Click(R.id.title_back)
@@ -97,5 +109,84 @@ public class SetActivity extends BaseActivity {
 	{
 		Intent intent = new Intent (SetActivity.this,ActivityCoachRules.class);
 		startActivity(intent);
+	}
+	
+	@Click(R.id.ll_clear)
+	void clearCacho()
+	{
+		new ClearDialog(this).show();
+	}
+	
+	public String getFileSize() {
+		String str = FileUtilLj.formatFileSize(FileUtilLj.getFileSize(new File(Settings.TEMP_PATH)));
+		return str;
+	}
+	
+	private class ClearDialog extends BaseDialog {
+
+		public ClearDialog(Context context) {
+			super(context, R.style.dialog);
+		}
+
+		public ClearDialog(Context context, int theme) {
+			super(context, R.style.dialog);
+		}
+
+		public ClearDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+			super(context, cancelable, cancelListener);
+		}
+
+		@Override
+		protected int getLayoutId() {
+			return R.layout.clear_dialog;
+		}
+
+		@Override
+		protected void findViews() {
+			findViewById(R.id.tv_clear).setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					cleanCache();
+					tvClear.setText(getFileSize());
+					dismiss();
+				}
+			});
+			findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					dismiss();
+				}
+			});
+		}
+
+		@Override
+		protected void setWindowParam() {
+			setWindowParams(-1, -2, Gravity.CENTER);
+		}
+
+	}
+	
+	public void cleanCache() {
+		/**
+		 * 清理缓存
+		 */
+		File cacheFolder = new File(Settings.PIC_PATH);
+
+		// 清理所有子文件
+		for (File file : cacheFolder.listFiles()) {
+			if (!file.isDirectory())
+				file.delete();
+		}
+		cacheFolder = new File(Settings.TEMP_PATH);
+
+		// 清理所有子文件
+		for (File file : cacheFolder.listFiles()) {
+			if (!file.isDirectory()) {
+				file.delete();
+			}
+		}
+		Toast.makeText(this, "缓存已清除！", 0).show();
 	}
 }

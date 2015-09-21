@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="xiaoba.coach"
-    android:versionCode="3"
-    android:versionName="1.9.4" >
+    android:versionCode="4"
+    android:versionName="1.9.5" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -307,13 +307,40 @@
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:windowSoftInputMode="adjustPan" />
         
-                <activity
+      <activity
             android:name=".activity.ActivityChoseCar"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:windowSoftInputMode="adjustPan" />
-        
+      <activity
+            android:name=".activity.ActivitySendCoupon"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+      
+            <activity
+            android:name=".activity.ActivitySendHistory"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+           
+           <activity
+            android:name=".activity.ActivityMyPackage"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+
+           <activity
+            android:name=".activity.ActivityMyTickets"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+           
        <activity
             android:name=".activity.ActivityCoachYear"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
@@ -550,6 +577,67 @@
         <meta-data
             android:name="TD_CHANNEL_ID"
             android:value="chengzhangbao_headquarters" />
+        
+         //环信
+        <!-- 登陆 -->
+        <activity
+            android:name="com.easemob.helpdeskdemo.activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+
+        <!-- 聊天页面 -->
+        <activity
+            android:name="com.easemob.helpdeskdemo.activity.ChatActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 地图 -->
+        <activity
+            android:name="com.easemob.helpdeskdemo.activity.BaiduMapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+
+        <!-- 自定义的contextmenu -->
+        <activity
+            android:name="com.easemob.helpdeskdemo.activity.ContextMenu"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyle" >
+        </activity>
+        <!-- 自定义的alertdialog -->
+        <activity
+            android:name="com.easemob.helpdeskdemo.activity.AlertDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyle" >
+        </activity>
+        <!-- 显示下载大图页面 -->
+        <activity
+            android:name="com.easemob.helpdeskdemo.activity.ShowBigImage"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+
+        <!-- choose video -->
+        <activity
+            android:name="com.easemob.helpdeskdemo.activity.ImageGridActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <!-- upload error log -->
+        <activity
+            android:name="com.easemob.helpdeskdemo.activity.DiagnoseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <!-- 设置环信应用的appkey -->
+    	<meta-data android:name="EASEMOB_APPKEY"  android:value="xiaobaxueche#xiaobaxueche" />
+        <!-- 声明sdk所需的service -->
+        <service android:name="com.easemob.chat.EMChatService" />
     </application>
 
 </manifest>

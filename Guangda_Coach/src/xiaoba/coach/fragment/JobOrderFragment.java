@@ -104,7 +104,6 @@ public class JobOrderFragment extends Fragment {
 	private String latitude, longitude, detail;
 	LoadingDialog mLoadingDialog;
 	
-	
 	public void getPosition() {
 		locationClient = new LocationClient(mActivity.getApplicationContext());
 		myListener = new MyLocationListenner();

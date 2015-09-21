@@ -346,6 +346,7 @@ public class ProQualityActivity extends BaseActivity {
 		});
 		
 		new PerfectAccountInfoTask().execute();
+		setImage();
 
 		/*
 		 * 取carmodels
@@ -546,6 +547,112 @@ public class ProQualityActivity extends BaseActivity {
 		// }
 		// });
 	}
+	
+	private void setImage()
+	{
+		UserInfo info = CoachApplication.getInstance().getUserInfo();
+		DisplayImageOptions options;
+		ImageSize mImageSize;
+		// 显示图片的配置
+		options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisc(true).bitmapConfig(Bitmap.Config.RGB_565).build();
+		mImageSize = new ImageSize(200, 200);
+		ImageLoader.getInstance().loadImage(info.getCoach_cardpicurl(), mImageSize, options, new ImageLoadingListener() {
+			@Override
+			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				if (loadedImage != null) {
+					loadedImage = centerSquareScaleBitmap(loadedImage, 109);
+					mPicCoach.setImageBitmap(loadedImage);
+					mPicCoach.setVisibility(View.VISIBLE);
+					mPhotoCoachCard.setVisibility(View.INVISIBLE);
+					mDelCoachCard.setVisibility(View.VISIBLE);
+				}
+			}
+
+			@Override
+			public void onLoadingStarted(String imageUri, View view) {
+			}
+
+			@Override
+			public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+			}
+
+			@Override
+			public void onLoadingCancelled(String imageUri, View view) {
+			}
+		});
+		ImageLoader.getInstance().loadImage(info.getDrive_cardpicurl(), mImageSize, options, new ImageLoadingListener() {
+			@Override
+			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				if (loadedImage != null) {
+					loadedImage = centerSquareScaleBitmap(loadedImage, 109);
+					mPicDriveCar.setImageBitmap(loadedImage);
+					mPicDriveCar.setVisibility(View.VISIBLE);
+					mPhotoCar.setVisibility(View.INVISIBLE);
+					mDelDriveCard.setVisibility(View.VISIBLE);
+				}
+			}
+
+			@Override
+			public void onLoadingStarted(String imageUri, View view) {
+			}
+
+			@Override
+			public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+			}
+
+			@Override
+			public void onLoadingCancelled(String imageUri, View view) {
+			}
+		});
+		ImageLoader.getInstance().loadImage(info.getCar_cardpicfurl(), mImageSize, options, new ImageLoadingListener() {
+			@Override
+			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				if (loadedImage != null) {
+					loadedImage = centerSquareScaleBitmap(loadedImage, 109);
+					mPicCarFront.setImageBitmap(loadedImage);
+					mPicCarFront.setVisibility(View.VISIBLE);
+					mPhotoCarFront.setVisibility(View.INVISIBLE);
+					mDelCarFront.setVisibility(View.VISIBLE);
+				}
+			}
+
+			@Override
+			public void onLoadingStarted(String imageUri, View view) {
+			}
+
+			@Override
+			public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+			}
+
+			@Override
+			public void onLoadingCancelled(String imageUri, View view) {
+			}
+		});
+		ImageLoader.getInstance().loadImage(info.getCar_cardpicburl(), mImageSize, options, new ImageLoadingListener() {
+			@Override
+			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				if (loadedImage != null) {
+					loadedImage = centerSquareScaleBitmap(loadedImage, 109);
+					mPicCarBack.setImageBitmap(loadedImage);
+					mPicCarBack.setVisibility(View.VISIBLE);
+					mPhotoCarBack.setVisibility(View.INVISIBLE);
+					mDelCarBack.setVisibility(View.VISIBLE);
+				}
+			}
+
+			@Override
+			public void onLoadingStarted(String imageUri, View view) {
+			}
+
+			@Override
+			public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+			}
+
+			@Override
+			public void onLoadingCancelled(String imageUri, View view) {
+			}
+		});
+	}
 
 	private void setLocalInfo() {
 		UserInfo info = CoachApplication.getInstance().getUserInfo();
@@ -655,11 +762,7 @@ public class ProQualityActivity extends BaseActivity {
 		}else{
 			tvTeachCar.setText("未设置");
 		}
-		DisplayImageOptions options;
-		ImageSize mImageSize;
-		// 显示图片的配置
-		options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisc(true).bitmapConfig(Bitmap.Config.RGB_565).build();
-		mImageSize = new ImageSize(200, 200);
+		
 
 		// ImageLoader.getInstance().loadImage(info.getId_cardpicfurl(), mImageSize, options, new ImageLoadingListener() {
 		// @Override
@@ -707,102 +810,7 @@ public class ProQualityActivity extends BaseActivity {
 		// public void onLoadingCancelled(String imageUri, View view) {
 		// }
 		// });
-		ImageLoader.getInstance().loadImage(info.getCoach_cardpicurl(), mImageSize, options, new ImageLoadingListener() {
-			@Override
-			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-				if (loadedImage != null) {
-					loadedImage = centerSquareScaleBitmap(loadedImage, 109);
-					mPicCoach.setImageBitmap(loadedImage);
-					mPicCoach.setVisibility(View.VISIBLE);
-					mPhotoCoachCard.setVisibility(View.INVISIBLE);
-					mDelCoachCard.setVisibility(View.VISIBLE);
-				}
-			}
-
-			@Override
-			public void onLoadingStarted(String imageUri, View view) {
-			}
-
-			@Override
-			public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-			}
-
-			@Override
-			public void onLoadingCancelled(String imageUri, View view) {
-			}
-		});
-		ImageLoader.getInstance().loadImage(info.getDrive_cardpicurl(), mImageSize, options, new ImageLoadingListener() {
-			@Override
-			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-				if (loadedImage != null) {
-					loadedImage = centerSquareScaleBitmap(loadedImage, 109);
-					mPicDriveCar.setImageBitmap(loadedImage);
-					mPicDriveCar.setVisibility(View.VISIBLE);
-					mPhotoCar.setVisibility(View.INVISIBLE);
-					mDelDriveCard.setVisibility(View.VISIBLE);
-				}
-			}
-
-			@Override
-			public void onLoadingStarted(String imageUri, View view) {
-			}
-
-			@Override
-			public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-			}
-
-			@Override
-			public void onLoadingCancelled(String imageUri, View view) {
-			}
-		});
-		ImageLoader.getInstance().loadImage(info.getCar_cardpicfurl(), mImageSize, options, new ImageLoadingListener() {
-			@Override
-			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-				if (loadedImage != null) {
-					loadedImage = centerSquareScaleBitmap(loadedImage, 109);
-					mPicCarFront.setImageBitmap(loadedImage);
-					mPicCarFront.setVisibility(View.VISIBLE);
-					mPhotoCarFront.setVisibility(View.INVISIBLE);
-					mDelCarFront.setVisibility(View.VISIBLE);
-				}
-			}
-
-			@Override
-			public void onLoadingStarted(String imageUri, View view) {
-			}
-
-			@Override
-			public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-			}
-
-			@Override
-			public void onLoadingCancelled(String imageUri, View view) {
-			}
-		});
-		ImageLoader.getInstance().loadImage(info.getCar_cardpicburl(), mImageSize, options, new ImageLoadingListener() {
-			@Override
-			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-				if (loadedImage != null) {
-					loadedImage = centerSquareScaleBitmap(loadedImage, 109);
-					mPicCarBack.setImageBitmap(loadedImage);
-					mPicCarBack.setVisibility(View.VISIBLE);
-					mPhotoCarBack.setVisibility(View.INVISIBLE);
-					mDelCarBack.setVisibility(View.VISIBLE);
-				}
-			}
-
-			@Override
-			public void onLoadingStarted(String imageUri, View view) {
-			}
-
-			@Override
-			public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-			}
-
-			@Override
-			public void onLoadingCancelled(String imageUri, View view) {
-			}
-		});
+		
 
 		// ImageLoader.getInstance().loadImage(info.getRealpicurl(), mImageSize, options, new ImageLoadingListener() {
 		// @Override
@@ -1200,10 +1208,10 @@ public class ProQualityActivity extends BaseActivity {
 		// 相机返回2001-2007
 		if (2001 <= requestCode && requestCode <= 2007 && resultCode == RESULT_OK) {
 			File photoFile = new File(Settings.TEMP_PATH, getPhotoName());
-
 			if (photoFile.exists()) {// 如果照片存在
 				cropPhoto(photoFile, 200, 200, requestCode + 14);
-			} else {// 照片不存在,检查是否在data中
+			} else {
+				// 照片不存在,检查是否在data中
 				if (data != null && data.hasExtra("data")) {
 					Bitmap photo = data.getParcelableExtra("data");
 					if (photo != null) {
@@ -1217,7 +1225,6 @@ public class ProQualityActivity extends BaseActivity {
 					Toast.makeText(ProQualityActivity.this, "照片拍摄失败.", Toast.LENGTH_SHORT).show();
 				}
 			}
-
 		}
 
 		// 相册返回2008-2014
@@ -1228,91 +1235,91 @@ public class ProQualityActivity extends BaseActivity {
 			}
 		}
 		// 返回裁剪
-		if (requestCode <= 2021 && requestCode >= 2015 && resultCode == RESULT_OK) {
-			setClickable();
-			switch (requestCode) {
-			// case CROP_REQUEST_CODE_1:
-			// photoname = getCropPhotoName();
-			// file1 = new File(Settings.TEMP_PATH, photoname);
-			// if (file1.exists()) {
-			// avater = CommonUtils.getBitmapFromFile(file1, 200, 200);
-			// mPicIdFront.setImageBitmap(avater);
-			// mPicIdFront.setVisibility(View.VISIBLE);
-			// mPhotoIdFront.setVisibility(View.INVISIBLE);
-			// mDelIdFront.setVisibility(View.VISIBLE);
-			// }
-			// break;
-			// case CROP_REQUEST_CODE_2:
-			// photoname = getCropPhotoName();
-			// file2 = new File(Settings.TEMP_PATH, photoname);
-			// if (file2.exists()) {
-			// avater = CommonUtils.getBitmapFromFile(file2, 200, 200);
-			// mPicIdBack.setImageBitmap(avater);
-			// mPicIdBack.setVisibility(View.VISIBLE);
-			// mPhotoIdBack.setVisibility(View.INVISIBLE);
-			// mDelIdBack.setVisibility(View.VISIBLE);
-			// }
-			// break;
-			case CROP_REQUEST_CODE_3:
-				photoname = getCropPhotoName();
-				file3 = new File(Settings.TEMP_PATH, photoname);
-				if (file3.exists()) {
-					avater = CommonUtils.getBitmapFromFile(file3, 200, 200);
-					mPicCoach.setImageBitmap(avater);
-					mPicCoach.setVisibility(View.VISIBLE);
-					mPhotoCoachCard.setVisibility(View.INVISIBLE);
-					mDelCoachCard.setVisibility(View.VISIBLE);
-				}
-				break;
-			case CROP_REQUEST_CODE_4:
-				photoname = getCropPhotoName();
-				file4 = new File(Settings.TEMP_PATH, photoname);
-				if (file4.exists()) {
-					avater = CommonUtils.getBitmapFromFile(file4, 200, 200);
-					mPicDriveCar.setImageBitmap(avater);
-					mPicDriveCar.setVisibility(View.VISIBLE);
-					mPhotoCar.setVisibility(View.INVISIBLE);
-					mDelDriveCard.setVisibility(View.VISIBLE);
-				}
-				break;
-			case CROP_REQUEST_CODE_5:
-				photoname = getCropPhotoName();
-				file5 = new File(Settings.TEMP_PATH, photoname);
-				if (file5.exists()) {
-					avater = CommonUtils.getBitmapFromFile(file5, 200, 200);
-					mPicCarFront.setImageBitmap(avater);
-					mPicCarFront.setVisibility(View.VISIBLE);
-					mPhotoCarFront.setVisibility(View.INVISIBLE);
-					mDelCarFront.setVisibility(View.VISIBLE);
-				}
-				break;
-			case CROP_REQUEST_CODE_6:
-				photoname = getCropPhotoName();
-				file6 = new File(Settings.TEMP_PATH, photoname);
-				if (file6.exists()) {
-					avater = CommonUtils.getBitmapFromFile(file6, 200, 200);
-					mPicCarBack.setImageBitmap(avater);
-					mPicCarBack.setVisibility(View.VISIBLE);
-					mPhotoCarBack.setVisibility(View.INVISIBLE);
-					mDelCarBack.setVisibility(View.VISIBLE);
-				}
-				break;
-			// case CROP_REQUEST_CODE_7:
-			// photoname = getCropPhotoName();
-			// file7 = new File(Settings.TEMP_PATH, photoname);
-			// if (file7.exists()) {
-			// avater = CommonUtils.getBitmapFromFile(file7, 200, 200);
-			// mPicCoachFace.setImageBitmap(avater);
-			// mPicCoachFace.setVisibility(View.VISIBLE);
-			// mPhotoCoachFace.setVisibility(View.INVISIBLE);
-			// mDelCoachFace.setVisibility(View.VISIBLE);
-			// }
-			// break;
-
-			default:
-				break;
-			}
-		}
+//		if (requestCode <= 2021 && requestCode >= 2015 && resultCode == RESULT_OK) {
+//			setClickable();
+//			switch (requestCode) {
+//			// case CROP_REQUEST_CODE_1:
+//			// photoname = getCropPhotoName();
+//			// file1 = new File(Settings.TEMP_PATH, photoname);
+//			// if (file1.exists()) {
+//			// avater = CommonUtils.getBitmapFromFile(file1, 200, 200);
+//			// mPicIdFront.setImageBitmap(avater);
+//			// mPicIdFront.setVisibility(View.VISIBLE);
+//			// mPhotoIdFront.setVisibility(View.INVISIBLE);
+//			// mDelIdFront.setVisibility(View.VISIBLE);
+//			// }
+//			// break;
+//			// case CROP_REQUEST_CODE_2:
+//			// photoname = getCropPhotoName();
+//			// file2 = new File(Settings.TEMP_PATH, photoname);
+//			// if (file2.exists()) {
+//			// avater = CommonUtils.getBitmapFromFile(file2, 200, 200);
+//			// mPicIdBack.setImageBitmap(avater);
+//			// mPicIdBack.setVisibility(View.VISIBLE);
+//			// mPhotoIdBack.setVisibility(View.INVISIBLE);
+//			// mDelIdBack.setVisibility(View.VISIBLE);
+//			// }
+//			// break;
+//			case CROP_REQUEST_CODE_3:
+//				photoname = getCropPhotoName();
+//				file3 = new File(Settings.TEMP_PATH, photoname);
+//				if (file3.exists()) {
+//					avater = CommonUtils.getBitmapFromFile(file3, 200, 200);
+//					mPicCoach.setImageBitmap(avater);
+//					mPicCoach.setVisibility(View.VISIBLE);
+//					mPhotoCoachCard.setVisibility(View.INVISIBLE);
+//					mDelCoachCard.setVisibility(View.VISIBLE);
+//				}
+//				break;
+//			case CROP_REQUEST_CODE_4:
+//				photoname = getCropPhotoName();
+//				file4 = new File(Settings.TEMP_PATH, photoname);
+//				if (file4.exists()) {
+//					avater = CommonUtils.getBitmapFromFile(file4, 200, 200);
+//					mPicDriveCar.setImageBitmap(avater);
+//					mPicDriveCar.setVisibility(View.VISIBLE);
+//					mPhotoCar.setVisibility(View.INVISIBLE);
+//					mDelDriveCard.setVisibility(View.VISIBLE);
+//				}
+//				break;
+//			case CROP_REQUEST_CODE_5:
+//				photoname = getCropPhotoName();
+//				file5 = new File(Settings.TEMP_PATH, photoname);
+//				if (file5.exists()) {
+//					avater = CommonUtils.getBitmapFromFile(file5, 200, 200);
+//					mPicCarFront.setImageBitmap(avater);
+//					mPicCarFront.setVisibility(View.VISIBLE);
+//					mPhotoCarFront.setVisibility(View.INVISIBLE);
+//					mDelCarFront.setVisibility(View.VISIBLE);
+//				}
+//				break;
+//			case CROP_REQUEST_CODE_6:
+//				photoname = getCropPhotoName();
+//				file6 = new File(Settings.TEMP_PATH, photoname);
+//				if (file6.exists()) {
+//					avater = CommonUtils.getBitmapFromFile(file6, 200, 200);
+//					mPicCarBack.setImageBitmap(avater);
+//					mPicCarBack.setVisibility(View.VISIBLE);
+//					mPhotoCarBack.setVisibility(View.INVISIBLE);
+//					mDelCarBack.setVisibility(View.VISIBLE);
+//				}
+//				break;
+//			// case CROP_REQUEST_CODE_7:
+//			// photoname = getCropPhotoName();
+//			// file7 = new File(Settings.TEMP_PATH, photoname);
+//			// if (file7.exists()) {
+//			// avater = CommonUtils.getBitmapFromFile(file7, 200, 200);
+//			// mPicCoachFace.setImageBitmap(avater);
+//			// mPicCoachFace.setVisibility(View.VISIBLE);
+//			// mPhotoCoachFace.setVisibility(View.INVISIBLE);
+//			// mDelCoachFace.setVisibility(View.VISIBLE);
+//			// }
+//			// break;
+//
+//			default:
+//				break;
+//			}
+//		}
 		
 		
 	}
@@ -1401,7 +1408,7 @@ public class ProQualityActivity extends BaseActivity {
 		// intent.putExtra("return-data", true);
 		// intent.putExtra("output", Uri.fromFile(new File(Settings.TEMP_PATH, CROP_TEMP_FILE))); // 专入目标文件
 		// startActivityForResult(intent, cropcode);
-
+		file = compressImageFromFile(file);
 		switch (cropcode) {
 		// case CROP_REQUEST_CODE_1:
 		// file1 = file;
@@ -1426,9 +1433,13 @@ public class ProQualityActivity extends BaseActivity {
 		case CROP_REQUEST_CODE_3:
 			file3 = file;
 			if (file3.exists()) {
+				avater = null;
 				avater = CommonUtils.getBitmapFromFile(file3, 200, 200);
-				avater = centerSquareScaleBitmap(avater, 109);
-				mPicCoach.setImageBitmap(avater);
+				if (avater!=null)
+				{
+					avater = centerSquareScaleBitmap(avater, 109);
+					mPicCoach.setImageBitmap(avater);
+				}
 				mPicCoach.setVisibility(View.VISIBLE);
 				mPhotoCoachCard.setVisibility(View.INVISIBLE);
 				mDelCoachCard.setVisibility(View.VISIBLE);
@@ -1437,9 +1448,13 @@ public class ProQualityActivity extends BaseActivity {
 		case CROP_REQUEST_CODE_4:
 			file4 = file;
 			if (file4.exists()) {
+				avater = null;
 				avater = CommonUtils.getBitmapFromFile(file4, 200, 200);
-				avater = centerSquareScaleBitmap(avater, 109);
-				mPicDriveCar.setImageBitmap(avater);
+				if (avater!=null)
+				{
+					avater = centerSquareScaleBitmap(avater, 109);
+					mPicDriveCar.setImageBitmap(avater);
+				}
 				mPicDriveCar.setVisibility(View.VISIBLE);
 				mPhotoCar.setVisibility(View.INVISIBLE);
 				mDelDriveCard.setVisibility(View.VISIBLE);
@@ -1448,9 +1463,13 @@ public class ProQualityActivity extends BaseActivity {
 		case CROP_REQUEST_CODE_5:
 			file5 = file;
 			if (file5.exists()) {
+				avater = null;
 				avater = CommonUtils.getBitmapFromFile(file5, 200, 200);
-				avater = centerSquareScaleBitmap(avater, 109);
-				mPicCarFront.setImageBitmap(avater);
+				if (avater!=null)
+				{
+					avater = centerSquareScaleBitmap(avater, 109);
+					mPicCarFront.setImageBitmap(avater);
+				}
 				mPicCarFront.setVisibility(View.VISIBLE);
 				mPhotoCarFront.setVisibility(View.INVISIBLE);
 				mDelCarFront.setVisibility(View.VISIBLE);
@@ -1459,9 +1478,13 @@ public class ProQualityActivity extends BaseActivity {
 		case CROP_REQUEST_CODE_6:
 			file6 = file;
 			if (file6.exists()) {
+				avater = null;
 				avater = CommonUtils.getBitmapFromFile(file6, 200, 200);
-				avater = centerSquareScaleBitmap(avater, 109);
-				mPicCarBack.setImageBitmap(avater);
+				if (avater!=null)
+				{
+					avater = centerSquareScaleBitmap(avater, 109);
+					mPicCarBack.setImageBitmap(avater);
+				}
 				mPicCarBack.setVisibility(View.VISIBLE);
 				mPhotoCarBack.setVisibility(View.INVISIBLE);
 				mDelCarBack.setVisibility(View.VISIBLE);
@@ -1662,13 +1685,13 @@ public class ProQualityActivity extends BaseActivity {
 //			if (file2 != null)
 //				param.setCardpic2(compressImageFromFile(file2));
 			if (file3 != null)
-				param.setCardpic3(compressImageFromFile(file3));
+				param.setCardpic3(file3);
 			if (file4 != null)
-				param.setCardpic4(compressImageFromFile(file4));
+				param.setCardpic4(file4);
 			if (file5 != null)
-				param.setCardpic5(compressImageFromFile(file5));
+				param.setCardpic5(file5);
 			if (file6 != null)
-				param.setCardpic6(compressImageFromFile(file6));
+				param.setCardpic6(file6);
 //			if (file7 != null)
 //				param.setCardpic7(compressImageFromFile(file7));
 

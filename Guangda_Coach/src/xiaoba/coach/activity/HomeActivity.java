@@ -106,8 +106,8 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 	IntentFilter filter;
 	private Context mContext;
 	private ShowAdvertisementDialog showAdvDialog;
-	private LocationClient locationClient;
-	private MyLocationListenner myListener;
+//	private LocationClient locationClient;
+//	private MyLocationListenner myListener;
 	private String locaCity ;
 
 	@Override
@@ -147,7 +147,7 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		getPosition();
+//		getPosition();
 		new GetAdvertisement().execute();
 //		new GetAllAddressTask().execute();
 	}
@@ -160,18 +160,18 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		}
 	}
 	
-	public void getPosition() {
-		locationClient = new LocationClient(this);
-		myListener = new MyLocationListenner();
-		locationClient.registerLocationListener(myListener);
-		if (locationClient != null) {
-			setLocationOption();
-			locationClient.start();
-			locationClient.requestLocation();
-		} else {
-			Log.d("TAG", "locClient is null or not started");
-		}
-	}
+//	public void getPosition() {
+//		locationClient = new LocationClient(this);
+//		myListener = new MyLocationListenner();
+//		locationClient.registerLocationListener(myListener);
+//		if (locationClient != null) {
+//			setLocationOption();
+//			locationClient.start();
+//			locationClient.requestLocation();
+//		} else {
+//			Log.d("TAG", "locClient is null or not started");
+//		}
+//	}
 	
 	private void setLocationOption() {
 		LocationClientOption option = new LocationClientOption();
@@ -179,14 +179,14 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		option.setCoorType("bd09ll"); // 设置坐标类型
 		option.setScanSpan(2000); // 设置定位模式，小于1秒则一次定位;大于等于1秒则定时定位
 		option.setIsNeedAddress(true);
-		locationClient.setLocOption(option);
+//		locationClient.setLocOption(option);
 	}
 	
 	public class MyLocationListenner implements BDLocationListener {
 		@Override
 		public void onReceiveLocation(BDLocation location) {
-			if (locationClient != null)
-				locationClient.stop();
+//			if (locationClient != null)
+//				locationClient.stop();
 			if (location == null)
 				return;
 			locaCity = location.getCity();
@@ -195,19 +195,19 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 				locaCity = locaCity.replace("市", "");
 			}
 			Toast.makeText(mContext, locaCity, 0).show();
-			stopLocClient();
+//			stopLocClient();
 		}
 
 		public void onReceivePoi(BDLocation poiLocation) {
 		}
 	}
 	
-	private void stopLocClient() {
-		if (locationClient != null && locationClient.isStarted()) {
-			locationClient.stop();
-			locationClient = null;
-		}
-	}
+//	private void stopLocClient() {
+//		if (locationClient != null && locationClient.isStarted()) {
+//			locationClient.stop();
+//			locationClient = null;
+//		}
+//	}
 
 	public class NewMsgReceiver extends BroadcastReceiver {
 		@Override
