@@ -411,7 +411,7 @@ public class MineFragment extends Fragment {
 				}else {
 					intent.putExtra("iv", "");
 				}
-				startActivity(intent);
+				startActivity(intent);	
 			}
 		});
 	}

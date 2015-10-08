@@ -18,6 +18,7 @@ import xiaoba.coach.common.Settings;
 import xiaoba.coach.interfaces.NotifyDateSelect;
 import xiaoba.coach.module.BaseParam;
 import xiaoba.coach.module.Schedule;
+import xiaoba.coach.module.UserInfo;
 import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.GetDefaultScheduleResult;
 import xiaoba.coach.net.result.GetDefaultScheduleResult.DefaultSchedule;
@@ -459,6 +460,8 @@ public class DateSetFragment extends Fragment {
 	private RelativeLayout rlPullTest;
 	private RelativeLayout rlInputPullTest;
 	private boolean isFirst = true;
+	private RelativeLayout rlProQuality;
+	private RelativeLayout rlHintProQuality;
 //	private boolean isFullDown = false;
 	@Override
 	public void onAttach(Activity activity) {
@@ -847,6 +850,8 @@ public class DateSetFragment extends Fragment {
 		rlOpenedCheck = (RelativeLayout)view.findViewById(R.id.rl_opened_check);
 		rlPullTest = (RelativeLayout)view.findViewById(R.id.rl_pull_test);
 		rlInputPullTest = (RelativeLayout)view.findViewById(R.id.rl_input_pull_test);
+		rlHintProQuality = (RelativeLayout)view.findViewById(R.id.rl_hint_pro_quality);
+		rlProQuality = (RelativeLayout)view.findViewById(R.id.rl_pro_quality);
 	}
 	
 	private void setOneHourView(int hour)
@@ -1352,6 +1357,24 @@ public class DateSetFragment extends Fragment {
 			@Override
 			public void doOnClick(View v) {
 				goToNextMonth();
+			}
+		});
+		
+		rlProQuality.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(mActivity,ProQualityActivity_.class));
+			}
+		});
+		
+		rlHintProQuality.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(mActivity,ProQualityActivity_.class));
 			}
 		});
 		/*
@@ -3560,12 +3583,31 @@ public class DateSetFragment extends Fragment {
 		setTimes();
 
 		ballState = gAdapter.getBallState();
+		
+
 
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
+		
+		UserInfo info = CoachApplication.getInstance().getUserInfo();
+		
+		if (!TextUtils.isEmpty(info.getState()))
+		{
+
+			if ("3".equals(info.getState().toString())||"0".equals(info.getState().toString())) {
+				rlProQuality.setVisibility(View.VISIBLE);
+				rlHintProQuality.setVisibility(View.VISIBLE);
+			}else{
+				rlProQuality.setVisibility(View.GONE);
+				rlHintProQuality.setVisibility(View.GONE);
+			}
+		}else{
+			rlProQuality.setVisibility(View.VISIBLE);
+			rlHintProQuality.setVisibility(View.VISIBLE);
+		}
 //		new GetScheduleTask().execute();
 		// if (!isFirstReq && mLoadingDialog != null) {
 		// mLoadingDialog.show();
@@ -3663,7 +3705,12 @@ public class DateSetFragment extends Fragment {
 
 		setSelectLine(getSelectLine(calSelected));
 		new RefreshBallStateTask(true,true).execute();
-		new GetDefaultScheduleTask(calSelected).execute();
+		if (TextUtils.isEmpty(CoachApplication.getInstance().getUserInfo().getCityid()))
+		{
+			new setCityDialog(mActivity).show();
+		}else{
+			new GetDefaultScheduleTask(calSelected).execute();
+		}
 	}
 
 	// 当月
@@ -3699,7 +3746,12 @@ public class DateSetFragment extends Fragment {
 //		});
 		setSelectLine(getSelectLine(calSelected));
 		new RefreshBallStateTask(true,true).execute();
-		new GetDefaultScheduleTask(calSelected).execute();
+		if (TextUtils.isEmpty(CoachApplication.getInstance().getUserInfo().getCityid()))
+		{
+			new setCityDialog(mActivity).show();
+		}else{
+			new GetDefaultScheduleTask(calSelected).execute();
+		}
 	}
 
 	AnimationListener animationListener = new AnimationListener() {
@@ -3767,7 +3819,12 @@ public class DateSetFragment extends Fragment {
 				 */
 //				chosedHour.clear();
 //				IsChosed = 0;
-				new GetDefaultScheduleTask(calendar).execute();
+				if (TextUtils.isEmpty(CoachApplication.getInstance().getUserInfo().getCityid()))
+				{
+					new setCityDialog(mActivity).show();
+				}else{
+					new GetDefaultScheduleTask(calendar).execute();
+				}
 //				Intent intent = new Intent(mActivity,ActivityDateSet.class);
 //				startActivity(intent);
 			
@@ -3983,6 +4040,7 @@ public class DateSetFragment extends Fragment {
 			HashMap<String, Object> param = new BaseParam();
 			param.put("action", "GETDEFAULTSCHEDULE");
 			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
+			param.put("cityid", CoachApplication.getInstance().getUserInfo().getCityid());
 			return accessor.execute(Settings.SCHEDULE_URL, param, GetDefaultScheduleResult.class);
 		}
 		@Override
@@ -3996,8 +4054,6 @@ public class DateSetFragment extends Fragment {
 			checkUpdate(mCalendar,true,true);
 		}
 	}
-	
-	
 	
 	private class GetScheduleTask extends AsyncTask<Void, Void, GetScheduleResult> {
 		JSONAccessor accessor = new JSONAccessor(mActivity, JSONAccessor.METHOD_POST);
@@ -4260,9 +4316,13 @@ public class DateSetFragment extends Fragment {
 			
 			if (isFirst == true)
 			{
-				new GetDefaultScheduleTask(calSelected).execute();
+				if (TextUtils.isEmpty(CoachApplication.getInstance().getUserInfo().getCityid()))
+				{
+//					new setCityDialog(mActivity).show();
+				}else{
+					new GetDefaultScheduleTask(calSelected).execute();
+				}
 			}
-			
 			isFirst = false;
 		}
 
@@ -4695,6 +4755,7 @@ public class DateSetFragment extends Fragment {
 					scheduleResult.getDatelist().get(SchedulePosition).setPrice(defaultSchedule.get(i).getPrice()+"");
 					scheduleResult.getDatelist().get(SchedulePosition).setSubject(defaultSchedule.get(i).getSubject());
 					scheduleResult.getDatelist().get(SchedulePosition).setAddressdetail(defaultSchedule.get(i).getAddressdetail());
+					scheduleResult.getDatelist().get(SchedulePosition).setSubjectid(defaultSchedule.get(i).getSubjectid());
 					if (isHasOpen == false)
 					{
 						if (defaultSchedule.get(i).getIsrest()==0)
@@ -4719,6 +4780,7 @@ public class DateSetFragment extends Fragment {
 			price.setText("");
 			}
 			subject.setText(schedule.getSubject());
+			
 			if (daySpan.get(TimeUtil.calendarToString(calSelected)) != null)
 				schd = (Schedule) daySpan.get(TimeUtil.calendarToString(calSelected)).get(5 + pos + "");
 			if (daySpan != null && schd != null && schd.getHasbooked() == 1) {
@@ -4735,10 +4797,19 @@ public class DateSetFragment extends Fragment {
 			} else {
 				bookArray[pos] = false;
 				//rlBack.setBackground(getResources().getDrawable(R.drawable.date_set_not_chosed));
-				rlBack.setBackgroundResource(R.drawable.date_set_not_chosed);
+				
 				imgHasBook.setVisibility(View.GONE);
-				price.setTextColor(getResources().getColor(R.color.date_green));
-				subject.setTextColor(getResources().getColor(R.color.date_green));
+				int subjectid = schedule.getSubjectid();
+				if (subjectid == 4)
+				{
+					rlBack.setBackgroundResource(R.drawable.shape_peijia);
+					price.setTextColor(getResources().getColor(R.color.date_peijia));
+					subject.setTextColor(getResources().getColor(R.color.date_peijia));
+				}else{
+					rlBack.setBackgroundResource(R.drawable.date_set_not_chosed);
+					price.setTextColor(getResources().getColor(R.color.date_green));
+					subject.setTextColor(getResources().getColor(R.color.date_green));
+				}
 			}
 		}
 		}
@@ -4855,7 +4926,7 @@ public class DateSetFragment extends Fragment {
 						for (int hour:chosedHour)
 						{
 						if (schedule.getHour() == hour)
-						{
+						{ 
 							schedule.setIsrest(1);
 							chosedScheduleArray.add(schedule);
 						}

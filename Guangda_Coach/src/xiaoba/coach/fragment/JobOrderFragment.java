@@ -43,6 +43,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.Log;
 import android.view.Gravity;
@@ -475,7 +476,10 @@ public class JobOrderFragment extends Fragment {
 				LinearLayout llCancel = (LinearLayout)convertView.findViewById(R.id.ll_order_cancel);
 				Button btnNotCancel = (Button)convertView.findViewById(R.id.btn_not_cancel);
 				Button btnCancel = (Button)convertView.findViewById(R.id.btn_cancel);
-				ImageView imgPayType = (ImageView)convertView.findViewById(R.id.img_paytype);
+//				ImageView imgPayType = (ImageView)convertView.findViewById(R.id.img_paytype);
+				TextView tvPayType = (TextView)convertView.findViewById(R.id.tv_pay_type);
+				TextView tvSubjectName = (TextView)convertView.findViewById(R.id.tv_subject_name);
+				RelativeLayout rlSubjectName = (RelativeLayout)convertView.findViewById(R.id.rl_subject_name);
 				btnNotCancel.setTag(dataPosition);
 				btnCancel.setTag(dataPosition);
 				TaskInfo info = list.get(dataPosition); // item data
@@ -510,6 +514,14 @@ public class JobOrderFragment extends Fragment {
 					btn.setVisibility(View.VISIBLE);
 				}
 				
+				if (!TextUtils.isEmpty(info.getSubjectname()))
+				{
+					rlSubjectName.setVisibility(View.VISIBLE);
+					tvSubjectName.setText(info.getSubjectname());
+				}else{
+					rlSubjectName.setVisibility(View.GONE);
+				}
+				
 				if (position == mShowHidePosition) {
 					hidePart.setVisibility(View.VISIBLE);
 					arrow.setImageResource(R.drawable.arrow_blue);
@@ -518,7 +530,6 @@ public class JobOrderFragment extends Fragment {
 						hidePart.setVisibility(View.GONE);
 					arrow.setImageResource(R.drawable.arrow_grey);
 				}
-				
 			
 
 				if (info == null)
@@ -549,19 +560,24 @@ public class JobOrderFragment extends Fragment {
 				
 				switch (info.getPaytype()) {
 				case Settings.MONEY:
-					imgPayType.setVisibility(View.VISIBLE);
-					imgPayType.setImageResource(R.drawable.money);
+//					imgPayType.setVisibility(View.VISIBLE);
+//					imgPayType.setImageResource(R.drawable.money);
+					tvPayType.setVisibility(View.VISIBLE);
+					tvPayType.setText("¥");
+					tvPayType.setBackgroundResource(R.drawable.shape_green_money);
 					break;
 				case Settings.COIN:
-					imgPayType.setVisibility(View.VISIBLE);
-					imgPayType.setImageResource(R.drawable.coin);
+					tvPayType.setVisibility(View.VISIBLE);
+					tvPayType.setText("币");
+					tvPayType.setBackgroundResource(R.drawable.shape_orange_coin);
 					break;
 				case Settings.COUPON:
-					imgPayType.setVisibility(View.VISIBLE);
-					imgPayType.setImageResource(R.drawable.ticket);
+					tvPayType.setVisibility(View.VISIBLE);
+					tvPayType.setText("券");
+					tvPayType.setBackgroundResource(R.drawable.shape_blue_ticket);
 					break;
 				case Settings.WITHPAYTYPE:
-					imgPayType.setVisibility(View.GONE);
+					tvPayType.setVisibility(View.GONE);
 				default:
 					break;
 				}

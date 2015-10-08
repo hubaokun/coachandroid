@@ -29,6 +29,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -67,7 +68,6 @@ public class HistoryOrderActivity extends BaseActivity {
 	FrameLayout mBack;
 	@ViewById(R.id.his_order_no_data)
 	LinearLayout mNoData;
-
 	int mPageNum;
 	int mShowHidePosition = -1; // mark the item show the content hided
 	int mCommentPosition = -1; // mark the item which call the comment dialog
@@ -244,12 +244,14 @@ public class HistoryOrderActivity extends BaseActivity {
 			RatingBar stuRatingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
 			LinearLayout coachComment = (LinearLayout) convertView.findViewById(R.id.coach_comment);
 			RatingBar coachRatingBar = (RatingBar) convertView.findViewById(R.id.coach_ratingBar);
-			ImageView imgPayType = (ImageView)convertView.findViewById(R.id.img_paytype);
+//			ImageView imgPayType = (ImageView)convertView.findViewById(R.id.img_paytype);
 			HistoryTaskInfo info = list.get(position); // item data
 			LinearLayout stuHidePart = (LinearLayout) convertView.findViewById(R.id.stu_hide_part);
 			TextView tvNotAgree = (TextView)convertView.findViewById(R.id.tv_not_agree);
+			RelativeLayout rlPayType = (RelativeLayout)convertView.findViewById(R.id.rl_pay_type);
+			TextView tvPayType = (TextView)convertView.findViewById(R.id.tv_pay_type);
+			TextView tvSubjectName = (TextView)convertView.findViewById(R.id.tv_subject_name);
 			
-
 			/*
 			 * judge whether show the hide part
 			 */
@@ -282,6 +284,14 @@ public class HistoryOrderActivity extends BaseActivity {
 				stuHidePart.setVisibility(View.VISIBLE);
 				tvNotAgree.setVisibility(View.GONE);
 				btn.setVisibility(View.VISIBLE);
+			}
+			
+			if (!TextUtils.isEmpty(info.getSubjectname()))
+			{
+				tvSubjectName.setVisibility(View.VISIBLE);
+				tvSubjectName.setText(info.getSubjectname());
+			}else{
+				tvSubjectName.setVisibility(View.GONE);
 			}
 			
 			if (info.getStudentscore() != null) {
@@ -335,15 +345,22 @@ public class HistoryOrderActivity extends BaseActivity {
 			
 			switch (info.getPaytype()) {
 			case Settings.MONEY:
-				imgPayType.setImageResource(R.drawable.money);
+				rlPayType.setVisibility(View.VISIBLE);
+				tvPayType.setText("¥");
+				rlPayType.setBackgroundResource(R.drawable.shape_green_money);
 				break;
 			case Settings.COIN:
-				imgPayType.setImageResource(R.drawable.coin);
+				rlPayType.setVisibility(View.VISIBLE);
+				tvPayType.setText("币");
+				rlPayType.setBackgroundResource(R.drawable.shape_orange_coin);
 				break;
 			case Settings.COUPON:
-				imgPayType.setImageResource(R.drawable.ticket);
+				rlPayType.setVisibility(View.VISIBLE);
+				tvPayType.setText("券");
+				rlPayType.setBackgroundResource(R.drawable.shape_blue_ticket);
 				break;
 			default:
+				rlPayType.setVisibility(View.GONE);
 				break;
 			}
 			

@@ -574,7 +574,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 						{
 							new SetDateTimeTask().execute();
 						}else{
-							Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请将价格设置在价格区间内", Toast.LENGTH_SHORT).show();
+							Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "课时单价须在"+minPrice+"元～"+maxPrice+"元之间", Toast.LENGTH_SHORT).show();
 						}
 					}
 				}
@@ -591,7 +591,6 @@ public class ClassTimeSetActivity extends BaseActivity {
 		}else{
 			ClassTimeSetActivity.this.finish();
 		}
-		
 	}
 
 	@Click(R.id.title_right_text)
@@ -599,7 +598,13 @@ public class ClassTimeSetActivity extends BaseActivity {
 		if (TextUtils.isEmpty(mPriceEt.getText())) {
 			Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请输入单价", Toast.LENGTH_SHORT).show();
 		} else {
-			new SetDateTimeTask().execute();
+			int price = Integer.parseInt(mPriceEt.getText().toString());
+			if (price>=minPrice&&price<=maxPrice)
+			{
+				new SetDateTimeTask().execute();
+			}else{
+				Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "课时单价须在"+minPrice+"元～"+maxPrice+"元之间", Toast.LENGTH_SHORT).show();
+			}
 			//....
 			//setDateTime();
 		}
@@ -1308,7 +1313,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 				if (result.getCode() == 1) {
 					minPrice = result.getMinprice();
 					maxPrice = result.getMaxprice();
-					tvMaxPrice.setText("价格区间："+minPrice+"~"+maxPrice+")");
+					tvMaxPrice.setText("价格区间："+minPrice+"元~"+maxPrice+"元)");
 				} else {
 					if (result.getCode() == 95) {
 						CommonUtils.gotoLogin(ClassTimeSetActivity.this);

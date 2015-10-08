@@ -160,6 +160,30 @@
                         android:layout_centerInParent="true"
                         android:src="@drawable/arrow_grey_up" />
                 </RelativeLayout>
+                
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fbefd3"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:id="@+id/rl_pro_quality"
+                android:visibility="gone">
+                
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="还未通过教练认证，学员无法找到您，马上认证"
+                    android:textColor="#ff5900"
+                    android:textSize="13dp"
+                    android:layout_marginLeft="15dp"/>
+                
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_orange"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="15dp"/>
+            </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -659,19 +683,45 @@
             <RelativeLayout
                 android:id="@+id/hanging_arrow_part"
                 android:layout_width="match_parent"
-                android:layout_height="17dp"
+                android:layout_height="wrap_content"
                 android:background="@color/tab_dark"
                 android:visibility="invisible" >
+              
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="12dp"
                     android:layout_height="8dp"
-                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal"
                     android:src="@drawable/arrow_grey_down" />
+                
+                <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fbefd3"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:id="@+id/rl_hint_pro_quality"
+                android:visibility="gone">
+                
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="还未通过教练认证，学员无法找到您，马上认证"
+                    android:textColor="#ff5900"
+                    android:textSize="13dp"
+                    android:layout_marginLeft="15dp"/>
+                
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_orange"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="15dp"/>
+            </RelativeLayout>
+            </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
-        
-
     </RelativeLayout>
- 
 </LinearLayout>

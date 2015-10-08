@@ -38,15 +38,10 @@ public class Settings {
 	 * 保存apk路径
 	 */
 	public static String APK_SAVE = "";
-	
 	public static final int MONEY =1;  //余额
-	
 	public static final int COUPON = 2;  //小巴券
-	
 	public static final int COIN = 3;  //小巴币
-	
 	public static final int WITHPAYTYPE = 0; //没有支付方式 
-
 	public static final int CAMERA = 1001;
 	public static final int ALBUM = 1002;
 	public static final int CROP = 1004;
@@ -55,7 +50,7 @@ public class Settings {
 	//public static final String BASE_URL = "http://192.168.1.144:8080/guangda";
 	//public static final String BASE_URL = "http://192.168.1.116:8080/";
 	public static final String BASE_URL = "http://120.25.236.228/dadmin";
-	//public static final String BASE_URL = "http://192.168.1.88:8080/guangda";
+	//public static final String BASE_URL = "http://192.168.1.88:8080/xiaoba";
 	//public static final String BASE_URL = "http://192.168.1.23:8089/guangda";
 	//public static final String BASE_URL = "http://192.168.1.188:8080/xb";
 	//public static final String BASE_URL = "http://www.xiaobakaiche.com/dadmin";

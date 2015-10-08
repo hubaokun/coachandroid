@@ -14,6 +14,7 @@ public class TaskInfo {
 	StudentInfo studentinfo;
 	private int agreecancel;
 	private int paytype;
+	private String subjectname;
 
 	public String getTotal() {
 		return total;
@@ -117,6 +118,14 @@ public class TaskInfo {
 
 	public void setPaytype(int paytype) {
 		this.paytype = paytype;
+	}
+
+	public String getSubjectname() {
+		return subjectname;
+	}
+
+	public void setSubjectname(String subjectname) {
+		this.subjectname = subjectname;
 	}
 
 }

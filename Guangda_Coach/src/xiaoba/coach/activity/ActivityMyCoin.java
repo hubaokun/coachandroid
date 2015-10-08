@@ -16,6 +16,7 @@ import xiaoba.coach.R;
 import xiaoba.coach.activity.ActivityMyCoinsList.HolderView;
 import xiaoba.coach.activity.ActivityMyCoinsList.MyCoinAdapter;
 import xiaoba.coach.common.Settings;
+import xiaoba.coach.interfaces.DialogConfirmListener;
 import xiaoba.coach.interfaces.OnScaleHaloListener;
 import xiaoba.coach.module.BaseParam;
 import xiaoba.coach.net.result.BaseResult;
@@ -24,8 +25,10 @@ import xiaoba.coach.net.result.getMyCoinsListResult;
 import xiaoba.coach.net.result.GetCoachCoinTotal.coinAffiliationList;
 import xiaoba.coach.net.result.getMyCoinsListResult.CoinList;
 import xiaoba.coach.utils.CommonUtils;
+import xiaoba.coach.utils.DialogUtil;
 import xiaoba.coach.views.CoinRulesDialog;
 import xiaoba.coach.views.DuiHuanShowDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -66,6 +69,7 @@ public class ActivityMyCoin extends BaseActivity {
 	private Button btnSchoolCoin;
 	private TextView tvPinTaiCoin;
 	private Button btnPinTaiCoin;
+	private Dialog mDialog = null;
 	
 	 @Override
 	    protected void onCreate(Bundle savedInstanceState) {
@@ -163,7 +167,24 @@ public class ActivityMyCoin extends BaseActivity {
 //					return;
 //				}
 //				if(etCoin.length()!=0){
-					new ApplyCoin(2).execute();
+				DialogUtil dUtil = new DialogUtil(new DialogConfirmListener() {
+
+					@Override
+					public void doConfirm(String str) {
+						if (mDialog != null)
+						{
+							mDialog.dismiss();
+							new ApplyCoin(2).execute();
+						}
+					}
+
+					@Override
+					public void doCancel() {
+						if (mDialog != null)
+							mDialog.dismiss();
+					}
+				});
+				mDialog = dUtil.CallConfirmDialog("确定兑换所有教练的小巴币吗？","兑换","放弃",ActivityMyCoin.this, mDialog);
 //				}
 			}
 		});
@@ -173,7 +194,25 @@ public class ActivityMyCoin extends BaseActivity {
 			@Override
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
-				new ApplyCoin(0).execute();
+				
+				DialogUtil dUtil = new DialogUtil(new DialogConfirmListener() {
+
+					@Override
+					public void doConfirm(String str) {
+						if (mDialog != null)
+						{
+							mDialog.dismiss();
+							new ApplyCoin(0).execute();
+						}
+					}
+
+					@Override
+					public void doCancel() {
+						if (mDialog != null)
+							mDialog.dismiss();
+					}
+				});
+				mDialog = dUtil.CallConfirmDialog("确定兑换平台的小巴币吗？","兑换","放弃",ActivityMyCoin.this, mDialog);
 			}
 		});
 		
@@ -182,7 +221,24 @@ public class ActivityMyCoin extends BaseActivity {
 			@Override
 			public void doOnClick(View v) {
 				// TODO Auto-generated method stub
-				new ApplyCoin(1).execute();
+				DialogUtil dUtil = new DialogUtil(new DialogConfirmListener() {
+
+					@Override
+					public void doConfirm(String str) {
+						if (mDialog != null)
+						{
+							mDialog.dismiss();
+							new ApplyCoin(1).execute();
+						}
+					}
+
+					@Override
+					public void doCancel() {
+						if (mDialog != null)
+							mDialog.dismiss();
+					}
+				});
+				mDialog = dUtil.CallConfirmDialog("确定兑换所有驾校的小巴币吗？","兑换","放弃",ActivityMyCoin.this, mDialog);
 			}
 		});
 		tvRight.setOnClickListener(new OnSingleClickListener() {
@@ -468,14 +524,14 @@ public class ActivityMyCoin extends BaseActivity {
             	holder.tvCoinTitle.setText("小巴币兑换");
             	holder.tvCoinMoney.setText("-"+getMycoinList.get(position).getCoinnum());
             	holder.tvCoinMoney.setTextColor(getResources().getColor(R.color.text_green));
+            	holder.btnCoinShow.setVisibility(View.VISIBLE);
             }else{
             	holder.tvCoinTitle.setText("订单支付");
             	holder.tvCoinMoney.setText("+"+getMycoinList.get(position).getCoinnum());
             	holder.tvCoinMoney.setTextColor(getResources().getColor(R.color.text_red));
+            	holder.btnCoinShow.setVisibility(View.GONE);
             }
-            
             holder.tv_time.setText(getMycoinList.get(position).getAddtime());
-            
             holder.tvCoinFrom.setText(getMycoinList.get(position).getPayername());
             holder.btnCoinShow.setTag(position);
             holder.btnCoinShow.setOnClickListener(new OnClickListener() {

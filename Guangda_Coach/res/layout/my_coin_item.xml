@@ -76,14 +76,12 @@
                 android:layout_centerVertical="true">
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="06.19"
                     android:textColor="@color/text_grey"
                     android:textSize="12sp"/>
                 <TextView 
                     android:id="@+id/tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="11:20"
                     android:textColor="@color/text_grey"
                     android:textSize="12sp"
                     android:layout_marginLeft="10dp"/>

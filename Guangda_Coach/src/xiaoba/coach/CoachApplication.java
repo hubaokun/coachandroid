@@ -79,6 +79,8 @@ public class CoachApplication extends Application {
 	private static final String SP_NAME = "ApplicationInfo";
 	
 	public static String currentUserNick = "";
+	
+	
 	public static DemoHXSDKHelper hxSDKHelper = new DemoHXSDKHelper();
     
 
@@ -86,9 +88,8 @@ public class CoachApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApplication = this;
-        // 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
+     // 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
         SDKInitializer.initialize(this);
-
         // Create default ImageLoader configaration params
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
         // Initialize ImageLoader with configuration.

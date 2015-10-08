@@ -869,7 +869,7 @@ public class ProQualityActivity extends BaseActivity {
 		
 		if ("未设置".equals(tvTeachCar.getText().toString()))
 		{
-			Toast.makeText(mApplication, "请选择教学用车型号", Toast.LENGTH_SHORT).show();
+			Toast.makeText(mApplication, "请选择准教车型", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		
