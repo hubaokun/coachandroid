@@ -222,7 +222,7 @@ public class LoadingActivity extends BaseActivity {
 			// TODO Auto-generated method stub
 			HashMap<String, Object> param = new BaseParam();
 			param.put("action", "GETADVERTISEMENT");
-			param.put("coachid", mApplication.getUserInfo().getCoachid());
+//			param.put("coachid", mApplication.getUserInfo().getCoachid());
 			param.put("type", "1"); // 1: coach 2 student
 			param.put("model", "2"); //1:ios 2 android
 			param.put("width",Settings.DISPLAY_WIDTH+"");

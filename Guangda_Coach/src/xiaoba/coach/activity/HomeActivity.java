@@ -134,19 +134,27 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		mFragmentManager = getSupportFragmentManager();
 		mSelectedModule = R.id.tab_job_order;
 		switchModule(mSelectedModule, 1);
-		try {
-			if (mApplication.isInvited==1)
-			{
-//				if (judgmentDate(mApplication.getUserInfo().getAddtime()))
-//				{
-					startActivity(new Intent(mContext,ActivityInputRecord.class));
-//				}
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		
+		/*
+		 * 填写邀请码页面
+		 */
+//		try {
+//			if (mApplication.isInvited==1)
+//			{
+////				if (judgmentDate(mApplication.getUserInfo().getAddtime()))
+////				{
+//					startActivity(new Intent(mContext,ActivityInputRecord.class));
+////				}
+//			}
+//			
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
+		
 //		getPosition();
 		new GetAdvertisement().execute();
 //		new GetAllAddressTask().execute();
@@ -344,7 +352,6 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 				break;
 			}
 		}
-
 		mSelectedModule = moudleId;
 	}
 

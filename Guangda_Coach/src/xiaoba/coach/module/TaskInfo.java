@@ -15,6 +15,8 @@ public class TaskInfo {
 	private int agreecancel;
 	private int paytype;
 	private String subjectname;
+	private int attachcar;
+	private int coursetype;
 
 	public String getTotal() {
 		return total;
@@ -126,6 +128,22 @@ public class TaskInfo {
 
 	public void setSubjectname(String subjectname) {
 		this.subjectname = subjectname;
+	}
+
+	public int getAttachcar() {
+		return attachcar;
+	}
+
+	public void setAttachcar(int attachcar) {
+		this.attachcar = attachcar;
+	}
+
+	public int getCoursetype() {
+		return coursetype;
+	}
+
+	public void setCoursetype(int coursetype) {
+		this.coursetype = coursetype;
 	}
 
 }

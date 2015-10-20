@@ -37,6 +37,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -479,7 +480,10 @@ public class JobOrderFragment extends Fragment {
 //				ImageView imgPayType = (ImageView)convertView.findViewById(R.id.img_paytype);
 				TextView tvPayType = (TextView)convertView.findViewById(R.id.tv_pay_type);
 				TextView tvSubjectName = (TextView)convertView.findViewById(R.id.tv_subject_name);
-				RelativeLayout rlSubjectName = (RelativeLayout)convertView.findViewById(R.id.rl_subject_name);
+//				TextView tvAttachCar = (TextView)convertView.findViewById(R.id.tv_has_car);
+//				LinearLayout rlSubjectName = (LinearLayout)convertView.findViewById(R.id.rl_subject_name);
+				ImageView imgAttachCar = (ImageView)convertView.findViewById(R.id.img_attachcar);
+				TextView tvPayTwo = (TextView)convertView.findViewById(R.id.tv_pay_two);
 				btnNotCancel.setTag(dataPosition);
 				btnCancel.setTag(dataPosition);
 				TaskInfo info = list.get(dataPosition); // item data
@@ -487,6 +491,28 @@ public class JobOrderFragment extends Fragment {
 				/*
 				 * judge whether show the hide part
 				 */
+				if (!TextUtils.isEmpty(info.getSubjectname()))
+				{
+				if (1==info.getAttachcar())
+				{
+					imgAttachCar.setImageResource(R.drawable.ic_attach_car);
+				}else{
+					imgAttachCar.setImageResource(R.drawable.ic_not_attach_car);
+				}
+				}
+				
+				if (info.getCoursetype() == 5)
+				{
+					imgAttachCar.setImageResource(R.drawable.img_date_free);
+				}
+				
+//				if (1==info.getAttachcar())
+//				{
+//					tvAttachCar.setVisibility(View.VISIBLE);
+//				}else{
+//					tvAttachCar.setVisibility(View.GONE);
+//				}
+				
 				if (info.getAgreecancel()==0)// 0是订单要取消，1是不取消
 				{
 					mainPart.setBackgroundColor(getResources().getColor(R.color.job_back_yellow));
@@ -514,13 +540,13 @@ public class JobOrderFragment extends Fragment {
 					btn.setVisibility(View.VISIBLE);
 				}
 				
-				if (!TextUtils.isEmpty(info.getSubjectname()))
-				{
-					rlSubjectName.setVisibility(View.VISIBLE);
-					tvSubjectName.setText(info.getSubjectname());
-				}else{
-					rlSubjectName.setVisibility(View.GONE);
-				}
+//				if (!TextUtils.isEmpty(info.getSubjectname()))
+//				{
+//					rlSubjectName.setVisibility(View.VISIBLE);
+//					tvSubjectName.setText(info.getSubjectname());
+//				}else{
+//					rlSubjectName.setVisibility(View.GONE);
+//				}
 				
 				if (position == mShowHidePosition) {
 					hidePart.setVisibility(View.VISIBLE);
@@ -560,24 +586,32 @@ public class JobOrderFragment extends Fragment {
 				
 				switch (info.getPaytype()) {
 				case Settings.MONEY:
+					tvPayTwo.setVisibility(View.VISIBLE);
+					tvPayType.setVisibility(View.GONE);
+					tvPayType.setText("¥");
+
+					break;
+				case Settings.COMMIT:
 //					imgPayType.setVisibility(View.VISIBLE);
 //					imgPayType.setImageResource(R.drawable.money);
 					tvPayType.setVisibility(View.VISIBLE);
+					tvPayTwo.setVisibility(View.VISIBLE);
 					tvPayType.setText("¥");
-					tvPayType.setBackgroundResource(R.drawable.shape_green_money);
+					tvPayTwo.setText("币");
 					break;
 				case Settings.COIN:
 					tvPayType.setVisibility(View.VISIBLE);
+					tvPayTwo.setVisibility(View.GONE);
 					tvPayType.setText("币");
-					tvPayType.setBackgroundResource(R.drawable.shape_orange_coin);
 					break;
 				case Settings.COUPON:
-					tvPayType.setVisibility(View.VISIBLE);
+					tvPayType.setVisibility(View.VISIBLE); 
+					tvPayTwo.setVisibility(View.GONE);
 					tvPayType.setText("券");
-					tvPayType.setBackgroundResource(R.drawable.shape_blue_ticket);
-					break;
+					break;   
 				case Settings.WITHPAYTYPE:
 					tvPayType.setVisibility(View.GONE);
+					tvPayTwo.setVisibility(View.GONE);
 				default:
 					break;
 				}
@@ -1456,5 +1490,4 @@ public class JobOrderFragment extends Fragment {
 			mListView.setRefreshing();
 		}
 	}
-
 }

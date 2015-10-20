@@ -35,6 +35,7 @@ import xiaoba.coach.views.WheelCityDialog;
 
 import com.baidu.mapapi.map.Text;
 import com.daoshun.lib.communication.http.JSONAccessor;
+import com.daoshun.lib.listview.PullToRefreshExpandableListView;
 import com.daoshun.lib.util.DensityUtils;
 import com.daoshun.lib.view.OnSingleClickListener;
 import com.google.gson.Gson;
@@ -94,9 +95,23 @@ public class ClassTimeSetActivity extends BaseActivity {
 	@ViewById(R.id.classset_content_tv)
 	TextView mContentTv;
 	@ViewById(R.id.classset_price_et)
-	TextView mPriceEt;
-	@ViewById(R.id.tv_max_price)
-	TextView tvMaxPrice;
+	EditText mPriceEt;
+	@ViewById(R.id.tv_fanwei_price)
+	TextView tvFanWei;
+	@ViewById(R.id.ll_addtional)
+	LinearLayout llAddtional;
+	@ViewById(R.id.et_addtional)
+	EditText etAddtional;
+	@ViewById(R.id.img_addtional)
+	ImageView imgAddtional;
+	@ViewById(R.id.tv_min_addtionalprice)
+	TextView tvMinAddtional;
+	@ViewById(R.id.tv_max_addtionalprice)
+	TextView tvMaxAddtional;
+	@ViewById(R.id.ll_select_free)
+	LinearLayout llSelectFree;
+	@ViewById(R.id.img_select_free)
+	ImageView imgSelectFree;
 
 //	String mor, aft, nig;
 	int /*single,*/ textLength/* 一个小时占据的宽度 */;
@@ -108,6 +123,8 @@ public class ClassTimeSetActivity extends BaseActivity {
 	GetScheduleResult result;
 	private int minPrice;
 	private int maxPrice;
+	private int attachMinPrice;
+	private int attachMaxPrice;
 	/*
 	 * 课程id
 	 */
@@ -122,6 +139,8 @@ public class ClassTimeSetActivity extends BaseActivity {
 	private ArrayList<Integer> Hour = new ArrayList<Integer>();
 	private String addressDetail;
 	private String subjectDetail;
+	private String cuseraddtionalprice;
+	private boolean isSelectFree = false;
 	@AfterViews
 	void init() {
 		mTitle.setText(getString(R.string.class_time_set));
@@ -136,7 +155,6 @@ public class ClassTimeSetActivity extends BaseActivity {
 		getIntentData();
 		new prepareTask().execute();
 		new GetAllSubjectTask().execute();
-		new GetAllAddressTask().execute();
 		new getMaxPrice().execute();
 		mApplication.setSaveSet(false);
 		llChangeLoca.setOnClickListener(new OnSingleClickListener() {
@@ -157,7 +175,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 								break;
 							}
 						}
-					}
+					} 
 					dialog.setAdapter(index);
 					dialog.setmConfirmListener(new DialogConfirmListener() {
 
@@ -214,6 +232,41 @@ public class ClassTimeSetActivity extends BaseActivity {
 						setRightClick();
 					} else {
 						mModifyPrice.setImageResource(R.drawable.pencile);
+					}
+				}
+			}
+		});
+		
+		etAddtional.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				if (cuseraddtionalprice != null) {
+					if (etAddtional.getText().toString() != null && !etAddtional.getText().toString().equals(cuseraddtionalprice)) {
+						imgAddtional.setImageResource(R.drawable.pencil_color);
+						setRightClick();
+					} else {
+						imgAddtional.setImageResource(R.drawable.pencile);
+					}
+				} else {
+					if (etAddtional.getText().length() > 0) {
+						imgAddtional.setImageResource(R.drawable.pencil_color);
+						setRightClick();
+					} else {
+						imgAddtional.setImageResource(R.drawable.pencile);
 					}
 				}
 			}
@@ -308,18 +361,50 @@ public class ClassTimeSetActivity extends BaseActivity {
 					if (ssSchedule.getAddressdetail() != null) {
 						mLocTv.setText(ssSchedule.getAddressdetail());
 					}
+					
+					if (ssSchedule.getSubjectid() == 3||ssSchedule.getSubjectid() == 4)
+					{
+						llSelectFree.setVisibility(View.GONE);
+					}else{
+						llSelectFree.setVisibility(View.VISIBLE);
+					if (ssSchedule.getIsfreecourse() == 1)  //体验课
+					{
+						imgSelectFree.setVisibility(View.VISIBLE);
+						mModifyPrice.setVisibility(View.GONE);
+						mPriceEt.setEnabled(false);
+						isSelectFree = true;
+					}else{
+						mModifyPrice.setVisibility(View.VISIBLE);
+						mPriceEt.setEnabled(true);
+						isSelectFree = false;
+					}
+					}
 
 					addressId = ssSchedule.getAddressid();
 					subjectId = ssSchedule.getSubjectid();
+					if (subjectId == 4)
+					{
+						llAddtional.setVisibility(View.VISIBLE);
+					}else{
+						llAddtional.setVisibility(View.GONE);
+					}
 					if (ssSchedule.getHour() == hour && ssSchedule.getPrice() != null) {
 						String temp = ssSchedule.getPrice().contains(".") ? ssSchedule.getPrice().substring(0, ssSchedule.getPrice().indexOf(".")) : ssSchedule.getPrice();
 						lastPrice = temp;
 						mPriceEt.setText(temp);
 						//mPriceEt.setSelection(temp.length());
 					}
+					if (ssSchedule.getSubjectid() == 4)
+					{
+							cuseraddtionalprice = ssSchedule.getCuseraddtionalprice();
+							String temp = cuseraddtionalprice.contains(".") ? cuseraddtionalprice.substring(0, cuseraddtionalprice.indexOf(".")) : cuseraddtionalprice;
+							cuseraddtionalprice = temp;
+							etAddtional.setText(cuseraddtionalprice);
+							break;
+					}
 				}
 			}
-			
+			new GetAllAddressTask().execute();	
 //			if (single != 0) {
 //				/*
 //				 * 单个小时显示价钱
@@ -412,6 +497,60 @@ public class ClassTimeSetActivity extends BaseActivity {
 //				return numberChars;
 //			}
 //		});
+		
+		mModifyPrice.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				if (!mPriceEt.isFocused())
+				{
+					mPriceEt.requestFocus();
+				}
+			}
+		});
+		
+		imgAddtional.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				if (!etAddtional.isFocused())
+				{
+					etAddtional.requestFocus();
+				}
+			}
+		});
+		
+		llSelectFree.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				setFree(isSelectFree);
+			}
+		});
+	}
+	
+	private void setFree(boolean isFree)
+	{
+		if (isFree)
+		{
+			imgSelectFree.setVisibility(View.GONE);
+			mModifyPrice.setVisibility(View.VISIBLE);
+			mPriceEt.setText(lastPrice);
+			mPriceEt.setEnabled(true);
+			isSelectFree = false;
+			tvFanWei.setText("(元/小时 价格区间:"+minPrice+"元~"+maxPrice+"元)");
+		}else{
+			imgSelectFree.setVisibility(View.VISIBLE);
+			mModifyPrice.setVisibility(View.GONE);
+			mPriceEt.setText("0");
+			mPriceEt.setEnabled(false);
+			isSelectFree = true;
+			tvFanWei.setText("(体验课价格为0元)");
+		}
+
 	}
 
 	List<Schedule> list, templist = new ArrayList<Schedule>();
@@ -430,6 +569,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 		if ((Object) intent.getSerializableExtra("result") instanceof GetScheduleResult) {
 			result = (GetScheduleResult) intent.getSerializableExtra("result");
 			list = result.getDatelist();
+			
 //			if (list != null)
 //				templist.addAll(list);
 		}
@@ -568,15 +708,35 @@ public class ClassTimeSetActivity extends BaseActivity {
 					mDialog.dismiss();
 					if (TextUtils.isEmpty(mPriceEt.getText())) {
 						Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请输入单价", Toast.LENGTH_SHORT).show();
+						return;
 					} else {
-						int price = Integer.parseInt(mPriceEt.getText().toString());
-						if (price>=minPrice&&price<=maxPrice)
+						if (!isSelectFree)
 						{
-							new SetDateTimeTask().execute();
-						}else{
+						int price = Integer.parseInt(mPriceEt.getText().toString());
+						if (price<minPrice||price>maxPrice)
+						{
 							Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "课时单价须在"+minPrice+"元～"+maxPrice+"元之间", Toast.LENGTH_SHORT).show();
+							return;
+						}
 						}
 					}
+					
+					if (llAddtional.getVisibility() == View.VISIBLE)
+					{
+					if (TextUtils.isEmpty(etAddtional.getText()))
+					{
+						Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请教练车使用费用", Toast.LENGTH_SHORT).show();
+						return;
+					}else{
+						int price = Integer.parseInt(etAddtional.getText().toString());
+						if (price<attachMinPrice||price>attachMaxPrice)
+						{
+							Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "教练车使用费用在"+attachMinPrice+"元～"+attachMaxPrice+"元之间", Toast.LENGTH_SHORT).show();
+							return;
+						}
+					}
+					}
+					new SetDateTimeTask().execute();
 				}
 			}
 
@@ -597,17 +757,44 @@ public class ClassTimeSetActivity extends BaseActivity {
 	void gotoNextPage() {
 		if (TextUtils.isEmpty(mPriceEt.getText())) {
 			Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请输入单价", Toast.LENGTH_SHORT).show();
+			return;
 		} else {
-			int price = Integer.parseInt(mPriceEt.getText().toString());
-			if (price>=minPrice&&price<=maxPrice)
+			if (!isSelectFree)
 			{
-				new SetDateTimeTask().execute();
-			}else{
+			int price = Integer.parseInt(mPriceEt.getText().toString());
+			if (price<minPrice||price>maxPrice)
+			{
 				Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "课时单价须在"+minPrice+"元～"+maxPrice+"元之间", Toast.LENGTH_SHORT).show();
+				return;
+			}
 			}
 			//....
 			//setDateTime();
 		}
+		
+		if (llAddtional.getVisibility() == View.VISIBLE)
+		{
+		if (TextUtils.isEmpty(etAddtional.getText()))
+		{
+			Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请输入教练车使用费用", Toast.LENGTH_SHORT).show();
+			return;
+		}else{
+			int price = Integer.parseInt(etAddtional.getText().toString());
+			if (price<attachMinPrice||price>attachMaxPrice)
+			{
+				Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "教练车使用费用在"+attachMinPrice+"元～"+attachMaxPrice+"元之间", Toast.LENGTH_SHORT).show();
+				return;
+			}
+		}
+		}
+		
+		if (TextUtils.isEmpty(mLocTv.getText().toString().trim()))
+		{
+			Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请选择一个上车地址", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		new SetDateTimeTask().execute();
 	}
 	
 	private void setDateTime()
@@ -696,7 +883,23 @@ public class ClassTimeSetActivity extends BaseActivity {
 								subjectId = info.getSubjectid();
 						}
 					}
-
+					
+					if (subjectId == 4)
+					{
+						llAddtional.setVisibility(View.VISIBLE);
+						etAddtional.requestFocus();
+					}else{
+						llAddtional.setVisibility(View.GONE);
+					}
+					
+					if (subjectId == 3||subjectId == 4)
+					{
+						llSelectFree.setVisibility(View.GONE);
+						
+					}else{
+						llSelectFree.setVisibility(View.VISIBLE);
+					}
+					setFree(true);
 					dialog.dismiss();
 				}
 
@@ -749,6 +952,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 			if (result != null) {
 				if (result.getCode() == 1) {
 					mApplication.setSaveSet(true);
+					String addtional = etAddtional.getText().toString().trim();
 					for (int hour:Hour)
 					{
 //						HourJson hj = new HourJson();
@@ -774,6 +978,20 @@ public class ClassTimeSetActivity extends BaseActivity {
 											list.get(i).setSubjectid(subjectId);
 											list.get(i).setSubject(subjectDetail);
 										}
+										
+										if (etAddtional.getText().length()>0)
+										{
+											list.get(i).setAddtionalprice(addtional);
+										}
+										else{
+											list.get(i).setAddtionalprice("0");
+										}
+										if (isSelectFree)
+										{
+											list.get(i).setIsfreecourse(1);
+										}else{
+											list.get(i).setIsfreecourse(0);
+										}
 										break;
 									}
 								}
@@ -792,7 +1010,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 							}
 						}
 					}
-					setResult(0, new Intent().putExtra("list", dayList).putExtra("day", day));
+					setResult(0, new Intent().putExtra("list", dayList).putExtra("day", day).putExtra("curseaddtional", addtional));
 					CommonUtils.showToast(ClassTimeSetActivity.this.getApplicationContext(), "设置成功");
 					ClassTimeSetActivity.this.finish();
 				} else {
@@ -812,7 +1030,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 			super.onPreExecute();
 			if (mLoadingDialog != null)
 				mLoadingDialog.show();
-		}
+		}	
 
 		@Override
 		protected BaseResult doInBackground(Void... arg0) {
@@ -949,6 +1167,20 @@ public class ClassTimeSetActivity extends BaseActivity {
 				hj.setPrice(temp.getPrice());
 			}
 		}
+		
+		if (etAddtional.getText().length()>0)
+		{
+			hj.setAddtionalprice(etAddtional.getText().toString().trim());
+		}else{
+			hj.setAddtionalprice("0");
+		}
+		
+		if (isSelectFree)
+		{
+			hj.setIsfreecourse("1");
+		}else{
+			hj.setIsfreecourse("0");
+		}
 
 		if (addressId != 0) {
 			hj.setAddressid(addressId + "");
@@ -973,6 +1205,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 		else {
 			hj.setIsrest("0");
 		}
+		//hj.setIsrest("0");
 		if (temp != null)
 			hj.setState(temp.getState() + "");
 		else {
@@ -1128,6 +1361,8 @@ public class ClassTimeSetActivity extends BaseActivity {
 		String isrest;
 		String addressid;
 		String subjectid;
+		String addtionalprice;
+		String isfreecourse;
 
 		public String getHour() {
 			return hour;
@@ -1185,6 +1420,21 @@ public class ClassTimeSetActivity extends BaseActivity {
 			this.subjectid = subjectid;
 		}
 
+		public String getAddtionalprice() {
+			return addtionalprice;
+		}
+
+		public void setAddtionalprice(String addtionalprice) {
+			this.addtionalprice = addtionalprice;
+		}
+
+		public String getIsfreecourse() {
+			return isfreecourse;
+		}
+
+		public void setIsfreecourse(String isfreecourse) {
+			this.isfreecourse = isfreecourse;
+		}
 	}
 
 	List<SubjectInfo> subjectInfos = new ArrayList<GetAllSubjectResult.SubjectInfo>();
@@ -1236,6 +1486,8 @@ public class ClassTimeSetActivity extends BaseActivity {
 	/*
 	 * 获取所有地址
 	 */
+	private int CurrentAddressId;
+	private String currentAddressDetail;
 	List<AddressInfo> addresses = new ArrayList<AddressInfo>();
 
 	private class GetAllAddressTask extends AsyncTask<Void, Void, AddressResult> {
@@ -1269,12 +1521,33 @@ public class ClassTimeSetActivity extends BaseActivity {
 						locContent = new String[result.getAddresslist().size()];
 						for (int i = 0; i < result.getAddresslist().size(); i++) {
 							locContent[i] = result.getAddresslist().get(i).getDetail();
+							if (result.getAddresslist().get(i).getIscurrent() == 1)
+							{
+								CurrentAddressId = result.getAddresslist().get(i).getAddressid();
+								currentAddressDetail = result.getAddresslist().get(i).getDetail();
+							}
+						}
+						boolean isHasAddress = true;
+						for(AddressInfo info:addresses)
+						{ 
+							if (info.getAddressid() == addressId)
+							{
+								isHasAddress = true;
+								break;
+							}else{
+								isHasAddress = false;
+							}
+						}
+						if (!isHasAddress)
+						{
+							addressId = CurrentAddressId;
+							mLocTv.setText(currentAddressDetail);
+							addressDetail = currentAddressDetail;
 						}
 					}
 				} else {
 					if (result.getCode() == 95) {
 						CommonUtils.gotoLogin(ClassTimeSetActivity.this);
-
 						if (result.getMessage() != null)
 							CommonUtils.showToast(ClassTimeSetActivity.this.getApplicationContext(), result.getMessage());
 					}
@@ -1313,7 +1586,16 @@ public class ClassTimeSetActivity extends BaseActivity {
 				if (result.getCode() == 1) {
 					minPrice = result.getMinprice();
 					maxPrice = result.getMaxprice();
-					tvMaxPrice.setText("价格区间："+minPrice+"元~"+maxPrice+"元)");
+					attachMaxPrice = result.getAttachcarmaxprice();
+					attachMinPrice = result.getAttachcarminprice();
+					if(isSelectFree)
+					{
+						tvFanWei.setText("(体验课价格为0元)");
+					}else{
+					tvFanWei.setText("(元/小时 价格区间:"+minPrice+"元~"+maxPrice+"元)");
+					}
+					tvMinAddtional.setText(attachMinPrice+"");
+					tvMaxAddtional.setText(attachMaxPrice+"");
 				} else {
 					if (result.getCode() == 95) {
 						CommonUtils.gotoLogin(ClassTimeSetActivity.this);

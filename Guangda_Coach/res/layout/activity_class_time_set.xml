@@ -79,11 +79,88 @@
                 android:textColor="@color/text_grey"
                 android:textSize="12dp" />
  -->
+ 
+ 
+
+ 
+ 
             <View
                 style="@style/dividerLine"
                 android:layout_marginTop="17dp" />
             
+            
             <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="21dp"
+                android:gravity="center_vertical">
+                
+              <TextView
+                android:id="@+id/classset_content_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/classset_teach_content"
+                android:textColor="@color/text_black"
+                android:textSize="13dp" />
+              
+              <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="12dp"
+                android:id="@+id/ll_select_free"
+                android:gravity="center_vertical">
+                
+                  <RelativeLayout android:layout_width="18dp"
+                      android:layout_height="18dp"
+                      android:id="@+id/rl_select_free"
+                      android:background="@drawable/round_reangle"
+                      android:layout_gravity="center_vertical">
+                <ImageView android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:id="@+id/img_select_free"
+                    android:src="@drawable/check"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"/>
+                </RelativeLayout>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="体验课"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" 
+                android:id="@+id/ll_modify_content">
+
+                <TextView
+                    android:id="@+id/classset_content_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:textColor="@color/text_black"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/modify_classset_content"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:padding="10dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+            
+
+
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="12dp" />
+            
+           <LinearLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="12dp"
@@ -101,9 +178,11 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_black"
                 android:textSize="13dp"
-                android:id="@+id/tv_max_price"
-                android:layout_marginLeft="5dp"/>
-            
+                android:id="@+id/tv_fanwei_price"
+                android:layout_marginLeft="5dp"
+                android:text="0"/>
+             
+
             </LinearLayout>
 
             <LinearLayout
@@ -137,6 +216,82 @@
             <View
                 style="@style/dividerLine"
                 android:layout_marginTop="12dp" />
+            
+            
+                        <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:id="@+id/ll_addtional">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                   android:layout_marginLeft="12dp"
+                	android:layout_marginTop="21dp">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                	android:text="教练车使用费用(元/小时 价格区间:"
+                	android:textColor="@color/text_black"
+                	android:textSize="13dp" />
+                <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_black"
+                android:textSize="13dp"
+                android:id="@+id/tv_min_addtionalprice"
+                android:layout_marginLeft="5dp"
+                android:text="0"/>
+             
+             <TextView android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                android:textColor="@color/text_black"
+                android:textSize="13dp"
+                android:text="元~"/>
+             
+             <TextView android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                android:textColor="@color/text_black"
+                android:id="@+id/tv_max_addtionalprice"
+                android:textSize="13dp"
+                android:text="0"/>
+             
+          	<TextView android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                android:textColor="@color/text_black"
+                android:textSize="13dp"
+                android:text="元)"/>
+                </LinearLayout>
+              <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_addtional"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:maxLength="10"
+                    android:singleLine="true"
+                    android:textColor="@color/text_black"
+                    android:textSize="18dp"/>
+
+                <ImageView
+                    android:id="@+id/img_addtional"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:padding="10dp"
+                    android:src="@drawable/pencile" />
+            </LinearLayout>
+            
+            <View
+                style="@style/dividerLine"
+                android:layout_marginTop="12dp" />
+            </LinearLayout>
 
             <!-- location -->
 
@@ -180,45 +335,10 @@
                 android:layout_marginTop="12dp" />
 
             <!-- content -->
+            
+            
 
-            <TextView
-                android:id="@+id/classset_content_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="21dp"
-                android:text="@string/classset_teach_content"
-                android:textColor="@color/text_black"
-                android:textSize="13dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="2dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" 
-                android:id="@+id/ll_modify_content">
-
-                <TextView
-                    android:id="@+id/classset_content_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:textColor="@color/text_black"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:id="@+id/modify_classset_content"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
-                    android:padding="10dp"
-                    android:src="@drawable/pencile" />
-            </LinearLayout>
-
-            <View
-                style="@style/dividerLine"
-                android:layout_marginTop="12dp" />
         </LinearLayout>
     </ScrollView>
 

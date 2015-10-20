@@ -12,6 +12,7 @@ public class GetDefaultScheduleResult extends BaseResult{
 		private int hour;
 		private int isrest;
 		private int subjectid;
+		private String cuseraddtionalprice;
 		public String getSubject() {
 			return subject;
 		}
@@ -47,6 +48,12 @@ public class GetDefaultScheduleResult extends BaseResult{
 		}
 		public void setSubjectid(int subjectid) {
 			this.subjectid = subjectid;
+		}
+		public String getCuseraddtionalprice() {
+			return cuseraddtionalprice;
+		}
+		public void setCuseraddtionalprice(String cuseraddtionalprice) {
+			this.cuseraddtionalprice = cuseraddtionalprice;
 		}
 	}
 	public List<DefaultSchedule> getDefaultSchedule() {

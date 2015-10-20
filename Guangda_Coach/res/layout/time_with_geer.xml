@@ -89,14 +89,21 @@
             android:src="@drawable/book_class"
             android:id="@+id/img_has_book"
             android:visibility="gone"/>
-
+        
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:id="@+id/img_free_class"
+            android:src="@drawable/free_class"
+            android:visibility="gone"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"/>
 
         <LinearLayout android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_centerInParent="true"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="13dp">
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12:00"
@@ -109,7 +116,7 @@
                 android:layout_height="wrap_content">
                 <LinearLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:orientation="vertical"  
                     android:visibility="visible"
                     android:id="@+id/ll_has_set">
              <TextView android:layout_width="wrap_content"
@@ -136,7 +143,8 @@
                     android:textSize="13dp"
                     android:layout_centerInParent="true"
                     android:visibility="invisible"
-                    android:id="@+id/tv_not_set"/>
+                    android:id="@+id/tv_not_set"
+                    android:textColor="@color/date_back"/>
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>

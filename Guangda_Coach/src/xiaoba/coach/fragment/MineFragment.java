@@ -607,7 +607,6 @@ public class MineFragment extends Fragment {
 			param.put("usertype", "1"); // 1:coach
 			return accessor.execute(Settings.SYSTEM_URL, param, RefreshUserMoneyResult.class);
 		}
-
 	}
 
 	@Override

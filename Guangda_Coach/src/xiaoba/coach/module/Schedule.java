@@ -21,6 +21,10 @@ public class Schedule implements Serializable {
 	int hasbooked;
 	private int expire;
 	private String bookedername;
+	private String addtionalprice = "0";
+	private String cuseraddtionalprice;
+	private int isfreecourse;//0不是体验课，1是体验课
+	private String isnew;  //1是刚点击的时间点
 
 	public String getDate() {
 		return date;
@@ -124,6 +128,38 @@ public class Schedule implements Serializable {
 
 	public void setBookedername(String bookedername) {
 		this.bookedername = bookedername;
+	}
+
+	public String getCuseraddtionalprice() {
+		return cuseraddtionalprice;
+	}
+
+	public void setCuseraddtionalprice(String cuseraddtionalprice) {
+		this.cuseraddtionalprice = cuseraddtionalprice;
+	}
+
+	public String getAddtionalprice() {
+		return addtionalprice;
+	}
+
+	public void setAddtionalprice(String addtionalprice) {
+		this.addtionalprice = addtionalprice;
+	}
+
+	public int getIsfreecourse() {
+		return isfreecourse;
+	}
+
+	public void setIsfreecourse(int isfreecourse) {
+		this.isfreecourse = isfreecourse;
+	}
+
+	public String getIsnew() {
+		return isnew;
+	}
+
+	public void setIsnew(String isnew) {
+		this.isnew = isnew;
 	}
 
 }

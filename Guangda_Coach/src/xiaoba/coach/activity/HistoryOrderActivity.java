@@ -74,7 +74,6 @@ public class HistoryOrderActivity extends BaseActivity {
 	boolean blockComment; // lock the operation comment when the net result is transmitting
 	List<HistoryTaskInfo> list = new ArrayList<HistoryTaskInfo>();
 	HistoryOrderAdapter mAdapter = new HistoryOrderAdapter();
-
 	final static int COMMENT_REQUEST_CODE = 1001;
 
 	@AfterViews
@@ -239,18 +238,19 @@ public class HistoryOrderActivity extends BaseActivity {
 			LinearLayout belowOC = (LinearLayout) convertView.findViewById(R.id.below_del_order);
 			PolygonImageView potrait = (PolygonImageView) convertView.findViewById(R.id.potrait);
 			ImageView bigPortrait = (ImageView) convertView.findViewById(R.id.big_portrait);
-			TextView stuComTitle = (TextView) convertView.findViewById(R.id.stu_comment_title);
-			TextView stuComContent = (TextView) convertView.findViewById(R.id.stu_comment_content);
-			RatingBar stuRatingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
+//			TextView stuComTitle = (TextView) convertView.findViewById(R.id.stu_comment_title);
+//			TextView stuComContent = (TextView) convertView.findViewById(R.id.stu_comment_content);
+//			RatingBar stuRatingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
 			LinearLayout coachComment = (LinearLayout) convertView.findViewById(R.id.coach_comment);
 			RatingBar coachRatingBar = (RatingBar) convertView.findViewById(R.id.coach_ratingBar);
 //			ImageView imgPayType = (ImageView)convertView.findViewById(R.id.img_paytype);
 			HistoryTaskInfo info = list.get(position); // item data
-			LinearLayout stuHidePart = (LinearLayout) convertView.findViewById(R.id.stu_hide_part);
+//			LinearLayout stuHidePart = (LinearLayout) convertView.findViewById(R.id.stu_hide_part);
 			TextView tvNotAgree = (TextView)convertView.findViewById(R.id.tv_not_agree);
 			RelativeLayout rlPayType = (RelativeLayout)convertView.findViewById(R.id.rl_pay_type);
 			TextView tvPayType = (TextView)convertView.findViewById(R.id.tv_pay_type);
 			TextView tvSubjectName = (TextView)convertView.findViewById(R.id.tv_subject_name);
+			TextView tvAttachCar = (TextView)convertView.findViewById(R.id.tv_attach_car);
 			
 			/*
 			 * judge whether show the hide part
@@ -263,6 +263,21 @@ public class HistoryOrderActivity extends BaseActivity {
 					hidePart.setVisibility(View.GONE);
 				arrow.setImageResource(R.drawable.arrow_grey);
 			}
+			
+			if (!TextUtils.isEmpty(info.getSubjectname()))
+			{
+				tvAttachCar.setVisibility(View.VISIBLE);
+			if (1==info.getAttachcar())
+			{
+				tvAttachCar.setText("教练带车");
+			}else{
+				tvAttachCar.setText("学员带车");
+			}
+			}else{
+				tvAttachCar.setVisibility(View.GONE);
+			}
+			
+
 
 			if (info == null)
 				return convertView;
@@ -275,26 +290,31 @@ public class HistoryOrderActivity extends BaseActivity {
 			{
 				mainPart.setBackgroundColor(getResources().getColor(R.color.job_back_yellow));
 				coachComment.setVisibility(View.GONE);
-				stuHidePart.setVisibility(View.GONE);
+//				stuHidePart.setVisibility(View.GONE);
 				btn.setVisibility(View.GONE);
 				tvNotAgree.setVisibility(View.VISIBLE);
 			}else{
 				mainPart.setBackgroundColor(getResources().getColor(R.color.white));
 				coachComment.setVisibility(View.VISIBLE);
-				stuHidePart.setVisibility(View.VISIBLE);
+//				stuHidePart.setVisibility(View.VISIBLE);
 				tvNotAgree.setVisibility(View.GONE);
 				btn.setVisibility(View.VISIBLE);
 			}
 			
-			if (!TextUtils.isEmpty(info.getSubjectname()))
+			if (!TextUtils.isEmpty(info.getSubjectname())||info.getCoursetype() == 5)
 			{
 				tvSubjectName.setVisibility(View.VISIBLE);
+				if (info.getCoursetype() == 5)
+				{
+					tvSubjectName.setText("体验");
+				}else{
 				tvSubjectName.setText(info.getSubjectname());
+				}
 			}else{
 				tvSubjectName.setVisibility(View.GONE);
 			}
 			
-			if (info.getStudentscore() != null) {
+/*			if (info.getStudentscore() != null) {
 				stuComTitle.setText(HistoryOrderActivity.this.getString(R.string.student_comment));
 				stuComContent.setVisibility(View.VISIBLE);
 				stuRatingBar.setVisibility(View.VISIBLE);
@@ -310,7 +330,7 @@ public class HistoryOrderActivity extends BaseActivity {
 				stuComTitle.setText(HistoryOrderActivity.this.getString(R.string.student_uncomment));
 				stuComContent.setVisibility(View.GONE);
 				stuRatingBar.setVisibility(View.GONE);
-			}
+			}*/
 			/*
 			 * coach's score
 			 */
@@ -345,19 +365,20 @@ public class HistoryOrderActivity extends BaseActivity {
 			
 			switch (info.getPaytype()) {
 			case Settings.MONEY:
+			case Settings.COMMIT:
 				rlPayType.setVisibility(View.VISIBLE);
 				tvPayType.setText("¥");
-				rlPayType.setBackgroundResource(R.drawable.shape_green_money);
+				rlPayType.setBackgroundResource(R.drawable.shape_gray_paytype);
 				break;
 			case Settings.COIN:
 				rlPayType.setVisibility(View.VISIBLE);
 				tvPayType.setText("币");
-				rlPayType.setBackgroundResource(R.drawable.shape_orange_coin);
+				rlPayType.setBackgroundResource(R.drawable.shape_gray_paytype);
 				break;
 			case Settings.COUPON:
 				rlPayType.setVisibility(View.VISIBLE);
 				tvPayType.setText("券");
-				rlPayType.setBackgroundResource(R.drawable.shape_blue_ticket);
+				rlPayType.setBackgroundResource(R.drawable.shape_gray_paytype);
 				break;
 			default:
 				rlPayType.setVisibility(View.GONE);

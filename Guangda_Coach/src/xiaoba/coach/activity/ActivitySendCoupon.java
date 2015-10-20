@@ -127,11 +127,11 @@ public class ActivitySendCoupon extends BaseActivity {
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				// TODO Auto-generated method stub
 				int length = s.length();
-				if (studentArray.size()==0)
-				{
-					lvStudent.setVisibility(View.GONE);
-					return;
-				}
+//				if (studentArray.size()==0)
+//				{
+//					lvStudent.setVisibility(View.GONE);
+//					return;
+//				}
 				if (length==0)
 				{
 					lvStudent.setVisibility(View.GONE);
@@ -143,6 +143,12 @@ public class ActivitySendCoupon extends BaseActivity {
 						{
 							chosedArray.add(student);
 						}
+					}
+					if (chosedArray.size()!=0)
+					{
+						lvStudent.setVisibility(View.VISIBLE);
+					}else{
+						lvStudent.setVisibility(View.GONE);
 					}
 					choseStudentAda.notifyDataSetChanged();
 				}

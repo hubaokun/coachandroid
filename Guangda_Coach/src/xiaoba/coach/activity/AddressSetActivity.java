@@ -31,6 +31,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @EActivity(R.layout.activity_address_set)
 public class AddressSetActivity extends BaseActivity {
@@ -96,7 +98,7 @@ public class AddressSetActivity extends BaseActivity {
 		super.onResume();
 		new GetAllAddressTask().execute();
 	}
-
+	
 	private class SwipeListViewAdapter extends BaseAdapter {
 
 		private Context context; // 上下文
@@ -179,9 +181,13 @@ public class AddressSetActivity extends BaseActivity {
 
 			@Override
 			public void doOnClick(View v) {
+				if (list.get(pos).getIscurrent() == 1)
+				{
+					Toast.makeText(AddressSetActivity.this, "默认地址不能删除", 0).show();
+				}else{
 				new DelAddressTask(pos).execute();
+				}
 			}
-
 		}
 
 		class ViewHolder {
@@ -259,8 +265,32 @@ public class AddressSetActivity extends BaseActivity {
 
 	@Click(R.id.title_back)
 	void goback() {
+		hasSetTeachAddress();
 		finish();
+		
 	}
+	
+	private void hasSetTeachAddress()
+	{
+		if (list.size() == 0)
+		{
+			CoachApplication.getInstance().setSetTeachAdd(true);
+		}else{
+			CoachApplication.getInstance().setSetTeachAdd(false);
+		}
+	}
+	
+	@Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            //这你写你的返回处理
+        	hasSetTeachAddress();
+        	finish();
+            return true;
+            }
+        return super.onKeyDown(keyCode, event);
+    }
 
 	private class DelAddressTask extends AsyncTask<Void, Void, BaseResult> {
 		JSONAccessor accessor = new JSONAccessor(AddressSetActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);

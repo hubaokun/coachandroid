@@ -72,6 +72,8 @@ public class CoachApplication extends Application {
 
     private int isSetAdd = 0;  //判断是否设置了地址，1为初次设置，0为未设置或是已设置
     
+    private boolean setTeachAdd = false; //判断是否设置了练车地址，false未设置，true设置
+    
     private int maxTays;
     
     private boolean isSaveSet;
@@ -458,5 +460,13 @@ public class CoachApplication extends Application {
 
 	public void setSaveSet(boolean isSaveSet) {
 		this.isSaveSet = isSaveSet;
+	}
+
+	public boolean isSetTeachAdd() {
+		return setTeachAdd;
+	}
+
+	public void setSetTeachAdd(boolean setTeachAdd) {
+		this.setTeachAdd = setTeachAdd;
 	}
 }
