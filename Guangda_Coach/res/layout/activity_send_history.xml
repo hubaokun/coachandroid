@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+   <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+    <include
+        layout="@layout/layout_titlebar"
+        android:background="#ffffff" />
+    </RelativeLayout>
+    
+    <com.daoshun.lib.listview.PullToRefreshListView
+            android:id="@+id/pull_coupon_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/divider_grey"
+            android:dividerHeight="0.5dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none" 
+            android:background="@color/white"
+            android:layout_marginTop="8dp"/>
+
+</LinearLayout>

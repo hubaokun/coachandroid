@@ -466,7 +466,7 @@ public class DateSetFragment extends Fragment {
 	private int SchedulePosition;
 	private int IsChosed = 0;
 	private boolean ISClickCalender = false;
-	private boolean ISCleanChosedHour = false;
+	private boolean ISCleanChosedHour = false;    //清除已被选中的时间款
 	private boolean isNotSet = false;  //教练没有设置上车地址
 	private ImageView imgChoseAll;
 	private RelativeLayout rlCheck;
@@ -4912,7 +4912,7 @@ public class DateSetFragment extends Fragment {
 			if (schedule.getIsfreecourse() == 1)
 			{
 				imgFree.setVisibility(View.VISIBLE);
-				imgFree.setImageResource(R.drawable.free_class_open);
+				imgFree.setImageResource(R.drawable.free_class);
 //				rlBack.setBackgroundResource(R.drawable.shape_free);
 //				price.setTextColor(getResources().getColor(R.color.date_free));
 //				subject.setTextColor(getResources().getColor(R.color.date_free));

@@ -43,15 +43,13 @@ public class ActivityCoachAboutSelf extends BaseActivity {
         initData();
     }
 
-
 	private void initView() {
 		// TODO Auto-generated method stub
-		imgBack = (ImageView)findViewById(R.id.title_back_img);
-		tvTitle = (TextView)findViewById(R.id.title);
-		tvRight = (TextView)findViewById(R.id.title_right_text);
-		etAboutSelf = (EditText)findViewById(R.id.et_about_self);
+		imgBack = (ImageView)findViewById(R.id.title_back_img); 
+		tvTitle = (TextView)findViewById(R.id.title); 
+		tvRight = (TextView)findViewById(R.id.title_right_text); 
+		etAboutSelf = (EditText)findViewById(R.id.et_about_self); 
 	}
-
 
 	private void addListener() {
 		// TODO Auto-generated method stub

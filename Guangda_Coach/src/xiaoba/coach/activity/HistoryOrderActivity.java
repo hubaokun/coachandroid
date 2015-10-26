@@ -251,7 +251,7 @@ public class HistoryOrderActivity extends BaseActivity {
 			TextView tvPayType = (TextView)convertView.findViewById(R.id.tv_pay_type);
 			TextView tvSubjectName = (TextView)convertView.findViewById(R.id.tv_subject_name);
 			TextView tvAttachCar = (TextView)convertView.findViewById(R.id.tv_attach_car);
-			
+			TextView tvPayTwo = (TextView)convertView.findViewById(R.id.tv_pay_two);
 			/*
 			 * judge whether show the hide part
 			 */
@@ -365,20 +365,25 @@ public class HistoryOrderActivity extends BaseActivity {
 			
 			switch (info.getPaytype()) {
 			case Settings.MONEY:
+				rlPayType.setVisibility(View.VISIBLE);
+				tvPayTwo.setVisibility(View.GONE);
+				tvPayType.setText("¥");
+				break;
 			case Settings.COMMIT:
 				rlPayType.setVisibility(View.VISIBLE);
+				tvPayTwo.setText("币");
 				tvPayType.setText("¥");
-				rlPayType.setBackgroundResource(R.drawable.shape_gray_paytype);
+				tvPayTwo.setVisibility(View.VISIBLE);
 				break;
 			case Settings.COIN:
 				rlPayType.setVisibility(View.VISIBLE);
+				tvPayTwo.setVisibility(View.GONE);
 				tvPayType.setText("币");
-				rlPayType.setBackgroundResource(R.drawable.shape_gray_paytype);
 				break;
 			case Settings.COUPON:
 				rlPayType.setVisibility(View.VISIBLE);
+				tvPayTwo.setVisibility(View.GONE);
 				tvPayType.setText("券");
-				rlPayType.setBackgroundResource(R.drawable.shape_gray_paytype);
 				break;
 			default:
 				rlPayType.setVisibility(View.GONE);
