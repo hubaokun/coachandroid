@@ -24,7 +24,7 @@ import com.daoshun.lib.listview.PullToRefreshBase;
 import com.daoshun.lib.listview.PullToRefreshListView;
 import com.daoshun.lib.listview.PullToRefreshBase.Mode;
 import com.daoshun.lib.view.OnSingleClickListener;
-
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -43,6 +43,7 @@ import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -199,8 +200,10 @@ public class NoticeActivity extends BaseActivity {
 			} else {
 				CommonUtils.showToast(NoticeActivity.this.getApplicationContext(), getString(R.string.net_error));
 			}
-		}
+		} 
 	}
+	
+	Dialog showNoticeDialog;
 
 	private class NoticeAdapter extends BaseAdapter {
 		private Context mContext;
@@ -214,7 +217,7 @@ public class NoticeActivity extends BaseActivity {
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return NoticeArray.size();
+			 return NoticeArray.size();
 		}
 
 		@Override
@@ -225,7 +228,7 @@ public class NoticeActivity extends BaseActivity {
 
 		@Override
 		public long getItemId(int position) {
-			// TODO Auto-generated method stub
+			// TODO Auto-generated method stub  =
 			return position;
 		}
 
@@ -240,12 +243,30 @@ public class NoticeActivity extends BaseActivity {
 				holder.tvNoticeTime = (TextView) convertView.findViewById(R.id.tv_notice_time);
 				holder.tvNoticeContent.setOnClickListener(new OnSingleClickListener() {
 
+					@SuppressLint("NewApi")
 					@Override
 					public void doOnClick(View v) {
 						int Position = Integer.valueOf(v.getTag().toString());
 						int noticeId = NoticeArray.get(Position).getNoticeid();
 						String content = NoticeArray.get(Position).getContent().trim();
-						noticeDetail.setNoticeContent(content);
+//						noticeDetail.setNoticeContent(content);
+						AlertDialog.Builder builder = new AlertDialog.Builder(NoticeActivity.this,R.style.full_dialog);
+						showNoticeDialog = builder.create();
+						showNoticeDialog.show();
+						showNoticeDialog.setContentView(R.layout.show_notice_detail);
+//						showNoticeDialog.setCanceledOnTouchOutside(true);
+//						showNoticeDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+						EditText etNotice = (EditText)showNoticeDialog.findViewById(R.id.tv_notice_detail);
+						RelativeLayout rlNotice = (RelativeLayout)showNoticeDialog.findViewById(R.id.rl_notice_detail);
+						rlNotice.setOnClickListener(new OnSingleClickListener() {
+							
+							@Override
+							public void doOnClick(View v) {
+								// TODO Auto-generated method stub
+								showNoticeDialog.dismiss();
+							}
+						});
+						etNotice.setText(content);
 						new ReadNotice(noticeId, Position).execute();
 					}
 				});
@@ -278,11 +299,9 @@ public class NoticeActivity extends BaseActivity {
 			} else {
 				holder = (HolderView) convertView.getTag();
 			}
-
 			holder.tvNoticeContent.setText(NoticeArray.get(position).getContent().trim());
 			holder.tvNoticeTime.setText(NoticeArray.get(position).getAddtime());
 			holder.tvNoticeContent.setTag(position);
-
 			return convertView;
 		}
 

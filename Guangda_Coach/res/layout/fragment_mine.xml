@@ -186,7 +186,27 @@
                     
                 </LinearLayout>
                   <View style="@style/dividerLine" />
-                	
+                  
+                  <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:gravity="center"
+                      android:background="#f7f7f7"
+                      android:layout_gravity="center_vertical"
+                      android:paddingTop="9dp"
+                      android:paddingBottom="9dp">
+                      <ImageView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/ic_mark"/>
+                  <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已累计培训16个小时 "
+                    android:id="@+id/tv_time"
+                    android:textColor="#999999"
+            		android:textSize="11dp"
+            		android:layout_marginLeft="8dp" />
+                  </LinearLayout>
+                	<View style="@style/dividerLine" />
                 <!-- <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -734,7 +754,7 @@
             app:poly_shadow="true"
             app:poly_shadow_color="@color/divider_grey"
             app:poly_vertices="0"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"/> 
             
 <!--           <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -760,7 +780,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="18dp" /> 
+            
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star_coach"
+            android:layout_marginLeft="9dp"
+            android:id="@+id/img_starcoach"
+            android:visibility="gone"/>
         
 <!--        <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -769,18 +796,20 @@
             android:layout_marginBottom="5dp"
             android:layout_alignBottom="@id/name"/> -->
 
-        <RatingBar
+
+        </LinearLayout>
+        
+                        <RatingBar
             android:layout_below="@+id/name"
             android:id="@+id/mine_ratingBar"
             style="@style/myRatingBarSmall"
             android:layout_width="wrap_content"
-            android:layout_height="11dp"
+            android:layout_height="12dp"
             android:isIndicator="true"
             android:numStars="5"
             android:rating="5"
             android:stepSize="0.1" 
-            android:layout_marginLeft="8dp"/>
-        </LinearLayout>
+            android:layout_marginTop="5dp"/>
         
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -790,13 +819,7 @@
             		android:textSize="16dp" 
             		android:layout_marginTop="5dp"/>
                 
-                  <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="已累计培训16个小时 "
-                    android:id="@+id/tv_time"
-                    android:textColor="@color/white"
-            		android:textSize="16dp"
-            		android:layout_marginTop="5dp" />
+
         </LinearLayout>
 
         </LinearLayout>

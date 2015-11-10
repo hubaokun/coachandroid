@@ -148,6 +148,8 @@ public class SelfMaterialActivity extends BaseActivity {
 
 	@ViewById(R.id.potrait)
 	PolygonImageView mPortrait;
+	@ViewById(R.id.tv_star_time)
+	TextView tvStarTime;
 
 /*	@ViewById(R.id.tv_change_new_phone)
 	TextView tvChangeNewPhone;*/
@@ -345,6 +347,13 @@ public class SelfMaterialActivity extends BaseActivity {
 			}
 		}else{
 			tvCoachPro.setText("未提交资格审核");
+		}
+		if (!TextUtils.isEmpty(info.getSignexpired()))
+		{
+			tvStarTime.setVisibility(View.VISIBLE);
+			tvStarTime.setText("明星教练服务于"+info.getSignexpired().split(" ")[0]+"到期");
+		}else{
+			tvStarTime.setVisibility(View.GONE);
 		}
 	}
 

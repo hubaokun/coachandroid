@@ -4,13 +4,15 @@ import xiaoba.coach.R;
 import xiaoba.coach.activity.BaseActivity;
 
 import com.daoshun.lib.view.OnSingleClickListener;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,8 +22,8 @@ public class NoticeDetailView {
 	private RelativeLayout /* rlbackground, */rllocation;
 	private Display display;
 	private View detailView;
-	private TextView tvNoticeDetail;
-	private RelativeLayout rlNoticeDetail;
+	private EditText tvNoticeDetail;
+	//private RelativeLayout rlNoticeDetail;
 	private PopupWindow popNoticeDetail;
 	private int width, height;
 
@@ -37,8 +39,8 @@ public class NoticeDetailView {
 	}
 
 	private void initView() {
-		tvNoticeDetail = (TextView) detailView.findViewById(R.id.tv_notice_detail);
-		rlNoticeDetail = (RelativeLayout) detailView.findViewById(R.id.rl_notice_detail);
+		tvNoticeDetail = (EditText) detailView.findViewById(R.id.tv_notice_detail);
+		//rlNoticeDetail = (RelativeLayout) detailView.findViewById(R.id.rl_notice_detail);
 	}
 
 	private void init() {
@@ -53,11 +55,22 @@ public class NoticeDetailView {
 	}
 
 	private void setListener() {
-		rlNoticeDetail.setOnClickListener(new OnSingleClickListener() {
-
+//		rlNoticeDetail.setOnClickListener(new OnSingleClickListener() {
+//
+//			@Override
+//			public void doOnClick(View v) {
+//				popNoticeDetail.dismiss();
+//			}
+//		});
+		
+		tvNoticeDetail.setOnLongClickListener(new OnLongClickListener() {
+			
+			@SuppressLint("NewApi")
 			@Override
-			public void doOnClick(View v) {
-				popNoticeDetail.dismiss();
+			public boolean onLongClick(View v) {
+				// TODO Auto-generated method stub
+				tvNoticeDetail.setTextIsSelectable(true);
+				return true;
 			}
 		});
 	}

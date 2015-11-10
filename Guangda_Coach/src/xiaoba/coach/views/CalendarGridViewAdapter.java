@@ -35,7 +35,6 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 	private static Calendar calToday = Calendar.getInstance(); // 今日
 	private int iMonthViewCurrentMonth = 0; // 当前视图月
 	private Resources resources;
-
 	/*
 	 * constructor
 	 */
@@ -99,25 +98,29 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 	private void UpdateStartDateForMonth() {
 		calStartDate.set(Calendar.DATE, 1); // 设置成当月第一天
 		iMonthViewCurrentMonth = calStartDate.get(Calendar.MONTH);// 得到当前日历显示的月
-
+		//Date s = calStartDate.getTime();
 		// 星期一是2 星期天是1 填充剩余天数
 		int iDay = 0;
 		int iFirstDayOfWeek = Calendar.MONDAY;
+		//int iFirstDay = Calendar.DAY_OF_WEEK;
 		int iStartDay = iFirstDayOfWeek;
 		if (iStartDay == Calendar.MONDAY) {
 			iDay = calStartDate.get(Calendar.DAY_OF_WEEK) - Calendar.MONDAY;
-			if (iDay < 0)
-				iDay = 6;
+//			if (iDay < 0)
+//				iDay = 6;
 		}
 		if (iStartDay == Calendar.SUNDAY) {
 			iDay = calStartDate.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY;
 			if (iDay < 0)
 				iDay = 6;
 		}
-		calStartDate.add(Calendar.DAY_OF_WEEK, -iDay);
-
+		if(iDay>0)
+		{
+		calStartDate.add(Calendar.DAY_OF_WEEK, -iDay); 
+		//Date s2 = calStartDate.getTime();
 		calStartDate.add(Calendar.DAY_OF_MONTH, -1);// 周日第一位
-
+		//Date s1 = calStartDate.getTime();
+		}
 	}
 
 	ArrayList<java.util.Date> titles;
@@ -240,9 +243,7 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 		Date myDate = (Date) getItem(position);
 		Calendar calCalendar = Calendar.getInstance();
 		calCalendar.setTime(myDate);
-
 		int iMonth = calCalendar.get(Calendar.MONTH);
-
 		if (iv != null) {
 			holder = (ViewHolder) iv.getTag();
 		} else {
@@ -264,7 +265,6 @@ public class CalendarGridViewAdapter extends BaseAdapter {
 		int day = myDate.getDate(); // 设置日期
 		holder.txtDay.setText(String.valueOf(day));
 //		iv.setTag(myDate);
-
 //		holder.yBall.setVisibility(View.GONE);
 //		holder.rBall.setVisibility(View.GONE);
 //		holder.bBall.setVisibility(View.GONE);

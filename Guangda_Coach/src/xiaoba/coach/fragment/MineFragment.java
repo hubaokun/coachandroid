@@ -110,6 +110,7 @@ public class MineFragment extends Fragment {
 	private LinearLayout llService;
 	private String ticketNum = "0";
 	private CoachApplication id;
+	private ImageView imgStarCoach;
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -178,6 +179,7 @@ public class MineFragment extends Fragment {
 		llMyMoney = (LinearLayout)view.findViewById(R.id.ll_my_money);
 		rlXiaoBaTicket = (LinearLayout)view.findViewById(R.id.rl_xiaoba_ticket);
 		rlXiaoBaCoin = (LinearLayout)view.findViewById(R.id.rl_xiaoba_coin);
+		imgStarCoach = (ImageView)view.findViewById(R.id.img_starcoach);
 	}
 
 	private void addListeners() {
@@ -481,6 +483,13 @@ public class MineFragment extends Fragment {
 		});
 
 		mRatingBar.setRating(userInfo.getScore());
+		
+		if (userInfo.getSignstate()!=1)
+		{
+			imgStarCoach.setVisibility(View.GONE);
+		}else{
+			imgStarCoach.setVisibility(View.VISIBLE);
+		}
 	}
 
 	private void setMoney() {

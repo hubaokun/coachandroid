@@ -68,6 +68,22 @@ public class UserInfo {
 	private String cityid;
 	private String provinceid;
 	private String areaid;
+	private int signstate;		//签约状态
+	private String signexpired;	//签约到期日期
+	private int subject2min;	//科目二范围最小值
+	private int subject2max; 	//科目二范围最大值
+	private int subject3min;	//科目三范围最小值
+	private int subject3max;	//科目三范围最大值
+	private int trainingmax;	//考场训练最大值
+	private int trainingmin;	//考场训练最小值
+	private int accompanymin;	//陪驾范围最小值
+	private int accompanymax;	//陪驾范围最大值
+	private int hirecarmax;		//租车范围最大值
+	private int hirecarmin;		//租车范围最小值
+	private int tastesubject2min;	//体验课科目二范围最小值
+	private int tastesubject2max;	//体验课科目二范围最大值
+	private int tastesubject3min;	//体验课科目三范围最小值
+	private int tastesubject3max;	//体验课科目三范围最大值
 	
 	public int getCashtype() {
 		return cashtype;
@@ -86,7 +102,7 @@ public class UserInfo {
 	}
 
 	public String getDefaultAddress() {
-		return defaultAddress;
+		return defaultAddress; 
 	}
 
 	public void setDefaultAddress(String defaultAddress) {
@@ -674,5 +690,133 @@ public class UserInfo {
 
 	public void setAreaid(String areaid) {
 		this.areaid = areaid;
+	}
+
+	public int getSignstate() {
+		return signstate;
+	}
+
+	public void setSignstate(int signstate) {
+		this.signstate = signstate;
+	}
+
+	public int getSubject2min() {
+		return subject2min;
+	}
+
+	public void setSubject2min(int subject2min) {
+		this.subject2min = subject2min;
+	}
+
+	public int getSubject2max() {
+		return subject2max;
+	}
+
+	public void setSubject2max(int subject2max) {
+		this.subject2max = subject2max;
+	}
+
+	public int getSubject3min() {
+		return subject3min;
+	}
+
+	public void setSubject3min(int subject3min) {
+		this.subject3min = subject3min;
+	}
+
+	public int getSubject3max() {
+		return subject3max;
+	}
+
+	public void setSubject3max(int subject3max) {
+		this.subject3max = subject3max;
+	}
+
+	public int getTrainingmax() {
+		return trainingmax;
+	}
+
+	public void setTrainingmax(int trainingmax) {
+		this.trainingmax = trainingmax;
+	}
+
+	public int getTrainingmin() {
+		return trainingmin;
+	}
+
+	public void setTrainingmin(int trainingmin) {
+		this.trainingmin = trainingmin;
+	}
+
+	public int getAccompanymin() {
+		return accompanymin;
+	}
+
+	public void setAccompanymin(int accompanymin) {
+		this.accompanymin = accompanymin;
+	}
+
+	public int getAccompanymax() {
+		return accompanymax;
+	}
+
+	public void setAccompanymax(int accompanymax) {
+		this.accompanymax = accompanymax;
+	}
+
+	public int getHirecarmax() {
+		return hirecarmax;
+	}
+
+	public void setHirecarmax(int hirecarmax) {
+		this.hirecarmax = hirecarmax;
+	}
+
+	public int getHirecarmin() {
+		return hirecarmin;
+	}
+
+	public void setHirecarmin(int hirecarmin) {
+		this.hirecarmin = hirecarmin;
+	}
+
+	public int getTastesubject2min() {
+		return tastesubject2min;
+	}
+
+	public void setTastesubject2min(int tastesubject2min) {
+		this.tastesubject2min = tastesubject2min;
+	}
+
+	public int getTastesubject2max() {
+		return tastesubject2max;
+	}
+
+	public void setTastesubject2max(int tastesubject2max) {
+		this.tastesubject2max = tastesubject2max;
+	}
+
+	public int getTastesubject3min() {
+		return tastesubject3min;
+	}
+
+	public void setTastesubject3min(int tastesubject3min) {
+		this.tastesubject3min = tastesubject3min;
+	}
+
+	public int getTastesubject3max() {
+		return tastesubject3max;
+	}
+
+	public void setTastesubject3max(int tastesubject3max) {
+		this.tastesubject3max = tastesubject3max;
+	}
+
+	public String getSignexpired() {
+		return signexpired;
+	}
+
+	public void setSignexpired(String signexpired) {
+		this.signexpired = signexpired;
 	}
 }

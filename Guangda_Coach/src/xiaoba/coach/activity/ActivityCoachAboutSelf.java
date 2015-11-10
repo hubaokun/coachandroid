@@ -28,7 +28,7 @@ public class ActivityCoachAboutSelf extends BaseActivity {
 	private ImageView imgBack;
 	private TextView tvTitle;
 	private TextView tvRight;
-	private EditText etAboutSelf;
+	private EditText etAboutSelf; 
 	private String aboutSelf;
 	private UserInfo userinfo;
 
@@ -40,14 +40,13 @@ public class ActivityCoachAboutSelf extends BaseActivity {
         userinfo = mApplication.getUserInfo();
         initView();
         addListener();
-        initData();
     }
 
 	private void initView() {
 		// TODO Auto-generated method stub
 		imgBack = (ImageView)findViewById(R.id.title_back_img); 
 		tvTitle = (TextView)findViewById(R.id.title); 
-		tvRight = (TextView)findViewById(R.id.title_right_text); 
+		tvRight = (TextView)findViewById(R.id.title_right_text);
 		etAboutSelf = (EditText)findViewById(R.id.et_about_self); 
 	}
 

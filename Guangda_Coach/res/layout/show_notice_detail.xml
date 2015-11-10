@@ -3,16 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="@color/black"
+    android:background="@color/white"
     android:id="@+id/rl_notice_detail">
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent">
     
-    <TextView android:layout_width="match_parent"
+    <EditText android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:textColor="@color/white"
+        android:background="@color/white"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:layout_centerInParent="true"
         android:text="1111"
         android:id="@+id/tv_notice_detail"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:inputType="none"/>
+    </RelativeLayout>
+<!--     <EditText android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"/> -->
+    
 </RelativeLayout>

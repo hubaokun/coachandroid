@@ -24,6 +24,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
             
+           <TextView android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/tv_star_time"
+               android:textColor="@color/text_red"
+               android:background="@color/back_yellow"
+               android:textSize="12dp"
+               android:padding="5dp"/>
+           
+            <View style="@style/dividerLine" />
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -48,7 +57,7 @@
             	        android:layout_alignParentRight="true"
             	        android:layout_centerVertical="true"
             	        android:gravity="center_vertical">
-            	        <net.grobas.view.PolygonImageView
+             	 <net.grobas.view.PolygonImageView
                     android:id="@+id/potrait"
                     android:layout_width="66dp"
                     android:layout_height="70dp"

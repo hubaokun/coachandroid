@@ -26,6 +26,7 @@ import xiaoba.coach.net.result.GetScheduleResult;
 import xiaoba.coach.net.result.SetDateTimeResult;
 import xiaoba.coach.net.result.GetAllSubjectResult.SubjectInfo;
 import xiaoba.coach.net.result.GetMaxPriceResult;
+import xiaoba.coach.net.result.GetPriceRangeResult;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.utils.DialogUtil;
 import xiaoba.coach.views.PriceDialog;
@@ -105,9 +106,9 @@ public class ClassTimeSetActivity extends BaseActivity {
 	@ViewById(R.id.img_addtional)
 	ImageView imgAddtional;
 	@ViewById(R.id.tv_min_addtionalprice)
-	TextView tvMinAddtional;
-	@ViewById(R.id.tv_max_addtionalprice)
-	TextView tvMaxAddtional;
+	TextView tvHireCarPrice;
+//	@ViewById(R.id.tv_max_addtionalprice)
+//	TextView tvMaxAddtional;
 	@ViewById(R.id.ll_select_free)
 	LinearLayout llSelectFree;
 	@ViewById(R.id.img_select_free)
@@ -125,6 +126,20 @@ public class ClassTimeSetActivity extends BaseActivity {
 	private int maxPrice;
 	private int attachMinPrice;
 	private int attachMaxPrice;
+	private int subject2min;	//科目二范围最小值
+	private int subject2max; 	//科目二范围最大值
+	private int subject3min;	//科目三范围最小值
+	private int subject3max;	//科目三范围最大值
+	private int trainingmax;	//考场训练最大值
+	private int trainingmin;	//考场训练最小值
+	private int accompanymin;	//陪驾范围最小值
+	private int accompanymax;	//陪驾范围最大值
+	private int hirecarmax;		//租车范围最大值
+	private int hirecarmin;		//租车范围最小值
+	private int tastesubject2min;	//体验课科目二范围最小值
+	private int tastesubject2max;	//体验课科目二范围最大值
+	private int tastesubject3min;	//体验课科目三范围最小值
+	private int tastesubject3max;	//体验课科目三范围最大值
 	/*
 	 * 课程id
 	 */
@@ -370,12 +385,13 @@ public class ClassTimeSetActivity extends BaseActivity {
 					if (ssSchedule.getIsfreecourse() == 1)  //体验课
 					{
 						imgSelectFree.setVisibility(View.VISIBLE);
-						mModifyPrice.setVisibility(View.GONE);
-						mPriceEt.setEnabled(false);
+						//mModifyPrice.setVisibility(View.GONE);
+						//mPriceEt.setEnabled(false);
 						isSelectFree = true;
 					}else{
-						mModifyPrice.setVisibility(View.VISIBLE);
-						mPriceEt.setEnabled(true);
+						imgSelectFree.setVisibility(View.GONE);
+						//mModifyPrice.setVisibility(View.VISIBLE);
+						//mPriceEt.setEnabled(true);
 						isSelectFree = false;
 					}
 					}
@@ -537,20 +553,20 @@ public class ClassTimeSetActivity extends BaseActivity {
 		if (isFree)
 		{
 			imgSelectFree.setVisibility(View.GONE);
-			mModifyPrice.setVisibility(View.VISIBLE);
+			//mModifyPrice.setVisibility(View.VISIBLE);
 			mPriceEt.setText(lastPrice);
-			mPriceEt.setEnabled(true);
+			//mPriceEt.setEnabled(true);
 			isSelectFree = false;
-			tvFanWei.setText("(元/小时 价格区间:"+minPrice+"元~"+maxPrice+"元)");
+			//tvFanWei.setText("(元/小时 价格区间:"+minPrice+"元~"+maxPrice+"元)");
 		}else{
 			imgSelectFree.setVisibility(View.VISIBLE);
-			mModifyPrice.setVisibility(View.GONE);
-			mPriceEt.setText("0");
-			mPriceEt.setEnabled(false);
+			//mModifyPrice.setVisibility(View.GONE);
+			//mPriceEt.setText("0");
+			//mPriceEt.setEnabled(false);
 			isSelectFree = true;
-			tvFanWei.setText("(体验课价格为0元)");
+			//tvFanWei.setText("(体验课价格为0元)");
 		}
-
+		setPrice();
 	}
 
 	List<Schedule> list, templist = new ArrayList<Schedule>();
@@ -895,7 +911,6 @@ public class ClassTimeSetActivity extends BaseActivity {
 					if (subjectId == 3||subjectId == 4)
 					{
 						llSelectFree.setVisibility(View.GONE);
-						
 					}else{
 						llSelectFree.setVisibility(View.VISIBLE);
 					}
@@ -1559,15 +1574,15 @@ public class ClassTimeSetActivity extends BaseActivity {
 		}
 	}
 	
-	private class getMaxPrice extends AsyncTask<Void, Void, GetMaxPriceResult> {
+	private class getMaxPrice extends AsyncTask<Void, Void, GetPriceRangeResult> {
 		JSONAccessor accessor = new JSONAccessor(ClassTimeSetActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
 
 		@Override
-		protected GetMaxPriceResult doInBackground(Void... arg0) {
+		protected GetPriceRangeResult doInBackground(Void... arg0) {
 			HashMap<String, Object> param = new BaseParam();
-			param.put("action", "getAutoPosition");
-			param.put("cityid", CoachApplication.getInstance().getUserInfo().getCityid());
-			return accessor.execute(Settings.LOCATION_URL, param, GetMaxPriceResult.class);
+			param.put("action", "getCoachPriceRange");
+			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
+			return accessor.execute(Settings.USER_URL, param, GetPriceRangeResult.class);
 		}
 
 		@Override
@@ -1578,24 +1593,40 @@ public class ClassTimeSetActivity extends BaseActivity {
 		}
 
 		@Override
-		protected void onPostExecute(GetMaxPriceResult result) {
+		protected void onPostExecute(GetPriceRangeResult result) {
 			super.onPostExecute(result);
 			if (mLoadingDialog != null && mLoadingDialog.isShowing())
 				mLoadingDialog.dismiss();
 			if (result != null) {
 				if (result.getCode() == 1) {
-					minPrice = result.getMinprice();
-					maxPrice = result.getMaxprice();
-					attachMaxPrice = result.getAttachcarmaxprice();
-					attachMinPrice = result.getAttachcarminprice();
-					if(isSelectFree)
-					{
-						tvFanWei.setText("(体验课价格为0元)");
-					}else{
-					tvFanWei.setText("(元/小时 价格区间:"+minPrice+"元~"+maxPrice+"元)");
-					}
-					tvMinAddtional.setText(attachMinPrice+"");
-					tvMaxAddtional.setText(attachMaxPrice+"");
+					subject2min = result.getUserInfo().getSubject2min();
+					subject2max = result.getUserInfo().getSubject2max();
+					subject3min = result.getUserInfo().getSubject3min();
+					subject3max = result.getUserInfo().getSubject3max();
+					trainingmin = result.getUserInfo().getTrainingmin();
+					trainingmax = result.getUserInfo().getTrainingmax();
+					accompanymin = result.getUserInfo().getAccompanymin();
+					accompanymax = result.getUserInfo().getAccompanymax();
+					hirecarmin = result.getUserInfo().getHirecarmin();
+					hirecarmax = result.getUserInfo().getHirecarmax();
+					tastesubject2min = result.getUserInfo().getTastesubject2min();
+					tastesubject2max = result.getUserInfo().getTastesubject2max();
+					tastesubject3min = result.getUserInfo().getTastesubject3min();
+					tastesubject3max = result.getUserInfo().getTastesubject3max();
+					setPrice();
+					setHireCarPrice(hirecarmin, hirecarmax, etAddtional, tvHireCarPrice);
+//					minPrice = result.getMinprice();
+//					maxPrice = result.getMaxprice();
+//					attachMaxPrice = result.getAttachcarmaxprice();
+//					attachMinPrice = result.getAttachcarminprice();
+//					if(isSelectFree)
+//					{
+//						tvFanWei.setText("(体验课价格为0元)");
+//					}else{
+//					tvFanWei.setText("(元/小时 价格区间:"+minPrice+"元~"+maxPrice+"元)");
+//					}
+//					tvMinAddtional.setText(attachMinPrice+"");
+//					tvMaxAddtional.setText(attachMaxPrice+"");
 				} else {
 					if (result.getCode() == 95) {
 						CommonUtils.gotoLogin(ClassTimeSetActivity.this);
@@ -1608,6 +1639,83 @@ public class ClassTimeSetActivity extends BaseActivity {
 				}
 			} else {
 			}
+		}
+	}
+	
+	private void setPrice()
+	{
+		int minprice = 0;
+		int maxprice = 0;
+		
+		switch (subjectId) {
+		case 1:
+			if (isSelectFree)
+			{
+				minprice = tastesubject2min;
+				maxprice = tastesubject2max;
+			}else{
+				minprice = subject2min;
+				maxprice = subject2max;
+			}			
+			break;
+		case 2:
+			if (isSelectFree)
+			{
+				minprice = tastesubject3min;
+				maxprice = tastesubject3max;
+			}else{
+				minprice = subject3min;
+				maxprice = subject3max;
+			}
+			break;
+		case 3:
+			minprice = trainingmin;
+			maxprice = trainingmax;
+			break;
+		case 4:
+			minprice = accompanymin;
+			maxprice = accompanymax;
+			break;
+
+		default:
+			break;
+		}
+		
+		maxPrice = maxprice;
+		minPrice = minprice;
+		
+		if (minprice == maxprice)
+		{
+			if (isSelectFree)
+			{
+				tvFanWei.setText("体验课价格为"+minprice+"元");
+			}else{
+				tvFanWei.setText("定价为"+minprice+"元");
+			}
+			mPriceEt.setText(""+minprice);
+			mPriceEt.setEnabled(false);
+			mModifyPrice.setVisibility(View.GONE);
+		}else{
+			mPriceEt.setEnabled(true);
+			tvFanWei.setText("(元/小时 价格区间:"+minprice+"元~"+maxprice+"元)");
+			mModifyPrice.setVisibility(View.VISIBLE);
+		}
+	}
+	
+	private void setHireCarPrice(int minPrice,int maxPrice,EditText etPrice,TextView tvHireCarPrieInfo)
+	{
+		attachMinPrice = minPrice;
+		attachMaxPrice = maxPrice;
+		if (minPrice == maxPrice)               
+		{
+			etPrice.setText(""+minPrice);
+			etPrice.setEnabled(false);
+			tvHireCarPrieInfo.setText("定价为"+minPrice+"元");
+			imgAddtional.setVisibility(View.GONE);
+		}else{
+			etPrice.setEnabled(true);
+			tvHireCarPrieInfo.setText("(元/小时 价格区间:"+minPrice+"元~"+maxPrice+"元)");
+			imgAddtional.setVisibility(View.VISIBLE);
 		}
 	}
 }
