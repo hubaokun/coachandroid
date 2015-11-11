@@ -561,7 +561,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 		}else{
 			imgSelectFree.setVisibility(View.VISIBLE);
 			//mModifyPrice.setVisibility(View.GONE);
-			//mPriceEt.setText("0");
+			mPriceEt.setText("0");
 			//mPriceEt.setEnabled(false);
 			isSelectFree = true;
 			//tvFanWei.setText("(体验课价格为0元)");
@@ -1686,19 +1686,30 @@ public class ClassTimeSetActivity extends BaseActivity {
 		
 		if (minprice == maxprice)
 		{
-			if (isSelectFree)
-			{
-				tvFanWei.setText("体验课价格为"+minprice+"元");
-			}else{
-				tvFanWei.setText("定价为"+minprice+"元");
-			}
+//			if (isSelectFree)
+//			{
+//				tvFanWei.setText("体验课价格为"+minprice+"元");
+//			}else{
+//				tvFanWei.setText("定价为"+minprice+"元");
+//			}
+			tvFanWei.setText("");
 			mPriceEt.setText(""+minprice);
 			mPriceEt.setEnabled(false);
 			mModifyPrice.setVisibility(View.GONE);
 		}else{
+			int price = Integer.parseInt(lastPrice);
+			if (price<minprice)
+			{
+				lastPrice = minprice+"";
+			}
+			if (price>maxprice)
+			{
+				lastPrice = maxprice + "";
+			}
 			mPriceEt.setEnabled(true);
 			tvFanWei.setText("(元/小时 价格区间:"+minprice+"元~"+maxprice+"元)");
 			mModifyPrice.setVisibility(View.VISIBLE);
+			
 		}
 	}
 	
@@ -1710,9 +1721,19 @@ public class ClassTimeSetActivity extends BaseActivity {
 		{
 			etPrice.setText(""+minPrice);
 			etPrice.setEnabled(false);
-			tvHireCarPrieInfo.setText("定价为"+minPrice+"元");
+//			tvHireCarPrieInfo.setText("定价为"+minPrice+"元");
+			tvHireCarPrieInfo.setText("");
 			imgAddtional.setVisibility(View.GONE);
 		}else{
+			int hirecarprice = Integer.parseInt(cuseraddtionalprice);
+			if (hirecarprice<minPrice)
+			{
+				cuseraddtionalprice = minPrice+"";
+			}
+			if (hirecarprice>maxPrice)
+			{
+				cuseraddtionalprice = maxPrice + "";
+			}
 			etPrice.setEnabled(true);
 			tvHireCarPrieInfo.setText("(元/小时 价格区间:"+minPrice+"元~"+maxPrice+"元)");
 			imgAddtional.setVisibility(View.VISIBLE);

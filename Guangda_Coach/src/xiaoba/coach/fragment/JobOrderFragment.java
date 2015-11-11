@@ -586,8 +586,8 @@ public class JobOrderFragment extends Fragment {
 				
 				switch (info.getPaytype()) {
 				case Settings.MONEY:
-					tvPayTwo.setVisibility(View.VISIBLE);
-					tvPayType.setVisibility(View.GONE);
+					tvPayTwo.setVisibility(View.GONE);
+					tvPayType.setVisibility(View.VISIBLE);
 					tvPayType.setText("¥");
 
 					break;
