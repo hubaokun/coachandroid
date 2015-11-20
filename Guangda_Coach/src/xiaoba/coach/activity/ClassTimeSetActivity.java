@@ -548,7 +548,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 		});
 	}
 	
-	private void setFree(boolean isFree)
+	private void setFree(boolean isFree)  
 	{
 		if (isFree)
 		{
@@ -775,15 +775,15 @@ public class ClassTimeSetActivity extends BaseActivity {
 			Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "请输入单价", Toast.LENGTH_SHORT).show();
 			return;
 		} else {
-			if (!isSelectFree)
-			{
+//			if (!isSelectFree)
+//			{
 			int price = Integer.parseInt(mPriceEt.getText().toString());
 			if (price<minPrice||price>maxPrice)
 			{
 				Toast.makeText(ClassTimeSetActivity.this.getApplicationContext(), "课时单价须在"+minPrice+"元～"+maxPrice+"元之间", Toast.LENGTH_SHORT).show();
 				return;
 			}
-			}
+//			}
 			//....
 			//setDateTime();
 		}
@@ -1697,6 +1697,7 @@ public class ClassTimeSetActivity extends BaseActivity {
 			mPriceEt.setEnabled(false);
 			mModifyPrice.setVisibility(View.GONE);
 		}else{
+			if (!TextUtils.isEmpty(lastPrice)){
 			int price = Integer.parseInt(lastPrice);
 			if (price<minprice)
 			{
@@ -1706,7 +1707,10 @@ public class ClassTimeSetActivity extends BaseActivity {
 			{
 				lastPrice = maxprice + "";
 			}
+			mPriceEt.setText(lastPrice);
+			}
 			mPriceEt.setEnabled(true);
+			
 			tvFanWei.setText("(元/小时 价格区间:"+minprice+"元~"+maxprice+"元)");
 			mModifyPrice.setVisibility(View.VISIBLE);
 			
@@ -1722,9 +1726,10 @@ public class ClassTimeSetActivity extends BaseActivity {
 			etPrice.setText(""+minPrice);
 			etPrice.setEnabled(false);
 //			tvHireCarPrieInfo.setText("定价为"+minPrice+"元");
-			tvHireCarPrieInfo.setText("");
+			cuseraddtionalprice = minPrice+"";
 			imgAddtional.setVisibility(View.GONE);
 		}else{
+			if (!TextUtils.isEmpty(cuseraddtionalprice)){
 			int hirecarprice = Integer.parseInt(cuseraddtionalprice);
 			if (hirecarprice<minPrice)
 			{
@@ -1733,6 +1738,11 @@ public class ClassTimeSetActivity extends BaseActivity {
 			if (hirecarprice>maxPrice)
 			{
 				cuseraddtionalprice = maxPrice + "";
+			}
+			etPrice.setText(cuseraddtionalprice);
+			}else{
+				cuseraddtionalprice = minPrice+"";
+				etPrice.setText(cuseraddtionalprice);
 			}
 			etPrice.setEnabled(true);
 			tvHireCarPrieInfo.setText("(元/小时 价格区间:"+minPrice+"元~"+maxPrice+"元)");

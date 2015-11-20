@@ -17,12 +17,15 @@ import xiaoba.coach.activity.GetCashActivity_;
 import xiaoba.coach.activity.HomeActivity;
 import xiaoba.coach.activity.IncomeDetailActivity_;
 import xiaoba.coach.activity.NoticeActivity;
+import xiaoba.coach.activity.ProQualityActivity;
 import xiaoba.coach.activity.SelfMaterialActivity_;
 import xiaoba.coach.activity.SetActivity_;
 import xiaoba.coach.common.Settings;
 import xiaoba.coach.interfaces.OnScaleHaloListener;
 import xiaoba.coach.module.BaseParam;
 import xiaoba.coach.module.UserInfo;
+import xiaoba.coach.net.result.GetCoachDetail;
+import xiaoba.coach.net.result.GetCoachState;
 import xiaoba.coach.net.result.GetMsgCountResult;
 import xiaoba.coach.net.result.RefreshUserMoneyResult;
 import xiaoba.coach.utils.CommonUtils;
@@ -484,12 +487,7 @@ public class MineFragment extends Fragment {
 
 		mRatingBar.setRating(userInfo.getScore());
 		
-		if (userInfo.getSignstate()!=1)
-		{
-			imgStarCoach.setVisibility(View.GONE);
-		}else{
-			imgStarCoach.setVisibility(View.VISIBLE);
-		}
+
 	}
 
 	private void setMoney() {
@@ -541,14 +539,63 @@ public class MineFragment extends Fragment {
 
 	public void refreshInfo() {
 		new RefreshUserMoneyTask().execute();
-
 		refreshMsg();
-
 		setLocalUserInfo();
+		new getCoachDetail().execute();
 	}
 
 	public void refreshMsg() {
 		new GetMessageCountTask().execute();
+	}
+	
+	private class getCoachDetail extends AsyncTask<Void, Void, GetCoachDetail> {
+		JSONAccessor accessor = new JSONAccessor(mActivity.getApplicationContext(), JSONAccessor.METHOD_POST);
+		UserInfo userinfo = CoachApplication.getInstance().getUserInfo();
+		@Override
+		protected void onPostExecute(GetCoachDetail result) {
+			super.onPostExecute(result);
+			/*if (mLoadingDialog != null && mLoadingDialog.isShowing())
+				mLoadingDialog.dismiss();*/
+			if (result != null) {
+				if (result.getCode() == 1) {
+					if (result.getCoachinfo() != null){
+					if (result.getCoachinfo().getSignstate()!=1)
+					{
+						imgStarCoach.setVisibility(View.GONE);
+						userinfo.setSignstate(result.getCoachinfo().getSignstate());
+					}else{
+						imgStarCoach.setVisibility(View.VISIBLE);
+						userinfo.setSignstate(1);
+					}
+					userinfo.setSignexpired(result.getCoachinfo().getSignexpired());
+					}
+				} else {
+					if (result.getMessage() != null)
+						CommonUtils.showToast(mActivity, result.getMessage());
+					if (result.getCode() == 95) {
+						CommonUtils.gotoLogin(mActivity);
+					}
+				}
+			} else {
+				CommonUtils.showToast(mActivity, getString(R.string.net_error));
+			}
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			/*if (mLoadingDialog != null)
+				mLoadingDialog.show();*/
+		}
+
+		@Override
+		protected GetCoachDetail doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			HashMap<String, Object> param = new BaseParam();
+			param.put("action", "GetCoachDetail");
+			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
+			return accessor.execute(Settings.SBOOK_URL, param, GetCoachDetail.class);
+		}
 	}
 
 	private class RefreshUserMoneyTask extends AsyncTask<Void, Void, RefreshUserMoneyResult> {
@@ -561,7 +608,6 @@ public class MineFragment extends Fragment {
 				if (result.getMoney() == null) {
 					result.setMoney("" + 0);
 				} else {
-
 					try {
 						mBalance = Float.valueOf(result.getMoney()) - Float.valueOf(result.getGmoney());
 					} catch (Exception e) {

@@ -14,6 +14,7 @@ import xiaoba.coach.net.result.getNoticeResult;
 import xiaoba.coach.net.result.getNoticeResult.NoticeList;
 import xiaoba.coach.utils.CommonUtils;
 import xiaoba.coach.utils.DialogUtil;
+import xiaoba.coach.utils.NewTextView;
 import xiaoba.coach.utils.OnDoubleClick;
 import xiaoba.coach.views.NoticeDetailView;
 
@@ -256,7 +257,7 @@ public class NoticeActivity extends BaseActivity {
 						showNoticeDialog.setContentView(R.layout.show_notice_detail);
 //						showNoticeDialog.setCanceledOnTouchOutside(true);
 //						showNoticeDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-						EditText etNotice = (EditText)showNoticeDialog.findViewById(R.id.tv_notice_detail);
+						NewTextView etNotice = (NewTextView)showNoticeDialog.findViewById(R.id.tv_notice_detail);
 						RelativeLayout rlNotice = (RelativeLayout)showNoticeDialog.findViewById(R.id.rl_notice_detail);
 						rlNotice.setOnClickListener(new OnSingleClickListener() {
 							

@@ -277,7 +277,7 @@ public class LoginActivity extends BaseActivity {
 			if (mLoadingDialog != null && mLoadingDialog.isShowing())
 				mLoadingDialog.dismiss();
 			if (result != null) {	
-				if (result.getCode() == 1) {
+				if (result.getCode() == 1) { 
 					// registe ok
 					CoachApplication.getInstance().uploadClientId();
 					mApplication.isInvited = result.getIsInvited();

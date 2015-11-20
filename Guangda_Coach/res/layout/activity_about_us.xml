@@ -66,9 +66,9 @@
         android:orientation="vertical" >
 
         <View
-            android:layout_width="84dp"
+            android:layout_width="120dp"
             android:layout_height="84dp"
-            android:background="@drawable/ic_launcher" />
+            android:background="@drawable/about_us_coach" />
 
         <TextView
             android:layout_width="wrap_content"

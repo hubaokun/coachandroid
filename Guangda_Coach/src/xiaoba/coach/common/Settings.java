@@ -54,7 +54,8 @@ public class Settings {
 	//public static final String BASE_URL = "http://192.168.1.88:8080/xiaoba";
 	//public static final String BASE_URL = "http://192.168.1.38:8080/guangda";
 	//public static final String BASE_URL = "http://192.168.1.188:8080/xb";
-	//public static final String BASE_URL = "http://www.xiaobakaiche.com/dadmin";
+	//public static final String BASE_URL = "http://www.xiaobakaiche.com";
+	//public static final String BASE_URL = "http://xiaobaxueche.com:8080/dadmin2.0.0/";
 	//public static final String PGY_APP_ID = "0b9cee5728dbd943795b67d096be3e85"; //正式环境的Appid
 	public static final String PGY_APP_ID = "8cb0ea072ee0cd493495a691bf07cf2f";  //测试环境的Appid
 	//public static final String PGY_APP_ID = "0936f8d01631ca9e8ea4e3955ebb2a03";  //地推环境的Appid

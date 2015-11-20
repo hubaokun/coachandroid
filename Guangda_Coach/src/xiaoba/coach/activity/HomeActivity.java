@@ -570,14 +570,13 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 
 		@Override
 		protected void onPostExecute(final GetAdvertisementWindowResult result) {
-			super.onPostExecute(result);
+			super.onPostExecute(result); 
 			if (mLoadingDialog != null && mLoadingDialog.isShowing())
 				mLoadingDialog.dismiss();
 			if (result != null) {
 				if (result.getCode() == 1) {
 					if ("1".equals(result.getC_flag()))
 					{
-
 						//showAdvDialog.setImage(result.getC_img_android());
 						showAdvDialog.setImageAdvertisement(result.getC_img_android());
 						ImageLoadSaveTask.setImageShowListener(new OnImageLoad() {
@@ -597,19 +596,20 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 								String url = "";
 								String code = "c"+mApplication.mUserInfo.getInvitecode().toLowerCase();
 								String name = "";
-								if (!TextUtils.isEmpty(CoachApplication.mUserInfo.getRealname()))
-								{
-								try
-								{
-									name = new String( URLEncoder.encode(CoachApplication.mUserInfo.getRealname(), "UTF-8"));
-								}catch(UnsupportedEncodingException e)
-								{
-									e.printStackTrace();
-								}
-								 url = result.getC_url().toString()+"code="+code+"&name="+name;
-								}else{
-								url = result.getC_url().toString()+"code="+code+"&name=";
-								}
+//								if (!TextUtils.isEmpty(CoachApplication.mUserInfo.getRealname()))
+//								{
+//								try
+//								{
+//									name = new String( URLEncoder.encode(CoachApplication.mUserInfo.getRealname(), "UTF-8"));
+//								}catch(UnsupportedEncodingException e)
+//								{
+//									e.printStackTrace();
+//								}
+//								 url = result.getC_url().toString()+"code="+code+"&name="+name;
+//								}else{
+//								url = result.getC_url().toString()+"code="+code+"&name=";
+//								}
+								url = result.getC_url();
 								Uri u = Uri.parse(url);  
 								 Intent it = new Intent(Intent.ACTION_VIEW, u);
 								 HomeActivity.this.startActivity(it); 

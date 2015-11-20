@@ -21,6 +21,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.w3c.dom.Comment;
 
+import com.baidu.location.LLSInterface;
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.util.FileUtils;
 import com.daoshun.lib.view.OnSingleClickListener;
@@ -150,6 +151,8 @@ public class SelfMaterialActivity extends BaseActivity {
 	PolygonImageView mPortrait;
 	@ViewById(R.id.tv_star_time)
 	TextView tvStarTime;
+	@ViewById(R.id.ll_star_coach)
+	LinearLayout llStarCoach;
 
 /*	@ViewById(R.id.tv_change_new_phone)
 	TextView tvChangeNewPhone;*/
@@ -275,10 +278,10 @@ public class SelfMaterialActivity extends BaseActivity {
 				if (deadTime) {
 					Toast.makeText(SelfMaterialActivity.this, "请选择今天以前的日期", Toast.LENGTH_SHORT).show();
 					return;
-				}
+				} 
 				/*
 				 * 显示修改后的日期
-				 */
+				 */ 
 				String monthStr = month < 10 ? "0" + month : "" + month;
 				String dayStr = day < 10 ? "0" + day : "" + day;
 //				tvBirthday.setTextColor(Color.parseColor("#252525"));
@@ -348,12 +351,15 @@ public class SelfMaterialActivity extends BaseActivity {
 		}else{
 			tvCoachPro.setText("未提交资格审核");
 		}
+		if (info.getSignstate()==1)
+		{
 		if (!TextUtils.isEmpty(info.getSignexpired()))
 		{
-			tvStarTime.setVisibility(View.VISIBLE);
+			llStarCoach.setVisibility(View.VISIBLE);
 			tvStarTime.setText("明星教练服务于"+info.getSignexpired().split(" ")[0]+"到期");
 		}else{
-			tvStarTime.setVisibility(View.GONE);
+			llStarCoach.setVisibility(View.GONE);
+		}
 		}
 	}
 

@@ -741,7 +741,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-            <net.grobas.view.PolygonImageView
+             <net.grobas.view.PolygonImageView
             android:id="@+id/potrait"
             android:layout_width="78dp"
             android:layout_height="84dp"

@@ -981,11 +981,11 @@ public class JobOrderFragment extends Fragment {
 					}
 					// judge does the student perfect his or her material
 					if (info != null && info.getStudentinfo() != null) {
-						if (info.getStudentinfo().getCoachstate() == 0) {
-							// unchecked
-							CallDialog(info, btn, startTime, endTime, position);
-							// CommonUtils.showToast(mActivity.getApplicationContext(), "弹框");
-						} else {
+//						if (info.getStudentinfo().getCoachstate() == 0) {
+//							// unchecked
+//							CallDialog(info, btn, startTime, endTime, position);   //认证学员
+//							// CommonUtils.showToast(mActivity.getApplicationContext(), "弹框");
+//						} else {
 							DialogUtil dUtil = new DialogUtil(new DialogConfirmListener() {
 
 								@Override
@@ -1006,8 +1006,8 @@ public class JobOrderFragment extends Fragment {
 										mDialog.dismiss();
 								}
 							});
-							mDialog = dUtil.CallConfirmDialog("上车时帮学员刷一下学员卡","确认上车","",mActivity, mDialog);
-						}
+							mDialog = dUtil.CallConfirmDialog("确认学员已上车练习","确定","",mActivity, mDialog);
+						//}
 					} else {
 						CommonUtils.showToast(mActivity.getApplicationContext(), mActivity.getString(R.string.perfect_material));
 					}

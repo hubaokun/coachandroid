@@ -2,45 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white" >
+    android:orientation="vertical" >
     
-    <RelativeLayout android:layout_width="match_parent"
+        <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white">
         <include layout="@layout/layout_titlebar" 
             />
     </RelativeLayout>
-   <!--  <ScrollView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-    <TextView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:id="@+id/tv_rules"/>
     
-        </LinearLayout>
-    </ScrollView> -->
-    
-    <RelativeLayout android:layout_width="match_parent"
+        <RelativeLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
            <WebView android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:id="@+id/web_relus"
-       android:scrollbars="none"/>
+       android:id="@+id/web_star_relus"
+        android:scrollbars="none"/>
            
            <ImageView android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:src="@drawable/web_no_relus"
                android:layout_centerInParent="true"
-               android:id="@+id/img_no_web"
+               android:id="@+id/img_star_relus"
                android:visibility="gone"
+              
                />
     </RelativeLayout>
-    
+
 </LinearLayout>

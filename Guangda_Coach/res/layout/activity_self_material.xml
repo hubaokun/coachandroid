@@ -24,6 +24,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
             
+           <LinearLayout android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:id="@+id/ll_star_coach"
+               android:visibility="gone">
+            
            <TextView android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:id="@+id/tv_star_time"
@@ -33,6 +39,7 @@
                android:padding="5dp"/>
            
             <View style="@style/dividerLine" />
+            </LinearLayout>
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

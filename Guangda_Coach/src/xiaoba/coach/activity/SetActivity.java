@@ -54,6 +54,10 @@ public class SetActivity extends BaseActivity {
 	LinearLayout llClear;
 	@ViewById(R.id.tv_clear)
 	TextView tvClear;
+	@ViewById(R.id.ll_star_coach)
+	LinearLayout llStarCoach;
+	@ViewById(R.id.ll_drive_with)
+	LinearLayout llDriveWith;
 	boolean isReceiveNotice;
 
 	@AfterViews
@@ -115,6 +119,18 @@ public class SetActivity extends BaseActivity {
 	void clearCacho()
 	{
 		new ClearDialog(this).show();
+	}
+	@Click(R.id.ll_star_coach)
+	void starCoach()
+	{
+		Intent intent = new Intent (SetActivity.this,ActivityStarCoach.class);
+		startActivity(intent);
+	}
+	@Click(R.id.ll_drive_with)
+	void driveWith()
+	{
+		Intent intent = new Intent (SetActivity.this,ActivityDriveWithRelues.class);
+		startActivity(intent);
 	}
 	
 	public String getFileSize() {
