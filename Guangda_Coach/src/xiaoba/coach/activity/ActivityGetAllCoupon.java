@@ -15,6 +15,7 @@ import xiaoba.coach.net.result.ComplaintToMeResult;
 import xiaoba.coach.net.result.GetCouponResult;
 import xiaoba.coach.net.result.GetCouponResult.couponList;
 import xiaoba.coach.utils.CommonUtils;
+import xiaoba.coach.views.TicketRelesDialog;
 
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.listview.PullToRefreshBase;
@@ -55,11 +56,14 @@ public class ActivityGetAllCoupon extends BaseActivity {
 	private List<Integer> hasChosedArray = new ArrayList<Integer>();
 	private TextView tvTicketNumber,tvHasPayTicketNumber;
 	private LinearLayout llNotice;
+	private TextView tvRight;
+	private TicketRelesDialog ticketRelusdialog;
 	 @Override
 	    protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_get_all_coupon);
 	        context = this;
+	        ticketRelusdialog = new TicketRelesDialog(context);
 	        initView();
 	        addListener();
 			initData();
@@ -77,6 +81,7 @@ public class ActivityGetAllCoupon extends BaseActivity {
 		 tvTicketNumber = (TextView)findViewById(R.id.tv_ticket_number);
 		 tvHasPayTicketNumber = (TextView)findViewById(R.id.tv_has_pay_ticket_number);
 		 llNotice = (LinearLayout)findViewById(R.id.ll_notice);
+		 tvRight = (TextView)findViewById(R.id.title_right_text);
 	 }
 	 
 	 private void addListener()
@@ -153,6 +158,15 @@ public class ActivityGetAllCoupon extends BaseActivity {
 				else{
 					Toast.makeText(context, R.string.no_chosed,Toast.LENGTH_SHORT).show();
 				}
+			}
+		});
+		 
+		 tvRight.setOnClickListener(new OnSingleClickListener() {
+			
+			@Override
+			public void doOnClick(View v) {
+				// TODO Auto-generated method stub
+				ticketRelusdialog.show();
 			}
 		});
 	 }

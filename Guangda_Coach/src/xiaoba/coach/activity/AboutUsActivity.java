@@ -44,7 +44,6 @@ class AboutUsActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-
 		/* set it to be full screen */
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	}
@@ -63,7 +62,7 @@ class AboutUsActivity extends BaseActivity {
 		} catch (NameNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 		String version = packInfo.versionName;
 		tvVersion.setText(version);
 	}

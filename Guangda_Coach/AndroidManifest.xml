@@ -118,15 +118,10 @@
 
 
     <!-- ###################添加UmengAppkey###################### -->
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="55aa05df67e58eb10e00758b" >
-        </meta-data>
+        <meta-data            android:name="UMENG_APPKEY"            android:value="55aa05df67e58eb10e00758b" >        </meta-data>
         
         
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="rsMF1YYqLDXqOQM0NWRHwFxq" />
+        <meta-data            android:name="com.baidu.lbsapi.API_KEY"            android:value="rsMF1YYqLDXqOQM0NWRHwFxq" />
         
         <!-- 友盟统计 -->
         
@@ -486,18 +481,7 @@
         
 
         <!-- sdk -->
-        <meta-data
-            android:name="PUSH_APPID"
-            android:value="ACWCLzCDrb7Y5MkA4XWtm4" /> <!-- APPID -->
-        <meta-data
-            android:name="PUSH_APPKEY"
-            android:value="davVrxDsKZ7xvCxbPedb41" /> <!-- APPKEY -->
-        <meta-data
-            android:name="PUSH_APPSECRET"
-            android:value="dOEWpUOWwC7ftkCqzaedr4" /> <!-- APPSECRET -->
-        <meta-data
-            android:name="PUSH_GROUPID"
-            android:value="" />
+        <meta-data            android:name="PUSH_APPID"            android:value="ACWCLzCDrb7Y5MkA4XWtm4" /> <!-- APPID -->        <meta-data            android:name="PUSH_APPKEY"            android:value="davVrxDsKZ7xvCxbPedb41" /> <!-- APPKEY -->        <meta-data            android:name="PUSH_APPSECRET"            android:value="dOEWpUOWwC7ftkCqzaedr4" /> <!-- APPSECRET -->        <meta-data            android:name="PUSH_GROUPID"            android:value="" />
 
         <!-- 配置第三方Receiver -->
 
@@ -582,13 +566,9 @@
             android:process=":pushservice" /> <!-- downloads. -->
         <!-- =========================================================================== -->
         <!-- TalkingData应用id -->
-        <meta-data
-            android:name="TD_APP_ID"
-            android:value="B862B48A8BE7518336AFB3AE4A15F9FD" />
+        <meta-data            android:name="TD_APP_ID"            android:value="B862B48A8BE7518336AFB3AE4A15F9FD" />
         <!-- 渠道 -->
-        <meta-data
-            android:name="TD_CHANNEL_ID"
-            android:value="chengzhangbao_headquarters" />
+        <meta-data            android:name="TD_CHANNEL_ID"            android:value="chengzhangbao_headquarters" />
         
          //环信
         <!-- 登陆 -->
