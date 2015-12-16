@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+        <ImageView android:layout_width="23dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/back_arrow"
+
+            android:padding="5dp"
+            android:id="@+id/img_go_back"/>
+        
+        <ImageView android:layout_width="23dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/back_login_black"
+            android:padding="5dp"
+            android:id="@+id/img_finish"
+            android:layout_marginLeft="5dp"/>
+        
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
+            android:maxEms="8"
+            android:ellipsize="end" />
+        
+                <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+    
+        <View style="@style/common_line" />
+    
+    <WebView 
+        android:id="@+id/web_advertise"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        />
+    
+
+</LinearLayout>
