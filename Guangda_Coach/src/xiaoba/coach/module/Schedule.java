@@ -18,7 +18,7 @@ public class Schedule implements Serializable {
 	int subjectid;
 	String subject;
 	String addressdetail;
-	int hasbooked;
+	int hasbooked;  //0未被预约，1被预约
 	private int expire;
 	private String bookedername;
 	private String addtionalprice = "0";

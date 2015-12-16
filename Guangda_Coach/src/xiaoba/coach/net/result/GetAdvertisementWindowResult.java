@@ -2,15 +2,15 @@ package xiaoba.coach.net.result;
 
 public class GetAdvertisementWindowResult extends BaseResult{
 	
-	private String c_img;
-	private String c_url;
+	private String c_img;  
+	private String c_url;  //跳转的url
 	private int curldisplay;
 	private String s_img;
 	private String s_url;
 	private int surldisplay;
 	private String c_img_android_flash;
-	private String c_flag;
-	private String c_img_android;
+	private String c_flag;  //打开的方式 	1=外网，2内部action
+	private String c_img_android;  //图片url
 	private String c_flash_flag;
 	public String getC_img() {
 		return c_img;

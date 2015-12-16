@@ -4,18 +4,18 @@ import java.util.List;
 
 public class MyMyEvaluationResult extends BaseResult {
 	private int hasmore;
-	private List<EvaluationResult> evaluationlist;
+	private List<EvaluationResult> evaluationlist;		//评价列表
 
 	public class EvaluationResult {
-		private int studentid;
-		private String studentavatar;
-		private String name;
-		private float score;
-		private String phone;
-		private String studentcardnum;
-		private String starttime;
-		private String endtime;
-		private String content;
+		private int studentid;		//评价学员ID
+		private String studentavatar;		//评价学员头像<small>
+		private String name;		//评价学员真实姓名
+		private float score;		//评分
+		private String phone;		//学员电话号码
+		private String studentcardnum;		//学员证号
+		private String starttime;		//任务开始时间
+		private String endtime;		//任务结束时间
+		private String content;		//评价详情
 
 		public int getStudentid() {
 			return studentid;

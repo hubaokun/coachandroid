@@ -9,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import org.androidannotations.annotations.UiThread;
 
 import xiaoba.coach.R;
+import xiaoba.coach.common.Settings;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,13 +19,14 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ActivityCoachRules extends BaseActivity {
 	private Context mcontext;
 	private TextView tvTitle;
 	private ImageView imgBack;
-	private String url = "http://www.xiaobaxueche.com/servicestandard.html";
+	private String url = Settings.BASE_SHARE+"servicestandard.html";
 	private WebView webRelus;
 	private ImageView imgNoWeb;
 //	private TextView tvRules;
@@ -69,8 +71,8 @@ public class ActivityCoachRules extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				webRelus.loadUrl(url);
-				webRelus.setVisibility(View.VISIBLE);
-				imgNoWeb.setVisibility(View.GONE);
+//				webRelus.setVisibility(View.VISIBLE);
+//				imgNoWeb.setVisibility(View.GONE);
 			}
 		});
 	}

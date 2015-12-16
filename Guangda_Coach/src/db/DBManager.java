@@ -68,6 +68,18 @@ public class DBManager {
         c.close();
         return provincelist;
     }
+    
+    public String queryCityIdByName(String cityName)
+    {
+    	 Cursor c = queryCityByName(cityName);
+    	 String cityid = "";
+    	 while (c.moveToNext())
+    	 {
+    	  cityid = c.getString(c.getColumnIndex("cityid"));
+    	 }
+    	 c.close();
+    	 return cityid;
+    }
 
     /**
      * query all persons, return cursor
@@ -85,7 +97,12 @@ public class DBManager {
         return c;
     }
 
-
+    
+    public Cursor queryCityByName(String cityName)
+    {
+    	Cursor c = db.rawQuery("SELECT * FROM T_City WHERE city LIKE ? ", new String[]{"%"+cityName+"%"});
+    	return c;
+    }
 
     public Cursor queryAllProvince()
     {

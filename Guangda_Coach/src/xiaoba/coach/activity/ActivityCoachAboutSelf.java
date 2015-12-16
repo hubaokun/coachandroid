@@ -46,8 +46,13 @@ public class ActivityCoachAboutSelf extends BaseActivity {
 		// TODO Auto-generated method stub
 		imgBack = (ImageView)findViewById(R.id.title_back_img); 
 		tvTitle = (TextView)findViewById(R.id.title); 
+		tvTitle.setTextColor(Color.parseColor("#2c2c2c"));
 		tvRight = (TextView)findViewById(R.id.title_right_text);
 		etAboutSelf = (EditText)findViewById(R.id.et_about_self); 
+		tvTitle.setText("个人评价");
+		tvRight.setText("完成");
+		imgBack.setImageResource(R.drawable.back_arrow);
+		tvRight.setTextColor(Color.parseColor("#ff4c1c"));
 	}
 
 	private void addListener() {

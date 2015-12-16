@@ -104,7 +104,7 @@ public class AccessToMeFragment extends Fragment {
 		@Override
 		protected MyMyEvaluationResult doInBackground(Void... params) {
 			HashMap<String, Object> param = new BaseParam();
-			param.put("action", "GetEvaluationToMy");
+			param.put("action", "GetEvaluationToMy");		//取得评价我的列表
 			param.put("coachid",CoachApplication.getInstance().getUserInfo().getCoachid());//CoachApplication.getInstance().getUserInfo().getCoachid()
 			param.put("pagenum", mPage);
 			return accessor.execute(Settings.CMY_URL, param,MyMyEvaluationResult.class);

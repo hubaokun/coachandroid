@@ -1,13 +1,13 @@
 package xiaoba.coach.net.result;
 
 public class GetMsgCountResult extends BaseResult {
-	int noticecount;
-	int allnoticecount;
-	int complaint1;
-	int complaint2;
-	int evaluation1;
-	int evaluation2;
-	int studentcount;
+	int noticecount;		//GetMessageCount
+	int allnoticecount;		//通知总数量
+	int complaint1;		//投诉我的<未处理数量>
+	int complaint2;		//我投诉的<未处理数量>
+	int evaluation1;		//评论我的<累计数量>
+	int evaluation2;		//我评论的<累计数量>
+	int studentcount;		//我的学员数量<预订过我的学员>
 
 	public int getNoticecount() {
 		return noticecount;

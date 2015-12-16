@@ -10,11 +10,12 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 import xiaoba.coach.R;
+import xiaoba.coach.common.Settings;
 
 public class ActivityStarCoach extends BaseActivity {
 	private TextView tvTitle;
 	private ImageView imgBack;
-	private String url = "http://www.xiaobaxueche.com/popularcoaches.html";
+	private String url = Settings.BASE_SHARE+"popularcoaches.html";
 	private WebView starWebCoach;
 	private ImageView imgStarCoach;
 	 @Override
@@ -37,7 +38,7 @@ public class ActivityStarCoach extends BaseActivity {
 
 	private void initData() {
 		// TODO Auto-generated method stub
-		//tvTitle.setText("小巴明星教练服务协议");
+		tvTitle.setText("小巴明星教练服务协议");
 		tvTitle.setTextColor(Color.parseColor("#2c2c2c"));
 		imgBack.setImageResource(R.drawable.back_arrow);
 	}
@@ -59,8 +60,8 @@ public class ActivityStarCoach extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				starWebCoach.loadUrl(url);
-				starWebCoach.setVisibility(View.VISIBLE);
-				imgStarCoach.setVisibility(View.GONE);
+//				starWebCoach.setVisibility(View.VISIBLE);
+//				imgStarCoach.setVisibility(View.GONE);
 			}
 		});
 	}
@@ -70,7 +71,7 @@ public class ActivityStarCoach extends BaseActivity {
 		starWebCoach.loadUrl(url);
 		starWebCoach.setWebViewClient(new WebViewClient()
 				{
-/*			@Override
+			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 				// TODO Auto-generated method stub
 				// return super.shouldOverrideUrlLoading(view, url);
@@ -84,9 +85,9 @@ public class ActivityStarCoach extends BaseActivity {
 				    // 设置setWebChromeClient对象  
 				    view.setWebChromeClient(wvcc); 
 				return true;
-			}*/
+			}
 			
-/*			@Override  
+			@Override  
             public void onPageFinished(WebView view,String url)  
             {
 				WebChromeClient wvcc = new WebChromeClient(){
@@ -98,7 +99,7 @@ public class ActivityStarCoach extends BaseActivity {
 				    };
 				    // 设置setWebChromeClient对象  
 				    starWebCoach.setWebChromeClient(wvcc); 
-            }  */
+            }  
 			@Override
 			public void onReceivedError(WebView view, int errorCode,
 					String description, String failingUrl) {
@@ -111,15 +112,15 @@ public class ActivityStarCoach extends BaseActivity {
 				}
 		});
 		
-		 WebChromeClient wvcc = new WebChromeClient() {  
-	            @Override  
-	            public void onReceivedTitle(WebView view, String title) {  
-	                super.onReceivedTitle(view, title);  
-	                tvTitle.setText(title);  
-	            }  
-	  
-	        };  
-	        starWebCoach.setWebChromeClient(wvcc);
+//		 WebChromeClient wvcc = new WebChromeClient() {  
+//	            @Override  
+//	            public void onReceivedTitle(WebView view, String title) {  
+//	                super.onReceivedTitle(view, title);  
+//	                tvTitle.setText(title);  
+//	            }  
+//	  
+//	        };  
+//	        starWebCoach.setWebChromeClient(wvcc);
 //		tvRules.setText(getString(inputStream));
 	}
 }

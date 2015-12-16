@@ -11,12 +11,13 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 import xiaoba.coach.R;
+import xiaoba.coach.common.Settings;
 
 public class ActivityDriveWithRelues extends BaseActivity {
 	private Context mcontext;
 	private TextView tvTitle;
 	private ImageView imgBack;
-	private String url = "http://www.xiaobaxueche.com/serviceprotocol-c.html";
+	private String url = Settings.BASE_SHARE+"serviceprotocol-c.html";
 	private WebView webRelus;
 	private ImageView imgNoWeb;
 //	private TextView tvRules;
@@ -61,8 +62,8 @@ public class ActivityDriveWithRelues extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				webRelus.loadUrl(url);
-				webRelus.setVisibility(View.VISIBLE);
-				imgNoWeb.setVisibility(View.GONE);
+//				webRelus.setVisibility(View.VISIBLE);
+//				imgNoWeb.setVisibility(View.GONE);
 			}
 		});
 	}

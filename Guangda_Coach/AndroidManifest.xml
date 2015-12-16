@@ -373,7 +373,7 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:windowSoftInputMode="adjustPan" />
-                <activity
+         <activity
             android:name=".activity.ActivityDriveWithRelues"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="portrait"
@@ -381,6 +381,12 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.ActivityChangePhone"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.ActivityAdvertisementWeb"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar"

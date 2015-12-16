@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GetCouponHistoryResult extends BaseResult {
 	
-	private ArrayList<RecordList> recordlist;
+	private ArrayList<RecordList> recordlist;		//发放记录列表
 	
 	private int hasmore;
 	

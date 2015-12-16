@@ -252,6 +252,7 @@ public class HistoryOrderActivity extends BaseActivity {
 			TextView tvSubjectName = (TextView)convertView.findViewById(R.id.tv_subject_name);
 			TextView tvAttachCar = (TextView)convertView.findViewById(R.id.tv_attach_car);
 			TextView tvPayTwo = (TextView)convertView.findViewById(R.id.tv_pay_two);
+			ImageView imgEvluate = (ImageView)convertView.findViewById(R.id.img_has_evaluate);
 			/*
 			 * judge whether show the hide part
 			 */
@@ -331,6 +332,17 @@ public class HistoryOrderActivity extends BaseActivity {
 				stuComContent.setVisibility(View.GONE);
 				stuRatingBar.setVisibility(View.GONE);
 			}*/
+			
+			if (info.getStudentscore()!=null)
+			{
+				imgEvluate.setImageResource(R.drawable.im_has_evluate);
+			}else{
+				imgEvluate.setImageResource(R.drawable.im_not_evluate);
+			}
+			
+			
+			
+		
 			/*
 			 * coach's score
 			 */

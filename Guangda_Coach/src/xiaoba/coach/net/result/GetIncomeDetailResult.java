@@ -3,11 +3,11 @@ package xiaoba.coach.net.result;
 import java.util.List;
 
 public class GetIncomeDetailResult extends BaseResult {
-	float balance;
+	float balance;		//账户余额
 	float fmoney;  //冻结金
-	float gmoney;  
+	float gmoney;		//保证金额
 	
-	List<RecordInfo>recordlist;
+	List<RecordInfo>recordlist;		//余额变动记录List
 	
 	public float getBalance() {
 		return balance;
@@ -52,11 +52,11 @@ public class GetIncomeDetailResult extends BaseResult {
 
 
 	public class RecordInfo {
-		int type;
-		String addtime;
-		float amount;
-		float amount_out1;
-		float amount_out2;
+		int type;		//1.学员支付,2.提现,3.充值
+		String addtime;		//时间,提现的话记录的是提现申请通过的时间
+		float amount;		//数量		
+		float amount_out1;		//平台抽成
+		float amount_out2;		//驾校抽成
 		public int getType() {
 			return type;
 		}

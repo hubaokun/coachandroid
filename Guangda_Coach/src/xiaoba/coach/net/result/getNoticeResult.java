@@ -4,12 +4,12 @@ import java.util.List;
 
 public class getNoticeResult extends BaseResult {
 	private int hasmore;
-	private List<NoticeList> datalist;
+	private List<NoticeList> datalist;		//通知List
 
 	public class NoticeList {
-		private int noticeid;
-		private String content;
-		private String addtime;
+		private int noticeid;		//通知ID
+		private String content;		//通知内容
+		private String addtime;		//通知时间<分页排序字段>
 
 		public int getNoticeid() {
 			return noticeid;

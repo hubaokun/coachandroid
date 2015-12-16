@@ -1,7 +1,7 @@
 package xiaoba.coach.net.result;
 
 public class AliAccountResult extends BaseResult {
-	String aliacount;
+	String aliacount;		//支付宝账户
 
 	public String getAliacount() {
 		return aliacount;

@@ -25,6 +25,7 @@ import xiaoba.coach.module.BaseParam;
 import xiaoba.coach.module.Coachscore;
 import xiaoba.coach.net.result.AddressResult;
 import xiaoba.coach.net.result.BaseResult;
+import xiaoba.coach.net.result.GetAdvertisementByParamResult;
 import xiaoba.coach.net.result.GetAdvertisementResult;
 import xiaoba.coach.net.result.GetAdvertisementWindowResult;
 import xiaoba.coach.utils.CommonUtils;
@@ -40,6 +41,7 @@ import com.baidu.location.LocationClientOption;
 import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.util.DensityUtils;
 import com.daoshun.lib.view.OnSingleClickListener;
+import com.google.android.gms.internal.ci;
 import com.pgyersdk.feedback.PgyFeedbackShakeManager;
 import com.pgyersdk.update.PgyUpdateManager;
 
@@ -71,6 +73,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import db.DBManager;
 
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends FragmentActivity implements OnTouchListener {
@@ -106,9 +109,11 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 	IntentFilter filter;
 	private Context mContext;
 	private ShowAdvertisementDialog showAdvDialog;
-//	private LocationClient locationClient;
-//	private MyLocationListenner myListener;
-	private String locaCity ;
+	private LocationClient locationClient;
+	private MyLocationListenner myListener;
+	private String locaCity;
+	private String cityid;
+    public DBManager mgr;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -131,10 +136,10 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		findViews();
 		initViews();
 		mLoadingDialog = new LoadingDialog(HomeActivity.this);
+		mgr = new DBManager(HomeActivity.this);
 		mFragmentManager = getSupportFragmentManager();
 		mSelectedModule = R.id.tab_job_order;
 		switchModule(mSelectedModule, 1);
-		
 		
 		/*
 		 * 填写邀请码页面
@@ -153,10 +158,14 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 //			e.printStackTrace();
 //		}
 		
-		
-		
-//		getPosition();
-		new GetAdvertisement().execute();
+		//getPosition();
+		if (TextUtils.isEmpty(mApplication.getUserInfo().getCityid()))
+		{
+			getPosition();
+		}else{
+			cityid = mApplication.getUserInfo().getCityid();
+			new GetAdvertisement().execute();
+		}
 //		new GetAllAddressTask().execute();
 	}
 
@@ -168,18 +177,18 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		}
 	}
 	
-//	public void getPosition() {
-//		locationClient = new LocationClient(this);
-//		myListener = new MyLocationListenner();
-//		locationClient.registerLocationListener(myListener);
-//		if (locationClient != null) {
-//			setLocationOption();
-//			locationClient.start();
-//			locationClient.requestLocation();
-//		} else {
-//			Log.d("TAG", "locClient is null or not started");
-//		}
-//	}
+	public void getPosition() {
+		locationClient = new LocationClient(this);
+		myListener = new MyLocationListenner();
+		locationClient.registerLocationListener(myListener);
+		if (locationClient != null) {
+			setLocationOption();
+			locationClient.start();
+			locationClient.requestLocation();
+		} else {
+			Log.d("TAG", "locClient is null or not started");
+		}
+	}
 	
 	private void setLocationOption() {
 		LocationClientOption option = new LocationClientOption();
@@ -187,14 +196,14 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		option.setCoorType("bd09ll"); // 设置坐标类型
 		option.setScanSpan(2000); // 设置定位模式，小于1秒则一次定位;大于等于1秒则定时定位
 		option.setIsNeedAddress(true);
-//		locationClient.setLocOption(option);
+		locationClient.setLocOption(option);
 	}
 	
 	public class MyLocationListenner implements BDLocationListener {
 		@Override
 		public void onReceiveLocation(BDLocation location) {
-//			if (locationClient != null)
-//				locationClient.stop();
+			if (locationClient != null)
+				locationClient.stop();
 			if (location == null)
 				return;
 			locaCity = location.getCity();
@@ -202,20 +211,23 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 			{
 				locaCity = locaCity.replace("市", "");
 			}
-			Toast.makeText(mContext, locaCity, 0).show();
-//			stopLocClient();
+			cityid = mgr.queryCityIdByName(locaCity);
+			mgr.closeDB();
+			new GetAdvertisement().execute();
+			//Toast.makeText(mContext, locaCity, 0).show();
+			stopLocClient();
 		}
 
 		public void onReceivePoi(BDLocation poiLocation) {
 		}
 	}
 	
-//	private void stopLocClient() {
-//		if (locationClient != null && locationClient.isStarted()) {
-//			locationClient.stop();
-//			locationClient = null;
-//		}
-//	}
+	private void stopLocClient() {
+		if (locationClient != null && locationClient.isStarted()) {
+			locationClient.stop();
+			locationClient = null;
+		}
+	}
 
 	public class NewMsgReceiver extends BroadcastReceiver {
 		@Override
@@ -542,7 +554,7 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
  
     }
 	
-	private class GetAdvertisement extends AsyncTask<Void, Void, GetAdvertisementWindowResult> {
+	private class GetAdvertisement extends AsyncTask<Void, Void, GetAdvertisementByParamResult> {
 
 		JSONAccessor accessor = new JSONAccessor(HomeActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
 
@@ -557,28 +569,43 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 		}
 
 		@Override
-		protected GetAdvertisementWindowResult doInBackground(Void... arg0) {
+		protected GetAdvertisementByParamResult doInBackground(Void... arg0) {
 			HashMap<String, Object> param = new BaseParam();
-			param.put("action", "GETADVERTISEMENT");
-			param.put("coachid", mApplication.getUserInfo().getCoachid());
-			param.put("type", "1"); // 1: coach 2 student
-			param.put("model", "2"); //1:ios 2 android
-			param.put("width",Settings.DISPLAY_WIDTH+"");
-			param.put("height",Settings.DISPLAY_HEIGHT+"");
-			return accessor.execute(Settings.ADVER_URL, param, GetAdvertisementWindowResult.class);
+			param.put("action", "GETADVERTISEMENTBYPARAM");
+//			param.put("coachid", mApplication.getUserInfo().getCoachid());
+			param.put("position", "4"); // 0=学员端闪屏，1=学员端学车地图弹层广告，2=学员端教练详情，3=教练端闪屏，4=教练端首页弹层广告,//测试用0
+			//param.put("devicetype", "1"); //0:ios 1 android
+//			int Width = Settings.DISPLAY_WIDTH;
+//			if (Width<=720)
+//			{
+//				param.put("width",Settings.Width640+"");
+//				param.put("height",Settings.Height640+"");
+//			}else if (720<Width&&Width<1080){
+//				param.put("width",Settings.Width750+"");
+//				param.put("height",Settings.Height750+"");
+//			}else{
+//				param.put("width",Settings.Width1242+"");
+//				param.put("height",Settings.Height1242+"");
+//			}
+			param.put("cityid", cityid);
+			param.put("width", "640");
+			param.put("height", "1136");
+			param.put("adtype", 0);  //广告类型  0=图片，1=文字
+			return accessor.execute(Settings.ADVER_URL, param, GetAdvertisementByParamResult.class);
 		}
 
 		@Override
-		protected void onPostExecute(final GetAdvertisementWindowResult result) {
+		protected void onPostExecute(final GetAdvertisementByParamResult result) {
 			super.onPostExecute(result); 
 			if (mLoadingDialog != null && mLoadingDialog.isShowing())
 				mLoadingDialog.dismiss();
 			if (result != null) {
 				if (result.getCode() == 1) {
-					if ("1".equals(result.getC_flag()))
+					if (result.getAdvertiesementList()!=null)
 					{
-						//showAdvDialog.setImage(result.getC_img_android());
-						showAdvDialog.setImageAdvertisement(result.getC_img_android());
+					if (result.getAdvertiesementList().size()!=0)
+					{
+						showAdvDialog.setImageAdvertisement(result.getAdvertiesementList().get(0).getImgurl());
 						ImageLoadSaveTask.setImageShowListener(new OnImageLoad() {
 							
 							@Override
@@ -587,55 +614,110 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 								showAdvDialog.show();
 							}
 						});
-
-						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
-							@Override
-							public void onClick(View v) {
-								// TODO Auto-generated method stub
-								showAdvDialog.dismiss();
-								String url = "";
-								String code = "c"+mApplication.mUserInfo.getInvitecode().toLowerCase();
-								String name = "";
-//								if (!TextUtils.isEmpty(CoachApplication.mUserInfo.getRealname()))
-//								{
-//								try
-//								{
-//									name = new String( URLEncoder.encode(CoachApplication.mUserInfo.getRealname(), "UTF-8"));
-//								}catch(UnsupportedEncodingException e)
-//								{
-//									e.printStackTrace();
-//								}
-//								 url = result.getC_url().toString()+"code="+code+"&name="+name;
-//								}else{
-//								url = result.getC_url().toString()+"code="+code+"&name=";
-//								}
-								url = result.getC_url();
-								Uri u = Uri.parse(url);  
-								 Intent it = new Intent(Intent.ACTION_VIEW, u);
-								 HomeActivity.this.startActivity(it); 
-							}
-						});
-					}
-					else if ("2".equals(result.getC_flag())){
-
-						showAdvDialog.setImageAdvertisement(result.getC_img_android());
-						ImageLoadSaveTask.setImageShowListener(new OnImageLoad() {
+						
+						showAdvDialog.imgAdvertisement.setOnClickListener(new OnSingleClickListener() {
 							
 							@Override
-							public void showCancle(Boolean image) {
+							public void doOnClick(View v) {
+//								showAdvDialog.dismiss();
+//								switchModule(R.id.tab_date_set, mSelectedModule);
 								// TODO Auto-generated method stub
-								showAdvDialog.show();
+								switch (result.getAdvertiesementList().get(0).getOpentype()) {
+								case 0:  //无跳转
+									break;
+								case 1:  //打开url
+									Intent intent = new Intent(HomeActivity.this,ActivityAdvertisementWeb.class);
+									Bundle bundle = new Bundle();
+									bundle.putString("url", result.getAdvertiesementList().get(0).getOpenurl());
+									intent.putExtras(bundle);
+									startActivity(intent);
+								    showAdvDialog.dismiss();
+									break;
+								case 2:   //打开内部action
+									switch (result.getAdvertiesementList().get(0).getOpenaction()) {
+									case 5:   //教练端邀请朋友加入页
+										showAdvDialog.dismiss();
+										// TODO Auto-generated method stub
+										startActivity(new Intent(HomeActivity.this,ActivityShare.class));
+										break;
+									case 6:   //教练端教练开课页
+										showAdvDialog.dismiss();
+										switchModule(R.id.tab_date_set, mSelectedModule);
+										break;
+									default:
+										break;
+									}
+									break;
+								default:
+									break;
+								}
 							}
 						});
-						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
-							@Override
-							public void onClick(View v) {
-								showAdvDialog.dismiss();
-								// TODO Auto-generated method stub
-								startActivity(new Intent(HomeActivity.this,ActivityShare.class));
-							}
-						});
+					}else{
+						
 					}
+					}
+//					if ("1".equals(result.getC_flag()))
+//					{
+//						//showAdvDialog.setImage(result.getC_img_android());
+//						showAdvDialog.setImageAdvertisement(result.getC_img_android());
+//						ImageLoadSaveTask.setImageShowListener(new OnImageLoad() {
+//							
+//							@Override
+//							public void showCancle(Boolean image) {
+//								// TODO Auto-generated method stub
+//								showAdvDialog.show();
+//							}
+//						});
+//
+//						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
+//							@Override
+//							public void onClick(View v) {
+//								// TODO Auto-generated method stub
+//								showAdvDialog.dismiss();
+//								String url = "";
+//								String code = "c"+mApplication.mUserInfo.getInvitecode().toLowerCase();
+//								String name = "";
+////								if (!TextUtils.isEmpty(CoachApplication.mUserInfo.getRealname()))
+////								{
+////								try
+////								{
+////									name = new String( URLEncoder.encode(CoachApplication.mUserInfo.getRealname(), "UTF-8"));
+////								}catch(UnsupportedEncodingException e)
+////								{
+////									e.printStackTrace();
+////								}
+////								 url = result.getC_url().toString()+"code="+code+"&name="+name;
+////								}else{
+////								url = result.getC_url().toString()+"code="+code+"&name=";
+////								}
+//								url = result.getC_url();
+//								Uri u = Uri.parse(url);  
+//								 Intent it = new Intent(Intent.ACTION_VIEW, u);
+//								 HomeActivity.this.startActivity(it); 
+//							}
+//						});
+//					}
+//					else if ("2".equals(result.getC_flag())){
+//
+//						showAdvDialog.setImageAdvertisement(result.getC_img_android());
+//						ImageLoadSaveTask.setImageShowListener(new OnImageLoad() {
+//							
+//							@Override
+//							public void showCancle(Boolean image) {
+//								// TODO Auto-generated method stub
+//								showAdvDialog.show();
+//							}
+//						});
+//						showAdvDialog.imgAdvertisement.setOnClickListener(new View.OnClickListener() {
+//							@Override
+//							public void onClick(View v) {
+//								showAdvDialog.dismiss();
+//								// TODO Auto-generated method stub
+//								startActivity(new Intent(HomeActivity.this,ActivityShare.class));
+//							}
+//						});
+//					}
 				} else {
 					if (result.getMessage() != null)
 						CommonUtils.showToast(HomeActivity.this.getApplicationContext(), result.getMessage());

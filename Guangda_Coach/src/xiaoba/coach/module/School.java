@@ -2,8 +2,8 @@ package xiaoba.coach.module;
 
 public class School
 {
-	private String name;
-	private int schoolid;
+	private String name;		//驾校名称
+	private int schoolid;		//驾校ID
 	public String getName() {
 		return name;
 	}

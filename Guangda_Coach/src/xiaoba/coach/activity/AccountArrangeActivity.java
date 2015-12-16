@@ -60,7 +60,7 @@ public class AccountArrangeActivity extends BaseActivity {
 		type = CoachApplication.getInstance().getUserInfo().getCashtype();
 //		if (type == 1) {
 //			mRadio.setImageResource(R.drawable.button_on);
-//			mTip.setText("您现在提现的金额将会转到您所在的驾校");
+//			mTip.setText("您现在提现的金额将会转到您所在的驾校");  
 //		}
 	}
 

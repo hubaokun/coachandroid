@@ -3,7 +3,7 @@ package xiaoba.coach.net.result;
 import java.util.List;
 
 public class AddressResult extends BaseResult {
-	List<AddressInfo> addresslist;
+	List<AddressInfo> addresslist;		//地址列表
 
 	public List<AddressInfo> getAddresslist() {
 		return addresslist;
@@ -14,12 +14,12 @@ public class AddressResult extends BaseResult {
 	}
 
 	public class AddressInfo {
-		int addressid;
-		String longitude;
-		String latitude;
-		int iscurrent;  //0:no 1:yes
-		String area;
-		String detail;
+		int addressid;		//地址ID
+		String longitude;//经度
+		String latitude;	//纬度
+		int iscurrent;		//是否是当前使用地址 0.不是 1.是
+		String area;		//市 区
+		String detail;		//地址详细信息
 
 		public int getAddressid() {
 			return addressid;

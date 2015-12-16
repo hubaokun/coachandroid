@@ -1,8 +1,8 @@
 package xiaoba.coach.net.result;
 
 public class GetStudentRestCouponResult extends BaseResult {
-	private int total;
-	private int rest;
+	private int total;		//总数
+	private int rest;		//剩余
 	public int getTotal() {
 		return total;
 	}

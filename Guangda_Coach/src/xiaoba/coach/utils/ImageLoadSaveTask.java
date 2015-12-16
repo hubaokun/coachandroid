@@ -48,6 +48,7 @@ public class ImageLoadSaveTask extends AsyncTask<String,Integer,Bitmap> {
             //saveMyBitmap(avatarPath,result);
             if (mOnImageLoad != null) {
             	mOnImageLoad.showCancle(true);
+            	mOnImageLoad = null;
     		}
         }
     }

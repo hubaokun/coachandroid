@@ -28,6 +28,7 @@ import xiaoba.coach.CoachApplication;
 import xiaoba.coach.R;
 import xiaoba.coach.common.Settings;
 import xiaoba.coach.module.BaseParam;
+import xiaoba.coach.net.result.GetAdvertisementByParamResult;
 import xiaoba.coach.net.result.GetAdvertisementResult;
 import xiaoba.coach.net.result.GetAdvertisementWindowResult;
 import xiaoba.coach.net.result.RegisteResult;
@@ -116,7 +117,11 @@ public class LoadingActivity extends BaseActivity {
 				if (!stopThread)
 					runOnUiThread(new Runnable() {
 						public void run() {
-							new GetAdvertisement().execute();
+							
+							String account = mApplication.getUserInfo().getPhone();
+							String password = mApplication.getUserInfo().getPassword();
+							new LoginTask(account, password).execute();
+							//new GetAdvertisement().execute();
 						}
 					});
 			}
@@ -214,20 +219,34 @@ public class LoadingActivity extends BaseActivity {
 		}
 	}
 	
-	private class GetAdvertisement extends AsyncTask<Void, Void, GetAdvertisementWindowResult> {
+	private class GetAdvertisement extends AsyncTask<Void, Void, GetAdvertisementByParamResult> {
 		JSONAccessor accessor = new JSONAccessor(LoadingActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
 
 		@Override
-		protected GetAdvertisementWindowResult doInBackground(Void... params) {
+		protected GetAdvertisementByParamResult doInBackground(Void... params) {
 			// TODO Auto-generated method stub
 			HashMap<String, Object> param = new BaseParam();
-			param.put("action", "GETADVERTISEMENT");
+			param.put("action", "GETADVERTISEMENTBYPARAM");
 //			param.put("coachid", mApplication.getUserInfo().getCoachid());
-			param.put("type", "1"); // 1: coach 2 student
-			param.put("model", "2"); //1:ios 2 android
-			param.put("width",Settings.DISPLAY_WIDTH+"");
-			param.put("height",Settings.DISPLAY_HEIGHT+"");
-			return accessor.execute(Settings.ADVER_URL, param, GetAdvertisementWindowResult.class);
+			param.put("position", "3"); // 0=学员端闪屏，1=学员端学车地图弹层广告，2=学员端教练详情，3=教练端闪屏，4=教练端首页弹层广告,//测试用0
+			//param.put("devicetype", "1"); //0:ios 1 android
+//			int Width = Settings.DISPLAY_WIDTH;
+//			if (Width<=720)
+//			{
+//				param.put("width",Settings.Width640+"");
+//				param.put("height",Settings.Height640+"");
+//			}else if (720<Width&&Width<1080){
+//				param.put("width",Settings.Width750+"");
+//				param.put("height",Settings.Height750+"");
+//			}else{
+//				param.put("width",Settings.Width1242+"");
+//				param.put("height",Settings.Height1242+"");
+//			}
+			
+			param.put("width", "640");
+			param.put("height", "1136");
+			param.put("adtype", 0);  //广告类型  0=图片，1=文字
+			return accessor.execute(Settings.ADVER_URL, param, GetAdvertisementByParamResult.class);
 		}
 		
 		@Override
@@ -236,35 +255,38 @@ public class LoadingActivity extends BaseActivity {
 		}
 
 		@Override
-		protected void onPostExecute(final GetAdvertisementWindowResult result) {
+		protected void onPostExecute(final GetAdvertisementByParamResult result) {
 			super.onPostExecute(result);
 
 			if (result != null) {
 				if (result.getCode() == 1) {
-					if ("1".equals(result.getC_flash_flag()))
+					if (result.getAdvertiesementList()==null)
+					{
+					if (result.getAdvertiesementList().size()!=0)
 					{
 						imgAdver.setVisibility(View.VISIBLE);
-//						showAdver.setImage(result.getConfig().getAdvertisement_url());
-						   try {
-				               new ImageLoadSaveTask(LoadingActivity.this, imgAdver).execute(result.getC_img_android_flash());
-				           } catch (Exception e) {
-				               e.printStackTrace();
-				           }
-						Timer timer = new Timer(); 
-						TimerTask task = new TimerTask() {  
-						    @Override  
-						    public void run() {   
-						    	if (mApplication.getUserInfo().getPhone() != null && !mApplication.getUserInfo().getPhone().equals("")) {
-									String account = mApplication.getUserInfo().getPhone();
-									String password = mApplication.getUserInfo().getPassword();
-									new LoginTask(account, password).execute();
-								} else {
-									startActivity(new Intent(LoadingActivity.this, LoginActivity_.class));
-									LoadingActivity.this.finish();
-								}
-						     }
-						 };
-						timer.schedule(task, 1000 * 5); //5秒后
+//					showAdver.setImage(result.getConfig().getAdvertisement_url());
+					   try {
+						   
+			               new ImageLoadSaveTask(LoadingActivity.this, imgAdver).execute(result.getAdvertiesementList().get(0).getImgurl());
+			           } catch (Exception e) {
+			               e.printStackTrace();
+			           }
+					Timer timer = new Timer(); 
+					TimerTask task = new TimerTask() {  
+					    @Override  
+					    public void run() {   
+					    	if (mApplication.getUserInfo().getPhone() != null && !mApplication.getUserInfo().getPhone().equals("")) {
+								String account = mApplication.getUserInfo().getPhone();
+								String password = mApplication.getUserInfo().getPassword();
+								new LoginTask(account, password).execute();
+							} else {
+								startActivity(new Intent(LoadingActivity.this, LoginActivity_.class));
+								LoadingActivity.this.finish();
+							}
+					     }
+					 };
+					timer.schedule(task, 1000 * 5); //5秒后
 					}else{
 						imgAdver.setVisibility(View.GONE);
 				    	if (mApplication.getUserInfo().getPhone() != null && !mApplication.getUserInfo().getPhone().equals("")) {
@@ -276,6 +298,42 @@ public class LoadingActivity extends BaseActivity {
 							LoadingActivity.this.finish();
 						}
 					}
+					}
+//					if ("1".equals(result.getC_flash_flag()))
+//					{
+//						imgAdver.setVisibility(View.VISIBLE);
+////						showAdver.setImage(result.getConfig().getAdvertisement_url());
+//						   try {
+//				               new ImageLoadSaveTask(LoadingActivity.this, imgAdver).execute(result.getC_img_android_flash());
+//				           } catch (Exception e) {
+//				               e.printStackTrace();
+//				           }
+//						Timer timer = new Timer(); 
+//						TimerTask task = new TimerTask() {  
+//						    @Override  
+//						    public void run() {   
+//						    	if (mApplication.getUserInfo().getPhone() != null && !mApplication.getUserInfo().getPhone().equals("")) {
+//									String account = mApplication.getUserInfo().getPhone();
+//									String password = mApplication.getUserInfo().getPassword();
+//									new LoginTask(account, password).execute();
+//								} else {
+//									startActivity(new Intent(LoadingActivity.this, LoginActivity_.class));
+//									LoadingActivity.this.finish();
+//								}
+//						     }
+//						 };
+//						timer.schedule(task, 1000 * 5); //5秒后
+//					}else{
+//						imgAdver.setVisibility(View.GONE);
+//				    	if (mApplication.getUserInfo().getPhone() != null && !mApplication.getUserInfo().getPhone().equals("")) {
+//							String account = mApplication.getUserInfo().getPhone();
+//							String password = mApplication.getUserInfo().getPassword();
+//							new LoginTask(account, password).execute();
+//						} else {
+//							startActivity(new Intent(LoadingActivity.this, LoginActivity_.class));
+//							LoadingActivity.this.finish();
+//						}
+//					}
 				} else {
 					 if (result.getMessage() != null)
 					 CommonUtils.showToast(LoadingActivity.this.getApplicationContext(), result.getMessage());

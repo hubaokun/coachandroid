@@ -230,8 +230,7 @@
                 	android:layout_marginTop="21dp">
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                	android:text="教练车使用费用"
+                	android:text="教练车租用金"
                 	android:textColor="@color/text_black"
                 	android:textSize="13dp" />
                 <TextView android:layout_width="wrap_content"

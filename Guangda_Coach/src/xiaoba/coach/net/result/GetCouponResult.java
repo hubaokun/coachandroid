@@ -8,15 +8,15 @@ public class GetCouponResult extends BaseResult {
 	
 	public class couponList
 	{
-		private int recordid;
-		private int couponid;
-		private int coachid;
-		private String gettime;
-		private int value;
-		private int ownertype;
-		private int money_value;
-		private int state;
-		private int ownerid;
+		private int recordid;		//记录ID
+		private int couponid;		//小巴币id
+		private int coachid;		//教练id
+		private String gettime;		//获得时间
+		private int value;		//面值<一定是时间券>
+		private int ownertype;		//发布者类型
+		private int money_value;		//小巴券可以套现的金额(时间券独有)
+		private int state;		//小巴券类型<暂时不用,只获取未提现的小巴券>
+		private int ownerid;		//发布者id
 		public int getRecordid() {
 			return recordid;
 		}

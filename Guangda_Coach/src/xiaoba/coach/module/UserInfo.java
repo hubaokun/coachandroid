@@ -14,60 +14,60 @@ import android.content.SharedPreferences.Editor;
 public class UserInfo {
 
 	private static final String SP_NAME = "userinfo";
-	int coachid;
-	String password;
-	String phone;
-	String id_cardnum;
-	String id_cardpicfurl;
-	String id_cardpicburl;
-	String id_cardexptime;
-	String coach_cardnum;
-	String coach_cardpicurl;
-	String coach_card_creat;
-	String coach_cardexptime;
-	String drive_cardnum;
-	String drive_cardpicurl;
-	String drive_cardexptime;
-	String car_cardnum;
-	String car_cardpicfurl;
-	String car_cardpicburl;
-	String car_cardexptime;
-	String realpicurl;
-	String carmodel;
-	String carlicense;
-	String cancancel;
-	String driveschool;
-	String gender;
-	String birthday;
-	String realname;
-	String urgent_person;
-	String urgent_phone;
-	String years;
-	String avatar;
-	String money;
-	String money_frozen;
-	String gmoney;
-	String fmoney;
-	String price;
-	String state;
-	private String locationname;
-	String address;
-	Float score;
-	int totaltime;
-	List<CarType> modellist;
-	String selfeval;
-	String addtime;
-	int couponhour;
-	String alipay_account;
-	String avatarurl;
+	int coachid;  //教练id	
+	String password;  //密码
+	String phone;  //电话号码
+	String id_cardnum;		//身份证号码
+	String id_cardpicfurl;		//身份证正面照片地址
+	String id_cardpicburl;		//身份证反面照片地址
+	String id_cardexptime;		//身份证到期时间
+	String coach_cardnum;		//教练证号码
+	String coach_cardpicurl;		//教练证照片地址
+	String coach_card_creat;		//教练证发证时间
+	String coach_cardexptime;		//教练证到期时间
+	String drive_cardnum;		//驾驶证号码
+	String drive_cardpicurl;		//驾驶证照片地址
+	String drive_cardexptime;		//驾驶证到期时间
+	String car_cardnum;		//车辆行驶证号码
+	String car_cardpicfurl;		//车辆行驶证正面照片
+	String car_cardpicburl;		//车辆行驶证反面照片
+	String car_cardexptime;		//车辆行驶证到期时间
+	String realpicurl;		//真实照片地址
+	String carmodel;		//教练教学用车型号
+	String carlicense;		//教练教学用车拍照
+	String cancancel;		//是否可以设置订单为不可以取消
+	String driveschool;		//所属驾校
+	String gender;		//性别 1=男，2=女
+	String birthday;		//生日
+	String realname;		//真实姓名
+	String urgent_person;		//紧急联系人姓名
+	String urgent_phone;		//紧急联系人电话
+	String years;		//教龄
+	String avatar;		//教练头像文件路径
+	String money;		//可体现金额
+	String money_frozen;		//冻结金额
+	String gmoney;		//保证金和冻结金
+	String fmoney;		//冻结金额
+	String price;		//教练教车单价
+	String state;		//教练状态
+	private String locationname;		//省市区字符全称
+	String address;		//地址
+	Float score;		//教练综合评分
+	int totaltime;		//教练教学时长
+	List<CarType> modellist;		//准教车型
+	String selfeval;		//教练自我评价
+	String addtime;		//教练注册时间
+	int couponhour;		//教练所有小巴券的时间总和
+	String alipay_account;		//支付宝账户
+	String avatarurl;		//头像url地址
 	private String teachcarmodel;
 	private String defaultAddress;
-	private String token;
-	int cashtype;
-	private String invitecode;
-	private String cityid;
-	private String provinceid;
-	private String areaid;
+	private String token;		//请求token
+	int cashtype;		//提现的方式 0;自己提现 1:驾校提现
+	private String invitecode;		//邀请码
+	private String cityid;		//市id
+	private String provinceid;		//省id
+	private String areaid;		//区id
 	private int signstate;		//签约状态
 	private String signexpired;	//签约到期日期
 	private int subject2min;	//科目二范围最小值
@@ -78,7 +78,7 @@ public class UserInfo {
 	private int trainingmin;	//考场训练最小值
 	private int accompanymin;	//陪驾范围最小值
 	private int accompanymax;	//陪驾范围最大值
-	private int hirecarmax;		//租车范围最大值
+	private int hirecarmax;		//租车范围最大值 
 	private int hirecarmin;		//租车范围最小值
 	private int tastesubject2min;	//体验课科目二范围最小值
 	private int tastesubject2max;	//体验课科目二范围最大值

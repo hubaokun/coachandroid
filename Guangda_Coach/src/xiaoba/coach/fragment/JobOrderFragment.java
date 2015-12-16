@@ -1447,7 +1447,7 @@ public class JobOrderFragment extends Fragment {
 		private int Orderid;
 		public SetOrderCancel(int agree,int orderid)
 		{
-			this.Agree = agree;
+			this.Agree = agree;    //0同意取消，1不同意取消
 			Orderid = orderid;
 		}
 		JSONAccessor accessor = new JSONAccessor(mActivity.getApplicationContext(), JSONAccessor.METHOD_POST);
@@ -1467,7 +1467,7 @@ public class JobOrderFragment extends Fragment {
 			param.put("orderid", Orderid);
 			param.put("agree",Agree);
 			param.put("action", "CancelOrderAgree");
-			return accessor.execute(Settings.SORDER_URL, param,  BaseResult.class);
+			return accessor.execute(Settings.SORDER_URL, param,  BaseResult.class);  
 		}
 
 		@Override

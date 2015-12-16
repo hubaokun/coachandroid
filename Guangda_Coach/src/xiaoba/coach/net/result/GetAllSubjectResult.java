@@ -14,9 +14,9 @@ public class GetAllSubjectResult extends BaseResult {
 	}
 
 	public class SubjectInfo {
-		int subjectid;
-		String subjectname;
-		int isdefault;
+		int subjectid;		//科目ID
+		String subjectname;		//科目名称
+		int isdefault;		//是否是教练的默认科目0.不是  1.是
 
 		public int getSubjectid() {
 			return subjectid;

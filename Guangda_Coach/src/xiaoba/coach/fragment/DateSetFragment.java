@@ -4993,10 +4993,12 @@ public class DateSetFragment extends Fragment {
 		JSONAccessor accessor = new JSONAccessor(mActivity.getApplicationContext(), JSONAccessor.METHOD_POST);
 		String type;
 		String day;
+		List<Schedule> schedulearray = new ArrayList<Schedule>();
 
 		public ChangeAllDayScheduleTask(String type) {
 			this.type = type;
 			day = TimeUtil.calendarToString(gAdapter.getSelectedDate());
+			schedulearray.addAll(scheduleResult.getDatelist()) ;
 		}
 
 		@Override
@@ -5011,8 +5013,27 @@ public class DateSetFragment extends Fragment {
 			accessor.enableJsonLog(true);
 			HashMap<String, Object> param = new BaseParam();
 			List<Schedule> chosedScheduleArray = new ArrayList<Schedule>();
-			for (Schedule schedule:scheduleResult.getDatelist())
+			//schedulearray.addAll(scheduleResult.getDatelist());
+			for (int i =0 ;i<schedulearray.size();i++)
 			{
+				Schedule schedule = new Schedule();
+				schedule.setAddressdetail(schedulearray.get(i).getAddressdetail());
+				schedule.setAddressid(schedulearray.get(i).getAddressid());
+				schedule.setAddtionalprice(schedulearray.get(i).getAddtionalprice());
+				schedule.setBookedername(schedulearray.get(i).getBookedername());
+				schedule.setCancelstate(schedulearray.get(i).getCancelstate());
+				schedule.setCuseraddtionalprice(schedulearray.get(i).getCuseraddtionalprice());
+				schedule.setDate(schedulearray.get(i).getDate());
+				schedule.setExpire(schedulearray.get(i).getExpire());
+				schedule.setHasbooked(schedulearray.get(i).getHasbooked());
+				schedule.setHour(schedulearray.get(i).getHour());
+				schedule.setIsfreecourse(schedulearray.get(i).getIsfreecourse());
+				schedule.setIsnew(schedulearray.get(i).getIsnew());
+				schedule.setIsrest(schedulearray.get(i).getIsrest());
+				schedule.setPrice(schedulearray.get(i).getPrice());
+				schedule.setState(schedulearray.get(i).getState());
+				schedule.setSubject(schedulearray.get(i).getSubject()); 
+				schedule.setSubjectid(schedulearray.get(i).getSubjectid());
 				Date date2 = null;
 				try {
 					date2 = TimeUtil.StringToDate(schedule.getDate());
@@ -5037,7 +5058,7 @@ public class DateSetFragment extends Fragment {
 						for (int hour:chosedHour)
 						{
 						if (schedule.getHour() == hour)
-						{ 
+						{
 							schedule.setIsrest(1);
 							chosedScheduleArray.add(schedule);
 						}
@@ -5045,6 +5066,42 @@ public class DateSetFragment extends Fragment {
 					}
 				}
 			}
+			
+			
+//			for (Schedule schedule:schedulearray)
+//			{
+//				Date date2 = null;
+//				try {
+//					date2 = TimeUtil.StringToDate(schedule.getDate());
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//				if (equalsDate(calSelected.getTime(), date2)) {
+//					if (type.equals("1"))
+//					{
+//					for (int hour:chosedHour)
+//					{
+//					if (schedule.getHour() == hour)
+//					{
+//						schedule.setIsrest(0);
+//						schedule.setIsnew("1");
+//					}else{
+//						schedule.setIsnew("0");
+//					}
+//					}
+//					chosedScheduleArray.add(schedule);
+//					}else{
+//						for (int hour:chosedHour)
+//						{
+//						if (schedule.getHour() == hour)
+//						{ 
+//							schedule.setIsrest(1);
+//							chosedScheduleArray.add(schedule);
+//						}
+//						}
+//					}
+//				}
+//			}
 			
 			String chosedSchedule = new Gson().toJson(chosedScheduleArray);
 			param.put("action", "ChangeAllDaySchedule");

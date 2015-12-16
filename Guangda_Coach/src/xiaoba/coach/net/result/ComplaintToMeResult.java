@@ -4,18 +4,18 @@ import java.util.List;
 
 public class ComplaintToMeResult extends BaseResult {
 	private int hasmore;
-	private List<ComplaintList> complaintlist;
+	private List<ComplaintList> complaintlist;		//投诉列表
 
 	public class ComplaintList {
-		private int studentid;
-		private String studentavatar;
-		private String name;
-		private float score;
-		private String phone;
-		private String studentcardnum;
-		private String starttime;
-		private String endtime;
-		private List<ContentList> contentlist;
+		private int studentid;		//投诉学员ID
+		private String studentavatar;		//投诉学员头像
+		private String name;		//投诉学员真实姓名
+		private float score;		//评分
+		private String phone;		//学员电话号码
+		private String studentcardnum;		//学员证号
+		private String starttime;		//任务开始时间
+		private String endtime;		//任务结束时间
+		private List<ContentList> contentlist;		//投诉详情列表
 
 		/**
 		 * @return the studentid
@@ -155,12 +155,12 @@ public class ComplaintToMeResult extends BaseResult {
 	}
 
 	public class ContentList {
-		private int complaintid;
-		private int order_id;
-		private String set;
-		private String content;
-		private String addtime;
-		private int state;
+		private int complaintid;		//投诉ID
+		private int order_id;		//订单ID
+		private String set;		//投诉原因
+		private String content;		//投诉内容
+		private String addtime;		//投诉时间
+		private int state;		//投诉状态0.未解决1.已解决
 
 		public int getState() {
 			return state;
