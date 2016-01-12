@@ -471,6 +471,16 @@
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:windowSoftInputMode="adjustPan" />
+         	<activity android:name=".activity.ActivityXiaoBaServer"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+         	<activity android:name=".activity.renrenStore"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
          	<activity
    			android:name="wxapi.WXEntryActivity"
    			android:theme="@android:style/Theme.Translucent.NoTitleBar"

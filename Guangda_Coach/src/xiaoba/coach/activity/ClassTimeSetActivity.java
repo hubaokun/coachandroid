@@ -372,9 +372,11 @@ public class ClassTimeSetActivity extends BaseActivity {
 					Schedule ssSchedule = list.get(0);
 					if (ssSchedule.getSubject() != null) {
 						mContentTv.setText(ssSchedule.getSubject());
+						subjectDetail = ssSchedule.getSubject();
 					}
 					if (ssSchedule.getAddressdetail() != null) {
 						mLocTv.setText(ssSchedule.getAddressdetail());
+						addressDetail = ssSchedule.getAddressdetail();
 					}
 					
 					if (ssSchedule.getSubjectid() == 3||ssSchedule.getSubjectid() == 4)

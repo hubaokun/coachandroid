@@ -11,11 +11,11 @@ public class GetScheduleResult extends BaseResult implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	String today;
-	int hour;
-	int cancelpermission;
+	String today;		//当前日期<2015-03-01>,前端的时间需要根据返回的时间来定
+	int hour;		//当前小时
+	int cancelpermission;		//是否有设置当天订单可否取消的权限 0.可以设置  1.不可以设置
 	List<Schedule> datelist;
-	private int maxdays;
+	private int maxdays;		//可以设置的最大天数
 
 	public String getToday() {
 		return today;

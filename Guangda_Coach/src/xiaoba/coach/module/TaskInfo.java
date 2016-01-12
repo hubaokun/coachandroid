@@ -9,14 +9,14 @@ public class TaskInfo {
 	String longitude;
 	String latitude;
 	String detail;
-	int state;
+	int state;		//0:距离开始时间超过一个小时.1:距离开始时间少于一个小时.且教练当前没有其它的进行中任务.前端处理:任务的时间显示为红色.可以确认上车.2:距离开始时间少于一个小时.但教练当前还有其它的进行中任务.前端处理:任务的时间显示为红色.不可以确认上车.3:前端处理:显示练车中,且可以确认下车.
 	String total;
 	StudentInfo studentinfo;
-	private int agreecancel;
-	private int paytype;
-	private String subjectname;
-	private int attachcar;
-	private int coursetype;
+	private int agreecancel;		//0是订单要取消，1是不取消
+	private int paytype;		//学员支付的方式1=余额，2=小巴券，3=小巴币，4=混合支付，0=没有支付
+	private String subjectname;			//只有在陪驾的情况下，subjectname有值 
+	private int attachcar;		//陪练是否教练带车1=教练带车，2=学员带车 
+	private int coursetype; 		//课程类型1=科目二，2=科目三，3=考场练习，4=陪驾，5=体验课
 
 	public String getTotal() {
 		return total;

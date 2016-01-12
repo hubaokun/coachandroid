@@ -136,6 +136,7 @@ public class NoticeActivity extends BaseActivity {
 			if (mListView != null)
 				mListView.onRefreshComplete();
 			if (result != null) {
+				
 				if (result.getCode() == 1) {
 					if (result.getDatalist() != null && result.getDatalist().size() == 0) {
 						// show no data page

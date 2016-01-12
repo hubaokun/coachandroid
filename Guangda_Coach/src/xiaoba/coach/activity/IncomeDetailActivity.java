@@ -34,6 +34,7 @@ import xiaoba.coach.CoachApplication;
 import xiaoba.coach.R;
 import xiaoba.coach.common.Settings;
 import xiaoba.coach.module.BaseParam;
+import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.GetIncomeDetailResult;
 import xiaoba.coach.net.result.GetIncomeDetailResult.RecordInfo;
 import xiaoba.coach.utils.CommonUtils;
@@ -60,10 +61,13 @@ public class IncomeDetailActivity extends BaseActivity {
 	TextView tvFree;
 	@ViewById(R.id.tv_frozen_money)
 	TextView tvFrozen;
-	@ViewById(R.id.recharge_instant)
-	TextView mRecharge;
-	@ViewById(R.id.get_cash)
-	TextView mGetCash;
+	@ViewById(R.id.get_all_cash)
+	TextView tvGetAllCash;
+	
+//	@ViewById(R.id.recharge_instant)
+//	TextView mRecharge;
+//	@ViewById(R.id.get_cash)
+//	TextView mGetCash;
 
 	IncomeDetailAdapter mAdapter = new IncomeDetailAdapter();
 	List<RecordInfo> list = new ArrayList<GetIncomeDetailResult.RecordInfo>();
@@ -89,6 +93,79 @@ public class IncomeDetailActivity extends BaseActivity {
 	protected void onResume() {
 		super.onResume();
 		new GetMyBalanceInfoTask().execute();
+	}
+	
+	@Click(R.id.get_all_cash)
+	void getAllCash()
+	{
+		if (mBalance == 0)
+		{
+			Intent intent = new Intent(IncomeDetailActivity.this,GetCashActivity_.class);
+			intent.putExtra("balance", mBalance);
+			startActivity(intent);
+		}else{
+			if (mBalance<50)
+			{
+				CommonUtils.showToast(IncomeDetailActivity.this.getApplicationContext(), "提现金额不可少于50元");
+			}else{
+				new GetCashTask((int)mBalance).execute();
+			}
+		}
+	}
+	
+	private class GetCashTask extends AsyncTask<Void, Void, BaseResult> {
+		JSONAccessor accessor = new JSONAccessor(IncomeDetailActivity.this.getApplicationContext(), JSONAccessor.METHOD_POST);
+		private int remainMoney;
+		 public GetCashTask(int RemainMoney) {
+			// TODO Auto-generated constructor stub
+			 this.remainMoney = RemainMoney;
+		}
+
+		@Override
+		protected BaseResult doInBackground(Void... arg0) {
+			accessor.enableJsonLog(true);
+			HashMap<String, Object> param = new BaseParam();
+			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
+			param.put("count", remainMoney+"");
+			param.put("action", "ApplyCash");		//提现
+			return accessor.execute(Settings.CMY_URL, param, BaseResult.class);
+		}
+
+		@Override
+		protected void onPostExecute(BaseResult result) {
+			super.onPostExecute(result);
+			if (mLoadingDialog != null && mLoadingDialog.isShowing())
+				mLoadingDialog.dismiss();
+			if (result != null) {
+				if (result.getCode() == 1) {
+					showmyDialog(remainMoney);
+					// CommonUtils.showToast(GetCashActivity.this.getApplicationContext(), "提现成功");
+//					int money = 0;
+//					try {
+//						money = Integer.parseInt(mInput.getText().toString());
+//					} catch (Exception e) {
+//					}
+//					setResult(11, new Intent().putExtra("money", money));
+//					GetCashActivity.this.finish();
+				} else {
+					if (result.getMessage() != null)
+						CommonUtils.showToast(IncomeDetailActivity.this.getApplicationContext(), result.getMessage());
+					if (result.getCode() == 95) {
+						CommonUtils.gotoLogin(IncomeDetailActivity.this);
+					}
+				}
+			} else {
+				CommonUtils.showToast(IncomeDetailActivity.this.getApplicationContext(), IncomeDetailActivity.this.getString(R.string.net_error));
+			}
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			if (mLoadingDialog != null)
+				mLoadingDialog.show();
+		}
+
 	}
 
 	private class GetMyBalanceInfoTask extends AsyncTask<Void, Void, GetIncomeDetailResult> {
@@ -319,26 +396,26 @@ public class IncomeDetailActivity extends BaseActivity {
 		}
 	}
 
-	@Click(R.id.recharge_instant)
-	void recharge() {
-		String account = CoachApplication.getInstance().getUserInfo().getAlipay_account();
-		if (account != null && !account.equals(""))
-			startActivity(new Intent(IncomeDetailActivity.this, RechargeActivity_.class));
-		else {
-			Toast.makeText(IncomeDetailActivity.this, "请点击右上角添加支付宝账号", Toast.LENGTH_SHORT).show();
-		}
-	}
-
-	@Click(R.id.get_cash)
-	void getCash() {
-		String account = CoachApplication.getInstance().getUserInfo().getAlipay_account();
-		if (account != null && !account.equals(""))
-			startActivityForResult(new Intent(IncomeDetailActivity.this, GetCashActivity_.class).putExtra("balance", mBalance), 11);
-		else {
-			Toast.makeText(IncomeDetailActivity.this, "请点击右上角添加支付宝账号", Toast.LENGTH_SHORT).show();
-		}
-
-	}
+//	@Click(R.id.recharge_instant)
+//	void recharge() {
+//		String account = CoachApplication.getInstance().getUserInfo().getAlipay_account();
+//		if (account != null && !account.equals(""))
+//			startActivity(new Intent(IncomeDetailActivity.this, RechargeActivity_.class));
+//		else {
+//			Toast.makeText(IncomeDetailActivity.this, "请点击右上角添加支付宝账号", Toast.LENGTH_SHORT).show();
+//		}
+//	}
+//
+//	@Click(R.id.get_cash)
+//	void getCash() {
+//		String account = CoachApplication.getInstance().getUserInfo().getAlipay_account();
+//		if (account != null && !account.equals(""))
+//			startActivityForResult(new Intent(IncomeDetailActivity.this, GetCashActivity_.class).putExtra("balance", mBalance), 11);
+//		else {
+//			Toast.makeText(IncomeDetailActivity.this, "请点击右上角添加支付宝账号", Toast.LENGTH_SHORT).show();
+//		}
+//
+//	}
 
 	Dialog setDialog;
 

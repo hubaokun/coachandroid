@@ -44,7 +44,7 @@ import com.easemob.helpdeskdemo.DemoHXSDKHelper;
 import com.igexin.sdk.PushManager;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.pgyersdk.crash.PgyCrashManager;
+//import com.pgyersdk.crash.PgyCrashManager;
 
 public class CoachApplication extends Application {
 
@@ -68,7 +68,7 @@ public class CoachApplication extends Application {
     public  static int isInvited;
     
     public static  int crewardamount  ;//认证金额
-    public static int orewardamount;  //开单金额
+    public static int orewardamount;  //开单金额  segfrsdfg  
 
     private int isSetAdd = 0;  //判断是否设置了地址，1为初次设置，0为未设置或是已设置
     
@@ -100,7 +100,7 @@ public class CoachApplication extends Application {
         /*
          * 蒲公英(捕获异常)
          */
-        PgyCrashManager.register(this, Settings.PGY_APP_ID);
+       // PgyCrashManager.register(this, Settings.PGY_APP_ID);
 
         Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
 
@@ -284,7 +284,7 @@ public class CoachApplication extends Application {
             requestParams.put("openid", CommonUtils.getDeviceId(getApplicationContext()));
             requestParams.put("devicetype", "0");
             requestParams.put("usertype", "1");
-            requestParams.put("appversion", "1.0");
+            requestParams.put("appversion",CoachApplication.getInstance().getVersion());
             requestParams.put("province", province);
             requestParams.put("city", city);
             requestParams.put("area", area);

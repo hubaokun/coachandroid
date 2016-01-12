@@ -704,17 +704,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
-                                android:text="在线客服"
+                                android:text="小巴服务"
                                 android:textColor="@color/text_black"
                                 android:textSize="17dp" />
 
-                            <TextView
+<!--                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="在线联系小巴客服"
                                 android:textColor="#a3abbc"
-                                android:textSize="12dp" />
+                                android:textSize="12dp" /> -->
                         </LinearLayout>
                         
 

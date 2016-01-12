@@ -42,8 +42,8 @@ import com.daoshun.lib.communication.http.JSONAccessor;
 import com.daoshun.lib.util.DensityUtils;
 import com.daoshun.lib.view.OnSingleClickListener;
 import com.google.android.gms.internal.ci;
-import com.pgyersdk.feedback.PgyFeedbackShakeManager;
-import com.pgyersdk.update.PgyUpdateManager;
+//import com.pgyersdk.feedback.PgyFeedbackShakeManager;
+//import com.pgyersdk.update.PgyUpdateManager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -129,7 +129,7 @@ public class HomeActivity extends FragmentActivity implements OnTouchListener {
 
 	@AfterViews
 	void init() {
-		PgyUpdateManager.register(this, Settings.PGY_APP_ID);
+		//PgyUpdateManager.register(this, Settings.PGY_APP_ID);
 		mApplication = CoachApplication.getInstance();
 		if (mApplication != null)
 			mApplication.addCurrentActivity(this);

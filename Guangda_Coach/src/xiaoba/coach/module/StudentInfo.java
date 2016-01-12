@@ -6,7 +6,7 @@ public class StudentInfo {
 	String phone;
 	String student_cardnum;
 	String realname;
-	int coachstate;
+	int coachstate;		//0.未认证 1.认证. 
 	String avatarurl;
 
 	public String getAvatarurl() {

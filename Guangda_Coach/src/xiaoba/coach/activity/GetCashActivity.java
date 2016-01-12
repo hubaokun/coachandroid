@@ -190,7 +190,7 @@ public class GetCashActivity extends BaseActivity {
 			HashMap<String, Object> param = new BaseParam();
 			param.put("coachid", CoachApplication.getInstance().getUserInfo().getCoachid());
 			param.put("count", remainMoney+"");
-			param.put("action", "ApplyCash");
+			param.put("action", "ApplyCash");		//提现
 			return accessor.execute(Settings.CMY_URL, param, BaseResult.class);
 		}
 

@@ -59,7 +59,8 @@ public class ActivityStarCoach extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				starWebCoach.loadUrl(url);
+				//starWebCoach.loadUrl(url);
+				getRules();
 //				starWebCoach.setVisibility(View.VISIBLE);
 //				imgStarCoach.setVisibility(View.GONE);
 			}
@@ -84,22 +85,24 @@ public class ActivityStarCoach extends BaseActivity {
 				    }; 
 				    // 设置setWebChromeClient对象  
 				    view.setWebChromeClient(wvcc); 
+					view.setVisibility(View.VISIBLE);
+					imgStarCoach.setVisibility(View.GONE);
 				return true;
 			}
 			
-			@Override  
-            public void onPageFinished(WebView view,String url)  
-            {
-				WebChromeClient wvcc = new WebChromeClient(){
-				      @Override  
-				      public void onReceivedTitle(WebView view, String title){ 
-				        super.onReceivedTitle(view, title);
-				        tvTitle.setText(title);
-				      }
-				    };
-				    // 设置setWebChromeClient对象  
-				    starWebCoach.setWebChromeClient(wvcc); 
-            }  
+//			@Override  
+//            public void onPageFinished(WebView view,String url)  
+//            {
+//				WebChromeClient wvcc = new WebChromeClient(){
+//				      @Override  
+//				      public void onReceivedTitle(WebView view, String title){ 
+//				        super.onReceivedTitle(view, title);
+//				        tvTitle.setText(title);
+//				      }
+//				    };
+//				    // 设置setWebChromeClient对象  
+//				    starWebCoach.setWebChromeClient(wvcc); 
+//            }  
 			@Override
 			public void onReceivedError(WebView view, int errorCode,
 					String description, String failingUrl) {

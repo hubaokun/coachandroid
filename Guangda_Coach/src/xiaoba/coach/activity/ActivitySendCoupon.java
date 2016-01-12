@@ -313,7 +313,7 @@ public class ActivitySendCoupon extends BaseActivity {
 			}
 		}
 	}
-	
+	    
 	private class getStudentRest extends AsyncTask<Void, Void, GetStudentRestCouponResult> {
 		JSONAccessor accessor = new JSONAccessor(getApplicationContext(), JSONAccessor.METHOD_POST);
 		int studentId;
@@ -386,7 +386,7 @@ public class ActivitySendCoupon extends BaseActivity {
 			return accessor.execute(Settings.USER_URL, param, BaseResult.class);
 		}
 		
-		@Override
+		@Override 
 		protected void onPostExecute(BaseResult result) {
 			super.onPostExecute(result);
 			 if (mLoadingDialog != null && mLoadingDialog.isShowing())

@@ -132,7 +132,19 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/shape_transport_round"
             >
+            
             <TextView android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="全部提现"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:layout_gravity="center"
+                android:paddingLeft="38dp"
+                android:paddingRight="35dp"
+                android:gravity="center"
+                android:id="@+id/get_all_cash"/>
+            
+            <!-- <TextView android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="充值"
                 android:textColor="@color/white"
@@ -156,7 +168,7 @@
                 android:paddingRight="38dp"
                 android:paddingLeft="35dp"
                 android:gravity="center"
-                android:id="@+id/get_cash"/>
+                android:id="@+id/get_cash"/> -->
             
         </LinearLayout>
         

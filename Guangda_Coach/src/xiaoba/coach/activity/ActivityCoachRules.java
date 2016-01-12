@@ -70,7 +70,8 @@ public class ActivityCoachRules extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				webRelus.loadUrl(url);
+				//webRelus.loadUrl(url);
+				getRules();
 //				webRelus.setVisibility(View.VISIBLE);
 //				imgNoWeb.setVisibility(View.GONE);
 			}
@@ -95,13 +96,17 @@ public class ActivityCoachRules extends BaseActivity {
 				    }; 
 				    // 设置setWebChromeClient对象  
 				    view.setWebChromeClient(wvcc); 
+				    view.setVisibility(View.VISIBLE);
+				    imgNoWeb.setVisibility(View.GONE);
 				return true;
 			}
-			@Override
-			public void onPageFinished(WebView view, String url) {
-				// TODO Auto-generated method stub
-				// super.onPageFinished(view, url);
-			}
+//			@Override
+//			public void onPageFinished(WebView view, String url) {
+//				// TODO Auto-generated method stub
+//				// super.onPageFinished(view, url);
+//				webRelus.setVisibility(View.VISIBLE);
+//				imgNoWeb.setVisibility(View.GONE);
+//			}
 			@Override
 			public void onReceivedError(WebView view, int errorCode,
 					String description, String failingUrl) {

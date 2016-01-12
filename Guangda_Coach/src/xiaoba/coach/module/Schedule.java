@@ -8,21 +8,21 @@ public class Schedule implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	String date;
-	int hour;
-	int state;
-	int cancelstate;
-	String price;
-	int isrest;
-	int addressid;
-	int subjectid;
-	String subject;
-	String addressdetail;
+	String date;		//日期<2015-03-01>
+	int hour;		//设置时间点,1-24  如果是0则表示的是全天属性设置
+	int state;		//全天状态 0开课  1休息
+	int cancelstate;		//当天的订单是否可以取消 0.可以取消 1.不可以取消
+	String price;		//单价
+	int isrest;		//是否休息 0.不休息  1.休息
+	int addressid;		//上车地点ID
+	int subjectid;		//科目ID
+	String subject;		//科目详细名称
+	String addressdetail;		//地址详细
 	int hasbooked;  //0未被预约，1被预约
-	private int expire;
-	private String bookedername;
-	private String addtionalprice = "0";
-	private String cuseraddtionalprice;
+	private int expire;   //是否过期 1=已过期
+	private String bookedername;		//已预约学员的名字
+	private String addtionalprice = "0";		//陪驾增加的费用
+	private String cuseraddtionalprice;  
 	private int isfreecourse;//0不是体验课，1是体验课
 	private String isnew;  //1是刚点击的时间点
 

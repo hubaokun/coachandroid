@@ -13,6 +13,7 @@ import xiaoba.coach.activity.ActivityMyStudent;
 import xiaoba.coach.activity.ActivityMyTickets;
 import xiaoba.coach.activity.ActivitySendCoupon;
 import xiaoba.coach.activity.ActivityShare;
+import xiaoba.coach.activity.ActivityXiaoBaServer;
 import xiaoba.coach.activity.GetCashActivity_;
 import xiaoba.coach.activity.HomeActivity;
 import xiaoba.coach.activity.IncomeDetailActivity_;
@@ -198,7 +199,7 @@ public class MineFragment extends Fragment {
 		});
 
 		/*
-		 * 跳转投诉
+		 * 跳转我的学员
 		 */
 		mTousuLayout.setOnClickListener(new OnSingleClickListener() {
 
@@ -408,15 +409,17 @@ public class MineFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent (mActivity,com.easemob.helpdeskdemo.activity.LoginActivity.class);
-				 System.out.println("____________鐐瑰嚮鎴戜簡__________________"+id.mUserInfo.getPhone()+CoachApplication.mUserInfo.getAvatarurl());
-				intent.putExtra("phone", id.mUserInfo.getPhone());
-				if(CoachApplication.mUserInfo.getAvatarurl()!=null){
-					intent.putExtra("iv", CoachApplication.mUserInfo.getAvatarurl());
-				}else {
-					intent.putExtra("iv", "");
-				}
-				startActivity(intent);	
+//				Intent intent = new Intent (mActivity,com.easemob.helpdeskdemo.activity.LoginActivity.class);
+//				 System.out.println("____________鐐瑰嚮鎴戜簡__________________"+id.mUserInfo.getPhone()+CoachApplication.mUserInfo.getAvatarurl());
+//				intent.putExtra("phone", id.mUserInfo.getPhone());
+//				if(CoachApplication.mUserInfo.getAvatarurl()!=null){
+//					intent.putExtra("iv", CoachApplication.mUserInfo.getAvatarurl());
+//				}else {
+//					intent.putExtra("iv", "");
+//				}
+//				startActivity(intent);	
+				Intent intent = new Intent (mActivity,ActivityXiaoBaServer.class);
+				startActivity(intent);
 			}
 		});
 	}

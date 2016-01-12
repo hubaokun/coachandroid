@@ -22,6 +22,7 @@ import xiaoba.coach.common.Settings;
 import xiaoba.coach.module.CarType;
 import xiaoba.coach.module.UserInfo;
 import xiaoba.coach.net.request.PerfectCoachInfoReq;
+import xiaoba.coach.net.result.BaseResult;
 import xiaoba.coach.net.result.PerfectCoachInfoResult;
 import xiaoba.coach.utils.CommonUtils;
 
@@ -176,7 +177,7 @@ public class ActivityChoseCar extends BaseActivity {
 		}
 	}
 	
-	private class PerfectCoachInfoTask extends AsyncTask<Void, Void, PerfectCoachInfoResult> {
+	private class PerfectCoachInfoTask extends AsyncTask<Void, Void, BaseResult> {
 		JSONAccessor accessor = new JSONAccessor(ActivityChoseCar.this.getApplicationContext(), JSONAccessor.METHOD_POST_MULTIPART);
 
 		@Override
@@ -187,7 +188,7 @@ public class ActivityChoseCar extends BaseActivity {
 		}
 
 		@Override
-		protected PerfectCoachInfoResult doInBackground(Void... arg0) {
+		protected BaseResult doInBackground(Void... arg0) {
 			accessor.enableJsonLog(true);
 			PerfectCoachInfoReq param = new PerfectCoachInfoReq();
 			param.setAction("PERFECTCOACHMODELID");
@@ -210,11 +211,11 @@ public class ActivityChoseCar extends BaseActivity {
 			String str = modelStr.toString();
 			param.setModelid(str);
 
-			return accessor.execute(Settings.USER_URL, param, PerfectCoachInfoResult.class);
+			return accessor.execute(Settings.USER_URL, param, BaseResult.class);
 		}
 
 		@Override
-		protected void onPostExecute(PerfectCoachInfoResult result) {
+		protected void onPostExecute(BaseResult result) {
 			super.onPostExecute(result);
 			if (mLoadingDialog != null && mLoadingDialog.isShowing())
 				mLoadingDialog.dismiss();

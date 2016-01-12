@@ -1,11 +1,11 @@
 package xiaoba.coach.module;
 
 public class Coachscore {
-	float score;
-	float score1;
-	float score2;
-	float score3;
-	String content;
+	float score;		//综合评分<后台计算三个分的平均值>
+	float score1;		//评分1<学习态度>
+	float score2;		//评分2<技能掌握>
+	float score3;		//评分3<遵章守时>
+	String content;		//评价内容
 
 	public float getScore() {
 		return score;
